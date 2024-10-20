@@ -1,0 +1,17 @@
+
+services:
+  jsonpusher:
+    container_name: jsonpusher
+    platform: linux/amd64
+    build: ./
+    environment:
+      NODE_ENV: development
+    command: bash -c "/bin/bash"
+    # command: yarn storybook -h 0.0.0.0
+    # command: yarn dev
+    volumes:
+      - ./.:/app
+    ports:
+      - "3000:3000"
+      - "6006:6006"
+    tty: true

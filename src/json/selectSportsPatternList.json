@@ -1,0 +1,170 @@
+[
+  {
+    "categoryId": "consciousnessImprovement",
+    "categoryLabel": "意識して改善する",
+    "list": [
+      {
+        "check": false,
+        "id":"consciousEffortsToImprove",
+        "label": "意識的に改善に取り組む",
+        "settingsLevel": 1
+      },
+      {
+        "check": false,
+        "id":"imagineImprovedSample",
+        "label": "意識的した情報で改善サンプルをイメージ",
+        "settingsLevel": 30
+      },
+      {
+        "check": false,
+        "id":"consciousEffortsToImprove",
+        "label": "意識的した情報から改善までのイメージを形成",
+        "settingsLevel": 60
+      }
+    ]
+  },
+  {
+    "categoryId": "imager",
+    "categoryLabel": "イメージを持って変化する",
+    "list": [
+      {
+        "check": false,
+        "id":"useImageReference",
+        "label": "イメージで画像などを参考にする",
+        "settingsLevel": 1
+      },
+      {
+        "check": false,
+        "id":"useImagesReferences",
+        "label": "複数のイメージを参考にする",
+        "settingsLevel": 10
+      },
+      {
+        "check": false,
+        "id":"useMovieReferences",
+        "label": "動画を参考にする",
+        "settingsLevel": 10
+      },
+      {
+        "check": false,
+        "id":"CutOutReferenceMovie",
+        "label": "動画から参考箇所を切り出す",
+        "settingsLevel": 10
+      }
+    ]
+  },
+  {
+    "categoryId": "pain",
+    "categoryLabel": "痛みがある",
+    "list": [
+      {
+        "check": false,
+        "id":"unknowunPain",
+        "label": "心当たりのない痛みがある",
+        "settingsLevel": 1
+      },
+      {
+        "check": false,
+        "id":"planPain",
+        "label": "計画した痛みの発生",
+        "settingsLevel": 10
+      }
+    ]
+  },
+  {
+    "categoryId": "uncomfortableFeeling",
+    "categoryLabel": "違和感",
+    "list": [
+      {
+        "check": false,
+        "id":"useImageReferencePoints",
+        "label": "違和感がある",
+        "settingsLevel": 5
+      },
+      {
+        "check": false,
+        "id":"useImageReferencePlay",
+        "label": "プレーに支障のある違和感がある",
+        "settingsLevel": 8
+      },
+      {
+        "check": false,
+        "id":"useImageReferenceBadPlay",
+        "label": "プレーが悪化した違和感",
+        "settingsLevel": 8
+      }
+    ]
+  },
+  {
+    "categoryId": "fatigue",
+    "categoryLabel": "疲れがある",
+    "list": [
+      {
+        "check": false,
+        "id":"lightFatigue",
+        "label": "軽度の疲れがある",
+        "settingsLevel": 1
+      },
+      {
+        "check": false,
+        "id":"severeFatigue",
+        "label": "重度の疲れがある",
+        "settingsLevel": 1
+      },
+      {
+        "check": false,
+        "id":"intentionallyOverloadedFatigue",
+        "label": "意図的に負荷かけた疲れがある",
+        "settingsLevel": 20
+      },
+      {
+        "check": false,
+        "id":"intentionallyOverloadedFatigue",
+        "label": "意図的に負荷かけて疲れを予測する",
+        "settingsLevel": 30
+      }
+    ]
+  },
+  {
+    "categoryId": "formAdjustedUncomfortable",
+    "categoryLabel": "フォームを調整する箇所と注意して連携する",
+    "list": [
+      {
+        "check": false,
+        "id":"currentSituationIsBadChange",
+        "label": "現状が悪いため変えたい",
+        "settingsLevel": 5
+      },
+      {
+        "check": false,
+        "id":"clearImageToAdjust",
+        "label": "調整する明確なイメージが存在する",
+        "settingsLevel": 20
+      }
+    ]
+  },
+  {
+    "categoryId": "improveHabitualUnconscious",
+    "categoryLabel": "無意識まで習慣化して改善する",
+    "list": [
+      {
+        "check": false,
+        "id":"unconsciousnessThroughRepetitivePractice",
+        "label": "反復練習で無意識化する",
+        "settingsLevel": 1
+      },
+      {
+        "check": false,
+        "id":"unconsciousnessThroughRepetitiveBehaviorsAndPastLearningMemories",
+        "label": "反復行動と過去の学習記憶で無意識化する",
+        "settingsLevel": 20
+      },
+      {
+        "check": false,
+        "id":"unconsciousnessThroughRepetitiveBehaviorsAndPastLearningMemories",
+        "label": "過去の学習記憶をベースに無意識化する",
+        "settingsLevel": 20
+      }
+    ]
+  }
+]

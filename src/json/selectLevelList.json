@@ -1,0 +1,26 @@
+[
+  {
+    "id": "elementaryLevel",
+    "label": "初級レベル"
+  },
+  {
+    "id": "intermediateLevel",
+    "label": "中級レベル"
+  },
+  {
+    "id": "advancedLevel",
+    "label": "上級レベル"
+  },
+  {
+    "id": "month1",
+    "label": "初めて1ヶ月"
+  },
+  {
+    "id": "year1",
+    "label": "1年継続している"
+  },
+  {
+    "id": "year10",
+    "label": "10年継続している"
+  }
+]

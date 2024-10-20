@@ -1,0 +1,26 @@
+[
+  {
+    "id": "consciousnessImprovement",
+    "label": "意識して改善する"
+  },
+  {
+    "id": "improveHabitualUnconscious",
+    "label": "無意識まで習慣化して改善する"
+  },
+  {
+    "id": "pain",
+    "label": "痛みがある"
+  },
+  {
+    "id": "uncomfortableFeeling",
+    "label": "違和感がある"
+  },
+  {
+    "id": "slowMoving",
+    "label": "動きが鈍い"
+  },
+  {
+    "id": "pastPain",
+    "label": "過去に痛めた形跡がある"
+  }
+]
