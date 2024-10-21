@@ -1,180 +1,180 @@
 [
-  {
-    "categoryId": "ballSports",
-    "categoryName": "球技 (Ball Sports)",
-    "viewer": false,
-    "type": [
-      {
-        "id": "football",
-        "label": "サッカー"
-      },
-      {
-        "id": "baseball",
-        "label": "野球"
-      },
-      {
-        "id": "basketball",
-        "label": "バスケットボール"
-      },
-      {
-        "id": "tennis",
-        "label": "テニス"
-      },
-      {
-        "id": "volleyball",
-        "label": "バレーボール"
-      },
-      {
-        "id": "golf",
-        "label": "ゴルフ"
-      },
-      {
-        "id": "tableTennis",
-        "label": "卓球"
-      }
-    ]
-  },
-  {
-    "categoryId": "trackAndField",
-    "categoryName": "陸上競技 (Track and Field)",
-    "viewer": false,
-    "type": [
-      {
-        "id": "trackAndField",
-        "label": "陸上"
-      },
-      {
-        "id": "marathon",
-        "label": "マラソン"
-      },
-      {
-        "id": "sprint",
-        "label": "短距離走"
-      },
-      {
-        "id": "hurdles",
-        "label": "障害物競走"
-      },
-      {
-        "id": "highJump",
-        "label": "走り高跳び"
-      },
-      {
-        "id": "longJump",
-        "label": "走り幅跳び"
-      }
-    ]
-  },
-  {
-    "categoryId": "martialArts",
-    "categoryName": "格闘技 (Martial Arts)",
-    "viewer": false,
-    "type": [
-      {
-        "id": "judo",
-        "label": "柔道"
-      },
-      {
-        "id": "karate",
-        "label": "空手"
-      },
-      {
-        "id": "boxing",
-        "label": "ボクシング"
-      },
-      {
-        "id": "taekwondo",
-        "label": "テコンドー"
-      },
-      {
-        "id": "sumo",
-        "label": "相撲"
-      },
-      {
-        "id": "wrestling",
-        "label": "レスリング"
-      }
-    ]
-  },
-  {
-    "categoryId": "waterSports",
-    "categoryName": "水上スポーツ (Water Sports)",
-    "viewer": false,
-    "type": [
-      {
-        "id": "swimming",
-        "label": "水泳"
-      },
-      {
-        "id": "surfing",
-        "label": "サーフィン"
-      },
-      {
-        "id": "diving",
-        "label": "ダイビング"
-      },
-      {
-        "id": "canoeing",
-        "label": "カヌー"
-      },
-      {
-        "id": "kayaking",
-        "label": "カヤック"
-      }
-    ]
-  },
-  {
-    "categoryId": "winterSports",
-    "categoryName": "ウィンタースポーツ (Winter Sports)",
-    "viewer": false,
-    "type": [
-      {
-        "id": "skiing",
-        "label": "スキー"
-      },
-      {
-        "id": "snowboarding",
-        "label": "スノーボード"
-      },
-      {
-        "id": "figureSkating",
-        "label": "フィギュアスケート"
-      },
-      {
-        "id": "iceHockey",
-        "label": "アイスホッケー"
-      }
-    ]
-  },
-  {
-    "categoryId": "otherSports",
-    "categoryName": "その他 (Other Sports)",
-    "viewer": false,
-    "type": [
-      {
-        "id": "gymnastics",
-        "label": "体操"
-      },
-      {
-        "id": "yoga",
-        "label": "ヨガ"
-      },
-      {
-        "id": "climbing",
-        "label": "登山"
-      },
-      {
-        "id": "cycling",
-        "label": "サイクリング"
-      },
-      {
-        "id": "archery",
-        "label": "アーチェリー"
-      },
-      {
-        "id": "fencing",
-        "label": "フェンシング"
-      }
-    ]
-  }
+	{
+		"categoryId": "ballSports",
+		"categoryName": "球技 (Ball Sports)",
+		"viewer": false,
+		"type": [
+			{
+				"id": "football",
+				"label": "サッカー"
+			},
+			{
+				"id": "baseball",
+				"label": "野球"
+			},
+			{
+				"id": "basketball",
+				"label": "バスケットボール"
+			},
+			{
+				"id": "tennis",
+				"label": "テニス"
+			},
+			{
+				"id": "volleyball",
+				"label": "バレーボール"
+			},
+			{
+				"id": "golf",
+				"label": "ゴルフ"
+			},
+			{
+				"id": "tableTennis",
+				"label": "卓球"
+			}
+		]
+	},
+	{
+		"categoryId": "trackAndField",
+		"categoryName": "陸上競技 (Track and Field)",
+		"viewer": false,
+		"type": [
+			{
+				"id": "trackAndField",
+				"label": "陸上"
+			},
+			{
+				"id": "marathon",
+				"label": "マラソン"
+			},
+			{
+				"id": "sprint",
+				"label": "短距離走"
+			},
+			{
+				"id": "hurdles",
+				"label": "障害物競走"
+			},
+			{
+				"id": "highJump",
+				"label": "走り高跳び"
+			},
+			{
+				"id": "longJump",
+				"label": "走り幅跳び"
+			}
+		]
+	},
+	{
+		"categoryId": "martialArts",
+		"categoryName": "格闘技 (Martial Arts)",
+		"viewer": false,
+		"type": [
+			{
+				"id": "judo",
+				"label": "柔道"
+			},
+			{
+				"id": "karate",
+				"label": "空手"
+			},
+			{
+				"id": "boxing",
+				"label": "ボクシング"
+			},
+			{
+				"id": "taekwondo",
+				"label": "テコンドー"
+			},
+			{
+				"id": "sumo",
+				"label": "相撲"
+			},
+			{
+				"id": "wrestling",
+				"label": "レスリング"
+			}
+		]
+	},
+	{
+		"categoryId": "waterSports",
+		"categoryName": "水上スポーツ (Water Sports)",
+		"viewer": false,
+		"type": [
+			{
+				"id": "swimming",
+				"label": "水泳"
+			},
+			{
+				"id": "surfing",
+				"label": "サーフィン"
+			},
+			{
+				"id": "diving",
+				"label": "ダイビング"
+			},
+			{
+				"id": "canoeing",
+				"label": "カヌー"
+			},
+			{
+				"id": "kayaking",
+				"label": "カヤック"
+			}
+		]
+	},
+	{
+		"categoryId": "winterSports",
+		"categoryName": "ウィンタースポーツ (Winter Sports)",
+		"viewer": false,
+		"type": [
+			{
+				"id": "skiing",
+				"label": "スキー"
+			},
+			{
+				"id": "snowboarding",
+				"label": "スノーボード"
+			},
+			{
+				"id": "figureSkating",
+				"label": "フィギュアスケート"
+			},
+			{
+				"id": "iceHockey",
+				"label": "アイスホッケー"
+			}
+		]
+	},
+	{
+		"categoryId": "otherSports",
+		"categoryName": "その他 (Other Sports)",
+		"viewer": false,
+		"type": [
+			{
+				"id": "gymnastics",
+				"label": "体操"
+			},
+			{
+				"id": "yoga",
+				"label": "ヨガ"
+			},
+			{
+				"id": "climbing",
+				"label": "登山"
+			},
+			{
+				"id": "cycling",
+				"label": "サイクリング"
+			},
+			{
+				"id": "archery",
+				"label": "アーチェリー"
+			},
+			{
+				"id": "fencing",
+				"label": "フェンシング"
+			}
+		]
+	}
 ]
