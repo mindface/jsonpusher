@@ -40,7 +40,7 @@ export default function SectionSkillComparison() {
 						経験レベル{ experiencePoints }
 					</div>
 				</div>
-				<div className="details-result p-8">
+				<div className="details-result p-8 pt-2">
 					{selectSportsGrowthList.map((sportsGrowthItem) => <div key={sportsGrowthItem.categoryId} className="">
 						{ cuurentSkillId === sportsGrowthItem.categoryId && sportsGrowthItem.list.map((item) => <div key={item.id}>
 							{ item.skillLevel < experiencePoints && <div className="pb-2">{item.label}</div>}
@@ -49,12 +49,26 @@ export default function SectionSkillComparison() {
 				</div>
 				<p className="text pb-2">増える質問はあくまで順不同なのでタイミングや増加の仕方は個人で異なります。</p>
 				<p className="text pb-2">評価した技術を比較することになります。</p>
-				<p className="text pb-2">結果とベースとなる構造をもとに計画した練習01と計画した練習02を比較して、結果の良い方を選択することになります。この「良い方」とは目的の近い結果を再現性のある方になります。</p>
-				<div className="flex pb-4">
-					<div className="p-4">過去の情報<br />これまでの手段</div>
-					<div className="p-4">現状の情報<br />変更した手段</div>
+				<p className="text pb-10">結果とベースとなる構造をもとに計画した練習01と計画した練習02を比較して、結果の良い方を選択することになります。この「良い方」とは目的の近い結果を再現性のある方になります。</p>
+				<Title3h title="比較内容について" size="small" />
+				<div className="flex pb-8">
+					<div className="p-4 pr-8">
+						<h4 className="title pb-4">過去の情報</h4>
+						<p>これまでのプロセス</p>
+						<p>基準にしている評価</p>
+						<p>記憶からイメージできる改善方法</p>
+						<p>分析手法と練習パタンを確立</p>
+					</div>
+					<div className="p-4">
+						<h4 className="title pb-4">現状の情報</h4>
+						<p>目的からの調整で変更したプロセス</p>
+						<p>練習などで増やした評価</p>
+						<p>練習した記憶から注意してイメージできる方法の増加</p>
+						<p>練習から分析した練習パタンの変化</p>
+					</div>
 				</div>
-				<p className="text pb-2">現在ではアプリが存在しているのでaiで確認してみてください。</p>
+				<p className="text pb-2">比較して情報へ関与していく。</p>
+				<p className="text pb-2">健康でも情報を比較して、フィードバック構造を考えていくので参考にしてみてください。</p>
 			</div>
 		</section>
 	);
