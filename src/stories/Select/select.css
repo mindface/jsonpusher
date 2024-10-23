@@ -1,0 +1,9 @@
+.select {
+	display: inline-block;
+	cursor: pointer;
+	background-color: var(--background);
+	color: var(--foreground);
+	border-radius: calc(infinity * 1px);
+	line-height: 1;
+	box-shadow: 0 0 1px var(--foreground) inset;
+}

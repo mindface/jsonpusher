@@ -119,7 +119,7 @@
 			},
 			{
 				"check": false,
-				"id": "intentionallyOverloadedFatigue",
+				"id": "intentionallyOverloadedFatiguePlan",
 				"label": "意図的に負荷かけて疲れを予測する",
 				"settingsLevel": 30
 			}

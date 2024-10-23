@@ -100,7 +100,8 @@ export default function SectionHealth() {
 					width={300}
 					height={300}
 					alt="health image"
-					loading="lazy"
+					priority
+					style={{ objectFit: "cover" }}
 				/>
 				{viewTextSwitch && <Textarea value={keyWord("ai")} />}
 			</div>

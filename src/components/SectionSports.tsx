@@ -8,6 +8,7 @@ import { Button } from "../stories/Button/Button";
 import { InputRange } from "../stories/InputRange/InputRange";
 import { Textarea } from "../stories/TextArea/Textarea";
 import { Title3h } from "../stories/title3h/Title3h";
+import { TextCommenter } from "../stories/TextComment/TextCommenter";
 import { Dialog } from "../stories/Dialog/Dialog";
 
 import SelectPartList from "../json/selectPartList.json";
@@ -27,6 +28,12 @@ type SelectSportsPatternItem = {
 	categoryLabel: string;
 	list: SelectItem[];
 };
+
+const viewSubText = [
+  "検索される文字も考えてみよう",
+  "情報設計に関しても考えてみよう",
+  "aiに質問する時は画像などを使うことも考えてください。"
+];
 
 export default function SectionSports() {
 	const [viewTextSwitch, viewTextSwitchSet] = useState(false);
@@ -56,7 +63,9 @@ export default function SectionSports() {
 		selectParts.forEach((item) => {
 			setText += item.label + " ";
 		});
-		setText += "に関して";
+		if (selectParts.length > 0 && setAi) {
+			setText += "に関して";
+		}
 		selectPattern.forEach((item) => {
 			setText += item.label + " ";
 		});
@@ -148,17 +157,17 @@ export default function SectionSports() {
 					src={bicycleImage}
 					className="rounded-lg"
 					width={300}
-					height={300}
-					alt="health image"
-					loading="lazy"
-					style={{ objectFit: "cover" }}
+					height={200}
+					alt="sports image"
+          priority
+					style={{ objectFit: "cover", height: "auto" }}
 				/>
 				{viewTextSwitch && <Textarea value={keyWord("ai")} />}
 			</div>
       <div className="pt-2 pb-2">
         <Dialog label="スポーツ項目を選択する">
           <div className="category-box--outer flex justify-center">
-            {selectSportsList.map((categoryItem) => (
+            {selectSportsList && selectSportsList.map((categoryItem) => (
               <div className="category-box p-2" key={categoryItem.categoryId}>
                 <h3 className="category-box__title">
                   {categoryItem.categoryName}
@@ -183,7 +192,7 @@ export default function SectionSports() {
         </Dialog>
       </div>
 			<div className="select-sports-box flex pt-4">
-				{selectSports.map((selectSports) => (
+				{selectSports && selectSports.map((selectSports) => (
 					<span
 						className="inline-block mr-2 p-2 rounded-full border border-blue-400"
 						key={`select${selectSports.id}`}
@@ -194,7 +203,7 @@ export default function SectionSports() {
 			</div>
 			<div className="select-box flex pt-4">
 				<ul className="select-parts">
-					{selectPartList.map((item) => (
+					{selectPartList && selectPartList.map((item) => (
 						<li className="p-2" key={item.id}>
 							<Ccheck
 								partsId={item.id}
@@ -208,7 +217,7 @@ export default function SectionSports() {
 				</ul>
 				<ul className="select-pattern">
 					<li className="p-2">
-						<p className="caption">
+						<div className="caption">
               <div className="relative inline-block">
                 自身のレベル
                 <div className="absolute -top-6 -right-8">
@@ -220,7 +229,7 @@ export default function SectionSports() {
                   </Dialog>
                 </div>
               </div>
-            </p>
+            </div>
 						<div className="inline-flex p-2">
 							<InputRange
                 value={userLevel}
@@ -231,7 +240,7 @@ export default function SectionSports() {
 							{userLevel} level
 						</div>
 					</li>
-					{selectSportsPatternListForLevel.map((categoryItem) => (
+					{selectSportsPatternListForLevel && selectSportsPatternListForLevel.map((categoryItem) => (
 						<li className="p-2" key={categoryItem.categoryId}>
 							<Title3h title={categoryItem.categoryLabel} />
 							<ul className="level-list">
@@ -252,7 +261,7 @@ export default function SectionSports() {
 					))}
 				</ul>
 				<ul className="select-level">
-					{selectLevelList.map((item) => (
+					{selectLevelList && selectLevelList.map((item) => (
 						<li className="p-2" key={item.id}>
 							<Ccheck
 								partsId={item.id}
@@ -272,6 +281,7 @@ export default function SectionSports() {
 					label={"コピーするテキストの確認"}
 					changing={(check) => viewTextSwitchSet(check)}
 				/>
+        {/* <TextCommenter values={viewSubText} speed={200} interval={10000} /> */}
 			</div>
 			<div className="flex justify-end">
 				<Button label="copy" size="small" onClick={copyAciton} />

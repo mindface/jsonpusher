@@ -1,0 +1,86 @@
+[
+	{
+		"categoryId": "ballSports",
+		"categoryName": "球技 (バスケットボール)",
+		"viewer": false,
+		"list": [
+			{
+				"id": "basketball01",
+				"skillLevel": 1,
+				"label": "シュート精度の向上する"
+			},
+			{
+				"id": "basketball02",
+				"skillLevel": 2,
+				"label": "5日同じ練習をしたけれど、練習内容を変化させる"
+			},
+			{
+				"id": "basketball03",
+				"skillLevel": 3,
+				"label": "変化した練習方法でも難しいので、分析して変更する"
+			},
+			{
+				"id": "basketball04",
+				"skillLevel": 4,
+				"label": "分析内容と感覚的なズレを言語化して、工夫するパタンにする"
+			},
+			{
+				"id": "basketball05",
+				"skillLevel": 5,
+				"label": "工夫するパタンをシュートを打つケースについて変更させる"
+			},
+			{
+				"id": "basketball06",
+				"skillLevel": 6,
+				"label": "踏み出した足に関連して、シュートの回転までの連動する内容を変更する"
+			},
+			{
+				"id": "basketball07",
+				"skillLevel": 7,
+				"label": "現状の評価に関して、感覚値と動画を組みわせて明確にイメージして利用する"
+			}
+		]
+	},
+	{
+		"categoryId": "healthPosture",
+		"categoryName": "health(健康)",
+		"viewer": false,
+		"list": [
+			{
+				"id": "healthPosture01",
+				"skillLevel": 1,
+				"label": "直立の姿勢が変だと指摘される"
+			},
+			{
+				"id": "healthPosture02",
+				"skillLevel": 2,
+				"label": "ウォーキングフォームの改善をしていく"
+			},
+			{
+				"id": "healthPosture03",
+				"skillLevel": 3,
+				"label": "専門家のブログや動画を参考にして調整する"
+			},
+			{
+				"id": "healthPosture04",
+				"skillLevel": 4,
+				"label": "鍼灸やマッサージへ行き、自分のフォームの評価をしてもらう"
+			},
+			{
+				"id": "healthPosture05",
+				"skillLevel": 5,
+				"label": "直立の姿勢と意識して参考にするイメージへ調整できる"
+			},
+			{
+				"id": "healthPosture06",
+				"skillLevel": 6,
+				"label": "参考にするイメージの評価について情報の所在を把握できている"
+			},
+			{
+				"id": "healthPosture07",
+				"skillLevel": 7,
+				"label": "本や動画を含めた専門家の知識を把握して、自分の評価を調整して目的を達成できる"
+			}
+		]
+	}
+]

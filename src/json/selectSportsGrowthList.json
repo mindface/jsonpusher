@@ -1,0 +1,134 @@
+[
+	{
+		"categoryId": "ballSports",
+		"categoryName": "球技 (バスケットボール)",
+		"viewer": false,
+		"list": [
+			{
+				"id": "basketball01",
+				"skillLevel": 1,
+				"label": "シュート精度の向上させる"
+			},
+			{
+				"id": "basketball02",
+				"skillLevel": 2,
+				"label": "立ち位置やボールのセットアップからシュート精度の向上させる"
+			},
+			{
+				"id": "basketball03",
+				"skillLevel": 3,
+				"label": "肘の位置やリリースポイントからシュート精度の向上させる"
+			},
+			{
+				"id": "basketball04",
+				"skillLevel": 4,
+				"label": "ジャンプシュートを練習で上手く向上したイメージからシュート精度の向上させる"
+			},
+			{
+				"id": "basketball05",
+				"skillLevel": 5,
+				"label": "リズムとタイミングを安定させてシュート精度の向上させる"
+			},
+			{
+				"id": "basketball06",
+				"skillLevel": 6,
+				"label": "コンディショニングとフィジカル強化してシュート精度の向上させる"
+			},
+			{
+				"id": "basketball07",
+				"skillLevel": 7,
+				"label": "ゲームの展開を考慮してスタミナを考慮して、シュート精度の向上させる"
+			}
+		]
+	},
+	{
+		"categoryId": "trackAndField",
+		"categoryName": "陸上競技 (陸上)",
+		"viewer": false,
+		"list": [
+			{
+				"id": "trackAndField01",
+				"skillLevel": 1,
+				"label": "ランニングフォームの改善"
+			},
+			{
+				"id": "trackAndField02",
+				"skillLevel": 2,
+				"label": "フォームを確認してランニングフォームの改善"
+			},
+			{
+				"id": "trackAndField03",
+				"skillLevel": 3,
+				"label": "動画やモデル情報からランニングフォームの改善"
+			},
+			{
+				"id": "trackAndField04",
+				"skillLevel": 4,
+				"label": "動画やモデル情報から過去の経験を比較してランニングフォームの改善"
+			},
+			{
+				"id": "trackAndField05",
+				"skillLevel": 5,
+				"label": "疲れても変化しないフォームにするためにランニングフォームの強化改善"
+			},
+			{
+				"id": "trackAndField06",
+				"skillLevel": 6,
+				"label": "怪我を予防するために、股関節や可動領域を改善させて、ランニングフォームの改善"
+			},
+			{
+				"id": "trackAndField07",
+				"skillLevel": 7,
+				"label": "試合の振り返りとデータ分析からランニングフォームの改善"
+			}
+		]
+	},
+	{
+		"categoryId": "martialArts",
+		"categoryName": "格闘技 (柔道)",
+		"viewer": false,
+		"list": [
+			{
+				"id": "martialArts01",
+				"skillLevel": 1,
+				"label": "柔道"
+			}
+		]
+	},
+	{
+		"categoryId": "waterSports",
+		"categoryName": "水上スポーツ (水泳)",
+		"viewer": false,
+		"list": [
+			{
+				"id": "waterSports01",
+				"skillLevel": 1,
+				"label": "水泳"
+			}
+		]
+	},
+	{
+		"categoryId": "winterSports",
+		"categoryName": "ウィンタースポーツ (skiing)",
+		"viewer": false,
+		"list": [
+			{
+				"id": "winterSports01",
+				"skillLevel": 1,
+				"label": "スキー"
+			}
+		]
+	},
+	{
+		"categoryId": "otherSports",
+		"categoryName": "その他 (体操)",
+		"viewer": false,
+		"list": [
+			{
+				"id": "otherSports01",
+				"skillLevel": 1,
+				"label": "体操"
+			}
+		]
+	}
+]

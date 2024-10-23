@@ -1,0 +1,25 @@
+
+.text-commenter-box {
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+}
+
+.text-commenter {
+	display: block;
+	min-height: 1rem;
+	background-color: transparent;
+	border: 0;
+	background-color: #1ea7fd;
+	color: #fff;
+}
+
+.text-commenter::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	right: 10px;
+	border-top: 8px solid #1ea7fd;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+}
