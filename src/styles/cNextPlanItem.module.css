@@ -1,0 +1,11 @@
+
+.next-plan-item__edit {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.open .next-plan-item__edit {
+  visibility: visible;
+  opacity: 1;
+}

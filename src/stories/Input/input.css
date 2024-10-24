@@ -1,0 +1,19 @@
+.input {
+	-webkit-appearance: none;
+	appearance: none;
+	outline: none;
+	display: inline-block;
+	background: #fff;
+	color: var(--input-font-color);
+	border: 0;
+	line-height: 1;
+	box-shadow: 0 0 1px var(--foreground) inset;
+}
+
+.label-dark .label {
+	color: var(--input-font-color);
+}
+
+.label-dark .input {
+	box-shadow: 0 0 1px var(--input-font-color) inset;
+}

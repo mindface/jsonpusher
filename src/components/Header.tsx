@@ -37,7 +37,7 @@ const menuList = [
 	},
 	{
 		pathId: "menu04",
-		path: "/levelUpPattern",
+		path: "/planFeedback",
 		name: "練習を計画すること",
 	},
 ];
@@ -47,7 +47,7 @@ export default function Header() {
 		<div className="flex justify-between p-6 pb-4">
 			<div className="links">
 				{pathList.map((item) => (
-					<Link key={item.pathId} href={item.path} className="p-1">
+					<Link key={item.pathId} href={item.path} className="inline-block p-2">
 						{item.name}
 					</Link>
 				))}
