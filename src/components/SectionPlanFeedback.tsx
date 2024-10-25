@@ -10,6 +10,8 @@ import CNextPlanList from "../components/CNextPlanList";
 import { useStorePlan } from "../store/plan";
 import { useStoreNextPlan } from "../store/planNext";
 
+import type { Plan } from "../type/plan";
+
 export default function SectionPlanFeedback() {
 	const { plans } = useStorePlan();
 	const { nextPlans, copyPlans } = useStoreNextPlan();
@@ -29,6 +31,45 @@ export default function SectionPlanFeedback() {
 			});
 	}
 
+	const copyTextAciton = (type: string) => {
+		const columns = ["id", "title", "details", "connectId"];
+		let formattedTable = "";
+		if(type === "1") {
+			const colWidths = columns.map(col => 
+				Math.max(col.length, ...plans.map(row => row[col as keyof Plan].length))
+			);
+			const header = columns.map((col, index) => col.padEnd(colWidths[index])).join(" | ");
+			const separator = "-".repeat(header.length);
+			const formattedRows = plans.map(row => 
+				columns.map((col, index) => row[col as keyof Plan].padEnd(colWidths[index])).join(" | ")
+			);
+			formattedTable = [separator, header, separator, ...formattedRows, separator].join("\n")
+		}
+
+		if(type === "2") {
+			const colWidths = columns.map(col => 
+				Math.max(col.length, ...nextPlans.map(row => row[col as keyof Plan].length))
+			);
+			const header = columns.map((col, index) => col.padEnd(colWidths[index])).join(" | ");
+			const separator = "-".repeat(header.length);
+			const formattedRows = nextPlans.map(row => 
+				columns.map((col, index) => row[col as keyof Plan].padEnd(colWidths[index])).join(" | ")
+			);
+			console.log(colWidths);
+			formattedTable = [separator, header, separator, ...formattedRows, separator].join("\n")
+		}
+		
+		navigator.clipboard
+			.writeText(formattedTable)
+			.then(() => {
+				alert("コピーしました。");
+			})
+			.catch((err) => {
+				console.error("Failed to copy text: ", err);
+			});
+
+	}
+
 	return (
 		<section className="section-skill-comparison">
 			<Title3h title="計画のフィードバック" size="large" />
@@ -41,8 +82,12 @@ export default function SectionPlanFeedback() {
 					<div className="pb-8 pr-8">
 						<CPlanEdit type="add" />
 						<CPlanList items={plans} />
-						<Button label="次の計画にコピーする" onClick={() => { copyAciton(); }} />
-						<Button label="jsonをコピーする" onClick={() => { copyJsonAciton(); }} />
+						<p className="pb-2"><Button label="次の計画にコピーする" onClick={() => { copyAciton(); }} /></p>
+						<p className="pb-2"><Button label="jsonをコピーする" onClick={() => { copyJsonAciton(); }} /></p>
+						<p>
+							<Button label="計画1のテキストをコピーする" onClick={() => { copyTextAciton("1"); }} />
+							<Button label="計画2のテキストをコピーする" onClick={() => { copyTextAciton("2"); }} />
+						</p>
 					</div>
 					<div className="pb-8">
 						<CNextPlanEdit type="add" />
