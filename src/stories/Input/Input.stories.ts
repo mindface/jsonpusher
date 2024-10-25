@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { InputRange } from "./InputRange";
+import { Input } from "./Input";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
-	title: "Example/InputRange",
-	component: InputRange,
+	title: "Example/Input",
+	component: Input,
 	parameters: {
 		layout: "centered",
 	},
@@ -38,21 +38,23 @@ const meta = {
 	args: {
 		onChange: (value: string) => console.log(value),
 	},
-} satisfies Meta<typeof InputRange>;
+} satisfies Meta<typeof Input>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
 	args: {
-    value: 0,
+		type: "text",
+    value: "text",
 		label: "Range Primary",
 	},
 };
 
 export const Large: Story = {
 	args: {
-    value: 0,
+		type: "text",
+    value: "text",
 		size: "large",
 		label: "Range Large",
 	},
@@ -60,7 +62,8 @@ export const Large: Story = {
 
 export const Small: Story = {
 	args: {
-    value: 0,
+		type: "text",
+    value: "text",
 		size: "small",
 		label: "Range Small",
 	},

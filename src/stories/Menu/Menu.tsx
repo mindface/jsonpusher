@@ -13,7 +13,6 @@ type PathList = {
 export interface MenuProps {
 	primary?: boolean;
 	className?: string;
-	backgroundColor?: string;
 	size?: "small" | "medium" | "large";
 	pathList: PathList;
 	onClick?: () => void;
@@ -22,7 +21,6 @@ export interface MenuProps {
 export const Menu = ({
 	className,
 	size = "medium",
-	backgroundColor,
 	pathList,
 	...props
 }: MenuProps) => {

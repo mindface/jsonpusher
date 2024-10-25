@@ -15,7 +15,7 @@ export default function SectionSkillComparison() {
 		return selectSportsGrowthList.map((item) => {
 			return { value: item.categoryId, label: item.categoryName }
 		});
-	},[]);
+	},[selectSportsGrowthList]);
 
 	return (
 		<section className="section-skill-comparison">

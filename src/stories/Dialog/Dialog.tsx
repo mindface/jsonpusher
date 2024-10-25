@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactNode, useState, useRef } from "react";
+import { ReactNode, useRef } from "react";
 import "./dialog.css";
 
 export interface DialogProps {

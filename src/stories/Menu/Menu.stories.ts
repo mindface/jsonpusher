@@ -10,9 +10,7 @@ const meta = {
 		layout: "centered",
 	},
 	tags: ["autodocs"],
-	argTypes: {
-		backgroundColor: { control: "color" },
-	},
+	argTypes: {},
 	args: { onClick: fn() },
 } satisfies Meta<typeof Menu>;
 

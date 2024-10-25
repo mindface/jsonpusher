@@ -1,5 +1,5 @@
 "use client"
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../stories/Button/Button";
 import { Input } from "../stories/Input/Input";
 
@@ -23,7 +23,7 @@ export default function CPlanEdit(props: Props) {
 			planTitleSet(item?.title);
 			planDetailsSet(item?.details);
 		}
-	},[]);
+	},[type,item?.title,item?.details]);
 
 	const addPlanAction = () => {
 		addPlan(planTitle,planDetails);

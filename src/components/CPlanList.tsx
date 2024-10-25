@@ -1,6 +1,4 @@
 "use client"
-import { useState, useMemo, useEffect } from "react";
-import { useStorePlan } from "../store/plan";
 import { Title3h } from "../stories/title3h/Title3h";
 import { Plan } from "../type/plan";
 

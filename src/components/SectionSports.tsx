@@ -8,7 +8,7 @@ import { Button } from "../stories/Button/Button";
 import { InputRange } from "../stories/InputRange/InputRange";
 import { Textarea } from "../stories/TextArea/Textarea";
 import { Title3h } from "../stories/title3h/Title3h";
-import { TextCommenter } from "../stories/TextComment/TextCommenter";
+// import { TextCommenter } from "../stories/TextComment/TextCommenter";
 import { Dialog } from "../stories/Dialog/Dialog";
 
 import SelectPartList from "../json/selectPartList.json";
@@ -29,11 +29,11 @@ type SelectSportsPatternItem = {
 	list: SelectItem[];
 };
 
-const viewSubText = [
-  "検索される文字も考えてみよう",
-  "情報設計に関しても考えてみよう",
-  "aiに質問する時は画像などを使うことも考えてください。"
-];
+// const viewSubText = [
+//   "検索される文字も考えてみよう",
+//   "情報設計に関しても考えてみよう",
+//   "aiに質問する時は画像などを使うことも考えてください。"
+// ];
 
 export default function SectionSports() {
 	const [viewTextSwitch, viewTextSwitchSet] = useState(false);
@@ -118,7 +118,7 @@ export default function SectionSports() {
 	};
 
 	const copyAciton = () => {
-		let copyText = keyWord("ai");
+		const copyText = keyWord("ai");
 		navigator.clipboard
 			.writeText(copyText)
 			.then(() => {
@@ -130,7 +130,7 @@ export default function SectionSports() {
 	};
 
 	const googlSearchAction = () => {
-		let searchText = keyWord();
+		const searchText = keyWord();
 		const url = `https://www.google.com/search?q=${encodeURIComponent(searchText)}`;
 		window.open(url, "_blank");
 	};
@@ -148,7 +148,7 @@ export default function SectionSports() {
 			};
 		});
 		return list as SelectSportsPatternItem[];
-	}, [userLevel]);
+	}, [userLevel,selectSportsPatternList]);
 
 	return (
 		<section className="section-health">

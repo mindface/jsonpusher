@@ -23,7 +23,7 @@ export default function CNextPlanEdit(props: Props) {
 			planTitleSet(item?.title);
 			planDetailsSet(item?.details);
 		}
-	},[]);
+	},[type,item?.title,item?.details]);
 
 	const addPlanAction = () => {
 		addNextPlan(planTitle,planDetails);

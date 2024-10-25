@@ -75,7 +75,7 @@ export default function SectionHealth() {
 	};
 
 	const copyAciton = () => {
-		let copyText = keyWord("ai");
+		const copyText = keyWord("ai");
 		navigator.clipboard
 			.writeText(copyText)
 			.then(() => {
@@ -87,7 +87,7 @@ export default function SectionHealth() {
 	};
 
 	const googlSearchAction = () => {
-		let searchText = keyWord();
+		const searchText = keyWord();
 		const url = `https://www.google.com/search?q=${encodeURIComponent(searchText)}`;
 		window.open(url, "_blank");
 	};
