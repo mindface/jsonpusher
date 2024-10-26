@@ -152,6 +152,15 @@ export default function SectionSports() {
 
 	return (
 		<section className="section-health">
+      <div className="text-center pb-4">選択をして、aiに質問するテキストを作成します。
+        <Ccheck
+					partsId={"viewTextSwitch"}
+					size="small"
+					primary={true}
+					label={"コピーするテキストの確認"}
+					changing={(check) => viewTextSwitchSet(check)}
+				/>
+      </div>
 			<div className="flex justify-center">
 				<Image
 					src={bicycleImage}
@@ -162,9 +171,9 @@ export default function SectionSports() {
           priority
 					style={{ objectFit: "cover", height: "auto" }}
 				/>
-				{viewTextSwitch && <Textarea value={keyWord("ai")} />}
+				{viewTextSwitch && <Textarea value={keyWord("ai")} outerClassName="p-8" />}
 			</div>
-      <div className="pt-2 pb-2">
+      <div className="pt-4 p-2">
         <Dialog label="スポーツ項目を選択する">
           <div className="category-box--outer flex justify-center">
             {selectSportsList && selectSportsList.map((categoryItem) => (
@@ -191,7 +200,7 @@ export default function SectionSports() {
           </div>
         </Dialog>
       </div>
-			<div className="select-sports-box flex pt-4">
+			<div className="select-sports-box flex pt-4 p-2">
 				{selectSports && selectSports.map((selectSports) => (
 					<span
 						className="inline-block mr-2 p-2 rounded-full border border-blue-400"
@@ -202,7 +211,7 @@ export default function SectionSports() {
 				))}
 			</div>
 			<div className="select-box flex pt-4">
-				<ul className="select-parts">
+				<ul className="select-parts pr-4">
 					{selectPartList && selectPartList.map((item) => (
 						<li className="p-2" key={item.id}>
 							<Ccheck
@@ -274,13 +283,6 @@ export default function SectionSports() {
 				</ul>
 			</div>
 			<div className="flex justify-end pb-2">
-				<Ccheck
-					partsId={"viewTextSwitch"}
-					size="small"
-					primary={true}
-					label={"コピーするテキストの確認"}
-					changing={(check) => viewTextSwitchSet(check)}
-				/>
         {/* <TextCommenter values={viewSubText} speed={200} interval={10000} /> */}
 			</div>
 			<div className="flex justify-end">

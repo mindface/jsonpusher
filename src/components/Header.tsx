@@ -40,6 +40,11 @@ const menuList = [
 		path: "/planFeedback",
 		name: "練習を計画すること",
 	},
+	{
+		pathId: "menu05",
+		path: "/nextPlanEvaluation",
+		name: "計画の評価を文字列化",
+	},
 ];
 
 export default function Header() {
