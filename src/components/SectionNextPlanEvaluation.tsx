@@ -12,7 +12,7 @@ import { useStoreNextPlan } from "../store/planNext";
 import type { Plan } from "../type/plan";
 
 export default function SectionNextPlanEvaluation() {
-	const { nextPlans, copyPlans } = useStoreNextPlan();
+	const { nextPlans } = useStoreNextPlan();
 	const [planEvaluation,planEvaluationSet] = useState("");
 
 	const copyTextAciton = () => {

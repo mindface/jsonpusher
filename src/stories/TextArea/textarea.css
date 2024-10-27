@@ -3,5 +3,5 @@
 	background-color: transparent;
 	border: 0;
 	font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+	box-shadow: var(--foreground) 0px 0px 0px 1px inset;
 }
