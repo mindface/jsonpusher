@@ -44,7 +44,7 @@ export default function SectionGrowthQuantification() {
 				</div>
 				<div className="p-2">
 					<Textarea
-						label="成長するための定量化する評価について"
+						label="成長する定量化する評価について"
 						value={textGrowth}
 						placeholder="練習の評価を文字にしていくことの幅が狭いので、いろいろな意識して変更する方法が知りたい。"
 						onChange={(value) => { textGrowthSet(value) }}

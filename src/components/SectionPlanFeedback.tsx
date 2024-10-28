@@ -75,8 +75,7 @@ export default function SectionPlanFeedback() {
 			<Title3h title="計画のフィードバック" size="large" />
 			<div className="details">
 				<p className="text pb-2">計画の設計していくことになります。</p>
-				<p className="text pb-2">自分でどの状況で効果的になっていくかを考えることを評価することになります。</p>
-				<p className="text pb-10"></p>
+				<p className="text pb12">自分でどの状況で効果的になっていくかを考えることを評価することになります。</p>
 				<Title3h title="計画の追加" size="small" />
 				<div className="flex">
 					<div className="pb-8 pr-8">
