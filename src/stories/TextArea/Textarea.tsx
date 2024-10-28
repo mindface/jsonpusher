@@ -9,6 +9,7 @@ export interface TextareaProps {
 	rows?: number;
 	cols?: number;
 	label?: string;
+	placeholder?: string;
 	onChange?: (value: string) => void;
 }
 
@@ -20,6 +21,7 @@ export const Textarea = ({
 	cols = 30,
 	value,
 	label,
+	placeholder,
 	onChange,
 }: TextareaProps) => {
 	let setClassName = "textarea p-2 rounded-lg";
@@ -31,12 +33,13 @@ export const Textarea = ({
 	}
 	return (
 		<div className={`textarea-box ${outerClassName}`}>
-			{label && label}
+			{label && <span className="inline-block pb-4">{label}</span>}
 			<textarea
 				className={setClassName}
 				rows={rows}
 				cols={cols}
 				value={value}
+				placeholder={placeholder}
 				onChange={(e) => {
 					if (onChange) {
 						onChange(e.target.value);

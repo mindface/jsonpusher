@@ -51,7 +51,7 @@ export default function SectionSkillComparison() {
 				<p className="text pb-2">評価した技術を比較することになります。</p>
 				<p className="text pb-10">結果とベースとなる構造をもとに計画した練習01と計画した練習02を比較して、結果の良い方を選択することになります。この「良い方」とは目的の近い結果を再現性のある方になります。</p>
 				<Title3h title="比較内容について" size="small" />
-				<div className="flex pb-8">
+				<div className="flex pb-12">
 					<div className="p-4 pr-8">
 						<h4 className="title pb-4">過去の情報</h4>
 						<p>これまでのプロセス</p>
@@ -67,7 +67,7 @@ export default function SectionSkillComparison() {
 						<p>練習から分析した練習パタンの変化</p>
 					</div>
 				</div>
-				<p className="text pb-2">比較して情報へ関与していく。</p>
+				<p className="text pb-2">比較して情報へ関与していきます。</p>
 				<p className="text pb-2">健康でも情報を比較して、フィードバック構造を考えていくので参考にしてみてください。</p>
 			</div>
 		</section>

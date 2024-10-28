@@ -43,7 +43,22 @@ const menuList = [
 	{
 		pathId: "menu05",
 		path: "/nextPlanEvaluation",
-		name: "計画の評価を文字列化",
+		name: "計画の評価を文字にする",
+	},
+	{
+		pathId: "menu06",
+		path: "/growthQuantification",
+		name: "成長を定量化する",
+	},
+	{
+		pathId: "menu07",
+		path: "/growthQuantification",
+		name: "練習と情報量の変化について",
+	},
+	{
+		pathId: "menu08",
+		path: "/growthQuantification",
+		name: "微妙な差と結果からのフィードバックについて",
 	},
 ];
 
