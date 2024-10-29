@@ -52,7 +52,7 @@ const menuList = [
 	},
 	{
 		pathId: "menu07",
-		path: "/growthQuantification",
+		path: "/practiceInformation",
 		name: "練習と情報量の変化について",
 	},
 	{

@@ -21,7 +21,7 @@ export const Input = ({
 	max = 100,
 	onChange,
 }: InputProps) => {
-	let setClassName = "input-inner p-2";
+	let setClassName = "input-inner block p-2";
 	if (className) {
 		setClassName += ` ${className}`;
 	}

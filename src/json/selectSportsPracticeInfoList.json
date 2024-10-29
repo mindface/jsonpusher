@@ -1,0 +1,93 @@
+[
+	{
+		"categoryId": "ballSports",
+		"categoryName": "球技 (バスケットボール)",
+		"viewer": false,
+		"list": [
+			{
+				"id": "basketball01",
+				"skillLevel": 1,
+				"label": "シュートのフォームで肘を意識する"
+			},
+			{
+				"id": "basketball02",
+				"skillLevel": 2,
+				"label": "シュートのフォームで肘と膝を意識する"
+			},
+			{
+				"id": "basketball03",
+				"skillLevel": 3,
+				"label": "シュートのフォームで肘と膝を意識して動画で改善する"
+			},
+			{
+				"id": "basketball04",
+				"skillLevel": 4,
+				"label": "フォームを肘と膝を意識してボールの回転数を意識する"
+			},
+			{
+				"id": "basketball05",
+				"skillLevel": 5,
+				"label": "フォームを肘と膝を意識してボールの回転数と軌道を意識する"
+			},
+			{
+				"id": "basketball06",
+				"skillLevel": 6,
+				"label": "フォームを肘と膝で動画のモデルから意識してボールの回転数と軌道を確認する"
+			}
+		]
+	},
+	{
+		"categoryId": "trackAndField",
+		"categoryName": "陸上競技 (陸上)",
+		"viewer": false,
+		"list": [
+			{
+				"id": "trackAndField01",
+				"skillLevel": 1,
+				"label": "ランニングフォームの足の着地を意識"
+			},
+			{
+				"id": "trackAndField02",
+				"skillLevel": 2,
+				"label": "ランニングフォームの体幹を利用する意識"
+			},
+			{
+				"id": "trackAndField03",
+				"skillLevel": 3,
+				"label": "動画やモデル情報からランニングフォームの意識情報を追加する"
+			},
+			{
+				"id": "trackAndField04",
+				"skillLevel": 4,
+				"label": "モデルの追加情報から体幹と腰の使い方を意識"
+			},
+			{
+				"id": "trackAndField05",
+				"skillLevel": 5,
+				"label": "疲れても変化しないフォームにするために体幹の意識するパタンをさせる"
+			},
+			{
+				"id": "trackAndField06",
+				"skillLevel": 6,
+				"label": "怪我を予防するために、股関節を意識して動作する"
+			},
+			{
+				"id": "trackAndField07",
+				"skillLevel": 7,
+				"label": "股関節の情報を変化させて、擦り合わせるイメージで足を動かす"
+			}
+		]
+	},
+	{
+		"categoryId": "otherSports",
+		"categoryName": "その他 (体操)",
+		"viewer": false,
+		"list": [
+			{
+				"id": "otherSports01",
+				"skillLevel": 1,
+				"label": "体操"
+			}
+		]
+	}
+]

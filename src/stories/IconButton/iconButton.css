@@ -1,0 +1,29 @@
+.iconbutton {
+	display: inline-block;
+	cursor: pointer;
+	background-color: transparent;
+	border: 0;
+	border-radius: calc(infinity * 1px);
+	font-weight: 700;
+	line-height: 1;
+}
+.iconbutton--primary {
+	box-shadow: #1ea7fd 0px 0px 0px 1px inset;
+	color: #1ea7fd;
+}
+.iconbutton--secondary {
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+	color: var(--foreground);
+}
+.iconbutton--small {
+	padding: 10px;
+	font-size: 12px;
+}
+.iconbutton--medium {
+	padding: 16px;
+	font-size: 14px;
+}
+.iconbutton--large {
+	padding: 24px;
+	font-size: 16px;
+}

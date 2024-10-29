@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import Header from "../components/Header";
+import SentEmailInfo from "../components/SentEmailInfo";
 
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
@@ -32,6 +33,7 @@ export default function RootLayout({
 			>
 				<Header />
 				{children}
+				<SentEmailInfo />
 			</body>
 		</html>
 	);
