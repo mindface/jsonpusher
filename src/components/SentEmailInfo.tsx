@@ -40,6 +40,7 @@ export default function SentEmailInfo() {
 			body: JSON.stringify(sendItem)
 		});
 		const data = await res.json();
+		console.log(data);
 	}
 
 	return (

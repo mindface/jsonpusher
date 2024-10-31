@@ -7,7 +7,7 @@ import {
 } from "../../../lib/convertString";
 
 // test用
-export async function GET(reqest: NextRequest) {
+export async function GET() {
   try {
     return NextResponse.json({ name: "Contact Api" });
   } catch (error) {
@@ -29,17 +29,17 @@ export async function POST(reqest: NextRequest) {
       pass: env.NODEMAILER_PASSWORD,
     },
   });
-  const mailOptions = {
-    from: env.NODEMAILER_EMAIL,
-    to: env.NODEMAILER_EMAIL,
-    subject: `Message from お問い合わせ(${_email})`,
-    text: `氏名: ${_name}`,
-    html: `
-    <p>氏名: ${_name}</p>
-    <p>タイトル: ${_title}</p>
-    <p>内容　------------------------</p>
-    <div>${_body}</div>`,
-  };
+  // const mailOptions = {
+  //   from: env.NODEMAILER_EMAIL,
+  //   to: env.NODEMAILER_EMAIL,
+  //   subject: `Message from お問い合わせ(${_email})`,
+  //   text: `氏名: ${_name}`,
+  //   html: `
+  //   <p>氏名: ${_name}</p>
+  //   <p>タイトル: ${_title}</p>
+  //   <p>内容　------------------------</p>
+  //   <div>${_body}</div>`,
+  // };
   const mailThanksOptions = {
     from: env.NODEMAILER_EMAIL,
     to: _email,
@@ -57,6 +57,7 @@ export async function POST(reqest: NextRequest) {
     await transport.sendMail(mailThanksOptions);
     return NextResponse.json({ message: "Success", status: 200 });
   } catch (error) {
+    console.log(error);
     return NextResponse.json({ message: "Failed", status: 500 });
   }
 }

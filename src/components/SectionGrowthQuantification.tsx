@@ -40,7 +40,7 @@ export default function SectionGrowthQuantification() {
 			<div className="flex">
 				<div className="w-[460px] sm:w-[580px] p-2">
 					<Title3h title="次の計画" size="small" />
-					{nextPlans.map((plan) => <p className="pb-2">{plan.title}</p>)}
+					{nextPlans.map((plan) => <p key={`plan${plan.connectId}`} className="pb-2">{plan.title}</p>)}
 				</div>
 				<div className="p-2">
 					<Textarea
