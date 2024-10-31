@@ -38,3 +38,13 @@ body {
 		text-wrap: balance;
 	}
 }
+
+.link {
+	color: var(--foreground);
+	background-color: var(--background);
+}
+
+.link:hover {
+	color: var(--background);
+	background-color: var(--foreground);
+}

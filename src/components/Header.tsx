@@ -57,7 +57,7 @@ const menuList = [
 	},
 	{
 		pathId: "menu08",
-		path: "/growthQuantification",
+		path: "/differencesResults",
 		name: "微妙な差と結果からのフィードバックについて",
 	},
 ];
@@ -67,7 +67,11 @@ export default function Header() {
 		<div className="flex justify-between p-6 pb-4">
 			<div className="links">
 				{pathList.map((item) => (
-					<Link key={item.pathId} href={item.path} className="inline-block p-2">
+					<Link
+            key={item.pathId}
+            href={item.path}
+            className="inline-block mr-2 p-2 leading-none rounded-lg transition-colors link"
+          >
 						{item.name}
 					</Link>
 				))}

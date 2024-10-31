@@ -16,6 +16,7 @@ export default function SentEmailInfo() {
 	const [sendBody,sendBodySet] = useState("");
 	const [sendName,sendNameSet] = useState("");
 	const [sendEmail,sendEmailSet] = useState("");
+	const [validationText,validationTextSet] = useState("");
 
 	const sendAction = async () => {
 		const sendItem = {
@@ -24,6 +25,16 @@ export default function SentEmailInfo() {
 			name: sendName,
 			email: sendEmail
 		};
+		if(
+			sendTitle === "" ||
+			sendBody === "" ||
+			sendName === ""
+		){
+			validationTextSet("全ての入力項目を埋めてください。");
+			return;
+		}else {
+			validationTextSet("");
+		}
 		const res = await fetch("/api/email",{
 			method: "POST",
 			body: JSON.stringify(sendItem)
@@ -86,6 +97,7 @@ export default function SentEmailInfo() {
 							/>
 						</div>
 						<p className="pb-2">sport.coach.plan@gmail.comからメールが届きます。</p>
+						{ validationText && <p className="pb-2 text-rose-700">{validationText}</p> }
 						<div className="pb-2">
 							<Button
 								label="送る"

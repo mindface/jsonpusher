@@ -1,0 +1,93 @@
+[
+	{
+		"categoryId": "ballSports",
+		"categoryName": "球技 (バスケットボール)",
+		"viewer": false,
+		"list": [
+			{
+				"id": "basketball01",
+				"skillLevel": 1,
+				"label": "シュートのフォームで肘を意識する"
+			},
+			{
+				"id": "basketball02",
+				"skillLevel": 2,
+				"label": "シュートのフォームで肘と膝を意識する"
+			},
+			{
+				"id": "basketball03",
+				"skillLevel": 3,
+				"label": "シュートのフォームで肘の内側を意識する"
+			},
+			{
+				"id": "basketball04",
+				"skillLevel": 4,
+				"label": "シュートのフォームで肘の押し出す動きを意識する"
+			},
+			{
+				"id": "basketball05",
+				"skillLevel": 5,
+				"label": "シュートのフォームで肘の外側への動きを意識する"
+			},
+			{
+				"id": "basketball06",
+				"skillLevel": 6,
+				"label": "シュートのフォームで肘の動きでボールの回転を意識する"
+			}
+		]
+	},
+	{
+		"categoryId": "trackAndField",
+		"categoryName": "陸上競技 (陸上)",
+		"viewer": false,
+		"list": [
+			{
+				"id": "trackAndField01",
+				"skillLevel": 1,
+				"label": "ランニングフォームで足の着地を意識"
+			},
+			{
+				"id": "trackAndField02",
+				"skillLevel": 2,
+				"label": "ランニングフォームで足の着地で土踏まずを意識"
+			},
+			{
+				"id": "trackAndField03",
+				"skillLevel": 3,
+				"label": "ランニングフォームで足の着地で外反を意識"
+			},
+			{
+				"id": "trackAndField04",
+				"skillLevel": 4,
+				"label": "ランニングフォームで股関節を注意して足の着地を考慮する"
+			},
+			{
+				"id": "trackAndField05",
+				"skillLevel": 5,
+				"label": "ランニングフォームで股関節を注意して足の体重移動"
+			},
+			{
+				"id": "trackAndField06",
+				"skillLevel": 6,
+				"label": "ランニングフォームで股関節を注意して足裏の着地面積を考慮する"
+			},
+			{
+				"id": "trackAndField07",
+				"skillLevel": 7,
+				"label": "ランニングフォームで股関節を注意して膝と足の着地を注意する"
+			}
+		]
+	},
+	{
+		"categoryId": "otherSports",
+		"categoryName": "その他 (体操)",
+		"viewer": false,
+		"list": [
+			{
+				"id": "otherSports01",
+				"skillLevel": 1,
+				"label": "体操"
+			}
+		]
+	}
+]

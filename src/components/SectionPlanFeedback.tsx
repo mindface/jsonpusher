@@ -81,18 +81,20 @@ export default function SectionPlanFeedback() {
 					<div className="pb-8 pr-8">
 						<CPlanEdit type="add" />
 						<CPlanList items={plans} />
-						<p className="pb-2"><Button label="次の計画にコピーする" onClick={() => { copyAciton(); }} /></p>
-						<p className="pb-2"><Button label="jsonをコピーする" onClick={() => { copyJsonAciton(); }} /></p>
-						<div className="flex">
-							<p className="pr-2">
-								<Button label="計画1のテキストをコピーする" onClick={() => { copyTextAciton("1"); }} />
-							</p>
-							<Button label="計画2のテキストをコピーする" onClick={() => { copyTextAciton("2"); }} />
-						</div>
 					</div>
 					<div className="pb-8">
 						<CNextPlanEdit type="add" />
 						<CNextPlanList items={nextPlans} />
+					</div>
+				</div>
+				<div className="action-btns pb-4">
+					<p className="pb-2"><Button label="現在の計画を次の計画にコピーする" onClick={() => { copyAciton(); }} /></p>
+					<p className="pb-2"><Button label="jsonをコピーする" onClick={() => { copyJsonAciton(); }} /></p>
+					<div className="flex">
+						<p className="pr-2">
+							<Button label="計画1のテキストをコピーする" onClick={() => { copyTextAciton("1"); }} />
+						</p>
+						<Button label="計画2のテキストをコピーする" onClick={() => { copyTextAciton("2"); }} />
 					</div>
 				</div>
 				<p className="text pb-2">比較して計画を設計して更新していく。</p>

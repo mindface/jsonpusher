@@ -2,7 +2,12 @@
 	font-size: 1.4rem;
 }
 
+.medium .title3h {
+	margin-bottom: 8px;
+}
+
 .large .title3h {
+	margin-bottom: 16px;
 	font-size: 2rem;
 }
 
