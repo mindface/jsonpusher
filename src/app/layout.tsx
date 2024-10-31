@@ -4,6 +4,7 @@ import "./globals.css";
 
 import Header from "../components/Header";
 import SentEmailInfo from "../components/SentEmailInfo";
+import AdSense from "../components/AdSense";
 
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
@@ -34,6 +35,7 @@ export default function RootLayout({
 				<Header />
 				{children}
 				<SentEmailInfo />
+				<AdSense />
 			</body>
 		</html>
 	);
