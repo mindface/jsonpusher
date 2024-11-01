@@ -9,6 +9,7 @@ export default function AdSense() {
     script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7006357860917162";
     script.async = true;
     script.crossOrigin = "anonymous";
+		script.setAttribute("data-ad-client","ca-pub-7006357860917162");
     document.body.appendChild(script);
 		if(typeof window !== "undefined" && window.adsbygoogle) {
 			try {
