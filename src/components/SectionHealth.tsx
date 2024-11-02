@@ -10,20 +10,27 @@ import { Textarea } from "../stories/TextArea/Textarea";
 import SelectPartList from "../json/selectPartList.json";
 import SelectPatternList from "../json/selectPatternList.json";
 import SelectLevelList from "../json/selectLevelList.json";
+import SelectHealthInfoCategoryList from "../json/selectHealthInfoCategoryList.json";
 
 type SelectList = { check: boolean; name: string };
+type SelectTextList = { check: boolean; list: string[] };
 
 export default function SectionHealth() {
 	const [viewTextSwitch, viewTextSwitchSet] = useState(false);
 	const [selectParts, selectPartsSet] = useState<SelectList[]>([]);
 	const [selectPattern, selectPatternSet] = useState<SelectList[]>([]);
 	const [selectLevel, selectLevelSet] = useState<SelectList[]>([]);
+	const [selectSetText, selectSetTextSet] = useState<SelectTextList[]>([]);
 	const selectPartList = SelectPartList;
 	const selectPatternList = SelectPatternList;
 	const selectLevelList = SelectLevelList;
+	const selectHealthInfoCategoryList = SelectHealthInfoCategoryList;
 
-	const checking = (list: SelectList[], name: string) => {
-		return list.some((item: SelectList) => item.name === name);
+	const checking = (list: SelectList[] | SelectTextList[], name: string | string[]) => {
+		if(typeof name !== "string") {
+			return (list as SelectTextList[]).some((item: SelectTextList) => item.list.some((text) => name.includes(text)));
+		}
+		return (list as SelectList[]).some((item: SelectList) => item.name === name);
 	};
 
 	const keyWord = (setAi?: string) => {
@@ -31,7 +38,9 @@ export default function SectionHealth() {
 		selectParts.forEach((item) => {
 			setText += item.name + " ";
 		});
-		setText += "に関して";
+		if (selectParts.length > 0 && setAi) {
+			setText += "に関して";
+		}
 		selectPattern.forEach((item) => {
 			setText += item.name + " ";
 		});
@@ -44,6 +53,19 @@ export default function SectionHealth() {
 		if (selectLevel.length > 0 && setAi) {
 			setText += "で教えてください。";
 		}
+		selectSetText.forEach((item) => {
+			item.list.forEach((text) => {
+				setText += text;
+			});
+		});
+		if(
+			selectParts.length > 0 ||
+			selectPattern.length > 0 ||
+			selectLevel.length > 0
+		) {
+			setText = "健康を保つことの前提で " + setText;
+		}
+
 		return setText;
 	};
 
@@ -74,6 +96,15 @@ export default function SectionHealth() {
 		}
 	};
 
+	const changingSetText = (check: boolean, list: string[]) => {
+		if (check && !checking(selectSetText, list)) {
+			selectSetTextSet([...selectSetText, { check, list }]);
+		} else {
+			const _list = selectSetText.filter((item) => !item.list.some((text: string) => list.includes(text)));
+			selectSetTextSet(_list);
+		}
+	};	
+
 	const copyAciton = () => {
 		const copyText = keyWord("ai");
 		navigator.clipboard
@@ -94,16 +125,26 @@ export default function SectionHealth() {
 
 	return (
 		<section className="section-health">
+			<div className="text-center pb-4">
+				<Ccheck
+					partsId={"viewTextSwitch"}
+					size="small"
+					primary={true}
+					label={"コピーするテキストの確認"}
+					changing={(check) => viewTextSwitchSet(check)}
+				/>
+			</div>
 			<div className="flex justify-center">
 				<Image
 					src={healthImage}
+					className="rounded-lg"
 					width={300}
 					height={300}
 					alt="health image"
 					priority
-					style={{ objectFit: "cover" }}
+					style={{ width: "auto", objectFit: "cover" }}
 				/>
-				{viewTextSwitch && <Textarea value={keyWord("ai")} />}
+				{viewTextSwitch && <Textarea value={keyWord("ai")} outerClassName="p-8" />}
 			</div>
 			<div className="select-box flex pt-4">
 				<ul className="select-parts">
@@ -143,15 +184,18 @@ export default function SectionHealth() {
 						</li>
 					))}
 				</ul>
-			</div>
-			<div className="flex justify-end pb-2">
-				<Ccheck
-					partsId={"viewTextSwitch"}
-					size="small"
-					primary={true}
-					label={"コピーするテキストの確認"}
-					changing={(check) => viewTextSwitchSet(check)}
-				/>
+				<ul className="select-info-category">
+					{selectHealthInfoCategoryList.map((item) => (
+						<li className="p-2" key={item.id}>
+							<Ccheck
+								partsId={item.id}
+								size="small"
+								label={item.label}
+								changing={(check) => changingSetText(check, item.textList)}
+							/>
+						</li>
+					))}
+				</ul>
 			</div>
 			<div className="flex justify-end">
 				<Button label="copy" size="small" onClick={copyAciton} />

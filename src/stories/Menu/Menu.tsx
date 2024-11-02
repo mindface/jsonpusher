@@ -38,7 +38,7 @@ export const Menu = ({
 				<span className="icon"></span>
 				<span className="icon"></span>
 			</button>
-			<div className="menu-box fixed top-40 right-0 overflow-hidden">
+			<div className="menu-box fixed top-40 right-0 overflow-hidden pt-2 pb-2">
 				{pathList.map((path) => <p className="menu-item" key={path.pathId}>
 					<Link className="menu-link link leading-none whitespace-nowrap overflow-hidden text-ellipsis p-2" href={path.path}>{path.name}</Link>
 				</p>)}
