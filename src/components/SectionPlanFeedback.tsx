@@ -67,7 +67,6 @@ export default function SectionPlanFeedback() {
 			.catch((err) => {
 				console.error("Failed to copy text: ", err);
 			});
-
 	}
 
 	return (
@@ -76,15 +75,19 @@ export default function SectionPlanFeedback() {
 			<div className="details">
 				<p className="text pb-2">計画の設計していくことになります。</p>
 				<p className="text pb12">自分でどの状況で効果的になっていくかを考えることを評価することになります。</p>
-				<Title3h title="計画の追加" size="small" />
-				<div className="flex">
-					<div className="pb-8 pr-8">
-						<CPlanEdit type="add" />
-						<CPlanList items={plans} />
-					</div>
+				<div className="p-12">
 					<div className="pb-8">
-						<CNextPlanEdit type="add" />
-						<CNextPlanList items={nextPlans} />
+						<Title3h title="計画の作成" size="small" />
+					</div>
+					<div className="flex">
+						<div className="pb-8 pr-8 w-[50%]">
+							<CPlanEdit type="add" />
+							<CPlanList items={plans} />
+						</div>
+						<div className="pb-8 w-[50%]">
+							<CNextPlanEdit type="add" />
+							<CNextPlanList items={nextPlans} />
+						</div>
 					</div>
 				</div>
 				<div className="action-btns pb-4">

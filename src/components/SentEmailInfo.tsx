@@ -101,7 +101,7 @@ export default function SentEmailInfo() {
 						{ validationText && <p className="pb-2 text-rose-700">{validationText}</p> }
 						<div className="pb-2">
 							<Button
-								label="送る"
+								label="メールを送る"
 								size="small"
 								primary={false}
 								onClick={() => { sendAction(); }}

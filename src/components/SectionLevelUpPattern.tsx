@@ -24,7 +24,7 @@ export default function SectionLevelUpPattern() {
 				<p className="text pb-2">経験が浅いと言葉から使える記憶が少ないものです。</p>
 				<p className="text pb-2">例えば、以下のレベルを上げると質問の情報は増えます。</p>
 				<div className="details-action p-8 pb-4">
-					<div className="action-box">
+					<div className="action-box pb-4">
 						<Select
 							id="sportsGrowth"
 							onChange={(value) => { cuurentSportIdSet(value) }}
@@ -33,7 +33,7 @@ export default function SectionLevelUpPattern() {
 					</div>
 					<div className="action-box flex">
 						<InputRange value={experiencePoints} onChange={(value) => { experiencePointsSet(Number(value)) }} />
-						{ experiencePoints }
+						経験値 { experiencePoints }
 					</div>
 				</div>
 				<div className="details-result p-8">

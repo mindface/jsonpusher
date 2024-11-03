@@ -60,11 +60,21 @@ const menuList = [
 		path: "/differencesResults",
 		name: "微妙な差と結果からのフィードバックについて",
 	},
+	{
+		pathId: "menu09",
+		path: "/differencesResults",
+		name: "アドバイスを使うことと評価",
+	},
+	{
+		pathId: "menu10",
+		path: "/differencesResults",
+		name: "経験から情報を更新する",
+	}
 ];
 
 export default function Header() {
 	return (
-		<div className="flex justify-between p-6 pb-4">
+		<div className="flex items-center justify-between shadow-lg p-6 pb-4 ">
 			<div className="links">
 				{pathList.map((item) => (
 					<Link
