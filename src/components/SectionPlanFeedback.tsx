@@ -1,6 +1,7 @@
 "use client"
 import { Title3h } from "../stories/title3h/Title3h";
 import { Button } from "../stories/Button/Button";
+import { Input } from "../stories/Input/Input";
 
 import CPlanEdit from "../components/CPlanEdit";
 import CNextPlanEdit from "../components/CNextPlanEdit";
@@ -13,11 +14,49 @@ import { useStoreNextPlan } from "../store/planNext";
 import type { Plan } from "../type/plan";
 
 export default function SectionPlanFeedback() {
-	const { plans } = useStorePlan();
-	const { nextPlans, copyPlans } = useStoreNextPlan();
+	const { plans, setPlans } = useStorePlan();
+	const { nextPlans, copyPlans, setNextPlans } = useStoreNextPlan();
 
 	const copyAciton = () => {
 		copyPlans(plans);
+	}
+
+	const downloadJson = () => {
+		const fileName = "data.json";
+		const json = JSON.stringify({"plans":plans, "nextPlans":nextPlans});
+		const blob = new Blob([json], { type: 'application/json' });
+		const url = URL.createObjectURL(blob);
+
+		const a = document.createElement("a");
+		a.href = url;
+		a.download = fileName;
+		document.body.appendChild(a);
+		a.click();
+
+		document.body.removeChild(a);
+		URL.revokeObjectURL(url);
+	}
+
+	const setFileAction = (value: FileList) => {
+		const file = value[0];
+		if(file) {
+			const reader = new FileReader();
+			reader.onload = (e) => {
+				try {
+					const jsonData = JSON.parse(e.target?.result as string);
+					console.log(jsonData);
+					if(jsonData.plans) {
+						setPlans(jsonData.plans);
+					}
+					if(jsonData.nextPlans) {
+						setNextPlans(jsonData.nextPlans);
+					}
+				} catch (error) {
+					console.error("ファイルの内容が不正です。JSON形式のファイルを選択してください。");
+				}
+			}
+			reader.readAsText(file);
+		}
 	}
 
 	const copyJsonAciton = () => {
@@ -71,6 +110,9 @@ export default function SectionPlanFeedback() {
 
 	return (
 		<section className="section-skill-comparison">
+			<div className="pb-2">
+				<Input type="file" value="" onChange={(value) => { setFileAction(value as FileList) }} />
+			</div>
 			<Title3h title="計画のフィードバック" size="large" />
 			<div className="details">
 				<p className="text pb-2">計画の設計していくことになります。</p>
@@ -93,12 +135,17 @@ export default function SectionPlanFeedback() {
 				<div className="action-btns pb-4">
 					<p className="pb-2"><Button label="現在の計画を次の計画にコピーする" onClick={() => { copyAciton(); }} /></p>
 					<p className="pb-2"><Button label="jsonをコピーする" onClick={() => { copyJsonAciton(); }} /></p>
-					<div className="flex">
+					<div className="flex pb-2">
 						<p className="pr-2">
 							<Button label="計画1のテキストをコピーする" onClick={() => { copyTextAciton("1"); }} />
 						</p>
-						<Button label="計画2のテキストをコピーする" onClick={() => { copyTextAciton("2"); }} />
+						<p className="pr-2">
+							<Button label="計画2のテキストをコピーする" onClick={() => { copyTextAciton("2"); }} />
+						</p>
 					</div>
+					<p className="pb-2">
+						<Button label="計画をjsonデータにしてダウンロード" onClick={() => { downloadJson(); }} />
+					</p>
 				</div>
 				<p className="text pb-2">比較して計画を設計して更新していく。</p>
 				<p className="text pb-2">健康でも計画を比較して、フィードバック構造を考えていくので参考にしてみてください。</p>

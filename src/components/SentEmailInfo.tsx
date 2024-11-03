@@ -65,7 +65,7 @@ export default function SentEmailInfo() {
 								value={sendTitle}
 								label="タイトル"
 								className="auto"
-								onChange={(value) => { sendTitleSet(value) }}
+								onChange={(value) => { sendTitleSet(value as string) }}
 								max={1000}
 							/>
 						</div>
@@ -75,7 +75,7 @@ export default function SentEmailInfo() {
 								value={sendName}
 								label="ネーム"
 								className="auto"
-								onChange={(value) => { sendNameSet(value) }}
+								onChange={(value) => { sendNameSet(value as string) }}
 								max={1000}
 							/>
 						</div>
@@ -85,7 +85,7 @@ export default function SentEmailInfo() {
 								value={sendEmail}
 								label="メールアドレス"
 								className="auto"
-								onChange={(value) => { sendEmailSet(value) }}
+								onChange={(value) => { sendEmailSet(value as string) }}
 								max={1000}
 							/>
 						</div>		

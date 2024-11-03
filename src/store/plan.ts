@@ -6,6 +6,7 @@ interface StorePlan {
   isLoading: boolean,
 
   getPlans: () => void;
+  setPlans: (plans: Plan[]) => void;
   addPlan: (title:string,details: string) => void | { saveResult: string };
   updatePlan: (plan: Plan) => void | { saveResult: string };
   deletePlan: (planId: string) => void;
@@ -16,6 +17,11 @@ export const useStorePlan = create<StorePlan>((set, get) => ({
   plans: [],
   isLoading: false,
   getPlans: () => {},
+  setPlans: (plans) => {
+    set({
+      plans: plans,
+    });
+  },
   addPlan: (title:string,details: string) => {
     const plans = get().plans;
     const addPlan = {

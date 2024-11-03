@@ -26,7 +26,7 @@ export default function CNextPlanItem(props: Props) {
 				/>
 			</div>
 			<div className={["next-plan-item__edit-wrap","relative",itemView ? styles.open : ""].join(" ")}>
-				<div className={`${styles["next-plan-item__edit"]} absolute p-2 top-0 left-0 w-[380px] bg-white shadow-lg rounded-lg`}>
+				<div className={`${styles["next-plan-item__edit"]} absolute p-2 top-0 right-0 w-[380px] bg-white shadow-lg rounded-lg`}>
 					<CNextPlanEdit type="edit" item={item} />
 				</div>
 			</div>

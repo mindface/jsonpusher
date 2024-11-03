@@ -26,7 +26,7 @@ export default function CPlanItem(props: Props) {
 				/>
 			</div>
 			<div className={["plan-item__edit-wrap","relative",itemView ? styles.open : ""].join(" ")}>
-				<div className={`${styles["plan-item__edit"]} absolute p-2 top-0 left-0 w-[380px] bg-white shadow-lg rounded-lg`}>
+				<div className={`${styles["plan-item__edit"]} absolute p-2 top-0 right-0 w-[380px] bg-white shadow-lg rounded-lg`}>
 					<CPlanEdit type="edit" item={item} />
 				</div>
 			</div>

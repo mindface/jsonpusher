@@ -8,7 +8,7 @@ export interface InputProps {
 	label?: string;
 	min?: number;
 	max?: number;
-	onChange?: (value: string) => void;
+	onChange?: (value: string | FileList) => void;
 }
 
 export const Input = ({
@@ -39,7 +39,9 @@ export const Input = ({
 					min={min}
 					max={max}
 					onChange={(e) => {
-						if (onChange) {
+						if(type === "file" && onChange && e.target.files) {
+							onChange(e.target.files);
+						}else if (onChange) {
 							onChange(e.target.value);
 						}
 					}}
