@@ -1,0 +1,37 @@
+{
+	"categoryId": "advice",
+	"categoryName": "受けたアドバイスへの評価の増加",
+	"viewer": false,
+	"list": [
+		{
+			"id": "advice01",
+			"skillLevel": 1,
+			"label": "バッティングのフォームで肘の巻き込みを意識する"
+		},
+		{
+			"id": "advice02",
+			"skillLevel": 2,
+			"label": "バッティングのフォームで下半身の動きと足の着地を考慮する"
+		},
+		{
+			"id": "advice03",
+			"skillLevel": 3,
+			"label": "バッティングのフォームでトップの位置を工夫する"
+		},
+		{
+			"id": "advice04",
+			"skillLevel": 4,
+			"label": "バッティングのフォームで足の位置を意識するように言われて、変更するパタンに加える"
+		},
+		{
+			"id": "advice05",
+			"skillLevel": 5,
+			"label": "バッティングのフォームで足の位置を意識するように言われて、自分のフォームで調整して検証してみる"
+		},
+		{
+			"id": "advice06",
+			"skillLevel": 6,
+			"label": "バッティングのフォームでアドバイスを多角的に捉えて、自分のフォームをケースで微妙に変化させる"
+		}
+	]
+}

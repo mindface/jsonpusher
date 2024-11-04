@@ -62,13 +62,13 @@ const menuList = [
 	},
 	{
 		pathId: "menu09",
-		path: "/differencesResults",
+		path: "/useAdvice",
 		name: "アドバイスを使うことと評価",
 	},
 	{
 		pathId: "menu10",
 		path: "/differencesResults",
-		name: "経験から情報を更新する",
+		name: "経験から情報を更新",
 	}
 ];
 

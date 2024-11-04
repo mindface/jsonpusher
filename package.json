@@ -10,7 +10,8 @@
 		"storybook": "storybook dev -p 6006",
 		"bfmt": "biome format ./src --write",
 		"blint": "biome lint ./src",
-		"bfl": "biome check --apply ./src"
+		"bfl": "biome check --apply ./src",
+		"test:e2e": "start-storybook -p 6006 & playwright test"
 	},
 	"dependencies": {
 		"next": "14.2.15",
@@ -22,6 +23,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
 		"@chromatic-com/storybook": "^1.9.0",
+		"@playwright/test": "^1.48.2",
 		"@storybook/addon-essentials": "^8.3.5",
 		"@storybook/addon-interactions": "^8.3.5",
 		"@storybook/addon-links": "^8.3.5",
