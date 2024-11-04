@@ -51,8 +51,8 @@ export default function SectionPlanFeedback() {
 					if(jsonData.nextPlans) {
 						setNextPlans(jsonData.nextPlans);
 					}
-				} catch (error) {
-					console.error("ファイルの内容が不正です。JSON形式のファイルを選択してください。");
+				} catch (err) {
+					console.error("ファイルの内容が不正です。JSON形式のファイルを選択してください。",err);
 				}
 			}
 			reader.readAsText(file);

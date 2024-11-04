@@ -65,11 +65,11 @@ const menuList = [
 		path: "/useAdvice",
 		name: "アドバイスを使うことと評価",
 	},
-	{
-		pathId: "menu10",
-		path: "/differencesResults",
-		name: "経験から情報を更新",
-	}
+	// {
+	// 	pathId: "menu10",
+	// 	path: "/differencesResults",
+	// 	name: "経験から情報を更新",
+	// }
 ];
 
 export default function Header() {

@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { Title3h } from "../stories/title3h/Title3h";
 import { Button } from "../stories/Button/Button";
 import { InputRange } from "../stories/InputRange/InputRange";
-import { Select } from "../stories/Select/Select";
 
 import SelectAdvice from "../json/selectAdvice.json";
 
