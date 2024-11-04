@@ -55,7 +55,7 @@ export default function CPlanEdit(props: Props) {
 					value={planTitle}
 					className={type === "edit" ? "label-dark":""}
 					label="タイトル"
-					onChange={(value) => { planTitleSet(value) }}
+					onChange={(value) => { planTitleSet(value as string) }}
 					max={1000}
 				/>
 			</div>
@@ -65,7 +65,7 @@ export default function CPlanEdit(props: Props) {
 					value={planDetails}
 					className={type === "edit" ? "label-dark":""}
 					label="詳細"
-					onChange={(value) => { planDetailsSet(value) }}
+					onChange={(value) => { planDetailsSet(value as string) }}
 					max={1000}
 				/>
 				<Button

@@ -36,7 +36,7 @@ const meta = {
 		},
 	},
 	args: {
-		onChange: (value: string) => console.log(value),
+		onChange: (value: string | FileList) => console.log(value),
 	},
 } satisfies Meta<typeof Input>;
 
