@@ -29,12 +29,6 @@ type SelectSportsPatternItem = {
 	list: SelectItem[];
 };
 
-// const viewSubText = [
-//   "検索される文字も考えてみよう",
-//   "情報設計に関しても考えてみよう",
-//   "aiに質問する時は画像などを使うことも考えてください。"
-// ];
-
 export default function SectionSports() {
 	const [viewTextSwitch, viewTextSwitchSet] = useState(false);
 	const [selectParts, selectPartsSet] = useState<SelectItem[]>([]);
@@ -161,7 +155,7 @@ export default function SectionSports() {
 					changing={(check) => viewTextSwitchSet(check)}
 				/>
       </div>
-			<div className="flex justify-center">
+			<div className="flex justify-center pb-8">
 				<Image
 					src={bicycleImage}
 					className="rounded-lg"
@@ -173,7 +167,7 @@ export default function SectionSports() {
 				/>
 				{viewTextSwitch && <Textarea value={keyWord("ai")} outerClassName="p-8" />}
 			</div>
-      <div className="pt-4 p-2">
+      <div className="p-2">
         <Dialog label="スポーツ項目を選択する">
           <div className="category-box--outer flex justify-center">
             {selectSportsList && selectSportsList.map((categoryItem) => (
