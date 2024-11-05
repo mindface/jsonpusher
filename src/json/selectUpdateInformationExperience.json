@@ -1,0 +1,43 @@
+{
+	"categoryId": "updateInformationExperience",
+	"categoryName": "経験とイメージの増加",
+	"viewer": false,
+	"list": [
+		{
+			"id": "updateInfo01",
+			"skillLevel": 1,
+			"label": "バッティングのフォームで01",
+			"imageId": "1"
+		},
+		{
+			"id": "updateInfo02",
+			"skillLevel": 2,
+			"label": "バッティングのフォームで02",
+			"imageId": "2"
+		},
+		{
+			"id": "updateInfo03",
+			"skillLevel": 3,
+			"label": "バッティングのフォームで03",
+			"imageId": "3"
+		},
+		{
+			"id": "updateInfo04",
+			"skillLevel": 4,
+			"label": "バッティングのフォームで04",
+			"imageId": "4"
+		},
+		{
+			"id": "updateInfo05",
+			"skillLevel": 5,
+			"label": "バッティングのフォームで05",
+			"imageId": "5"
+		},
+		{
+			"id": "updateInfo06",
+			"skillLevel": 6,
+			"label": "バッティングのフォームで06",
+			"imageId": "6"
+		}
+	]
+}
