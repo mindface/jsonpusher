@@ -1,0 +1,52 @@
+[
+	{
+		"pathId": "menu01",
+		"path": "/",
+		"name": "メニューの評価を構造化する"
+	},
+	{
+		"pathId": "menu02",
+		"path": "/levelUpPattern",
+		"name": "レベルアップのパターン"
+	},
+	{
+		"pathId": "menu03",
+		"path": "/levelSkillComparison",
+		"name": "スキルを比較するということ"
+	},
+	{
+		"pathId": "menu04",
+		"path": "/planFeedback",
+		"name": "練習を計画すること"
+	},
+	{
+		"pathId": "menu05",
+		"path": "/nextPlanEvaluation",
+		"name": "計画の評価を文字にする"
+	},
+	{
+		"pathId": "menu06",
+		"path": "/growthQuantification",
+		"name": "成長を定量化する"
+	},
+	{
+		"pathId": "menu07",
+		"path": "/practiceInformation",
+		"name": "練習と情報量の変化について"
+	},
+	{
+		"pathId": "menu08",
+		"path": "/differencesResults",
+		"name": "微妙な差と結果からのフィードバックについて"
+	},
+	{
+		"pathId": "menu09",
+		"path": "/useAdvice",
+		"name": "アドバイスを使うことと評価"
+	},
+	{
+		"pathId": "menu10",
+		"path": "/updateInformationExperience",
+		"name": "経験から情報を更新"
+	}
+]

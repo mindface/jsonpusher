@@ -1,0 +1,17 @@
+[
+	{
+		"pathId": 1,
+		"path": "/",
+		"name": "ホーム"
+	},
+	{
+		"pathId": 2,
+		"path": "/health",
+		"name": "健康"
+	},
+	{
+		"pathId": 3,
+		"path": "/sports",
+		"name": "スポーツ"
+	}
+]
