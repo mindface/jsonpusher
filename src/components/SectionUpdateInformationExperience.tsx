@@ -30,7 +30,7 @@ export default function SectionUpdateInformationExperience() {
 			<div className="details">
 				<p className="text pb-2">経験が増えると使えるデータがあります。</p>
 				<p className="text pb-2">記憶の増加によって、使えるフォームやプレーのパタンが変化します。</p>
-				<p className="text pb-4">どのパタンが使えるかを評価することになります。問題はこの評価でどんな記録の仕方でしょうか。</p>
+				<p className="text pb-4">どのパタンが使えるかを評価することになります。問題はどの組み合わせで使うかでしょうか。</p>
 				<div className="details-action p-8 pb-4">
 					<Title3h title="野球のケース" size="medium" />
 					<div className="action-box flex">
@@ -52,8 +52,9 @@ export default function SectionUpdateInformationExperience() {
 				</div>
 				<div className="p-4 border rounded-lg">
 					<Title3h title="経験が変化して調整する情報設計" size="medium" />
-					<p className="text pb-4">経験が増えて、過去のイメージを使うために選択することがあるでしょうか。</p>
-					<p className="text pb-4">経験の中から情報を選んで、変化する項目に加えるか考えてみましょう。</p>
+					<p className="text pb-4">経験が増えて、過去のイメージを使い改善させることがあるでしょうか。</p>
+					<p className="text pb-4">手首や内ももの使い方など、細かい点からバットの位置をどこに保持しておくかなども考えられます。</p>
+					<p className="text pb-4">経験の中から情報を選んで、変化する項目に加えるポイントについて考えてみましょう。</p>
 					<div className="pb-2">
 						<Button
 							label="計画を見直す"
