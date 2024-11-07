@@ -19,7 +19,7 @@ const meta = {
 		},
 	},
 	args: {
-		values: ["Default text01","Default text02"],
+		values: ["Default text01", "Default text02"],
 	},
 } satisfies Meta<typeof TextCommenter>;
 
@@ -36,6 +36,6 @@ export const Primary: Story = {
 export const Secondary: Story = {
 	args: {
 		className: "secondary",
-		speed: 300
+		speed: 300,
 	},
 };

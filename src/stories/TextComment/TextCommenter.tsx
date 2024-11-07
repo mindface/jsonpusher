@@ -14,7 +14,7 @@ export const TextCommenter = ({
 	speed = 100,
 	interval = 2000,
 }: TextCommenterProps) => {
-	const [displayedText, setDisplayedText] = useState('');
+	const [displayedText, setDisplayedText] = useState("");
 	const [currentIndex, setCurrentIndex] = useState(0);
 	let setClassName = "text-commenter p-2 rounded-lg";
 	if (className) {
@@ -23,33 +23,31 @@ export const TextCommenter = ({
 
 	useEffect(() => {
 		const textArray = values[currentIndex].split("");
-		setDisplayedText('');
+		setDisplayedText("");
 		let index = 0;
 		let setText = "";
 
 		const typing = () => {
-			if(index < textArray.length) {
+			if (index < textArray.length) {
 				setText = setText + textArray[index];
 				setDisplayedText(setText);
-				index ++;
-				setTimeout(typing,speed);
+				index++;
+				setTimeout(typing, speed);
 			}
-		}
+		};
 		typing();
 
 		const intervalId = setInterval(() => {
-			setCurrentIndex((prevIndex) => (prevIndex + 1) %values.length);
+			setCurrentIndex((prevIndex) => (prevIndex + 1) % values.length);
 			setDisplayedText("");
-		},interval);
+		}, interval);
 
 		return () => clearInterval(intervalId);
-	},[values,speed,interval,currentIndex]);
+	}, [values, speed, interval, currentIndex]);
 
 	return (
 		<div className="text-commenter-box">
-			<div className={setClassName}>
-				{displayedText}
-			</div>
+			<div className={setClassName}>{displayedText}</div>
 		</div>
 	);
 };

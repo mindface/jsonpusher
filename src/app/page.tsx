@@ -14,11 +14,12 @@ export default function Home() {
 						height={400}
 						priority
 					/>
-					<p className="pt-2 pb-2 text-center">質問するテキストをカテゴリから選んでみよう</p>
+					<p className="pt-2 pb-2 text-center">
+						質問するテキストをカテゴリから選んでみよう
+					</p>
 				</div>
 			</main>
-			<footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-			</footer>
+			<footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
 		</div>
 	);
 }

@@ -24,7 +24,7 @@ export const Textarea = ({
 	placeholder,
 	onChange,
 }: TextareaProps) => {
-	let setClassName = "textarea p-2 rounded-lg";
+	let setClassName = "textarea p-4 rounded-lg";
 	if (className) {
 		setClassName += ` ${className}`;
 	}
@@ -32,7 +32,7 @@ export const Textarea = ({
 		setClassName += ` ${size}`;
 	}
 	return (
-		<div className={`textarea-box ${outerClassName}`}>
+		<div className={`textarea-box ${outerClassName ?? ""}`}>
 			{label && <span className="inline-block pb-4">{label}</span>}
 			<textarea
 				className={setClassName}

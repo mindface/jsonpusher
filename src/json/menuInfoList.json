@@ -2,7 +2,7 @@
 	{
 		"pathId": "overallEvaluation",
 		"path": "/overallEvaluation",
-		"name": "メニューの評価を構造化する"
+		"name": "評価を構造化して分析する"
 	},
 	{
 		"pathId": "levelUpPattern",

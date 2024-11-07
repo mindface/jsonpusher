@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import { useState } from "react";
-import Image from 'next/image'
+import Image from "next/image";
 import { Button } from "../stories/Button/Button";
 import { Input } from "../stories/Input/Input";
 import { Textarea } from "../stories/TextArea/Textarea";
@@ -13,44 +13,49 @@ import emailSvg from "../assets/images/email.svg";
 import { invalidCheckEmail } from "../lib/validChecker";
 
 export default function SentEmailInfo() {
-	const [viewSwitch,viewSwitchSet] = useState(false);
-	const [sendTitle,sendTitleSet] = useState("");
-	const [sendBody,sendBodySet] = useState("");
-	const [sendName,sendNameSet] = useState("");
-	const [sendEmail,sendEmailSet] = useState("");
-	const [validationText,validationTextSet] = useState("");
+	const [viewSwitch, viewSwitchSet] = useState(false);
+	const [sendTitle, sendTitleSet] = useState("");
+	const [sendBody, sendBodySet] = useState("");
+	const [sendName, sendNameSet] = useState("");
+	const [sendEmail, sendEmailSet] = useState("");
+	const [validationText, validationTextSet] = useState("");
 
 	const sendAction = async () => {
 		const sendItem = {
 			title: sendTitle,
 			body: sendBody,
 			name: sendName,
-			email: sendEmail
+			email: sendEmail,
 		};
-		if(
-			sendTitle === "" ||
-			sendBody === "" ||
-			sendName === ""
-		){
+		if (sendTitle === "" || sendBody === "" || sendName === "") {
 			validationTextSet("全ての入力項目を埋めてください。");
 			return;
-		}else if (!invalidCheckEmail(sendEmail)){
+		} else if (!invalidCheckEmail(sendEmail)) {
 			validationTextSet("メールを正しい形式で入力してください。");
 			return;
-		}else{
+		} else {
 			validationTextSet("");
 		}
-		const res = await fetch("/api/email",{
+		const res = await fetch("/api/email", {
 			method: "POST",
-			body: JSON.stringify(sendItem)
+			body: JSON.stringify(sendItem),
 		});
 		const data = await res.json();
-		console.log(data);
-	}
+		console.info(data);
+	};
 
 	return (
 		<div className={[viewSwitch ? styles["open"] : ""].join(" ")}>
-			<div className={[styles["sent-email-info"],"sent-email-info","fixed","bottom-10","right-10","pb-4"].join(" ")}>
+			<div
+				className={[
+					styles["sent-email-info"],
+					"sent-email-info",
+					"fixed",
+					"bottom-10",
+					"right-10",
+					"pb-4",
+				].join(" ")}
+			>
 				<div className="pb-4">
 					<IconButton
 						size="small"
@@ -70,7 +75,9 @@ export default function SentEmailInfo() {
 								value={sendTitle}
 								label="タイトル"
 								className="auto"
-								onChange={(value) => { sendTitleSet(value as string) }}
+								onChange={(value) => {
+									sendTitleSet(value as string);
+								}}
 								max={1000}
 							/>
 						</div>
@@ -80,7 +87,9 @@ export default function SentEmailInfo() {
 								value={sendName}
 								label="ネーム"
 								className="auto"
-								onChange={(value) => { sendNameSet(value as string) }}
+								onChange={(value) => {
+									sendNameSet(value as string);
+								}}
 								max={1000}
 							/>
 						</div>
@@ -90,26 +99,36 @@ export default function SentEmailInfo() {
 								value={sendEmail}
 								label="メールアドレス"
 								className="auto"
-								onChange={(value) => { sendEmailSet(value as string) }}
+								onChange={(value) => {
+									sendEmailSet(value as string);
+								}}
 								max={1000}
 							/>
-						</div>		
+						</div>
 						<div className="pb-2">
 							<Textarea
 								label="詳細"
 								className="auto"
 								value={sendBody}
-								onChange={(value) => { sendBodySet(value) }}
+								onChange={(value) => {
+									sendBodySet(value);
+								}}
 							/>
 						</div>
-						<p className="pb-2">sport.coach.plan@gmail.comからメールが届きます。</p>
-						{ validationText && <p className="pb-2 text-rose-700">{validationText}</p> }
+						<p className="pb-2">
+							sport.coach.plan@gmail.comからメールが届きます。
+						</p>
+						{validationText && (
+							<p className="pb-2 text-rose-700">{validationText}</p>
+						)}
 						<div className="pb-2">
 							<Button
 								label="メールを送る"
 								size="small"
 								primary={false}
-								onClick={() => { sendAction(); }}
+								onClick={() => {
+									sendAction();
+								}}
 							/>
 						</div>
 					</div>

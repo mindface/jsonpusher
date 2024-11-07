@@ -23,9 +23,9 @@ export const Primary: Story = {
 		primary: true,
 		options: [
 			{
-				value:"value01",
-				label:"label01",
-			}
+				value: "value01",
+				label: "label01",
+			},
 		],
 		label: "Select",
 	},
@@ -36,15 +36,14 @@ export const Secondary: Story = {
 		id: "secondary",
 		options: [
 			{
-				value:"value01",
-				label:"label01",
+				value: "value01",
+				label: "label01",
 			},
 			{
-				value:"value02",
-				label:"label02",
-			}
+				value: "value02",
+				label: "label02",
+			},
 		],
 		label: "Select",
 	},
 };
-

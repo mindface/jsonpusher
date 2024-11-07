@@ -39,16 +39,19 @@ export const Dialog = ({
 	};
 	return (
 		<div className="dialog-box" ref={dialogElement}>
-			<button onClick={switchAction} className={type ? `inline-block ${type}` : "inline-block"}>
+			<button
+				onClick={switchAction}
+				className={type ? `inline-block ${type}` : "inline-block"}
+			>
 				{label ? label : "view"}
 			</button>
 			<div className="overlay fixed top-0 left-0 bg-stone-900/90"></div>
 			<div className={setClassName}>
 				<button
-					className="close-btn p-2 rounded-full border border-gray-400 bg-white"
+					className="close-btn p-2 rounded-full bg-white"
 					onClick={switchAction}
 				>
-					close
+					<span className="text-black">close</span>
 				</button>
 				<div className="dialog-inner">{children}</div>
 			</div>

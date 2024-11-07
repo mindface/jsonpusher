@@ -26,11 +26,18 @@ export default function SectionHealth() {
 	const selectLevelList = SelectLevelList;
 	const selectHealthInfoCategoryList = SelectHealthInfoCategoryList;
 
-	const checking = (list: SelectList[] | SelectTextList[], name: string | string[]) => {
-		if(typeof name !== "string") {
-			return (list as SelectTextList[]).some((item: SelectTextList) => item.list.some((text) => name.includes(text)));
+	const checking = (
+		list: SelectList[] | SelectTextList[],
+		name: string | string[],
+	) => {
+		if (typeof name !== "string") {
+			return (list as SelectTextList[]).some((item: SelectTextList) =>
+				item.list.some((text) => name.includes(text)),
+			);
 		}
-		return (list as SelectList[]).some((item: SelectList) => item.name === name);
+		return (list as SelectList[]).some(
+			(item: SelectList) => item.name === name,
+		);
 	};
 
 	const keyWord = (setAi?: string) => {
@@ -58,7 +65,7 @@ export default function SectionHealth() {
 				setText += text;
 			});
 		});
-		if(
+		if (
 			selectParts.length > 0 ||
 			selectPattern.length > 0 ||
 			selectLevel.length > 0
@@ -100,10 +107,12 @@ export default function SectionHealth() {
 		if (check && !checking(selectSetText, list)) {
 			selectSetTextSet([...selectSetText, { check, list }]);
 		} else {
-			const _list = selectSetText.filter((item) => !item.list.some((text: string) => list.includes(text)));
+			const _list = selectSetText.filter(
+				(item) => !item.list.some((text: string) => list.includes(text)),
+			);
 			selectSetTextSet(_list);
 		}
-	};	
+	};
 
 	const copyAciton = () => {
 		const copyText = keyWord("ai");
@@ -144,7 +153,9 @@ export default function SectionHealth() {
 					priority
 					style={{ width: "auto", objectFit: "cover" }}
 				/>
-				{viewTextSwitch && <Textarea value={keyWord("ai")} outerClassName="p-8" />}
+				{viewTextSwitch && (
+					<Textarea value={keyWord("ai")} outerClassName="p-8" />
+				)}
 			</div>
 			<div className="select-box flex pt-4">
 				<ul className="select-parts">

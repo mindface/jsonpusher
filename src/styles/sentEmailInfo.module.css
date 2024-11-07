@@ -1,9 +1,8 @@
-
 .sent-email-info {
-  transform: translate(calc(100% - 30px),calc(100% - 30px));
-  transition: transform 0.2s;
+	transform: translate(calc(100% - 30px), calc(100% - 30px));
+	transition: transform 0.2s;
 }
 
 .open .sent-email-info {
-  transform: translate(0,0);
+	transform: translate(0, 0);
 }

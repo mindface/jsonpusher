@@ -13,7 +13,7 @@ const meta = {
 	argTypes: {
 		backgroundColor: { control: "color" },
 	},
-	args: { 
+	args: {
 		onClick: fn(),
 		children: "This is the IconButtom content.",
 	},

@@ -2,7 +2,7 @@
 	{
 		"id": "addLetterSearchSite",
 		"label": "サイトを検索する文字の追加",
-		"textList":[
+		"textList": [
 			"\n\n健康への因果関係について情報が記載されているサイトはありますか。\n",
 			"その情報に関してエビデンスは存在しますか。"
 		]
@@ -10,7 +10,7 @@
 	{
 		"id": "informationAcquiredFuture",
 		"label": "今後習得した情報について",
-		"textList":[
+		"textList": [
 			"\n\n今後は学習した情報の使い方を教えてください。 \n",
 			"意識した情報をどのように使えばいいかも教えてください。"
 		]
@@ -18,7 +18,7 @@
 	{
 		"id": "resultsConsciousContent",
 		"label": "意識した内容の結果",
-		"textList":[
+		"textList": [
 			"\n\n結果と意識した計画の関与について教えてください。 \n",
 			"連動して変化する可能性がある部位について教えてください。"
 		]
@@ -26,7 +26,7 @@
 	{
 		"id": "thinkingAboutEvaluation",
 		"label": "評価について考える",
-		"textList":[
+		"textList": [
 			"\n\n評価について項目を書き出してください。 \n",
 			"出力した評価を定量化するための方法について教えてください。"
 		]

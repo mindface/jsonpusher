@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { Title3h } from "../stories/title3h/Title3h";
 import { Button } from "../stories/Button/Button";
@@ -13,21 +13,34 @@ import type { Plan } from "../type/plan";
 
 export default function SectionNextPlanEvaluation() {
 	const { nextPlans } = useStoreNextPlan();
-	const [planEvaluation,planEvaluationSet] = useState("");
+	const [planEvaluation, planEvaluationSet] = useState("");
 
 	const copyTextAciton = () => {
 		const columns = ["id", "title"];
 		let formattedTable = "";
 
-		const colWidths = columns.map(col => 
-			Math.max(col.length, ...nextPlans.map(row => row[col as keyof Plan].length))
+		const colWidths = columns.map((col) =>
+			Math.max(
+				col.length,
+				...nextPlans.map((row) => row[col as keyof Plan].length),
+			),
 		);
-		const header = columns.map((col, index) => col.padEnd(colWidths[index])).join(" | ");
+		const header = columns
+			.map((col, index) => col.padEnd(colWidths[index]))
+			.join(" | ");
 		const separator = "-".repeat(header.length);
-		const formattedRows = nextPlans.map(row => 
-			columns.map((col, index) => row[col as keyof Plan].padEnd(colWidths[index])).join(" | ")
+		const formattedRows = nextPlans.map((row) =>
+			columns
+				.map((col, index) => row[col as keyof Plan].padEnd(colWidths[index]))
+				.join(" | "),
 		);
-		formattedTable = [separator, header, separator, ...formattedRows, separator].join("\n")
+		formattedTable = [
+			separator,
+			header,
+			separator,
+			...formattedRows,
+			separator,
+		].join("\n");
 
 		const copyText = `${formattedTable}
 		上記のように計画しています。
@@ -43,7 +56,7 @@ export default function SectionNextPlanEvaluation() {
 			.catch((err) => {
 				console.error("Failed to copy text: ", err);
 			});
-	}
+	};
 
 	return (
 		<section className="section-skill-comparison">
@@ -61,15 +74,24 @@ export default function SectionNextPlanEvaluation() {
 						<div className="pb-2">計画に関する評価を記載してください。</div>
 						<Textarea
 							value={planEvaluation}
-							onChange={(value) => { planEvaluationSet(value) }}
+							onChange={(value) => {
+								planEvaluationSet(value);
+							}}
 						/>
 					</div>
 				</div>
 				<p className="text pb-8">
-					<Button label="計画と評価を精査するテキストをコピーする" onClick={() => { copyTextAciton(); }} />
+					<Button
+						label="計画と評価を精査するテキストをコピーする"
+						onClick={() => {
+							copyTextAciton();
+						}}
+					/>
 				</p>
 				<p className="text pb-2">計画について評価しています。</p>
-				<p className="text pb-2">AIに内容について精査してもらってください。</p>
+				<p className="text pb-2">
+					AIに内容について精査してもらうことを考えて、評価のテキスト化してみてください。
+				</p>
 			</div>
 		</section>
 	);

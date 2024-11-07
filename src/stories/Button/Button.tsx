@@ -19,18 +19,14 @@ export const Button = ({
 	label,
 	...props
 }: ButtonProps) => {
-	let mode = primary
-		? "storybook-button--primary"
-		: "storybook-button--secondary";
+	let mode = primary ? "button--primary" : "button--secondary";
 	if (className) {
 		mode += ` ${className}`;
 	}
 	return (
 		<button
 			type="button"
-			className={["storybook-button", `storybook-button--${size}`, mode].join(
-				" ",
-			)}
+			className={["button", `button--${size}`, mode].join(" ")}
 			{...props}
 		>
 			{label}

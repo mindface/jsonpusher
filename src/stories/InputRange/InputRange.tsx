@@ -11,7 +11,7 @@ export interface InputRangeProps {
 }
 
 export const InputRange = ({
-  value,
+	value,
 	className,
 	size = "medium",
 	label,
@@ -32,7 +32,7 @@ export const InputRange = ({
 			<span className={setClassName}>
 				<input
 					type="range"
-          value={value}
+					value={value}
 					className="inputrange"
 					name="volume"
 					min={min}

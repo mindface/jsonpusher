@@ -13,7 +13,7 @@ export interface InputProps {
 
 export const Input = ({
 	type,
-  value,
+	value,
 	className,
 	size = "medium",
 	label,
@@ -31,17 +31,17 @@ export const Input = ({
 	return (
 		<div className="input-box">
 			<span className={setClassName}>
-				{label &&<label className="label inline-block pr-4">{label}</label>}
+				{label && <label className="label inline-block pr-4">{label}</label>}
 				<input
 					type={type}
-          value={value}
+					value={value}
 					className="input p-2 rounded-lg"
 					min={min}
 					max={max}
 					onChange={(e) => {
-						if(type === "file" && onChange && e.target.files) {
+						if (type === "file" && onChange && e.target.files) {
 							onChange(e.target.files);
-						}else if (onChange) {
+						} else if (onChange) {
 							onChange(e.target.value);
 						}
 					}}

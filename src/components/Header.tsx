@@ -10,15 +10,15 @@ export default function Header() {
 			<div className="links">
 				{pathList.map((item) => (
 					<Link
-            key={item.pathId}
-            href={item.path}
-            className="inline-block mr-2 p-2 leading-none rounded-lg transition-colors link"
-          >
+						key={item.pathId}
+						href={item.path}
+						className="inline-block mr-2 p-2 leading-none rounded-lg transition-colors link"
+					>
 						{item.name}
 					</Link>
 				))}
 			</div>
-      <Menu pathList={menuList} size="large" />
+			<Menu pathList={menuList} size="large" />
 		</div>
 	);
 }

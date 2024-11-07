@@ -45,14 +45,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
 	args: {
-    value: 0,
+		value: 0,
 		label: "Range Primary",
 	},
 };
 
 export const Large: Story = {
 	args: {
-    value: 0,
+		value: 0,
 		size: "large",
 		label: "Range Large",
 	},
@@ -60,7 +60,7 @@ export const Large: Story = {
 
 export const Small: Story = {
 	args: {
-    value: 0,
+		value: 0,
 		size: "small",
 		label: "Range Small",
 	},

@@ -1,0 +1,42 @@
+[
+	{
+		"modelId": "pointsReproducibleInformatization.",
+		"modelInfo": "意識するポイントを明確な目印と数値を規定して、再現性ある情報化した。",
+		"label": "意識と定量化"
+	},
+	{
+		"modelId": "quantificationOfEvaluationCriteria",
+		"modelInfo": "評価項目において、パフォーマンス基準を数値として規定し、項目ごとの達成度をスコアリングする。",
+		"label": "評価基準の数値化"
+	},
+	{
+		"modelId": "creatingReproducibleChecklist",
+		"modelInfo": "作業プロセスごとにチェックリストを作成し、再現性を保ちながら評価できるようにする。",
+		"label": "再現性の高いチェックリストの作成"
+	},
+	{
+		"modelId": "standardizationOfDataCollection",
+		"modelInfo": "収集するデータの種類と分析手法を標準化し、統一された方法で一貫した評価が可能な体制を構築する。",
+		"label": "データ収集と分析基準の標準化"
+	},
+	{
+		"modelId": "PDCACycleForProcessImprovement",
+		"modelInfo": "PDCAサイクルを用いた評価プロセスを確立し、明確な目標に向けて、計画、実行、評価、改善を繰り返す。",
+		"label": "プロセス改善のためのPDCAサイクル"
+	},
+	{
+		"modelId": "benchmarkComparativeEvaluation",
+		"modelInfo": "類似したケーススタディと比較するためのベンチマークを設定し、他のデータと照らし合わせて評価を行う。",
+		"label": "ベンチマークによる比較評価"
+	},
+	{
+		"modelId": "integrationOfSimulationAndRealtimeData",
+		"modelInfo": "シミュレーションの結果とリアルタイムデータを統合して評価し、予測精度の向上を図る。",
+		"label": "シミュレーションとリアルタイムデータの統合"
+	},
+	{
+		"modelId": "verifyAndAdjustFeedbackLoops",
+		"modelInfo": "フィードバックループを定期的に検証し、項目ごとのデータ収集結果に基づいて最適化と調整を行う。",
+		"label": "フィードバックループの検証と調整"
+	}
+]

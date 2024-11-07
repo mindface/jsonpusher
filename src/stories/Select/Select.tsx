@@ -13,7 +13,7 @@ export interface SelectProps {
 	className?: string;
 	label?: string;
 	options: Option[];
-	onChange?: (value:string) => void;
+	onChange?: (value: string) => void;
 }
 
 export const Select = ({
@@ -25,9 +25,7 @@ export const Select = ({
 	onChange,
 	...props
 }: SelectProps) => {
-	let mode = primary
-		? "select--primary"
-		: "select--secondary";
+	let mode = primary ? "select--primary" : "select--secondary";
 	if (className) {
 		mode += ` ${className}`;
 	}
@@ -35,13 +33,11 @@ export const Select = ({
 		<div className="select-box inline-block">
 			{label && <span className="inline-block p-1">{label}</span>}
 			<select
-				className={["select", "rounded-lg","p-2", mode].join(
-					" ",
-				)}
+				className={["select", "rounded-lg", "p-2", mode].join(" ")}
 				{...props}
 				onChange={(e) => {
-					if(onChange) {
-						onChange(e.target.value)
+					if (onChange) {
+						onChange(e.target.value);
 					}
 				}}
 			>

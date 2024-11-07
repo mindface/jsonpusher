@@ -9,7 +9,7 @@ export interface IconButtonProps {
 	size?: "small" | "medium" | "large";
 	label?: string;
 	onClick?: () => void;
-	children: ReactNode
+	children: ReactNode;
 }
 
 export const IconButton = ({
@@ -21,18 +21,14 @@ export const IconButton = ({
 	children,
 	onClick,
 }: IconButtonProps) => {
-	let mode = primary
-		? "iconbutton--primary"
-		: "iconbutton--secondary";
+	let mode = primary ? "iconbutton--primary" : "iconbutton--secondary";
 	if (className) {
 		mode += ` ${className}`;
 	}
 	return (
 		<button
 			type="button"
-			className={["iconbutton", `iconbutton--${size}`, mode].join(
-				" ",
-			)}
+			className={["iconbutton", `iconbutton--${size}`, mode].join(" ")}
 			onClick={onClick}
 		>
 			{label}
