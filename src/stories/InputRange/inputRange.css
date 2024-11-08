@@ -3,7 +3,7 @@
 	appearance: none;
 	outline: none;
 	display: inline-block;
-	background: #0670d4;
+	background: #0491ef;
 	border: 0;
 	line-height: 1;
 	height: 8px;
@@ -25,7 +25,7 @@ input[type="range"].inputrange::-webkit-slider-thumb {
 	width: 14px;
 	height: 14px;
 	border-radius: 9999px;
-	border: 2px solid #0670d4;
+	border: 2px solid #0491ef;
 	background-color: #fff;
 	box-shadow: none;
 }

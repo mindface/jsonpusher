@@ -71,7 +71,7 @@ export default function SectionSkillComparison() {
 						結果とベースとなる構造をもとに計画した練習01と計画した練習02を比較して、結果の良い方を選択することになります。この「良い方」とは目的の近い結果を再現性のある方になります。
 					</p>
 				</div>
-				<Title3h title="比較内容について" size="small" />
+				<Title3h title="比較内容について" />
 				<div className="flex pb-12">
 					<div className="mr-4 p-4 pr-8 border rounded-lg">
 						<h4 className="title pb-4">過去の情報</h4>

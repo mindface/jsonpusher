@@ -6,6 +6,14 @@
 	resize: both;
 }
 
+.label-black .label {
+	color: var(--font-black);
+}
+
+.label-black .textarea {
+	box-shadow: 0 0 1px var(--font-black) inset;
+}
+
 .textarea.auto {
 	width: 100%;
 }

@@ -10,6 +10,14 @@
 	box-shadow: 0 0 1px var(--foreground) inset;
 }
 
+.label-black .label {
+	color: var(--font-black);
+}
+
+.label-black .input {
+	box-shadow: 0 0 1px var(--font-black) inset;
+}
+
 .auto .input {
 	width: 100%;
 }

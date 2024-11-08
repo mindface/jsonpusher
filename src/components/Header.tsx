@@ -22,7 +22,7 @@ export default function Header() {
 						style={{ width: "auto", objectFit: "cover" }}
 					/>	
 				</div>
-				<div className="links">
+				<div className="links pl-4">
 					{pathList.map((item) => (
 						<Link
 							key={item.pathId}

@@ -9,6 +9,7 @@
 	--menu-icon-color: #fff;
 	--menu-font-color: #333;
 	--input-font-color: #333;
+	--font-black: #171717;
 }
 
 @media (prefers-color-scheme: dark) {

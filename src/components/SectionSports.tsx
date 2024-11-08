@@ -286,7 +286,12 @@ export default function SectionSports() {
 				{/* <TextCommenter values={viewSubText} speed={200} interval={10000} /> */}
 			</div>
 			<div className="flex justify-end">
-				<Button label="copy" size="small" onClick={copyAciton} />
+				<Button
+					label="copy"
+					size="small"
+					onClick={copyAciton}
+					className="mr-2"
+				/>
 				<Button
 					label="google search"
 					size="small"

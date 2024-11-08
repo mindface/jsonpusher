@@ -74,7 +74,7 @@ export default function SectionPracticeInformation() {
 					))}
 				</div>
 				<Title3h title="計画の再評価" size="medium" />
-				<p className="text pb-2">
+				<p className="text pb-8">
 					練習量で増えた情報を利用して計画を再評価させていきましょう。
 				</p>
 				<div className="pb-2">

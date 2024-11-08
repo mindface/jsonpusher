@@ -68,14 +68,14 @@ export default function SectionUpdateInformationExperience() {
 					))}
 				</div>
 				<Title3h title="経験が変化して調整する情報設計" />
-				<div className="mb-4 p-4 border rounded-lg max-w-[640px]">
-					<p className="text pb-4">
+				<div className="mb-8 p-4 border rounded-lg max-w-[640px]">
+					<p className="text pb-2">
 						経験が増えて、過去のイメージを使い改善させることがあるでしょう。
 					</p>
-					<p className="text pb-4">
-						手首や内ももの使い方など細かい点から「バットの位置をどこに保持しておくか」なども考えられます。
+					<p className="text pb-2">
+						手首や内ももの使い方など細かい点から 「バットの位置をどこに保持しておくか」 なども考えられます。
 					</p>
-					<p className="text pb-4">
+					<p className="text">
 						経験の中から情報を選んで、変化する項目に加えるポイントについて考えてみましょう。
 					</p>
 				</div>

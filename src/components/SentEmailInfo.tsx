@@ -74,7 +74,7 @@ export default function SentEmailInfo() {
 								type="text"
 								value={sendTitle}
 								label="タイトル"
-								className="auto"
+								className="auto label-black"
 								onChange={(value) => {
 									sendTitleSet(value as string);
 								}}
@@ -86,7 +86,7 @@ export default function SentEmailInfo() {
 								type="text"
 								value={sendName}
 								label="ネーム"
-								className="auto"
+								className="auto label-black"
 								onChange={(value) => {
 									sendNameSet(value as string);
 								}}
@@ -98,7 +98,7 @@ export default function SentEmailInfo() {
 								type="text"
 								value={sendEmail}
 								label="メールアドレス"
-								className="auto"
+								className="auto label-black"
 								onChange={(value) => {
 									sendEmailSet(value as string);
 								}}
@@ -109,13 +109,14 @@ export default function SentEmailInfo() {
 							<Textarea
 								label="詳細"
 								className="auto"
+								outerClassName="label-black"
 								value={sendBody}
 								onChange={(value) => {
 									sendBodySet(value);
 								}}
 							/>
 						</div>
-						<p className="pb-2">
+						<p className="pb-2 text-black">
 							sport.coach.plan@gmail.comからメールが届きます。
 						</p>
 						{validationText && (
@@ -125,6 +126,7 @@ export default function SentEmailInfo() {
 							<Button
 								label="メールを送る"
 								size="small"
+								className="text-black"
 								primary={false}
 								onClick={() => {
 									sendAction();
