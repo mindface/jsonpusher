@@ -57,6 +57,7 @@
 .menu-box {
 	top: 54px;
 	right: 0;
+	z-index: 1;
 	width: 240px;
 	background-color: var(--background);
 	color: var(--menu-font-color);
@@ -67,7 +68,7 @@
 	overflow: hidden;
 }
 .menu--large .menu-box {
-	width: 240px;
+	width: 340px;
 }
 .open .menu-box {
 	transform: translate(0, 0);

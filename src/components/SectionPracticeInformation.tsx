@@ -28,16 +28,18 @@ export default function SectionPracticeInformation() {
 		<section className="section-level-up">
 			<Title3h title="練習量で増加する情報量" size="large" />
 			<div className="details">
-				<p className="text pb-2">練習を継続すると情報が増えます。</p>
-				<p className="text pb-2">
-					何が言いたいかというと、確認フォームをするとその箇所の情報が増加します。
-				</p>
-				<p className="text pb-2">情報は練習の意識次第で変化していきます。</p>
-				<p className="text pb-2">
-					フォームの部位を認識していると情報が蓄積していくので計画するパタンの材料になります。
-				</p>
-				<div className="details-action p-8 pb-4">
-					<div className="action-box">
+				<div className="pb-8">
+					<p className="text pb-2">練習を継続すると情報が増えます。</p>
+					<p className="text pb-2">
+						何が言いたいかというと、確認フォームをするとその箇所の情報が増加します。
+					</p>
+					<p className="text pb-2">情報は練習の意識次第で変化していきます。</p>
+					<p className="text pb-2">
+						フォームの部位を認識していると情報が蓄積していくので計画するパタンの材料になります。
+					</p>
+				</div>
+				<div className="details-action p-8 pb-4 border rounded-lg max-w-[420px]">
+					<div className="action-box pb-4">
 						<Select
 							id="sportsGrowth"
 							onChange={(value) => {
