@@ -21,6 +21,19 @@
 	transform: translate(-50%, -50%);
 }
 
+.dialog-button {
+	box-shadow: var(--foreground) 0px 0px 0px 1px inset;
+	color: var(--foreground);
+	transition: background-color 0.2s;
+}
+.text-black.button--secondary {
+	color: var(--font-black);
+}
+.button--secondary:hover {
+	color: var(--background);
+	background-color: var(--foreground);
+}
+
 .dialog-box .icon {
 	width: 20px;
 	height: 20px;

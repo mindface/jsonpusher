@@ -22,6 +22,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
 	args: {
 		size: "medium",
+		type: "button",
 		className: "primary-dialog",
 	},
 };
@@ -29,6 +30,7 @@ export const Primary: Story = {
 export const Secondary: Story = {
 	args: {
 		size: "medium",
+		type: "button",
 		className: "secondary-dialog",
 	},
 };
@@ -36,6 +38,7 @@ export const Secondary: Story = {
 export const Large: Story = {
 	args: {
 		size: "large",
+		type: "button",
 		className: "large-dialog",
 	},
 };
@@ -43,6 +46,7 @@ export const Large: Story = {
 export const Small: Story = {
 	args: {
 		size: "small",
+		type: "button",
 		className: "small-dialog",
 	},
 };

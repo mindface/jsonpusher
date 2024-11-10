@@ -1,14 +1,14 @@
 import React from "react";
-import { ReactNode, useRef } from "react";
+import { ReactNode, useRef, useState } from "react";
+import { Button } from "../Button/Button";
 import "./dialog.css";
 
 export interface DialogProps {
 	className?: string;
 	size?: "small" | "medium" | "large";
-	type?: string;
+	type: "icon" | "button";
 	label?: string;
-	// 必要に応じて変化
-	// onChange?: (value: boolean) => void;
+	onChange?: (value: boolean) => void;
 	children: ReactNode;
 }
 
@@ -17,10 +17,12 @@ export const Dialog = ({
 	size = "medium",
 	label,
 	type,
-	// onChange,
+	onChange,
 	children,
 }: DialogProps) => {
 	const dialogElement = useRef<HTMLDivElement>(null);
+	const [dialogSwitch,dialogSwitchSet] = useState(false);
+	const onChangeAction = onChange;
 	let setClassName = "dialog p-2 rounded-lg";
 	if (className) {
 		setClassName += ` ${className}`;
@@ -29,6 +31,10 @@ export const Dialog = ({
 		setClassName += ` ${size}`;
 	}
 	const switchAction = () => {
+		if(onChangeAction) {
+			onChangeAction(!dialogSwitch);
+		}
+		dialogSwitchSet(!dialogSwitch);
 		if (dialogElement.current?.classList.contains("open")) {
 			document.body.setAttribute("style", "");
 			dialogElement.current?.classList.remove("open");
@@ -39,12 +45,18 @@ export const Dialog = ({
 	};
 	return (
 		<div className="dialog-box" ref={dialogElement}>
-			<button
+			{ type === "icon" &&
+				<button
+					onClick={switchAction}
+					className={type ? `button inline-block ${type}` : "button inline-block"}
+				>
+					{label ? label : "view"}
+				</button>}
+			{ type === "button" && <Button
+				label={label ?? "no label"}
+				size="small"
 				onClick={switchAction}
-				className={type ? `inline-block ${type}` : "inline-block"}
-			>
-				{label ? label : "view"}
-			</button>
+			/> }
 			<div className="overlay fixed top-0 left-0 bg-stone-900/90"></div>
 			<div className={setClassName}>
 				<button

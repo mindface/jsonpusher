@@ -171,7 +171,7 @@ export default function SectionSports() {
 				)}
 			</div>
 			<div className="p-2">
-				<Dialog label="スポーツ項目を選択する">
+				<Dialog label="スポーツ項目を選択する" type="button">
 					<div className="category-box--outer flex justify-center">
 						{selectSportsList &&
 							selectSportsList.map((categoryItem) => (

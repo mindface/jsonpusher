@@ -12,14 +12,23 @@ import modelTextList from "../json/modelTextList.json";
 type EvaluationType = {
 	[key: string]: number;
 };
+type DialogType = {
+	[key: string]: boolean;
+};
 
 export default function SectionOverallEvaluation() {
 	const initialEvaluationObjState: EvaluationType = Object.fromEntries(
 		menuInfoList.map((item) => [item.pathId, 0]),
 	);
+	const initialDialogObjState: DialogType = Object.fromEntries(
+		menuInfoList.map((item) => [item.pathId, false]),
+	);
 	const [evaluationText, evaluationTextSet] = useState("");
 	const [evaluationObj, evaluationObjSet] = useState<EvaluationType>(
 		initialEvaluationObjState,
+	);
+	const [dialogObj, dialogObjSet] = useState<DialogType>(
+		initialDialogObjState,
 	);
 
 	const copyExperience = () => {
@@ -56,7 +65,25 @@ export default function SectionOverallEvaluation() {
 									menuInfoList.length === index + 1 ? "" : "border-b",
 								].join(" ")}
 							>
-								{menuItem.name}
+								<div className="flex">
+									<p className="pr-4">
+										{menuItem.name}
+									</p>
+									<Dialog
+										label="ページ内容を確認する"
+										type="button"
+										onChange={(value) => {
+											dialogObjSet({
+												...dialogObj,
+												[menuItem.pathId]:value
+											});
+										}}
+									>
+										<div className="inner">
+											{ dialogObj[menuItem.pathId] && <iframe src={menuItem.path} className="w-full h-[80vh]"></iframe> }
+										</div>
+									</Dialog>
+								</div>
 								<div className="flex">
 									<InputRange
 										value={evaluationObj[menuItem.pathId]}
