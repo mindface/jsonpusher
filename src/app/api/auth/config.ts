@@ -2,10 +2,16 @@ import NextAuth, { NextAuthConfig } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { Provider } from "next-auth/providers"
 
+const { SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = process.env;
+
+if (!SECRET) throw new Error('You must provide SECRET env var.');
+if (!GOOGLE_CLIENT_ID) throw new Error('You must provide GOOGLE_ID env var.');
+if (!GOOGLE_CLIENT_SECRET) throw new Error('You must provide GOOGLE_SECRET env var.');
+
 const providers: Provider[] = [
   GoogleProvider({
-    clientId: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    clientId: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
     authorization: {
       params: {
         redirect_uri: `${process.env.NEXT_PUBLIC_BASIC_URL}/api/auth/callback/google`,
@@ -16,6 +22,7 @@ const providers: Provider[] = [
 
 export const authOptions: NextAuthConfig = {
   providers: providers,
+  secret: SECRET,
   callbacks: {
     async session({ token, session }) {
       if (token.sub && session.user) {
