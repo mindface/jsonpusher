@@ -37,14 +37,13 @@ import { auth } from "./app/api/auth/config";
 // });
 
 export async function middleware(request: NextRequest) {
-  let response = NextResponse.next({
+  const response = NextResponse.next({
     request: {
       headers: request.headers,
     },
   });
 
   const path = new URL(request.url).pathname;
-
   const session = await auth();
   const user = session?.user?.name ?? false;
 
