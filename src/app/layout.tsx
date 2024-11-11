@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
+import { SessionProvider } from "next-auth/react";
+
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SentEmailInfo from "../components/SentEmailInfo";
@@ -33,11 +35,13 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<Header />
-				{children}
-				<SentEmailInfo />
-				<AdSense />
-				<Footer />
+				<SessionProvider>
+					<Header />
+					{children}
+					<SentEmailInfo />
+					<AdSense />
+					<Footer />
+				</SessionProvider>
 			</body>
 		</html>
 	);
