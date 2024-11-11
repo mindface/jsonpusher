@@ -21,6 +21,7 @@ export const authOptions: NextAuthConfig = {
       if (token.sub && session.user) {
         session.user.id = token.sub;
       }
+      // 確認次第実装
       // if (token.role && session.user) {
       //   session.user.role = token.role as any;
       // }
