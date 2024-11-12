@@ -47,14 +47,15 @@ export async function middleware(request: NextRequest) {
   const session = await auth();
   const user = session?.user?.name ?? false;
 
-  if (
-    (path === "/" ||
-      path === "/health" ||
-      path === "/sports") &&
-    !user
-  ) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
+  // ログイン実装時の確認後調査
+  // if (
+  //   (path === "/" ||
+  //     path === "/health" ||
+  //     path === "/sports") &&
+  //   !user
+  // ) {
+  //   return NextResponse.redirect(new URL("/login", request.url));
+  // }
 
   return response;
 }
