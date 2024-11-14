@@ -6,6 +6,8 @@ import { Textarea } from "../stories/TextArea/Textarea";
 import { Button } from "../stories/Button/Button";
 import { Dialog } from "../stories/Dialog/Dialog";
 
+import SectionValuationAssessment from "../components/SectionValuationAssessment";
+
 import menuInfoList from "../json/menuInfoList.json";
 import modelTextList from "../json/modelTextList.json";
 
@@ -52,11 +54,14 @@ export default function SectionOverallEvaluation() {
 		<section className="section-level-up">
 			<Title3h title="自分が評価したことを分析する" size="large" />
 			<div className="details">
-				<div className="text pb-4">
+				<div className="text flex pb-4">
 					自分で考えた改善方法を評価してみましょう。
+					<Dialog label="?" type="icon">
+						<SectionValuationAssessment />
+					</Dialog>
 				</div>
-				<div className="details-menu-evaluation flex p-8 pb-4 pl-0">
-					<div className="details-menu-list mr-8 p-4 border rounded-lg">
+				<div className="details-menu-evaluation md:flex p-8 pb-4 pl-0">
+					<div className="details-menu-list mr-8 p-4 border rounded-lg md:w-[50%]">
 						{menuInfoList.map((menuItem, index) => (
 							<div
 								key={`overallEvaluation${menuItem.pathId}`}
@@ -65,7 +70,7 @@ export default function SectionOverallEvaluation() {
 									menuInfoList.length === index + 1 ? "" : "border-b",
 								].join(" ")}
 							>
-								<div className="flex">
+								<div className="md:flex">
 									<p className="pr-4">
 										{menuItem.name}
 									</p>
@@ -102,10 +107,10 @@ export default function SectionOverallEvaluation() {
 							</div>
 						))}
 					</div>
-					<div className="details-menu-evaluation-input">
-						<div className="pt-2 pb-4">
+					<div className="details-menu-evaluation-input md:w-[50%]">
+						<div className="pt-4 md:pt-2 pb-4">
 							評価した項目で向上した内容、あるいは悪くなった
-							<br />
+							<br className="hidden md:block" />
 							<div className="inline-block relative">
 								検証効果を分析してみてください。
 								<div className="absolute bottom-0 -right-8">
