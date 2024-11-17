@@ -5,6 +5,8 @@ import { Dialog } from "../stories/Dialog/Dialog";
 
 import { EvaluationType, DialogType, MenuInfoList } from "../type/componentContent";
 
+import MoleculeDetailsMenuEvaluationMakeText from "./MoleculeDetailsMenuEvaluationMakeText";
+
 type Props = {
 	leaveNumber: number;
 	menuInfoList: MenuInfoList[];
@@ -31,12 +33,12 @@ export default function ContentDetailsMenuEvaluation(props: Props) {
 							menuInfoList.length === index + 1 ? "" : "border-b",
 						].join(" ")}
 					>
+						<p className="pb-4">
+							{menuItem.name}
+						</p>
 						<div className="md:flex">
-							<p className="pr-4">
-								{menuItem.name}
-							</p>
 							<Dialog
-								label="ページ内容を確認する"
+								label="ページ内容を確認"
 								type="button"
 								onChange={(value) => {
 									dialogObjSet({
@@ -46,11 +48,17 @@ export default function ContentDetailsMenuEvaluation(props: Props) {
 								}}
 							>
 								<div className="inner">
+									<p className="pb-4">
+										{menuItem.name}
+									</p>
 									{ dialogObj[menuItem.pathId] && <iframe src={menuItem.path} className="w-full h-[80vh]"></iframe> }
 								</div>
 							</Dialog>
+							{/* <div className="pl-4">
+								<MoleculeDetailsMenuEvaluationMakeText name={menuItem.name} />
+							</div> */}
 						</div>
-						<div className="flex">
+						<div className="flex pt-4">
 							<InputRange
 								value={evaluationObj[menuItem.pathId]}
 								max={100}
