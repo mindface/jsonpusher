@@ -1,0 +1,132 @@
+[
+	{
+		"pathId": "overallEvaluation",
+		"path": "/overallEvaluation",
+		"name": "評価を構造化して分析する",
+		"tagList": [
+			{ 
+				"tagId": "structuring",
+				"tagName": "構造化",
+				"text":"構造化して情報の検索、解析、活用がしやすくし、データ処理や意思決定のスピードを向上させる"
+			},
+			{
+				"tagId": "restructuring",
+				"tagName": "再構造化",
+				"text":"情報を評価した構造をマインドマップや分析ツールを利用して再評価する"
+			},
+			{ 
+				"tagId": "usualStructuralEvaluation",
+				"tagName": "普段の構造評価",
+				"text":"普段情報(練習や学習)を設計していくことに関して、別のパタンのケースと比較する"
+			}
+		]
+	},
+	{
+		"pathId": "levelUpPattern",
+		"path": "/levelUpPattern",
+		"name": "レベルアップのパターン",
+		"tagList": [
+			{ 
+				"tagId": "levelQuantification",
+				"tagName": "レベルの定量化",
+				"text":"自分でできることをレベルとして評価して、記録することができる"
+			}
+		]
+	},
+	{
+		"pathId": "levelSkillComparison",
+		"path": "/levelSkillComparison",
+		"name": "スキルを比較するということ",
+		"tagList": [
+			{ 
+				"tagId": "levelQuantification",
+				"tagName": "技術の再現性",
+				"text":"再現性の高い情報にするために、どんな意識をしているか情報化する"
+			}
+		]
+	},
+	{
+		"pathId": "planFeedback",
+		"path": "/planFeedback",
+		"name": "練習を計画すること",
+		"tagList": [
+			{
+				"tagId": "effectPlan",
+				"tagName": "計画を効果",
+				"text":"計画を立てることに関して情報化する"
+			}
+		]
+	},
+	{
+		"pathId": "nextPlanEvaluation",
+		"path": "/nextPlanEvaluation",
+		"name": "計画の評価を文字にする",
+		"tagList": [
+			{
+				"tagId": "planFeedback",
+				"tagName": "計画のフィードバック",
+				"text":"計画を実行して、その結果と別の計画の比較した要因をなぜその要因にしたか考慮する"
+			}
+		]
+	},
+	{
+		"pathId": "growthQuantification",
+		"path": "/growthQuantification",
+		"name": "成長を定量化する",
+		"tagList": [
+			{
+				"tagId": "relevanceFactors",
+				"tagName": "要因の妥当性",
+				"text":"成長したと判断した自分の定量化した情報について評価する"
+			}
+		]
+	},
+	{
+		"pathId": "practiceInformation",
+		"path": "/practiceInformation",
+		"name": "練習と情報量の変化について",
+		"tagList": [
+			{
+				"tagId": "circulationPracticeInformation",
+				"tagName": "練習情報の循環",
+				"text":"練習するとその経験が記憶になり、その情報を使うことで循環構造になっていく"
+			}
+		]
+	},
+	{
+		"pathId": "differencesResults",
+		"path": "/differencesResults",
+		"name": "微妙な差と結果からのフィードバックについて",
+		"tagList": [
+			{
+				"tagId": "changedDifference",
+				"tagName": "変化した差",
+				"text":"変化した差が微妙でも、連動して大きな差になるときのプロセスについて"
+			}
+		]
+	},
+	{
+		"pathId": "useAdvice",
+		"path": "/useAdvice",
+		"name": "アドバイスを使うことと評価",
+		"tagList": [
+			{
+				"tagId": "languageRigor",
+				"tagName": "言語の厳密さ",
+				"text":"アドバイスを的確に理解するために言語情報の厳密さを把握して、目的に効果的に使う"
+			}
+		]
+	},
+	{
+		"pathId": "updateInformationExperience",
+		"path": "/updateInformationExperience",
+		"name": "経験から情報を更新",
+		"tagList": [
+			{
+				"tagId": "experienceChoose",
+				"tagName": "どの経験を選ぶか",
+				"text":""
+			}
+		]
+	}
+]
