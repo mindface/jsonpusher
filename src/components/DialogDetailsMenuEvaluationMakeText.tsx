@@ -14,16 +14,12 @@ type Props = {
 export default function DialogDetailsMenuEvaluationMakeText(props: Props) {
 	const { name, infoId } = props;
 	const [makeText,makeTextSet] = useState("");
-	const [dialog,dialogSet] = useState(false);
 
 	return (
 		<>
 			<Dialog
 				label="テキストをつくる"
 				type="button"
-				onChange={(value) => {
-					dialogSet(value);
-				}}
 			>
 				<div className="inner">
 					<p className="p-4">
