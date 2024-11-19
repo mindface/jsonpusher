@@ -5,7 +5,7 @@ import { Dialog } from "../stories/Dialog/Dialog";
 
 import { EvaluationType, DialogType, MenuInfoList } from "../type/componentContent";
 
-import MoleculeDetailsMenuEvaluationMakeText from "./MoleculeDetailsMenuEvaluationMakeText";
+// import MoleculeDetailsMenuEvaluationMakeText from "./MoleculeDetailsMenuEvaluationMakeText";
 
 type Props = {
 	leaveNumber: number;

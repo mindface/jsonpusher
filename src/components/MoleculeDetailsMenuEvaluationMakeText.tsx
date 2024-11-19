@@ -11,7 +11,7 @@ type Props = {
 export default function MoleculeDetailsMenuEvaluationMakeText(props: Props) {
 	const { name } = props;
 	const [makeText,makeTextSet] = useState("");
-	const [dialog,dialogSet] = useState(false);
+	const [_,dialogSet] = useState(false);
 
 	return (
 		<>
@@ -37,8 +37,7 @@ export default function MoleculeDetailsMenuEvaluationMakeText(props: Props) {
 								partsId="test"
 								label="text"
 								size="small"
-								changing={(check) => {
-
+								changing={() => {
 								}}
 							/>
 						</div>
