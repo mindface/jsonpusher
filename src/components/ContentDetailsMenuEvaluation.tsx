@@ -5,7 +5,7 @@ import { Dialog } from "../stories/Dialog/Dialog";
 
 import { EvaluationType, DialogType, MenuInfoList } from "../type/componentContent";
 
-// import MoleculeDetailsMenuEvaluationMakeText from "./MoleculeDetailsMenuEvaluationMakeText";
+import DialogDetailsMenuEvaluationMakeText from "./DialogDetailsMenuEvaluationMakeText";
 
 type Props = {
 	leaveNumber: number;
@@ -54,9 +54,12 @@ export default function ContentDetailsMenuEvaluation(props: Props) {
 									{ dialogObj[menuItem.pathId] && <iframe src={menuItem.path} className="w-full h-[80vh]"></iframe> }
 								</div>
 							</Dialog>
-							{/* <div className="pl-4">
-								<MoleculeDetailsMenuEvaluationMakeText name={menuItem.name} />
-							</div> */}
+							<div className="pl-4">
+								<DialogDetailsMenuEvaluationMakeText
+									name={menuItem.name}
+									infoId={menuItem.pathId}
+								/>
+							</div>
 						</div>
 						<div className="flex pt-4">
 							<InputRange

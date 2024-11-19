@@ -1,45 +1,44 @@
 "use client";
 import { useState } from "react";
-import { Ccheck } from "../stories/Ccheck/Ccheck";
+import { Button } from "../stories/Button/Button";
 import { Dialog } from "../stories/Dialog/Dialog";
 import { Textarea } from "../stories/TextArea/Textarea";
 
+import menuInfoTagTextList from "../json/menuInfoTagTextList.json";
+
 type Props = {
 	name: string;
+	infoId: string;
 }
 
-export default function MoleculeDetailsMenuEvaluationMakeText(props: Props) {
-	const { name } = props;
+export default function DialogDetailsMenuEvaluationMakeText(props: Props) {
+	const { name, infoId } = props;
 	const [makeText,makeTextSet] = useState("");
-	const [,dialogSet] = useState(false);
-
 	return (
 		<>
 			<Dialog
 				label="テキストをつくる"
 				type="button"
-				onChange={(value) => {
-					dialogSet(value);
-				}}
 			>
 				<div className="inner">
 					<p className="p-4">
 						{name}
 					</p>
-					<div className="p-4">
+					<div className="p-4 flex">
 						<div className="w-[50%]">
 							<Textarea value={makeText} onChange={(value) => {
 								makeTextSet(value);
 							}} />
 						</div>
 						<div className="w-[50%]">
-							<Ccheck
-								partsId="test"
-								label="text"
-								size="small"
-								changing={() => {
-								}}
-							/>
+							{ menuInfoTagTextList.map((item) => item.pathId === infoId &&
+								item.tagList.map((item) => <span key={item.tagId} className="inline-block mr-4"><Button
+									label={item.tagName}
+									size="small"
+									onClick={() => {
+										makeTextSet( makeText + "\n\n" + item.text);
+									}}
+								/></span>)) }
 						</div>
 					</div>
 				</div>
