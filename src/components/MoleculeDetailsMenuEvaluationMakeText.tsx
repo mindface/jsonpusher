@@ -11,7 +11,7 @@ type Props = {
 export default function MoleculeDetailsMenuEvaluationMakeText(props: Props) {
 	const { name } = props;
 	const [makeText,makeTextSet] = useState("");
-	const [_,dialogSet] = useState(false);
+	const [,dialogSet] = useState(false);
 
 	return (
 		<>
