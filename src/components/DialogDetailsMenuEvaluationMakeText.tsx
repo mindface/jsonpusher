@@ -14,7 +14,6 @@ type Props = {
 export default function DialogDetailsMenuEvaluationMakeText(props: Props) {
 	const { name, infoId } = props;
 	const [makeText,makeTextSet] = useState("");
-
 	return (
 		<>
 			<Dialog
