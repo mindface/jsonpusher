@@ -30,6 +30,16 @@
 				"tagId": "levelQuantification",
 				"tagName": "レベルの定量化",
 				"text":"自分でできることをレベルとして評価して、記録することができる"
+			},
+			{ 
+				"tagId": "evaluateLevelImprovement",
+				"tagName": "レベルの向上を評価する",
+				"text":"自分の現状を厳密に情報化して、向上した要因を記録をする"
+			},
+			{ 
+				"tagId": "evaluateLevelIncrementalImprovement",
+				"tagName": "段階的な向上を定義する",
+				"text":"自分でレベルと段階的な向上を定義して、再現性のある結果を積み重ねる"
 			}
 		]
 	},
@@ -39,9 +49,14 @@
 		"name": "スキルを比較するということ",
 		"tagList": [
 			{ 
-				"tagId": "levelQuantification",
+				"tagId": "reproducibilityTechnology",
 				"tagName": "技術の再現性",
 				"text":"再現性の高い情報にするために、どんな意識をしているか情報化する"
+			},
+			{ 
+				"tagId": "comparisonMethods",
+				"tagName": "方法の比較",
+				"text":"実際に試してみて情報で比較して、安定性や再現性などを考慮する"
 			}
 		]
 	},
@@ -54,7 +69,17 @@
 				"tagId": "effectPlan",
 				"tagName": "計画を効果",
 				"text":"計画を立てることに関して情報化する"
-			}
+			},
+			{
+				"tagId": "adjustPlansBasedChangingObjectives",
+				"tagName": "目的の変化から計画を調整",
+				"text":"成長や自分の評価の変化で設定変更した目的を変化させる"
+			},
+			{
+				"tagId": "practiceObjectivesSettings",
+				"tagName": "練習の目的と設定",
+				"text":"練習の目的を明確にして、選択基準から選定基準に意味を持たせる"
+			}			
 		]
 	},
 	{
@@ -66,6 +91,16 @@
 				"tagId": "planFeedback",
 				"tagName": "計画のフィードバック",
 				"text":"計画を実行して、その結果と別の計画の比較した要因をなぜその要因にしたか考慮する"
+			},
+			{
+				"tagId": "planningFeedbackCycle",
+				"tagName": "計画のフィードバックサイクル",
+				"text":"計画の検証結果に関して、フィードバックサイクルの基準を明確にする"
+			},
+			{
+				"tagId": "feedbackCyclePlanEvaluation",
+				"tagName": "計画の評価に対するフィードバックサイクル",
+				"text":"計画を試して変化があったかどうかをフィードバックして、内容に効果があったかどうかを確認する"
 			}
 		]
 	},
@@ -78,6 +113,16 @@
 				"tagId": "relevanceFactors",
 				"tagName": "要因の妥当性",
 				"text":"成長したと判断した自分の定量化した情報について評価する"
+			},
+			{
+				"tagId": "growthFactors",
+				"tagName": "成長する定量化の概念を理解する",
+				"text":"自分で練習して、向上した結果とその再現性について記録や方法を確立する"
+			},
+			{
+				"tagId": "growthFactorsAtom",
+				"tagName": "成長した要因の因子",
+				"text":"成長した要因を分解して、別の計画の利用に関して調整する"
 			}
 		]
 	},
@@ -90,6 +135,16 @@
 				"tagId": "circulationPracticeInformation",
 				"tagName": "練習情報の循環",
 				"text":"練習するとその経験が記憶になり、その情報を使うことで循環構造になっていく"
+			},
+			{
+				"tagId": "selectionCriteriaChoosingPractice",
+				"tagName": "練習を選んだ選択基準について",
+				"text":"個人練習などは目的があって練習を選ぶので、その選考基準に対しての効果を考慮します。"
+			},
+			{
+				"tagId": "increasedPracticeInformationObjectives",
+				"tagName": "増えた練習情報量と目的",
+				"text":"練習に関して、技術力が向上すると目的が変化するためその調整方法を思考します。"
 			}
 		]
 	},
@@ -102,6 +157,16 @@
 				"tagId": "changedDifference",
 				"tagName": "変化した差",
 				"text":"変化した差が微妙でも、連動して大きな差になるときのプロセスについて"
+			},
+			{
+				"tagId": "changedDifferenceResult",
+				"tagName": "変化した差の結果の見方",
+				"text":"変化した結果がどう変化するかを記録して、過程の連続したプロセスまで注意する"
+			},
+			{
+				"tagId": "changedDifferencelanguage",
+				"tagName": "微妙な差を言語にする",
+				"text":"記憶でイメージした微妙な差が結果に大きく影響するときに言語化して記録する(情報量を多くするため動画にする)"
 			}
 		]
 	},
@@ -114,6 +179,16 @@
 				"tagId": "languageRigor",
 				"tagName": "言語の厳密さ",
 				"text":"アドバイスを的確に理解するために言語情報の厳密さを把握して、目的に効果的に使う"
+			},
+			{
+				"tagId": "differenceAmountInformationNeededUnderstand",
+				"tagName": "理解するための情報量の差",
+				"text":"アドバイスをする人と自分には経験上の差が存在し、その差を考慮して評価して試してみる必要がある"
+			},
+			{
+				"tagId": "maintainingReproducibility",
+				"tagName": "再現性の維持について",
+				"text":"アドバイスで補った時点では効果があっても、慣れなどから変化して同じことをしてもうまくいかないなど再現性のない行動になる"
 			}
 		]
 	},
@@ -126,6 +201,16 @@
 				"tagId": "experienceChoose",
 				"tagName": "どの経験を選ぶか",
 				"text":""
+			},
+			{
+				"tagId": "recordingExperience",
+				"tagName": "経験から記録すること",
+				"text":"経験を記録することで明確にしていく必要があり、再現性のある情報プロセスにする必要がある"
+			},
+			{
+				"tagId": "experiencesChange",
+				"tagName": "経験は変化していく",
+				"text":"経験は、過去と同じことをしていても無意識に変化しているケースがあり、変化する部分を計算して情報化する必要がある"
 			}
 		]
 	}

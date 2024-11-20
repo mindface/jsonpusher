@@ -3,6 +3,8 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import bicycleImage from "../assets/images/bicycle.jpg";
 
+import { copyAction } from "../lib/clipboardAction";
+
 import { Ccheck } from "../stories/Ccheck/Ccheck";
 import { Button } from "../stories/Button/Button";
 import { InputRange } from "../stories/InputRange/InputRange";
@@ -113,14 +115,7 @@ export default function SectionSports() {
 
 	const copyAciton = () => {
 		const copyText = keyWord("ai");
-		navigator.clipboard
-			.writeText(copyText)
-			.then(() => {
-				alert("コピーしました。");
-			})
-			.catch((err) => {
-				console.error("Failed to copy text: ", err);
-			});
+		copyAction(copyText);
 	};
 
 	const googlSearchAction = () => {

@@ -106,6 +106,7 @@ export default function SectionOverallEvaluation() {
 							onChange={(value) => {
 								evaluationTextSet(value);
 							}}
+							className="w-full"
 							cols={34}
 							placeholder="意識するポイントを明確な目印と数値を規定して、再現性ある情報化した。"
 						/>

@@ -3,6 +3,8 @@ import { Title3h } from "../stories/title3h/Title3h";
 import { Button } from "../stories/Button/Button";
 import { Input } from "../stories/Input/Input";
 
+import { copyAction } from "../lib/clipboardAction";
+
 import CPlanEdit from "../components/CPlanEdit";
 import CNextPlanEdit from "../components/CNextPlanEdit";
 import CPlanList from "../components/CPlanList";
@@ -63,14 +65,7 @@ export default function SectionPlanFeedback() {
 	};
 
 	const copyJsonAciton = () => {
-		navigator.clipboard
-			.writeText(JSON.stringify(plans))
-			.then(() => {
-				alert("コピーしました。");
-			})
-			.catch((err) => {
-				console.error("Failed to copy text: ", err);
-			});
+		copyAction(JSON.stringify(plans));
 	};
 
 	const copyTextAciton = (type: string) => {
@@ -127,14 +122,7 @@ export default function SectionPlanFeedback() {
 			].join("\n");
 		}
 
-		navigator.clipboard
-			.writeText(formattedTable)
-			.then(() => {
-				alert("コピーしました。");
-			})
-			.catch((err) => {
-				console.error("Failed to copy text: ", err);
-			});
+		copyAction(formattedTable);
 	};
 
 	return (

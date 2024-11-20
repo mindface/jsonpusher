@@ -1,6 +1,9 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+
+import { copyAction } from "../lib/clipboardAction";
+
 import { Title3h } from "../stories/title3h/Title3h";
 import { Textarea } from "../stories/TextArea/Textarea";
 import { Button } from "../stories/Button/Button";
@@ -20,14 +23,7 @@ export default function SectionGrowthQuantification() {
 		copyText += "--------------\n";
 		copyText += textGrowth;
 		copyText += "計画に対して成長の過程を評価してください。";
-		navigator.clipboard
-			.writeText(copyText)
-			.then(() => {
-				alert("コピーしました。");
-			})
-			.catch((err) => {
-				console.error("Failed to copy text: ", err);
-			});
+		copyAction(copyText);
 	};
 
 	const goPlanAction = () => {
