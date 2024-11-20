@@ -7,7 +7,6 @@ import { Button } from "../stories/Button/Button";
 import { Dialog } from "../stories/Dialog/Dialog";
 import { Textarea } from "../stories/TextArea/Textarea";
 
-
 import menuInfoTagTextList from "../json/menuInfoTagTextList.json";
 
 type Props = {
@@ -35,13 +34,21 @@ export default function DialogDetailsMenuEvaluationMakeText(props: Props) {
 					</p>
 					<div className="p-4 flex">
 						<div className="w-[50%] pr-4">
-							<Textarea
-								value={makeText}
-								onChange={(value) => {
-									makeTextSet(value);
-								}}
-								className="w-full"
-							/>
+							<div className="pb-4">
+								<Textarea
+									value={makeText}
+									onChange={(value) => {
+										makeTextSet(value);
+									}}
+									className="w-full"
+								/>
+							</div>
+							<div className="pb-4">
+								<Button
+								  label="コピーする"
+									onClick={() => { copyTextAction(); }}
+								/>
+							</div>
 						</div>
 						<div className="w-[50%]">
 							{ menuInfoTagTextList.map((item) => item.pathId === infoId &&
