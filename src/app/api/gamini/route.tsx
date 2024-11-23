@@ -17,10 +17,8 @@ export async function GET() {
 export async function POST(reqest: NextRequest) {
 	const { prompt } = await reqest.json();
 	const _prompt = sanitaizeText(prompt);
-	console.log(_prompt);
 	const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 	const result = await model.generateContent(prompt);
-	console.log(result.response);
 
 	try {
 		return NextResponse.json({ message: "Success", status: 200, content: result.response.text() });
