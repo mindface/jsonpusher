@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import FooterLogo from "../assets/images/footer_logo.png";
+import Gemini from "./Gemini";
 
 export default function Footer() {
 	return (
@@ -22,6 +23,7 @@ export default function Footer() {
 			<div className="text-center">
 				<small>&copy; meliru</small>
 			</div>
+			<Gemini />
 		</footer>
 	);
 }
