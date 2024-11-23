@@ -57,7 +57,7 @@ export default function Gemini() {
 						onChange={(value) => { sendTitleSet(value as string); }}
 					/>
 					<Button
-						label="on"
+						label="質問"
 						size="small"
 					  onClick={() => { fetchGeminiApi(); }}
 					/>
