@@ -13,5 +13,10 @@
 		"pathId": 3,
 		"path": "/sports",
 		"name": "スポーツ"
+	},
+	{
+		"pathId": 4,
+		"path": "/useGemini",
+		"name": "質問する"
 	}
 ]
