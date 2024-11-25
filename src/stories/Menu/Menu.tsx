@@ -46,7 +46,7 @@ export const Menu = ({
 				{pathList.map((path) => (
 					<p className="menu-item" key={path.pathId}>
 						<Link
-							className="menu-link link leading-none whitespace-nowrap overflow-hidden text-ellipsis p-2"
+							className="menu-link link leading-none whitespace-nowrap overflow-hidden text-ellipsis p-4"
 							href={path.path}
 						>
 							{path.name}
