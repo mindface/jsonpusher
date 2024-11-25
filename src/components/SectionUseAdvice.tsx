@@ -35,7 +35,7 @@ export default function SectionUseAdvice() {
 				<p className="text pb-4">
 					実際に目的と検証過程から利用して、継続的にメリットがあれば採用することになりそうでしょうか。
 				</p>
-				<div className="details-action p-8 pb-4">
+				<div className="details-action pt-8 pb-4">
 					<div className="action-box p-4 border rounded-lg max-w-[420px]">
 						<p className="pb-2">アドバイスを使う野球の例</p>
 						<div className="flex">

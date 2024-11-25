@@ -34,10 +34,9 @@ export default function SectionDifferencesResults() {
 				<p className="text pb-2">
 					一部を変化して連動し、結果が大きく変化するなどが挙げられます。
 				</p>
-				<p className="text pb-2">
+				<p className="text pb-8">
 					わずかな変化とは何があるでしょうか。例としては体幹の使い方や呼吸法などで変化することがあります。
 				</p>
-				<p className="text pb-2"></p>
 				<div className="details-action p-8 pb-4 border rounded-lg max-w-[420px]">
 					<p className="pb-2">トリガーとなるテキストの変化</p>
 					<div className="action-box pb-2">
