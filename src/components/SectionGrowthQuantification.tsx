@@ -37,7 +37,7 @@ export default function SectionGrowthQuantification() {
 	return (
 		<section className="section-skill-comparison">
 			<Title3h title="成長の定義を決める" size="large" />
-			<div className="details w-[460px] sm:w-[640px] pb-8">
+			<div className="details w-[460px] sm:w-[640px] mb-8 p-4 border rounded-lg">
 				<p className="text pb-2">
 					成長することがシュートを決める確率を上げることだったり、フォームの変更からヒットを打つことだったりします。
 				</p>
@@ -53,7 +53,9 @@ export default function SectionGrowthQuantification() {
 			</div>
 			<div className="flex">
 				<div className="w-[460px] sm:w-[580px] p-2">
-					<Title3h title="次の計画" size="small" />
+					<div className="pb-4">
+						<Title3h title="次の計画" size="small" />
+					</div>
 					{nextPlans.map((plan) => (
 						<p key={`growthNextPlans${plan.connectId}`} className="pb-2">
 							{plan.title}

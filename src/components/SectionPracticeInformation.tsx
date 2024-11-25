@@ -28,7 +28,7 @@ export default function SectionPracticeInformation() {
 		<section className="section-level-up">
 			<Title3h title="練習量で増加する情報量" size="large" />
 			<div className="details">
-				<div className="pb-8">
+				<div className="sm:w-[640px] mb-8 p-4 border rounded-lg">
 					<p className="text pb-2">練習を継続すると情報が増えます。</p>
 					<p className="text pb-2">
 						何が言いたいかというと、確認フォームをするとその箇所の情報が増加します。
