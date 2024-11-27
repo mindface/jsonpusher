@@ -36,7 +36,11 @@ export default function DialogDetailsMenuEvaluationMakeText(props: Props) {
 									label={item.tagName}
 									size="small"
 									onClick={() => {
-										makeTextSet( makeText + "\n\n" + item.text);
+										if(makeText === "") {
+											makeTextSet(item.text);
+										}else {
+											makeTextSet( makeText + "\n\n" + item.text);
+										}
 									}}
 								/></span>)) }
 						</div>
