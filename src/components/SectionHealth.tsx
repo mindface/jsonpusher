@@ -12,6 +12,8 @@ import SelectPatternList from "../json/selectPatternList.json";
 import SelectLevelList from "../json/selectLevelList.json";
 import SelectHealthInfoCategoryList from "../json/selectHealthInfoCategoryList.json";
 
+import { copyClipbord } from "../lib/copyClipbord";
+
 type SelectList = { check: boolean; name: string };
 type SelectTextList = { check: boolean; list: string[] };
 
@@ -116,14 +118,7 @@ export default function SectionHealth() {
 
 	const copyAciton = () => {
 		const copyText = keyWord("ai");
-		navigator.clipboard
-			.writeText(copyText)
-			.then(() => {
-				alert("コピーしました。");
-			})
-			.catch((err) => {
-				console.error("Failed to copy text: ", err);
-			});
+		copyClipbord(copyText);
 	};
 
 	const googlSearchAction = () => {

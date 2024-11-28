@@ -9,6 +9,8 @@ import CNextPlanList from "../components/CNextPlanList";
 
 import { useStoreNextPlan } from "../store/planNext";
 
+import { copyClipbord } from "../lib/copyClipbord";
+
 import type { Plan } from "../type/plan";
 
 export default function SectionNextPlanEvaluation() {
@@ -48,14 +50,7 @@ export default function SectionNextPlanEvaluation() {
 		${planEvaluation}
 		この評価を精査して、フィードバックしてください。`;
 
-		navigator.clipboard
-			.writeText(copyText)
-			.then(() => {
-				alert("コピーしました。");
-			})
-			.catch((err) => {
-				console.error("Failed to copy text: ", err);
-			});
+		copyClipbord(copyText);
 	};
 
 	return (

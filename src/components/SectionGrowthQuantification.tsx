@@ -6,6 +6,8 @@ import { Textarea } from "../stories/TextArea/Textarea";
 import { Button } from "../stories/Button/Button";
 import { useStoreNextPlan } from "../store/planNext";
 
+import { copyClipbord } from "../lib/copyClipbord";
+
 export default function SectionGrowthQuantification() {
 	const { nextPlans } = useStoreNextPlan();
 	const [textGrowth, textGrowthSet] = useState("");
@@ -20,14 +22,7 @@ export default function SectionGrowthQuantification() {
 		copyText += "--------------\n";
 		copyText += textGrowth;
 		copyText += "計画に対して成長の過程を評価してください。";
-		navigator.clipboard
-			.writeText(copyText)
-			.then(() => {
-				alert("コピーしました。");
-			})
-			.catch((err) => {
-				console.error("Failed to copy text: ", err);
-			});
+		copyClipbord(copyText);
 	};
 
 	const goPlanAction = () => {
