@@ -9,6 +9,8 @@ import { Dialog } from "../stories/Dialog/Dialog";
 import SectionValuationAssessment from "./SectionValuationAssessment";
 import ContentDetailsMenuEvaluation from "./ContentDetailsMenuEvaluation";
 
+import { copyClipbord } from "../lib/copyClipbord";
+
 import menuInfoList from "../json/menuInfoList.json";
 import modelTextList from "../json/modelTextList.json";
 
@@ -35,14 +37,7 @@ export default function SectionOverallEvaluation() {
 		});
 		copyText += "\n\n";
 		copyText += evaluationText;
-		navigator.clipboard
-			.writeText(copyText)
-			.then(() => {
-				alert("コピーしました。");
-			})
-			.catch((err) => {
-				console.error("Failed to copy text: ", err);
-			});
+		copyClipbord(copyText);
 	};
 
 	return (

@@ -13,6 +13,8 @@ import { useStoreNextPlan } from "../store/planNext";
 
 import type { Plan } from "../type/plan";
 
+import { copyClipbord } from "../lib/copyClipbord";
+
 export default function SectionPlanFeedback() {
 	const { plans, setPlans } = useStorePlan();
 	const { nextPlans, copyPlans, setNextPlans } = useStoreNextPlan();
@@ -63,14 +65,7 @@ export default function SectionPlanFeedback() {
 	};
 
 	const copyJsonAciton = () => {
-		navigator.clipboard
-			.writeText(JSON.stringify(plans))
-			.then(() => {
-				alert("コピーしました。");
-			})
-			.catch((err) => {
-				console.error("Failed to copy text: ", err);
-			});
+		copyClipbord(JSON.stringify(plans));
 	};
 
 	const copyTextAciton = (type: string) => {
@@ -127,14 +122,7 @@ export default function SectionPlanFeedback() {
 			].join("\n");
 		}
 
-		navigator.clipboard
-			.writeText(formattedTable)
-			.then(() => {
-				alert("コピーしました。");
-			})
-			.catch((err) => {
-				console.error("Failed to copy text: ", err);
-			});
+		copyClipbord(formattedTable);
 	};
 
 	return (

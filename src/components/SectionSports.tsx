@@ -11,6 +11,8 @@ import { Title3h } from "../stories/title3h/Title3h";
 // import { TextCommenter } from "../stories/TextComment/TextCommenter";
 import { Dialog } from "../stories/Dialog/Dialog";
 
+import { copyClipbord } from "../lib/copyClipbord";
+
 import SelectPartList from "../json/selectPartList.json";
 import SelectSportsPatternList from "../json/selectSportsPatternList.json";
 import SelectSportsList from "../json/selectSportsList.json";
@@ -113,14 +115,7 @@ export default function SectionSports() {
 
 	const copyAciton = () => {
 		const copyText = keyWord("ai");
-		navigator.clipboard
-			.writeText(copyText)
-			.then(() => {
-				alert("コピーしました。");
-			})
-			.catch((err) => {
-				console.error("Failed to copy text: ", err);
-			});
+		copyClipbord(copyText);
 	};
 
 	const googlSearchAction = () => {
