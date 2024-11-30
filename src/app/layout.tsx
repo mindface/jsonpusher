@@ -7,7 +7,7 @@ import { SessionProvider } from "next-auth/react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SentEmailInfo from "../components/SentEmailInfo";
-import AdSense from "../components/AdSense";
+// import AdSense from "../components/AdSense";
 
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
@@ -39,7 +39,7 @@ export default function RootLayout({
 					<Header />
 					{children}
 					<SentEmailInfo />
-					<AdSense />
+					{/* <AdSense /> */}
 					<Footer />
 				</SessionProvider>
 			</body>
