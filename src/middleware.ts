@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-// import { auth } from "./app/api/auth/config";
+import { auth } from "./app/api/auth/config";
 // import { withAuth } from 'next-auth/middleware';
 // 認証基盤の自作するケースの確認で残している
 // export function middleware(request: NextRequest) {
@@ -43,19 +43,19 @@ export async function middleware(request: NextRequest) {
     },
   });
 
-  // const path = new URL(request.url).pathname;
-  // const session = await auth();
-  // const user = session?.user?.name ?? false;s
+  const path = new URL(request.url).pathname;
+  const session = await auth();
+  const user = session?.user?.name ?? false;
 
   // ログイン実装時の確認後調査
-  // if (
-  //   (path === "/" ||
-  //     path === "/health" ||
-  //     path === "/sports") &&
-  //   !user
-  // ) {
-  //   return NextResponse.redirect(new URL("/login", request.url));
-  // }
+  if (
+    (path === "/" ||
+      path === "/health" ||
+      path === "/sports") &&
+    !user
+  ) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
 
   return response;
 }
