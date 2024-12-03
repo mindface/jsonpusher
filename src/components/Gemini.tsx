@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { Title3h } from "../stories/title3h/Title3h";
 import { Button } from "../stories/Button/Button";
-import { Input } from "../stories/Input/Input";
 import { Textarea } from "../stories/TextArea/Textarea";
 
 import { GeminiResponse } from "../type/apiResponse";
