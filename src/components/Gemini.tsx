@@ -50,24 +50,23 @@ export default function Gemini() {
 				<Title3h title="aiに質問する" />
 			</div>
 			<div className="pb-4">
-				<div className="pb-4 flex">
-					<Input
-						type="text"
-						value={sendTitle}
+				<div className="pb-8">
+					<Textarea
+					  className="w-full"
+						placeholder=""
+					  value={sendTitle}
 						onChange={(value) => { sendTitleSet(value as string); }}
 					/>
+				</div>
+				<p className="pb-2">
 					<Button
-						label="質問"
+						label="質問する"
 						size="small"
 					  onClick={() => { fetchGeminiApi(); }}
 					/>
-				</div>
+				</p>
 				<div className="view-content pb-4">
-					<Textarea
-					  className="w-full"
-						placeholder="aiの返答が返ってきます。"
-					  value={validationText}
-					/>
+					<p className="pb-4">aiの返答が返ってきます。</p>
 					{displayedChunks.map((chunk, index) => (
 						<div key={index} style={{ marginBottom: '10px', padding: '10px', borderRadius: '5px' }}>
 							{chunk}
