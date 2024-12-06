@@ -11,6 +11,7 @@ export default function Gemini() {
 	const [sendTitle, sendTitleSet] = useState("");
 	const [validationText, validationTextSet] = useState("");
 	const [displayedChunks, displayedChunksSet] = useState<string[]>([]);
+	const [_displayedChunks, _displayedChunksSet] = useState<string>("");
 
 	const setTextAction = (text: string) => {
 		const chunks: string[] = [];
@@ -31,6 +32,12 @@ export default function Gemini() {
 		}, 800);
 	}
 
+	const textChange = (text: string) => {
+		const regex1 = /\*\s\*\*(.*?)\*\*/g;
+		const regex2 = /\*\*(.*?)\*\*/g;
+		return text.replace(regex1, "<br /><br /><h2>$1</h2>").replace(regex2, "<h2>$1</h2>");
+	}
+
 	const fetchGeminiApi = async () => {
 		const res = await fetch("/api/gamini",{
 			method: "POST",
@@ -38,7 +45,7 @@ export default function Gemini() {
 		});
 		const data: GeminiResponse = await res.json();
 		if(data.status <= 200){
-			setTextAction(data.content);
+			_displayedChunksSet(textChange(data.content));
 			validationTextSet(data.content);
 		}
 	}
@@ -66,11 +73,17 @@ export default function Gemini() {
 				</p>
 				<div className="view-content pb-4">
 					<p className="pb-4">aiの返答が返ってきます。</p>
-					{displayedChunks.map((chunk, index) => (
+					{/* 出力するパタン次第で採用 */}
+					{/* {displayedChunks.map((chunk, index) => (
 						<div key={index} style={{ marginBottom: '10px', padding: '10px', borderRadius: '5px' }}>
 							{chunk}
 						</div>
-					))}
+					))} */}
+					<div className="put-text"
+						dangerouslySetInnerHTML={{
+							__html: _displayedChunks
+						}}
+					></div>
 				</div>
 			</div>
 		</div>
