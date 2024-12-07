@@ -50,16 +50,22 @@ export default function SectionSports() {
 
 	const keyWord = (setAi?: string) => {
 		let setText = "";
+		const sportsArray: string[] = [];
+		const selectPartsArray: string[] = [];
 		selectSports.forEach((item) => {
-			setText += item.label + " ";
+			sportsArray.push(item.label);
+			// setText += item.label + " ";
 		});
 		if (selectSports.length > 0 && setAi) {
+			setText += JSON.stringify(sportsArray);
 			setText += "カテゴリの";
 		}
 		selectParts.forEach((item) => {
-			setText += item.label + " ";
+			selectPartsArray.push(item.label);
+			// setText += item.label + " ";
 		});
 		if (selectParts.length > 0 && setAi) {
+			setText += JSON.stringify(selectPartsArray);
 			setText += "に関して";
 		}
 		selectPattern.forEach((item) => {
