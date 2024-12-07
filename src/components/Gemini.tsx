@@ -7,7 +7,7 @@ import { Textarea } from "../stories/TextArea/Textarea";
 import { GeminiResponse } from "../type/apiResponse";
 
 export default function Gemini() {
-	const baseTextSize = 300;
+	// const baseTextSize = 300;
 	const [sendTitle, sendTitleSet] = useState("");
 	// const [validationText, validationTextSet] = useState("");
 	// const [displayedChunks, displayedChunksSet] = useState<string[]>([]);
