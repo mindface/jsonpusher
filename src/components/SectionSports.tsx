@@ -171,7 +171,7 @@ export default function SectionSports() {
 					<Textarea value={keyWord("ai")} outerClassName="p-8" />
 				)}
 			</div>
-			<div className="p-2">
+			<div className="flex justify-center p-2">
 				<Dialog label="スポーツ項目を選択する" type="button">
 					<div className="category-box--outer flex justify-center">
 						{selectSportsList &&
@@ -210,7 +210,7 @@ export default function SectionSports() {
 						</span>
 					))}
 			</div>
-			<div className="select-box flex pt-4">
+			<div className="select-box flex justify-center pt-4">
 				<ul className="select-parts pr-4">
 					{selectPartList &&
 						selectPartList.map((item) => (

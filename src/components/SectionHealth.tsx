@@ -44,17 +44,20 @@ export default function SectionHealth() {
 
 	const keyWord = (setAi?: string) => {
 		let setText = "";
+		const selectPartsArray: string[] = [];
 		selectParts.forEach((item) => {
-			setText += item.name + " ";
+			selectPartsArray.push(item.name);
+			// setText += item.name + " ";
 		});
 		if (selectParts.length > 0 && setAi) {
+			setText += JSON.stringify(selectPartsArray);
 			setText += "に関して";
 		}
 		selectPattern.forEach((item) => {
 			setText += item.name + " ";
 		});
 		if (selectPattern.length > 0 && setAi) {
-			setText += "について";
+			setText += "ことについて";
 		}
 		selectLevel.forEach((item) => {
 			setText += item.name;
@@ -138,7 +141,7 @@ export default function SectionHealth() {
 					changing={(check) => viewTextSwitchSet(check)}
 				/>
 			</div>
-			<div className="flex justify-center">
+			<div className="flex justify-center pb-8">
 				<Image
 					src={healthImage}
 					className="rounded-lg"
@@ -152,7 +155,7 @@ export default function SectionHealth() {
 					<Textarea value={keyWord("ai")} outerClassName="p-8" />
 				)}
 			</div>
-			<div className="select-box flex pt-4">
+			<div className="select-box flex justify-center pt-4">
 				<ul className="select-parts">
 					{selectPartList.map((item) => (
 						<li className="p-2" key={item.id}>
@@ -204,7 +207,12 @@ export default function SectionHealth() {
 				</ul>
 			</div>
 			<div className="flex justify-end">
-				<Button label="copy" size="small" onClick={copyAciton} />
+				<Button
+					label="copy"
+					size="small"
+					onClick={copyAciton}
+					className="mr-2"
+				/>
 				<Button
 					label="google search"
 					size="small"
