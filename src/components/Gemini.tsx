@@ -4,7 +4,9 @@ import { Title3h } from "../stories/title3h/Title3h";
 import { Button } from "../stories/Button/Button";
 import { Textarea } from "../stories/TextArea/Textarea";
 
-import { GeminiResponse } from "../type/apiResponse";
+import ContentPlanFeedback from "./ContentPlanFeedback"
+
+import { GeminiResponse } from "../type/apiResponse";;
 
 export default function Gemini() {
 	// const baseTextSize = 300;
@@ -52,8 +54,8 @@ export default function Gemini() {
 
 	return (
 		<div className={["gemini"].join(" ")}>
-			<div className="">
-				<Title3h title="aiに質問する" />
+			<div className="pb-2">
+				<Title3h title="ai [Gemini(google)] に質問する" />
 			</div>
 			<div className="pb-4">
 				<div className="pb-8">
@@ -85,6 +87,8 @@ export default function Gemini() {
 						}}
 					></div>
 				</div>
+				ダイアログ化
+				<ContentPlanFeedback />
 			</div>
 		</div>
 	);
