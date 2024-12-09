@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import bicycleImage from "../assets/images/bicycle.jpg";
 
@@ -12,6 +12,8 @@ import { Title3h } from "../stories/title3h/Title3h";
 import { Dialog } from "../stories/Dialog/Dialog";
 
 import { copyClipbord } from "../lib/copyClipbord";
+
+import { useStoreSportsText } from "../store/sportText";
 
 import SelectPartList from "../json/selectPartList.json";
 import SelectSportsPatternList from "../json/selectSportsPatternList.json";
@@ -32,12 +34,14 @@ type SelectSportsPatternItem = {
 };
 
 export default function SectionSports() {
+	const { sportsText, setSportsText } = useStoreSportsText();
 	const [viewTextSwitch, viewTextSwitchSet] = useState(false);
 	const [selectParts, selectPartsSet] = useState<SelectItem[]>([]);
 	const [selectPattern, selectPatternSet] = useState<SelectItem[]>([]);
 	const [selectLevel, selectLevelSet] = useState<SelectItem[]>([]);
 	const [selectSports, selectSportsSet] = useState<SelectItem[]>([]);
 	const [userLevel, userLevelSet] = useState(0);
+	const [sportsTextSituation, sportsTextSituationSet] = useState(sportsText);
 
 	const selectPartList = SelectPartList;
 	const selectSportsPatternList = SelectSportsPatternList;
@@ -80,8 +84,14 @@ export default function SectionSports() {
 		if (selectLevel.length > 0 && setAi) {
 			setText += "で教えてください。";
 		}
+		sportsTextSituationSet(setText);
+		setSportsText(setText);
 		return setText;
 	};
+
+	useEffect(() => {
+		keyWord("ai");
+	},[selectSports,selectParts,selectPattern,selectLevel])
 
 	const changingParts = (check: boolean, label: string) => {
 		if (check && !checking(selectParts, label)) {
@@ -168,7 +178,7 @@ export default function SectionSports() {
 					style={{ objectFit: "cover", height: "auto" }}
 				/>
 				{viewTextSwitch && (
-					<Textarea value={keyWord("ai")} outerClassName="p-8" />
+					<Textarea value={sportsTextSituation} outerClassName="p-8" />
 				)}
 			</div>
 			<div className="flex justify-center p-2">

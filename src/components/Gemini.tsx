@@ -3,10 +3,13 @@ import { useState } from "react";
 import { Title3h } from "../stories/title3h/Title3h";
 import { Button } from "../stories/Button/Button";
 import { Textarea } from "../stories/TextArea/Textarea";
+import { Dialog } from "../stories/Dialog/Dialog";
 
 import ContentPlanFeedback from "./ContentPlanFeedback"
 
-import { GeminiResponse } from "../type/apiResponse";;
+import { useStoreSportsText } from "../store/sportText"
+
+import { GeminiResponse } from "../type/apiResponse";
 
 export default function Gemini() {
 	// const baseTextSize = 300;
@@ -14,6 +17,7 @@ export default function Gemini() {
 	// const [validationText, validationTextSet] = useState("");
 	// const [displayedChunks, displayedChunksSet] = useState<string[]>([]);
 	const [_displayedChunks, _displayedChunksSet] = useState<string>("");
+	const { sportsText } = useStoreSportsText();
 
 	// const setTextAction = (text: string) => {
 	// 	const chunks: string[] = [];
@@ -56,6 +60,33 @@ export default function Gemini() {
 		<div className={["gemini"].join(" ")}>
 			<div className="pb-2">
 				<Title3h title="ai [Gemini(google)] に質問する" />
+				<div className="pb-4">
+					<div className="flex flex-wrap">
+						<div className="mr-4">
+							<Dialog
+								label="計画を確認する"
+								type="button"
+								className=""
+								onChange={(value:boolean) => {
+								}}
+							>
+								<ContentPlanFeedback />
+							</Dialog>
+						</div>
+						<div>
+							<Dialog
+								label="スポーツの質問テキストを確認する"
+								type="button"
+								onChange={(value) => {
+								}}
+							>
+								<div className="p-8">
+									{sportsText !== "" ? sportsText : "質問を作成してください。"}
+								</div>
+							</Dialog>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div className="pb-4">
 				<div className="pb-8">
@@ -87,8 +118,6 @@ export default function Gemini() {
 						}}
 					></div>
 				</div>
-				ダイアログ化
-				<ContentPlanFeedback />
 			</div>
 		</div>
 	);
