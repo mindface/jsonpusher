@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import healthImage from "../assets/images/health.jpg";
 
@@ -12,17 +12,22 @@ import SelectPatternList from "../json/selectPatternList.json";
 import SelectLevelList from "../json/selectLevelList.json";
 import SelectHealthInfoCategoryList from "../json/selectHealthInfoCategoryList.json";
 
+import { useStoreHealthText } from "../store/healthText";
+
 import { copyClipbord } from "../lib/copyClipbord";
 
 type SelectList = { check: boolean; name: string };
 type SelectTextList = { check: boolean; list: string[] };
 
 export default function SectionHealth() {
+	const { healthText, setHealthText } = useStoreHealthText();
+
 	const [viewTextSwitch, viewTextSwitchSet] = useState(false);
 	const [selectParts, selectPartsSet] = useState<SelectList[]>([]);
 	const [selectPattern, selectPatternSet] = useState<SelectList[]>([]);
 	const [selectLevel, selectLevelSet] = useState<SelectList[]>([]);
 	const [selectSetText, selectSetTextSet] = useState<SelectTextList[]>([]);
+	const [healthTextSituation, healthTextSituationSet] = useState(healthText);
 	const selectPartList = SelectPartList;
 	const selectPatternList = SelectPatternList;
 	const selectLevelList = SelectLevelList;
@@ -77,9 +82,14 @@ export default function SectionHealth() {
 		) {
 			setText = "健康を保つことの前提で " + setText;
 		}
-
+		healthTextSituationSet(setText);
+		setHealthText(setText);
 		return setText;
 	};
+
+	useEffect(() => {
+		keyWord("ai");
+	},[selectParts,selectPattern,selectLevel]);
 
 	const changingParts = (check: boolean, name: string) => {
 		if (check && !checking(selectParts, name)) {
@@ -152,7 +162,7 @@ export default function SectionHealth() {
 					style={{ width: "auto", objectFit: "cover" }}
 				/>
 				{viewTextSwitch && (
-					<Textarea value={keyWord("ai")} outerClassName="p-8" />
+					<Textarea value={healthTextSituation} outerClassName="p-8" />
 				)}
 			</div>
 			<div className="select-box flex justify-center pt-4">

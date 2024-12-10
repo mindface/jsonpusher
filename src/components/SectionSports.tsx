@@ -91,7 +91,7 @@ export default function SectionSports() {
 
 	useEffect(() => {
 		keyWord("ai");
-	},[selectSports,selectParts,selectPattern,selectLevel])
+	},[selectSports,selectParts,selectPattern,selectLevel]);
 
 	const changingParts = (check: boolean, label: string) => {
 		if (check && !checking(selectParts, label)) {
@@ -279,7 +279,7 @@ export default function SectionSports() {
 							</li>
 						))}
 				</ul>
-				<ul className="select-level">
+				{/* <ul className="select-level">
 					{selectLevelList &&
 						selectLevelList.map((item) => (
 							<li className="p-2" key={item.id}>
@@ -291,7 +291,7 @@ export default function SectionSports() {
 								/>
 							</li>
 						))}
-				</ul>
+				</ul> */}
 			</div>
 			<div className="flex justify-end pb-2">
 				{/* <TextCommenter values={viewSubText} speed={200} interval={10000} /> */}
