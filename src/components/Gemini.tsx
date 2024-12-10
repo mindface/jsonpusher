@@ -8,6 +8,7 @@ import { Dialog } from "../stories/Dialog/Dialog";
 import ContentPlanFeedback from "./ContentPlanFeedback"
 
 import { useStoreSportsText } from "../store/sportText"
+import { useStoreHealthText } from "../store/healthText"
 
 import { GeminiResponse } from "../type/apiResponse";
 
@@ -18,6 +19,7 @@ export default function Gemini() {
 	// const [displayedChunks, displayedChunksSet] = useState<string[]>([]);
 	const [_displayedChunks, _displayedChunksSet] = useState<string>("");
 	const { sportsText } = useStoreSportsText();
+	const { healthText } = useStoreHealthText();
 
 	// const setTextAction = (text: string) => {
 	// 	const chunks: string[] = [];
@@ -73,15 +75,25 @@ export default function Gemini() {
 								<ContentPlanFeedback />
 							</Dialog>
 						</div>
-						<div>
+						<div className="mr-4">
 							<Dialog
 								label="スポーツの質問テキストを確認する"
 								type="button"
-								onChange={(value) => {
-								}}
+								onChange={(value) => {}}
 							>
 								<div className="p-8">
 									{sportsText !== "" ? sportsText : "質問を作成してください。"}
+								</div>
+							</Dialog>
+						</div>
+						<div>
+							<Dialog
+								label="健康の質問テキストを確認する"
+								type="button"
+								onChange={(value) => {}}
+							>
+								<div className="p-8">
+									{healthText !== "" ? healthText : "質問を作成してください。"}
 								</div>
 							</Dialog>
 						</div>

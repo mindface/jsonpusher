@@ -203,7 +203,7 @@ export default function SectionHealth() {
 						</li>
 					))}
 				</ul>
-				<ul className="select-info-category">
+				{/* <ul className="select-info-category">
 					{selectHealthInfoCategoryList.map((item) => (
 						<li className="p-2" key={item.id}>
 							<Ccheck
@@ -214,7 +214,7 @@ export default function SectionHealth() {
 							/>
 						</li>
 					))}
-				</ul>
+				</ul> */}
 			</div>
 			<div className="flex justify-end">
 				<Button
