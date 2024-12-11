@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import healthImage from "../assets/images/health.jpg";
 
@@ -10,7 +10,7 @@ import { Textarea } from "../stories/TextArea/Textarea";
 import SelectPartList from "../json/selectPartList.json";
 import SelectPatternList from "../json/selectPatternList.json";
 import SelectLevelList from "../json/selectLevelList.json";
-import SelectHealthInfoCategoryList from "../json/selectHealthInfoCategoryList.json";
+// import SelectHealthInfoCategoryList from "../json/selectHealthInfoCategoryList.json";
 
 import { useStoreHealthText } from "../store/healthText";
 
@@ -26,12 +26,12 @@ export default function SectionHealth() {
 	const [selectParts, selectPartsSet] = useState<SelectList[]>([]);
 	const [selectPattern, selectPatternSet] = useState<SelectList[]>([]);
 	const [selectLevel, selectLevelSet] = useState<SelectList[]>([]);
-	const [selectSetText, selectSetTextSet] = useState<SelectTextList[]>([]);
+	// const [selectSetText, selectSetTextSet] = useState<SelectTextList[]>([]);
 	const [healthTextSituation, healthTextSituationSet] = useState(healthText);
 	const selectPartList = SelectPartList;
 	const selectPatternList = SelectPatternList;
 	const selectLevelList = SelectLevelList;
-	const selectHealthInfoCategoryList = SelectHealthInfoCategoryList;
+	// const selectHealthInfoCategoryList = SelectHealthInfoCategoryList;
 
 	const checking = (
 		list: SelectList[] | SelectTextList[],
@@ -47,7 +47,7 @@ export default function SectionHealth() {
 		);
 	};
 
-	const keyWord = (setAi?: string) => {
+	const keyWord = useCallback((setAi?: string) => {
 		let setText = "";
 		const selectPartsArray: string[] = [];
 		selectParts.forEach((item) => {
@@ -70,11 +70,11 @@ export default function SectionHealth() {
 		if (selectLevel.length > 0 && setAi) {
 			setText += "で教えてください。";
 		}
-		selectSetText.forEach((item) => {
-			item.list.forEach((text) => {
-				setText += text;
-			});
-		});
+		// selectSetText.forEach((item) => {
+		// 	item.list.forEach((text) => {
+		// 		setText += text;
+		// 	});
+		// });
 		if (
 			selectParts.length > 0 ||
 			selectPattern.length > 0 ||
@@ -82,14 +82,16 @@ export default function SectionHealth() {
 		) {
 			setText = "健康を保つことの前提で " + setText;
 		}
-		healthTextSituationSet(setText);
-		setHealthText(setText);
 		return setText;
-	};
+	},[selectParts,selectPattern,selectLevel]);
 
 	useEffect(() => {
-		keyWord("ai");
-	},[selectParts,selectPattern,selectLevel]);
+		const newKeyWord = keyWord("ai");
+		if (newKeyWord !== healthTextSituation) {
+			healthTextSituationSet(newKeyWord);
+			setHealthText(newKeyWord);
+		}
+	},[keyWord,setHealthText,healthTextSituation]);
 
 	const changingParts = (check: boolean, name: string) => {
 		if (check && !checking(selectParts, name)) {
@@ -118,16 +120,16 @@ export default function SectionHealth() {
 		}
 	};
 
-	const changingSetText = (check: boolean, list: string[]) => {
-		if (check && !checking(selectSetText, list)) {
-			selectSetTextSet([...selectSetText, { check, list }]);
-		} else {
-			const _list = selectSetText.filter(
-				(item) => !item.list.some((text: string) => list.includes(text)),
-			);
-			selectSetTextSet(_list);
-		}
-	};
+	// const changingSetText = (check: boolean, list: string[]) => {
+	// 	if (check && !checking(selectSetText, list)) {
+	// 		selectSetTextSet([...selectSetText, { check, list }]);
+	// 	} else {
+	// 		const _list = selectSetText.filter(
+	// 			(item) => !item.list.some((text: string) => list.includes(text)),
+	// 		);
+	// 		selectSetTextSet(_list);
+	// 	}
+	// };
 
 	const copyAciton = () => {
 		const copyText = keyWord("ai");

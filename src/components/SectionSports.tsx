@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import Image from "next/image";
 import bicycleImage from "../assets/images/bicycle.jpg";
 
@@ -52,7 +52,7 @@ export default function SectionSports() {
 		return list.some((item: SelectItem) => item.label === name);
 	};
 
-	const keyWord = (setAi?: string) => {
+	const keyWord = useCallback((setAi?: string) => {
 		let setText = "";
 		const sportsArray: string[] = [];
 		const selectPartsArray: string[] = [];
@@ -84,14 +84,16 @@ export default function SectionSports() {
 		if (selectLevel.length > 0 && setAi) {
 			setText += "で教えてください。";
 		}
-		sportsTextSituationSet(setText);
-		setSportsText(setText);
 		return setText;
-	};
+	},[selectSports, selectParts, selectPattern, selectLevel]);
 
 	useEffect(() => {
-		keyWord("ai");
-	},[selectSports,selectParts,selectPattern,selectLevel]);
+		const newKeyWord = keyWord("ai");
+		if (newKeyWord !== sportsTextSituation) {
+			sportsTextSituationSet(newKeyWord);
+			setSportsText(newKeyWord);
+		}
+	},[keyWord, setSportsText,sportsTextSituation]);
 
 	const changingParts = (check: boolean, label: string) => {
 		if (check && !checking(selectParts, label)) {
@@ -279,7 +281,7 @@ export default function SectionSports() {
 							</li>
 						))}
 				</ul>
-				{/* <ul className="select-level">
+				<ul className="select-level">
 					{selectLevelList &&
 						selectLevelList.map((item) => (
 							<li className="p-2" key={item.id}>
@@ -291,7 +293,7 @@ export default function SectionSports() {
 								/>
 							</li>
 						))}
-				</ul> */}
+				</ul>
 			</div>
 			<div className="flex justify-end pb-2">
 				{/* <TextCommenter values={viewSubText} speed={200} interval={10000} /> */}

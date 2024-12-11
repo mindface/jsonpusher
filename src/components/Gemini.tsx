@@ -69,8 +69,7 @@ export default function Gemini() {
 								label="計画を確認する"
 								type="button"
 								className=""
-								onChange={(value:boolean) => {
-								}}
+								onChange={() => {}}
 							>
 								<ContentPlanFeedback />
 							</Dialog>
@@ -79,7 +78,7 @@ export default function Gemini() {
 							<Dialog
 								label="スポーツの質問テキストを確認する"
 								type="button"
-								onChange={(value) => {}}
+								onChange={() => {}}
 							>
 								<div className="p-8">
 									{sportsText !== "" ? sportsText : "質問を作成してください。"}
@@ -90,7 +89,7 @@ export default function Gemini() {
 							<Dialog
 								label="健康の質問テキストを確認する"
 								type="button"
-								onChange={(value) => {}}
+								onChange={() => {}}
 							>
 								<div className="p-8">
 									{healthText !== "" ? healthText : "質問を作成してください。"}
