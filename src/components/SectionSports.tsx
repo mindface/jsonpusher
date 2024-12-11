@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import Image from "next/image";
 import bicycleImage from "../assets/images/bicycle.jpg";
 
@@ -12,6 +12,8 @@ import { Title3h } from "../stories/title3h/Title3h";
 import { Dialog } from "../stories/Dialog/Dialog";
 
 import { copyClipbord } from "../lib/copyClipbord";
+
+import { useStoreSportsText } from "../store/sportText";
 
 import SelectPartList from "../json/selectPartList.json";
 import SelectSportsPatternList from "../json/selectSportsPatternList.json";
@@ -32,12 +34,14 @@ type SelectSportsPatternItem = {
 };
 
 export default function SectionSports() {
+	const { sportsText, setSportsText } = useStoreSportsText();
 	const [viewTextSwitch, viewTextSwitchSet] = useState(false);
 	const [selectParts, selectPartsSet] = useState<SelectItem[]>([]);
 	const [selectPattern, selectPatternSet] = useState<SelectItem[]>([]);
 	const [selectLevel, selectLevelSet] = useState<SelectItem[]>([]);
 	const [selectSports, selectSportsSet] = useState<SelectItem[]>([]);
 	const [userLevel, userLevelSet] = useState(0);
+	const [sportsTextSituation, sportsTextSituationSet] = useState(sportsText);
 
 	const selectPartList = SelectPartList;
 	const selectSportsPatternList = SelectSportsPatternList;
@@ -48,7 +52,7 @@ export default function SectionSports() {
 		return list.some((item: SelectItem) => item.label === name);
 	};
 
-	const keyWord = (setAi?: string) => {
+	const keyWord = useCallback((setAi?: string) => {
 		let setText = "";
 		const sportsArray: string[] = [];
 		const selectPartsArray: string[] = [];
@@ -81,7 +85,15 @@ export default function SectionSports() {
 			setText += "で教えてください。";
 		}
 		return setText;
-	};
+	},[selectSports, selectParts, selectPattern, selectLevel]);
+
+	useEffect(() => {
+		const newKeyWord = keyWord("ai");
+		if (newKeyWord !== sportsTextSituation) {
+			sportsTextSituationSet(newKeyWord);
+			setSportsText(newKeyWord);
+		}
+	},[keyWord, setSportsText,sportsTextSituation]);
 
 	const changingParts = (check: boolean, label: string) => {
 		if (check && !checking(selectParts, label)) {
@@ -168,10 +180,10 @@ export default function SectionSports() {
 					style={{ objectFit: "cover", height: "auto" }}
 				/>
 				{viewTextSwitch && (
-					<Textarea value={keyWord("ai")} outerClassName="p-8" />
+					<Textarea value={sportsTextSituation} outerClassName="p-8" />
 				)}
 			</div>
-			<div className="p-2">
+			<div className="flex justify-center p-2">
 				<Dialog label="スポーツ項目を選択する" type="button">
 					<div className="category-box--outer flex justify-center">
 						{selectSportsList &&
@@ -210,7 +222,7 @@ export default function SectionSports() {
 						</span>
 					))}
 			</div>
-			<div className="select-box flex pt-4">
+			<div className="select-box flex justify-center pt-4">
 				<ul className="select-parts pr-4">
 					{selectPartList &&
 						selectPartList.map((item) => (

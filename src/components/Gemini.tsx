@@ -3,6 +3,12 @@ import { useState } from "react";
 import { Title3h } from "../stories/title3h/Title3h";
 import { Button } from "../stories/Button/Button";
 import { Textarea } from "../stories/TextArea/Textarea";
+import { Dialog } from "../stories/Dialog/Dialog";
+
+import ContentPlanFeedback from "./ContentPlanFeedback"
+
+import { useStoreSportsText } from "../store/sportText"
+import { useStoreHealthText } from "../store/healthText"
 
 import { GeminiResponse } from "../type/apiResponse";
 
@@ -12,6 +18,8 @@ export default function Gemini() {
 	// const [validationText, validationTextSet] = useState("");
 	// const [displayedChunks, displayedChunksSet] = useState<string[]>([]);
 	const [_displayedChunks, _displayedChunksSet] = useState<string>("");
+	const { sportsText } = useStoreSportsText();
+	const { healthText } = useStoreHealthText();
 
 	// const setTextAction = (text: string) => {
 	// 	const chunks: string[] = [];
@@ -52,8 +60,44 @@ export default function Gemini() {
 
 	return (
 		<div className={["gemini"].join(" ")}>
-			<div className="">
-				<Title3h title="aiに質問する" />
+			<div className="pb-2">
+				<Title3h title="ai [Gemini(google)] に質問する" />
+				<div className="pb-4">
+					<div className="flex flex-wrap">
+						<div className="mr-4">
+							<Dialog
+								label="計画を確認する"
+								type="button"
+								className=""
+								onChange={() => {}}
+							>
+								<ContentPlanFeedback />
+							</Dialog>
+						</div>
+						<div className="mr-4">
+							<Dialog
+								label="スポーツの質問テキストを確認する"
+								type="button"
+								onChange={() => {}}
+							>
+								<div className="p-8">
+									{sportsText !== "" ? sportsText : "質問を作成してください。"}
+								</div>
+							</Dialog>
+						</div>
+						<div>
+							<Dialog
+								label="健康の質問テキストを確認する"
+								type="button"
+								onChange={() => {}}
+							>
+								<div className="p-8">
+									{healthText !== "" ? healthText : "質問を作成してください。"}
+								</div>
+							</Dialog>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div className="pb-4">
 				<div className="pb-8">

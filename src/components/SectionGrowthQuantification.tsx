@@ -51,19 +51,19 @@ export default function SectionGrowthQuantification() {
 					<div className="pb-4">
 						<Title3h title="次の計画" size="small" />
 					</div>
-					{nextPlans.map((plan) => (
-						<p key={`growthNextPlans${plan.connectId}`} className="pb-2">
+					{nextPlans.map((plan,index) => (
+						<p key={`growthNextPlans${plan.connectId}-${index}}`} className="pb-2">
 							{plan.title}
 						</p>
 					))}
-					<div className="pb-4">
+					{ nextPlans.length === 0 && <div className="pb-4">
 						<Button
 							label="次の計画を立てる"
 							onClick={() => {
 								goPlanAction();
 							}}
 						/>
-					</div>
+					</div>}
 				</div>
 				<div className="p-2">
 					<Textarea
