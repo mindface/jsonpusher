@@ -17,6 +17,11 @@
 	{
 		"pathId": 4,
 		"path": "/useGemini",
-		"name": "質問する"
+		"name": "質問する(gemin)"
+	},
+	{
+		"pathId": 5,
+		"path": "/useClaude",
+		"name": "質問する(claude)"
 	}
 ]

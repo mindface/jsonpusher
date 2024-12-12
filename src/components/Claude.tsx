@@ -10,8 +10,6 @@ import ContentPlanFeedback from "./ContentPlanFeedback"
 import { useStoreSportsText } from "../store/sportText"
 import { useStoreHealthText } from "../store/healthText"
 
-import { GeminiResponse } from "../type/apiResponse";
-
 export default function Claude() {
 	// const baseTextSize = 300;
 	const [sendTitle, sendTitleSet] = useState("");
@@ -31,7 +29,6 @@ export default function Claude() {
 			body: JSON.stringify({ prompt: sendTitle })
 		});
 		const data = await res.json();
-		console.log(data);
 		if(data.status <= 200){
 			_displayedChunksSet(textChange(data.content));
 		}
