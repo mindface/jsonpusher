@@ -1,8 +1,8 @@
 import { Anthropic } from '@anthropic-ai/sdk';
 import { NextResponse, type NextRequest } from "next/server";
-import {
-	sanitaizeText,
-} from "../../../lib/convertString";
+// import {
+// 	sanitaizeText,
+// } from "../../../lib/convertString";
 
 const client = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY
@@ -18,7 +18,7 @@ export async function GET() {
 
 export async function POST(reqest: NextRequest) {
 	const { prompt } = await reqest.json();
-	const _prompt = sanitaizeText(prompt);
+	// const _prompt = sanitaizeText(prompt);
 	console.log(prompt);
 	try {
 		const result = await client.messages.create({
