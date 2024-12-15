@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import FooterLogo from "../assets/images/footer_logo.png";
+import FooterLogo from "../../assets/images/footer_logo.png";
 
 export default function Footer() {
 	return (

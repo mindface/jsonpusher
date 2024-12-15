@@ -1,4 +1,4 @@
-import SectionUseAdvice from "../../components/SectionUseAdvice";
+import SectionUseAdvice from "../../../components/SectionUseAdvice";
 
 export default function useAdvice() {
 	return (
