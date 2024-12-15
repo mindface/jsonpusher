@@ -1,4 +1,4 @@
-import SectionGrowthQuantification from "../../components/SectionGrowthQuantification";
+import SectionGrowthQuantification from "../../../components/SectionGrowthQuantification";
 
 export default function growthQuantification() {
 	return (

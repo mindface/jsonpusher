@@ -1,4 +1,4 @@
-import SectionPracticeInformation from "../../components/SectionPracticeInformation";
+import SectionPracticeInformation from "../../../components/SectionPracticeInformation";
 
 export default function PracticeInformation() {
 	return (

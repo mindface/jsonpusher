@@ -4,8 +4,9 @@ import "./globals.css";
 
 import { SessionProvider } from "next-auth/react";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/common/Header";
+import Footer from "../components/common/Footer";
+import Breadcrumb from "../components/common/Breadcrumb";
 import SentEmailInfo from "../components/SentEmailInfo";
 import AdSense from "../components/AdSense";
 
@@ -37,6 +38,7 @@ export default function RootLayout({
 			>
 				<SessionProvider>
 					<Header />
+					<Breadcrumb />
 					{children}
 					<SentEmailInfo />
 					<AdSense />

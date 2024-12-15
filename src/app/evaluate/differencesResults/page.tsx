@@ -1,4 +1,4 @@
-import SectionDifferencesResults from "../../components/SectionDifferencesResults";
+import SectionDifferencesResults from "../../../components/SectionDifferencesResults";
 
 export default function differencesResults() {
 	return (

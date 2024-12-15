@@ -4,13 +4,13 @@ import Image from "next/image";
 
 import { signIn, signOut, useSession } from "next-auth/react";
 
-import { Menu } from "../stories/Menu/Menu";
-import { Button } from "../stories/Button/Button";
+import { Menu } from "../../stories/Menu/Menu";
+import { Button } from "../../stories/Button/Button";
 
-import pathList from "../json/menuPathList.json";
-import menuList from "../json/menuInfoList.json";
+import pathList from "../../json/menuPathList.json";
+import menuList from "../../json/menuInfoList.json";
 
-import Logo from "../assets/images/logo.png";
+import Logo from "../../assets/images/logo.png";
 
 export default function Header() {
 	const session = useSession();

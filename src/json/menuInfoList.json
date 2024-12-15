@@ -1,52 +1,52 @@
 [
 	{
 		"pathId": "overallEvaluation",
-		"path": "/overallEvaluation",
+		"path": "/evaluate/overallEvaluation",
 		"name": "評価を構造化して分析する"
 	},
 	{
 		"pathId": "levelUpPattern",
-		"path": "/levelUpPattern",
+		"path": "/evaluate/levelUpPattern",
 		"name": "レベルアップのパターン"
 	},
 	{
 		"pathId": "levelSkillComparison",
-		"path": "/levelSkillComparison",
+		"path": "/evaluate/levelSkillComparison",
 		"name": "スキルを比較するということ"
 	},
 	{
 		"pathId": "planFeedback",
-		"path": "/planFeedback",
+		"path": "/evaluate/planFeedback",
 		"name": "練習を計画すること"
 	},
 	{
 		"pathId": "nextPlanEvaluation",
-		"path": "/nextPlanEvaluation",
+		"path": "/evaluate/nextPlanEvaluation",
 		"name": "計画の評価を文字にする"
 	},
 	{
 		"pathId": "growthQuantification",
-		"path": "/growthQuantification",
+		"path": "/evaluate/growthQuantification",
 		"name": "成長を定量化する"
 	},
 	{
 		"pathId": "practiceInformation",
-		"path": "/practiceInformation",
+		"path": "/evaluate/practiceInformation",
 		"name": "練習と情報量の変化について"
 	},
 	{
 		"pathId": "differencesResults",
-		"path": "/differencesResults",
+		"path": "/evaluate/differencesResults",
 		"name": "微妙な差と結果からのフィードバックについて"
 	},
 	{
 		"pathId": "useAdvice",
-		"path": "/useAdvice",
+		"path": "/evaluate/useAdvice",
 		"name": "アドバイスを使うことと評価"
 	},
 	{
 		"pathId": "updateInformationExperience",
-		"path": "/updateInformationExperience",
+		"path": "/evaluate/updateInformationExperience",
 		"name": "経験から情報を更新"
 	}
 ]

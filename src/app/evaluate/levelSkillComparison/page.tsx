@@ -1,4 +1,4 @@
-import SectionSkillComparison from "../../components/SectionSkillComparison";
+import SectionSkillComparison from "../../../components/SectionSkillComparison";
 
 export default function LevelSkillComparison() {
 	return (
