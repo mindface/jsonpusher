@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Title3h } from "../stories/title3h/Title3h";
+import { Title3h } from "../stories/Title3h/Title3h";
 import { InputRange } from "../stories/InputRange/InputRange";
 import { Textarea } from "../stories/TextArea/Textarea";
 import { Button } from "../stories/Button/Button";

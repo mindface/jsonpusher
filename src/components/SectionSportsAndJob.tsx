@@ -5,7 +5,7 @@ import healthImage from "../assets/images/health.jpg";
 
 import { Ccheck } from "../stories/Ccheck/Ccheck";
 import { Button } from "../stories/Button/Button";
-import { Title3h } from "../stories/title3h/Title3h";
+import { Title3h } from "../stories/Title3h/Title3h";
 import { Textarea } from "../stories/TextArea/Textarea";
 import { useStoreHealthText } from "../store/healthText";
 

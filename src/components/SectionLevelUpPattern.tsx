@@ -1,6 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
-import { Title3h } from "../stories/title3h/Title3h";
+import { Title3h } from "../stories/Title3h/Title3h";
 import { InputRange } from "../stories/InputRange/InputRange";
 import { Select } from "../stories/Select/Select";
 

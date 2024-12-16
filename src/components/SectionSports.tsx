@@ -7,7 +7,7 @@ import { Ccheck } from "../stories/Ccheck/Ccheck";
 import { Button } from "../stories/Button/Button";
 import { InputRange } from "../stories/InputRange/InputRange";
 import { Textarea } from "../stories/TextArea/Textarea";
-import { Title3h } from "../stories/title3h/Title3h";
+import { Title3h } from "../stories/Title3h/Title3h";
 // import { TextCommenter } from "../stories/TextComment/TextCommenter";
 import { Dialog } from "../stories/Dialog/Dialog";
 

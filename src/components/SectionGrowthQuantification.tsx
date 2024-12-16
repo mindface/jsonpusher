@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Title3h } from "../stories/title3h/Title3h";
+import { Title3h } from "../stories/Title3h/Title3h";
 import { Textarea } from "../stories/TextArea/Textarea";
 import { Button } from "../stories/Button/Button";
 import { useStoreNextPlan } from "../store/planNext";

@@ -1,4 +1,4 @@
-import { Title3h } from "../stories/title3h/Title3h";
+import { Title3h } from "../stories/Title3h/Title3h";
 
 import ContentPlanFeedback from "./ContentPlanFeedback";
 

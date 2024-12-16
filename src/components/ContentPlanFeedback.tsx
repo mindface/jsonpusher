@@ -1,5 +1,5 @@
 "use client";
-import { Title3h } from "../stories/title3h/Title3h";
+import { Title3h } from "../stories/Title3h/Title3h";
 import { Button } from "../stories/Button/Button";
 import { Input } from "../stories/Input/Input";
 
