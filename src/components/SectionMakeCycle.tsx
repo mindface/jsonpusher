@@ -1,6 +1,3 @@
-import { signIn, signOut, useSession } from "next-auth/react";
-import Image from "next/image";
-import { Button } from "../stories/Button/Button";
 import { Title3h } from "../stories/Title3h/Title3h";
 import { useRouter } from "next/navigation";
 

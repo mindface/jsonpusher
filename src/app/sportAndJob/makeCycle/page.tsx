@@ -1,4 +1,4 @@
-import SectionSportsAndJob from "../../../components/SectionSportsAndJob";
+// import SectionSportsAndJob from "../../../components/SectionSportsAndJob";
 
 export default function MakeCycle() {
 	return (
