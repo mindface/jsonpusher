@@ -1,5 +1,5 @@
 "use client";
-import { Title3h } from "../stories/Title3h/Title3h";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { Button } from "../stories/Button/Button";
 import { Input } from "../stories/Input/Input";
 
@@ -141,7 +141,7 @@ export default function ContentPlanFeedback() {
 					/>
 				</div>
 				<div className="pb-4">
-					<Title3h title="計画の作成" />
+					<Titleline3h title="計画の作成" />
 				</div>
 				<div className="flex">
 					<div className="pb-8 pr-8 w-[50%]">

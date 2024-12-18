@@ -1,5 +1,5 @@
 import { useRouter } from "next/navigation";
-import { Title3h } from "../stories/Title3h/Title3h";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { Button } from "../stories/Button/Button";
 
 export default function SectionValuationAssessment() {
@@ -11,7 +11,7 @@ export default function SectionValuationAssessment() {
 
 	return (
 		<section className="section-level-up">
-			<Title3h title="評価に関してどう変化させるか。" />
+			<Titleline3h title="評価に関してどう変化させるか。" />
 			<div className="details">
 				<p className="text pb-2">
 					評価について色々な方法が存在しています。以下が例になります。
@@ -38,7 +38,7 @@ export default function SectionValuationAssessment() {
 				</div>
 				<div className="details-result p-4 pb-8">
 				</div>
-				<Title3h title="選択した評価に関して情報を評価すること" />
+				<Titleline3h title="選択した評価に関して情報を評価すること" />
 				<div className="mb-8 p-4 border rounded-lg max-w-[640px]">
 					<p className="text pb-2">
 						最初は、とりあえず「本に記述していた」ことや「著名な人が言っている」から、という基準かもしれませんが、徐々に自分で試したことから変更していきましょう。

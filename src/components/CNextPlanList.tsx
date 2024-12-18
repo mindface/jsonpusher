@@ -1,4 +1,4 @@
-import { Title3h } from "../stories/Title3h/Title3h";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { Plan } from "../type/plan";
 
 import CNextPlanItem from "./CNextPlanItem";
@@ -12,7 +12,7 @@ export default function CNextPlanList(props: Props) {
 
 	return (
 		<div className="pb-4">
-			<Title3h title="次の計画の内容" size="small" />
+			<Titleline3h title="次の計画の内容" size="small" />
 			{items.map((plan) => (
 				<CNextPlanItem key={`CNextPlanItem${plan.id}`} item={plan} />
 			))}

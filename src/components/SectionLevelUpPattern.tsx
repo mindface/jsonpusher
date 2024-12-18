@@ -1,6 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
-import { Title3h } from "../stories/Title3h/Title3h";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { InputRange } from "../stories/InputRange/InputRange";
 import { Select } from "../stories/Select/Select";
 
@@ -19,7 +19,7 @@ export default function SectionLevelUpPattern() {
 
 	return (
 		<section className="section-level-up">
-			<Title3h title="成長していく過程と質問の向上" size="large" />
+			<Titleline3h title="成長していく過程と質問の向上" size="large" />
 			<div className="details">
 				<p className="text pb-2">
 					経験が浅いと言葉から使える記憶が少ないものです。

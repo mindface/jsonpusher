@@ -1,4 +1,4 @@
-import { Title3h } from "../stories/Title3h/Title3h";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
 import ContentPlanFeedback from "./ContentPlanFeedback";
 
@@ -6,7 +6,7 @@ export default function SectionPlanFeedback() {
 
 	return (
 		<section className="section-skill-comparison">
-			<Title3h title="計画のフィードバック" size="large" />
+			<Titleline3h title="計画のフィードバック" size="large" />
 			<div className="details">
 				<p className="text pb-2">計画の設計していくことになります。</p>
 				<p className="text pb-10">

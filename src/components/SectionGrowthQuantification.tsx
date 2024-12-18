@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Title3h } from "../stories/Title3h/Title3h";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { Textarea } from "../stories/TextArea/Textarea";
 import { Button } from "../stories/Button/Button";
 import { useStoreNextPlan } from "../store/planNext";
@@ -31,7 +31,7 @@ export default function SectionGrowthQuantification() {
 
 	return (
 		<section className="section-skill-comparison">
-			<Title3h title="成長の定義を決める" size="large" />
+			<Titleline3h title="成長の定義を決める" size="large" />
 			<div className="details w-[460px] sm:w-[640px] mb-8 p-4 border rounded-lg">
 				<p className="text pb-2">
 					成長することがシュートを決める確率を上げることだったり、フォームの変更からヒットを打つことだったりします。
@@ -49,7 +49,7 @@ export default function SectionGrowthQuantification() {
 			<div className="flex">
 				<div className="w-[460px] sm:w-[580px] p-2">
 					<div className="pb-4">
-						<Title3h title="次の計画" size="small" />
+						<Titleline3h title="次の計画" size="small" />
 					</div>
 					{nextPlans.map((plan,index) => (
 						<p key={`growthNextPlans${plan.connectId}-${index}}`} className="pb-2">

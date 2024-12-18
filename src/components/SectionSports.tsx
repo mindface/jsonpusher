@@ -7,7 +7,7 @@ import { Ccheck } from "../stories/Ccheck/Ccheck";
 import { Button } from "../stories/Button/Button";
 import { InputRange } from "../stories/InputRange/InputRange";
 import { Textarea } from "../stories/TextArea/Textarea";
-import { Title3h } from "../stories/Title3h/Title3h";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 // import { TextCommenter } from "../stories/TextComment/TextCommenter";
 import { Dialog } from "../stories/Dialog/Dialog";
 
@@ -263,7 +263,7 @@ export default function SectionSports() {
 					{selectSportsPatternListForLevel &&
 						selectSportsPatternListForLevel.map((categoryItem) => (
 							<li className="p-2" key={categoryItem.categoryId}>
-								<Title3h title={categoryItem.categoryLabel} />
+								<Titleline3h title={categoryItem.categoryLabel} />
 								<ul className="level-list">
 									{categoryItem.list.map((levelItem) => (
 										<li className="level-item pb-2" key={levelItem.id}>

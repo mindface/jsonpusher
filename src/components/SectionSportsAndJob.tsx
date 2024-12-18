@@ -1,17 +1,17 @@
-import { Title3h } from "../stories/Title3h/Title3h";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { CLink } from "../stories/CLink/CLink";
 
 export default function SectionSportsAndJob() {
 	return (
 		<section className="section-health">
-			<Title3h title="スポーツと働くことの接点" size="large" />
+			<Titleline3h title="スポーツと働くことの接点" size="large" />
 			<div className="p-4 mb-4 border rounded-lg">
 				<p className="pb-4">「スポーツは将来役に立つ」という内容を言語化しています。</p>
 				<p className="pb-4">自分の努力がパフォーマンスに影響を再現可能で安定させるにはどうするかも、前提にしてみてください。</p>
 				<p className="pb-4">身体の状況が変化すると設計プロセスも変化していきます。調整方法も考えてみてください。</p>
 			</div>
 			<div className="p-4 mb-4 border rounded-lg">
-				<Title3h title="改善のサイクル化" />
+				<Titleline3h title="改善のサイクル化" />
 				<p className="pb-4">改善方法について考えることは多いでしょう。何が課題となるでしょうか。</p>
 				<p className="pb-4">PDCAサイクルはよく聞きますが、スポーツでもミクロに[計画][実行][検証][改善]のサイクルを利用します。</p>
 				<p className="pb-4">練習中頭の中でうまくいかなかった点を修正して、別のフォームに改善して再度実行することはあるでしょう。</p>
@@ -25,13 +25,13 @@ export default function SectionSportsAndJob() {
 				<p className="pb-4">働くときも同様です。そのフレームワークに関して考えてみましょう。</p>
 			</div>
 			<div className="p-4 mb-4 border rounded-lg">
-				<Title3h title="問題を細分化" />
+				<Titleline3h title="問題を細分化" />
 				<p className="pb-4">これらの方法で解決できないときにする問題を細分化します。</p>
 				<p className="pb-4">前提など含めて問題を解決できなければ、自分で解決する単位に落とし込みます。</p>
 				<p className="pb-4">ボールを投げる時、肩と腕、指先など注意してフォームを意識して結果が変化したか考えます。</p>
 			</div>
 			<div className="p-4 mb-4 border rounded-lg">
-				<Title3h title="シンプルに捉えるタイミング" />
+				<Titleline3h title="シンプルに捉えるタイミング" />
 				<p className="pb-4">問題を細分化して、解決できない場合にはシンプルな解決方法へ意識を変化させます。</p>
 				<p className="pb-4">部分的な手段をシンプルにして、全体を調整することが目的です。</p>
 				<p className="pb-4">細かく管理しすぎて、全体のバランスが悪くなるケースがあります。</p>

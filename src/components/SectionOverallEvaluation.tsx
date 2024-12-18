@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Title3h } from "../stories/Title3h/Title3h";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { InputRange } from "../stories/InputRange/InputRange";
 import { Textarea } from "../stories/TextArea/Textarea";
 import { Button } from "../stories/Button/Button";
@@ -42,7 +42,7 @@ export default function SectionOverallEvaluation() {
 
 	return (
 		<section className="section-level-up">
-			<Title3h title="自分が評価したことを分析する" size="large" />
+			<Titleline3h title="自分が評価したことを分析する" size="large" />
 			<div className="details">
 				<div className="text flex pb-4">
 					自分で考えた改善方法を評価してみましょう。

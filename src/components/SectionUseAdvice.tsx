@@ -1,7 +1,7 @@
 "use client";
 import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { Title3h } from "../stories/Title3h/Title3h";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { Button } from "../stories/Button/Button";
 import { InputRange } from "../stories/InputRange/InputRange";
 
@@ -24,7 +24,7 @@ export default function SectionUseAdvice() {
 
 	return (
 		<section className="section-level-up">
-			<Title3h title="アドバイスをどう使うか" size="large" />
+			<Titleline3h title="アドバイスをどう使うか" size="large" />
 			<div className="details">
 				<p className="text pb-2">
 					アドバイスに関しては、必ず検証してみることが普通でしょうか。
@@ -61,7 +61,7 @@ export default function SectionUseAdvice() {
 						</div>
 					))}
 				</div>
-				<Title3h title="アドバイスは経験があると1つのパタンになる" />
+				<Titleline3h title="アドバイスは経験があると1つのパタンになる" />
 				<div className="mb-4 p-4 border rounded-lg max-w-[640px]">
 					<p className="text pb-4">
 						誰かからアドバイスされて、練習した経験があるのではないでしょうか。

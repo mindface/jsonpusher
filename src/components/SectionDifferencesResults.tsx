@@ -1,7 +1,7 @@
 "use client";
 import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { Title3h } from "../stories/Title3h/Title3h";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { Button } from "../stories/Button/Button";
 import { InputRange } from "../stories/InputRange/InputRange";
 import { Select } from "../stories/Select/Select";
@@ -26,7 +26,7 @@ export default function SectionDifferencesResults() {
 
 	return (
 		<section className="section-level-up">
-			<Title3h title="調整した差で結果をイメージすること" size="large" />
+			<Titleline3h title="調整した差で結果をイメージすること" size="large" />
 			<div className="details">
 				<p className="text pb-2">
 					運動の場合にわずかな変化で結果が大きく影響するケースがあります。
@@ -73,7 +73,7 @@ export default function SectionDifferencesResults() {
 						</div>
 					))}
 				</div>
-				<Title3h title="調整した計画から結果をイメージして利用するようにすること" />
+				<Titleline3h title="調整した計画から結果をイメージして利用するようにすること" />
 				<div className="mb-8 p-4 border rounded-lg max-w-[640px]">
 					<p className="text pb-2">
 						計画と結果に対して、わずかな差から目的の結果になるかどうか変化するケースがあります。

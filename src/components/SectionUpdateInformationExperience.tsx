@@ -1,7 +1,7 @@
 "use client";
 import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { Title3h } from "../stories/Title3h/Title3h";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { Button } from "../stories/Button/Button";
 import { InputRange } from "../stories/InputRange/InputRange";
 
@@ -31,7 +31,7 @@ export default function SectionUpdateInformationExperience() {
 
 	return (
 		<section className="section-level-up">
-			<Title3h title="経験と情報の更新" size="large" />
+			<Titleline3h title="経験と情報の更新" size="large" />
 			<div className="details">
 				<p className="text pb-2">経験が増えると使えるデータがあります。</p>
 				<p className="text pb-2">
@@ -67,7 +67,7 @@ export default function SectionUpdateInformationExperience() {
 						</div>
 					))}
 				</div>
-				<Title3h title="経験が変化して調整する情報設計" />
+				<Titleline3h title="経験が変化して調整する情報設計" />
 				<div className="mb-8 p-4 border rounded-lg max-w-[640px]">
 					<p className="text pb-2">
 						経験が増えて、過去のイメージを使い改善させることがあるでしょう。

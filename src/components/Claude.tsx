@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Title3h } from "../stories/Title3h/Title3h";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { Button } from "../stories/Button/Button";
 import { Textarea } from "../stories/TextArea/Textarea";
 import { Dialog } from "../stories/Dialog/Dialog";
@@ -37,7 +37,7 @@ export default function Claude() {
 	return (
 		<div className={["gemini"].join(" ")}>
 			<div className="pb-2">
-				<Title3h title="ai [Claude] に質問する" />
+				<Titleline3h title="ai [Claude] に質問する" />
 				<div className="pb-4">
 					<div className="flex flex-wrap">
 						<div className="mr-4">
