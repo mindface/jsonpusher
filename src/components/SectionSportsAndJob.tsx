@@ -1,20 +1,7 @@
-"use client";
-import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
-import healthImage from "../assets/images/health.jpg";
-
-import { Ccheck } from "../stories/Ccheck/Ccheck";
-import { Button } from "../stories/Button/Button";
 import { Title3h } from "../stories/Title3h/Title3h";
-import { Textarea } from "../stories/TextArea/Textarea";
-import { useStoreHealthText } from "../store/healthText";
-
-import { copyClipbord } from "../lib/copyClipbord";
-
+import { CLink } from "../stories/CLink/CLink";
 
 export default function SectionSportsAndJob() {
-	const { healthText, setHealthText } = useStoreHealthText();
-
 	return (
 		<section className="section-health">
 			<Title3h title="スポーツと働くことの接点" size="large" />
@@ -50,6 +37,13 @@ export default function SectionSportsAndJob() {
 				<p className="pb-4">細かく管理しすぎて、全体のバランスが悪くなるケースがあります。</p>
 				<p className="pb-4">シンプルにしていくことで、全体から目的へ調整しやすくします。</p>
 			</div>
+			<div className="p-4">
+				<CLink
+					type="button"
+					label="方法を作成する"
+					href="/sportAndJob/makeCycle"
+				/>
+			</div>			
 		</section>
 	);
 }
