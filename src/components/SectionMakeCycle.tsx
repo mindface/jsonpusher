@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation";
 export default function SectionMakeCycle() {
 	const router = useRouter();
 
-	const goPlanAction = () => {
-		router.push("/planFeedback");
-	};
+	// const goPlanAction = () => {
+	// 	router.push("/planFeedback");
+	// };
 	
 	return (
 		<section className="section-make-cycle">
