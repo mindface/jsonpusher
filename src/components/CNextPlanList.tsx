@@ -1,4 +1,3 @@
-"use client";
 import { Title3h } from "../stories/Title3h/Title3h";
 import { Plan } from "../type/plan";
 
