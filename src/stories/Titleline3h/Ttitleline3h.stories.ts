@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Title3h } from "./Title3h";
+import { Titleline3h } from "./Titleline3h";
 
 const meta = {
-	title: "Example/Title3h",
-	component: Title3h,
+	title: "Example/Titleline3h",
+	component: Titleline3h,
 	tags: ["autodocs"],
 	parameters: {
 		layout: "fullscreen",
@@ -12,7 +12,7 @@ const meta = {
 	args: {
 		title: "title h3",
 	},
-} satisfies Meta<typeof Title3h>;
+} satisfies Meta<typeof Titleline3h>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
