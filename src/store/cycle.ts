@@ -1,39 +1,81 @@
 import { create } from "zustand";
-import { Cycle } from "../type/cycle";
+import { Cycle, CycleColumn } from "../type/cycle";
 
 interface StoreCycle {
+	cycleColumns:CycleColumn[];
 	cycles: Cycle[];
 	isLoading: boolean;
 
-	getCycle: () => void;
+	getCycleColumns: () => void;
 	setCycle: (cycles: Cycle[]) => void;
-	addCycle: (title: string, details: string) => void | { saveResult: string };
+  addCycleColumns: (title: string, detail: string) => void;
+	addCycle: (title: string, detail: string) => void | { saveResult: string };
 	updateCycle: (cycle: Cycle) => void | { saveResult: string };
 	deleteCycle: (cyclesId: number) => void;
 	reset: () => void;
 }
 
 export const useStoreCycle = create<StoreCycle>((set, get) => ({
-	cycles: [],
+	cycleColumns: [ {
+		cycleColumnId: "list1",
+		title: "cycleColumn title1",
+		detail: "cycleColumn detail1",
+		cards: []
+	}],
+	cycles: [
+			{
+				id: 1,
+				title: "title",
+				detail: "detail",
+				connectId: "0",
+				userId: "0",
+				groupId: "list1"
+			},
+			{
+				id: 2,
+				title: "title2",
+				detail: "detail",
+				connectId: "0",
+				userId: "0",
+				groupId: "list2"
+			}
+	],
 	isLoading: false,
-	getCycle: () => {},
+	getCycleColumns: () => {},
 	setCycle: (cycles) => {
 		set({
 			cycles: cycles,
 		});
 	},
-	addCycle: (title: string, details: string) => {
-		const cycles = get().cycles;
-		const addCycle = {
-			id: cycles.length+1,
-			title: title,
-			detail: details,
-			connectId: "0",
-			userId: "0"
+	addCycleColumns: (title: string, detail: string) => {
+		const cycleColumns = get().cycleColumns;
+		const addColumn = {
+			cycleColumnId: `list${cycleColumns.length+1}`,
+			title: "title1",
+			detail: "detail1",
+			cards: []
 		};
-		const list = [...get().cycles, addCycle];
+		console.log(addColumn);
 		set({
-			cycles: list,
+			cycleColumns: [...cycleColumns,addColumn],
+		});
+	},
+	addCycle: (title: string, detail: string) => {
+		let counter = 0;
+		const cycleColumns = get().cycleColumns;
+		// ToDo DBに保存する場合にIDの設定は変更する
+		cycleColumns.forEach((cycleColumn) => {  counter = counter + cycleColumn.cards.length });
+		const addCycle = {
+			id: counter+1,
+			title: title,
+			detail: detail,
+			connectId: "0",
+			userId: "0",
+			groupId: "list1"
+		};
+		cycleColumns[0].cards = [...cycleColumns[0].cards,addCycle];
+		set({
+			cycleColumns: cycleColumns,
 		});
 	},
 	updateCycle: (updatePlan: Cycle) => {

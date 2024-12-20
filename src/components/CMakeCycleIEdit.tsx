@@ -36,7 +36,8 @@ export default function CMakeCycleIEdit(props: Props) {
 				title: cycleTitle,
 				detail: cycleDetail,
 				connectId: "0",
-				userId: "0"
+				userId: "0",
+				groupId: "list1"
 			};
 			updateCycle(updateItem);
 		}
