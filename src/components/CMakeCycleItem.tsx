@@ -18,7 +18,7 @@ export default function CMakeCycleItem(props: Props) {
 	const [itemView, itemViewSet] = useState(false);
 	const { item } = props;
 
-  const { attributes, listeners, setNodeRef, transform } = useSortable({
+  const { attributes, listeners, setNodeRef, transform, setActivatorNodeRef } = useSortable({
     id: item.id
   });
 	
@@ -32,12 +32,18 @@ export default function CMakeCycleItem(props: Props) {
   };	
 
 	return (
-		<div ref={setNodeRef} {...attributes} {...listeners} style={style} className={["next-plan-item", "p-2"].join(" ")}>
+		<div ref={setNodeRef} style={style} className={["make-cycle-item", "p-2"].join(" ")}>
 			<div className="flex justify-between">
+				<span
+				  ref={setActivatorNodeRef}
+					{...attributes}
+					{...listeners}
+				>+</span>
 				<h4 className="next-plan-item__title pb-2">{item.title}</h4>
 				<Button
 					label={itemView ? "close" : "view edit"}
 					size="small"
+					className="text-black"
 					onClick={() => {
 						itemViewSet(!itemView);
 					}}

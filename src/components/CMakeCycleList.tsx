@@ -1,18 +1,18 @@
 "use client";
-import { useState ,useMemo, useEffect } from "react";
+import { useState,useEffect } from "react";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
-import { Cycle, CycleColumn } from "../type/cycle";
 import {
   closestCorners,
   DndContext,
   KeyboardSensor,
   PointerSensor,
+	MouseSensor,
   useSensor,
   useSensors,
   DragEndEvent,
   DragOverEvent
 } from "@dnd-kit/core";
-import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
+import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 
 import CMakeCycleItem from "./CMakeCycleItem";
 import { useStoreCycle } from "../store/cycle";
@@ -20,36 +20,17 @@ import { useStoreCycle } from "../store/cycle";
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 import { useDroppable } from "@dnd-kit/core";
 
-type Props = {
-	columns: CycleColumn[];
-	cycles: Cycle[];
-};
-
-export default function CMakeCycleList(props: Props) {
-	const { cycleColumns, cycles } = useStoreCycle();
+export default function CMakeCycleList() {
+	const { setCycleColumns, cycleColumns, settingCycleColumns  } = useStoreCycle();
 	const { setNodeRef } = useDroppable({ id: 0 });
-	const [frameBoxList, frameBoxListSet] = useState([{frameName: "list1"},{frameName: "list2"}]);
-	const [cycleKanbanItem, cycleKanbanItemSet] = useState(cycleColumns);
+	const [stateView,stateViewSet] = useState(true);
 
-	// useEffect(() => {
-	// 	cycleKanbanItemSet(cycleColumns);
-	// }, [cycleColumns]);
-
-	const cycleKanbanList = useMemo(() => {
-		const reColumns: CycleColumn[] = [];
-		cycleColumns.forEach((column,index) => {
-			reColumns.push(column);
-			cycles.forEach((cycle) => {
-				if(column.cycleColumnId === cycle.groupId) {
-					const list:Cycle[] = [];
-					console.log(cycle);
-					list.push(cycle);
-					reColumns[index].cards = list;
-				}
-			});
-		})
-		return reColumns;
-	},[cycleColumns,cycles]);
+	useEffect(() => {
+		if(stateView) {
+			stateViewSet(false);
+			settingCycleColumns();
+		}
+	}, [stateView,settingCycleColumns]);
 
 	const handleDragOver = (event: DragOverEvent) => {
 		console.log("handleDragOver");
@@ -57,12 +38,37 @@ export default function CMakeCycleList(props: Props) {
 	}
 
 	const handleDragEnd = (event: DragEndEvent) => {
-		console.log("handleDragEnd");
-		console.log(event);
-		console.log(event.active.data.current?.sortable.containerId);
+		const { active, over } = event;
+		const activeId = Number(active.id);
+		const overId = Number(over?.id);
+		const targetId = event.active.data.current?.sortable.containerId;
+		const reCycleKanbanList = cycleColumns.map((item) => {
+			if(item.cycleColumnId === targetId) {
+				console.log(targetId);
+				let moveAactiveId = 0;
+				let moveOverId = 0;
+				item.cards.forEach((card,index) => {
+					if(card.id === activeId) moveAactiveId = index;
+					if(card.id === overId) moveOverId = index;
+				});
+				if(overId) {
+					const element = item.cards.splice(moveAactiveId,1)[0];
+					item.cards.splice(moveOverId,0,element);
+				}
+			}
+			return item;
+		});
+		setCycleColumns(reCycleKanbanList);
 	}
 
+  const mouseSensor = useSensor(MouseSensor, {
+    activationConstraint: {
+      distance: 5,
+    },
+  });
+
   const sensors = useSensors(
+		mouseSensor,
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates
@@ -74,15 +80,15 @@ export default function CMakeCycleList(props: Props) {
 			<div className="title-line-box pb-8">
 				<Titleline3h title="フレームワークのリスト" size="small" />
 			</div>
-			<div className="flex cycle-list">
+			<div className="flex cycle-list w-[100%]">
 				<DndContext
 					sensors={sensors}
 					collisionDetection={closestCorners}
 					onDragEnd={handleDragEnd}
 					onDragOver={handleDragOver}
 				>
-					{cycleKanbanList.map((item) => 
-						<div key={item.cycleColumnId} className="cycle-item w-[33.333%] border rounded-lg mx-4">
+					{cycleColumns.map((item) => 
+						<div key={item.cycleColumnId} className="cycle-item border rounded-lg mx-4 w-[100%]">
 							<SortableContext id={item.cycleColumnId} items={item.cards} strategy={rectSortingStrategy}>
 								<div ref={setNodeRef}>
 									{item.cards.map((cycle) => (

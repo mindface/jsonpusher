@@ -7,7 +7,8 @@ interface StoreCycle {
 	isLoading: boolean;
 
 	getCycleColumns: () => void;
-	setCycle: (cycles: Cycle[]) => void;
+	settingCycleColumns: () => void;
+	setCycleColumns: (cycleColumns: CycleColumn[]) => void;
   addCycleColumns: (title: string, detail: string) => void;
 	addCycle: (title: string, detail: string) => void | { saveResult: string };
 	updateCycle: (cycle: Cycle) => void | { saveResult: string };
@@ -25,8 +26,8 @@ export const useStoreCycle = create<StoreCycle>((set, get) => ({
 	cycles: [
 			{
 				id: 1,
-				title: "title",
-				detail: "detail",
+				title: "Aモデル",
+				detail: "動作検証",
 				connectId: "0",
 				userId: "0",
 				groupId: "list1"
@@ -38,62 +39,97 @@ export const useStoreCycle = create<StoreCycle>((set, get) => ({
 				connectId: "0",
 				userId: "0",
 				groupId: "list2"
+			},
+			{
+				id: 3,
+				title: "title3",
+				detail: "detail",
+				connectId: "0",
+				userId: "0",
+				groupId: "list2"
+			},
+			{
+				id: 5,
+				title: "title4",
+				detail: "detail",
+				connectId: "0",
+				userId: "0",
+				groupId: "list2"
 			}
 	],
 	isLoading: false,
 	getCycleColumns: () => {},
-	setCycle: (cycles) => {
+	settingCycleColumns: () => {
+		const cycleColumns = get().cycleColumns;
+		const cycles = get().cycles;
+		const reColumns: CycleColumn[] = cycleColumns.map((column) => {
+			const list:Cycle[] = [];
+			cycles.forEach((cycle) => {
+				if(column.cycleColumnId === cycle.groupId) {
+					list.push(cycle);
+				}
+			});
+			column.cards = list;
+			return column;
+		});
 		set({
-			cycles: cycles,
+			cycleColumns: reColumns,
+		});
+	},
+	setCycleColumns: (cycleColumns) => {
+		set({
+			cycleColumns: cycleColumns,
 		});
 	},
 	addCycleColumns: (title: string, detail: string) => {
 		const cycleColumns = get().cycleColumns;
 		const addColumn = {
 			cycleColumnId: `list${cycleColumns.length+1}`,
-			title: "title1",
-			detail: "detail1",
+			title: title,
+			detail: detail,
 			cards: []
 		};
-		console.log(addColumn);
 		set({
 			cycleColumns: [...cycleColumns,addColumn],
 		});
 	},
 	addCycle: (title: string, detail: string) => {
-		let counter = 0;
-		const cycleColumns = get().cycleColumns;
+		let cycles = get().cycles;
 		// ToDo DBに保存する場合にIDの設定は変更する
-		cycleColumns.forEach((cycleColumn) => {  counter = counter + cycleColumn.cards.length });
 		const addCycle = {
-			id: counter+1,
+			id: cycles.length+1,
 			title: title,
 			detail: detail,
 			connectId: "0",
 			userId: "0",
 			groupId: "list1"
 		};
-		cycleColumns[0].cards = [...cycleColumns[0].cards,addCycle];
+		cycles = [...cycles,addCycle];
 		set({
-			cycleColumns: cycleColumns,
+			cycles: cycles,
 		});
+		get().settingCycleColumns();
 	},
-	updateCycle: (updatePlan: Cycle) => {
-		const list = get().cycles.map((cycle) => {
-			if (cycle.id === updatePlan.id) {
-				return updatePlan;
+	updateCycle: (updateCycle: Cycle) => {
+		const baseList = get().cycles;
+		const list = baseList.map((cycle) => {
+			if (cycle.id === updateCycle.id) {
+				console.log(updateCycle);
+				return updateCycle;
 			}
 			return cycle;
 		});
 		set({
 			cycles: list,
 		});
+		get().settingCycleColumns();
 	},
 	deleteCycle: (cycleId: number) => {
 		const list = get().cycles.filter((item) => item.id !== cycleId);
 		set({
 			cycles: list,
 		});
+		get().settingCycleColumns();
 	},
 	reset: () => {
 		set({

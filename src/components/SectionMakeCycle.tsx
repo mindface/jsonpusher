@@ -1,29 +1,17 @@
-"use client"
-import { useState ,useMemo, useEffect } from "react";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
 import CMakeCycleIEdit from "./CMakeCycleIEdit";
 import CMakeCycleList from "./CMakeCycleList";
-
-import { Button } from "../stories/Button/Button";
-import { Input } from "../stories/Input/Input";
-
-import { useStoreCycle } from "../store/cycle";
+import ContentMakeCycleModel from "./ContentMakeCycleModel";
 
 // ToDo 今後firebaseと連携してく際にコンポーネントを分ける
 export default function SectionMakeCycle() {
-	const { cycles, cycleColumns, addCycleColumns } = useStoreCycle();
-	const [columnTitle, columnTitleSet] = useState("");
-	const [columnDetail, columnDetailSet] = useState("");
-
-	const addFrameBoxAction = () => {
-		addCycleColumns(columnTitle,columnDetail);
-	}
 
 	return (
 		<section className="section-make-cycle">
 			<Titleline3h title="サイクル構造を作成する" size="large" />
-			<div className="section-make">
+			{/* dnd-kitで動作検証が必要なためイシューにするか検討 */}
+			{/* <div className="section-make">
 				<div className="pb-4">
 					<Input
 						type="text"
@@ -43,11 +31,19 @@ export default function SectionMakeCycle() {
 				<div className="pb-4">
 					<Button label="構成の追加" onClick={addFrameBoxAction} />
 				</div>
-			</div>
+			</div> */}
 		  <div className="make-cycle-box">
 				<div className="add-card-box">
-					<CMakeCycleIEdit type="add" />
-					<CMakeCycleList columns={cycleColumns} cycles={cycles}  />
+					<div className="flex">
+						<div className="w-[50%]">
+							<ContentMakeCycleModel />
+						</div>
+						<div className="w-[50%]">
+							<CMakeCycleIEdit type="add" />
+							<CMakeCycleList />
+						</div>
+					</div>
+					{/* <CMakeCycleList columns={cycleColumns} cycles={cycles}  /> */}
 				</div>
 			</div>
 		</section>
