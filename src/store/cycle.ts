@@ -13,6 +13,7 @@ interface StoreCycle {
 	addCycle: (title: string, detail: string) => void | { saveResult: string };
 	updateCycle: (cycle: Cycle) => void | { saveResult: string };
 	deleteCycle: (cyclesId: number) => void;
+	setCycle: (cycles: Cycle[]) => void;
 	reset: () => void;
 }
 
@@ -27,31 +28,31 @@ export const useStoreCycle = create<StoreCycle>((set, get) => ({
 			{
 				id: 1,
 				title: "Aモデル",
-				detail: "動作検証",
+				detail: "計画の設計",
 				connectId: "0",
 				userId: "0",
 				groupId: "list1"
 			},
 			{
 				id: 2,
-				title: "title2",
-				detail: "detail",
+				title: "Bモデル",
+				detail: "評価するポイントを確認",
 				connectId: "0",
 				userId: "0",
 				groupId: "list2"
 			},
 			{
 				id: 3,
-				title: "title3",
-				detail: "detail",
+				title: "Cモデル",
+				detail: "動作",
 				connectId: "0",
 				userId: "0",
 				groupId: "list2"
 			},
 			{
-				id: 5,
-				title: "title4",
-				detail: "detail",
+				id: 4,
+				title: "Dモデル",
+				detail: "動作検証とフィードバックをする",
 				connectId: "0",
 				userId: "0",
 				groupId: "list2"
@@ -108,13 +109,12 @@ export const useStoreCycle = create<StoreCycle>((set, get) => ({
 		set({
 			cycles: cycles,
 		});
-		get().settingCycleColumns();
+		// get().settingCycleColumns();
 	},
 	updateCycle: (updateCycle: Cycle) => {
 		const baseList = get().cycles;
 		const list = baseList.map((cycle) => {
 			if (cycle.id === updateCycle.id) {
-				console.log(updateCycle);
 				return updateCycle;
 			}
 			return cycle;
@@ -122,14 +122,19 @@ export const useStoreCycle = create<StoreCycle>((set, get) => ({
 		set({
 			cycles: list,
 		});
-		get().settingCycleColumns();
+		// get().settingCycleColumns();
 	},
 	deleteCycle: (cycleId: number) => {
-		const list = get().cycles.filter((item) => item.id !== cycleId);
+		const cycles = get().cycles.filter((item) => item.id !== cycleId);
 		set({
-			cycles: list,
+			cycles: cycles,
 		});
-		get().settingCycleColumns();
+		// get().settingCycleColumns();
+	},
+	setCycle: (cycles: Cycle[]) => {
+		set({
+			cycles: cycles,
+		});
 	},
 	reset: () => {
 		set({
