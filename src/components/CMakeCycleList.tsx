@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import {
   DndContext,
@@ -8,8 +8,7 @@ import {
 	MouseSensor,
   useSensor,
   useSensors,
-  DragEndEvent,
-  DragOverEvent
+  DragEndEvent
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates, arrayMove } from "@dnd-kit/sortable";
 
@@ -28,7 +27,7 @@ export default function CMakeCycleList() {
 	},[cycles]);
 
 	// 使うタイミングあるか確認中
-	const handleDragOver = (event: DragOverEvent) => {}
+	const handleDragOver = () => {}
 
 	const handleDragEnd = (event: DragEndEvent) => {
 		const { active, over } = event;
