@@ -1,11 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../stories/Button/Button";
 import { Input } from "../stories/Input/Input";
 
 import { useStorePlan } from "../store/plan";
 
-import { Plan } from "../type/plan";
+import type { Plan } from "../type/plan";
 
 type Props = {
 	type: string;

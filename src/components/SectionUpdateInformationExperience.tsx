@@ -1,9 +1,9 @@
 "use client";
-import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
+import { useMemo, useState } from "react";
 import { Button } from "../stories/Button/Button";
 import { InputRange } from "../stories/InputRange/InputRange";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
 import SelectUpdateInformationExperience from "../json/selectUpdateInformationExperience.json";
 
@@ -73,7 +73,8 @@ export default function SectionUpdateInformationExperience() {
 						経験が増えて、過去のイメージを使い改善させることがあるでしょう。
 					</p>
 					<p className="text pb-2">
-						手首や内ももの使い方など細かい点から 「バットの位置をどこに保持しておくか」 なども考えられます。
+						手首や内ももの使い方など細かい点から
+						「バットの位置をどこに保持しておくか」 なども考えられます。
 					</p>
 					<p className="text">
 						経験の中から情報を選んで、変化する項目に加えるポイントについて考えてみましょう。

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Plan } from "../type/plan";
+import type { Plan } from "../type/plan";
 
 interface StorePlanNext {
 	nextPlans: Plan[];

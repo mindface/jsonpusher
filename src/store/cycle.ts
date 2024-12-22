@@ -1,15 +1,15 @@
 import { create } from "zustand";
-import { Cycle, CycleColumn } from "../type/cycle";
+import type { Cycle, CycleColumn } from "../type/cycle";
 
 interface StoreCycle {
-	cycleColumns:CycleColumn[];
+	cycleColumns: CycleColumn[];
 	cycles: Cycle[];
 	isLoading: boolean;
 
 	getCycleColumns: () => void;
 	settingCycleColumns: () => void;
 	setCycleColumns: (cycleColumns: CycleColumn[]) => void;
-  addCycleColumns: (title: string, detail: string) => void;
+	addCycleColumns: (title: string, detail: string) => void;
 	addCycle: (title: string, detail: string) => void | { saveResult: string };
 	updateCycle: (cycle: Cycle) => void | { saveResult: string };
 	deleteCycle: (cyclesId: number) => void;
@@ -18,45 +18,47 @@ interface StoreCycle {
 }
 
 export const useStoreCycle = create<StoreCycle>((set, get) => ({
-	cycleColumns: [ {
-		cycleColumnId: "list1",
-		title: "cycleColumn title1",
-		detail: "cycleColumn detail1",
-		cards: []
-	}],
+	cycleColumns: [
+		{
+			cycleColumnId: "list1",
+			title: "cycleColumn title1",
+			detail: "cycleColumn detail1",
+			cards: [],
+		},
+	],
 	cycles: [
-			{
-				id: 1,
-				title: "Aモデル",
-				detail: "計画の設計",
-				connectId: "0",
-				userId: "0",
-				groupId: "list1"
-			},
-			{
-				id: 2,
-				title: "Bモデル",
-				detail: "評価するポイントを確認",
-				connectId: "0",
-				userId: "0",
-				groupId: "list2"
-			},
-			{
-				id: 3,
-				title: "Cモデル",
-				detail: "動作",
-				connectId: "0",
-				userId: "0",
-				groupId: "list2"
-			},
-			{
-				id: 4,
-				title: "Dモデル",
-				detail: "動作検証とフィードバックをする",
-				connectId: "0",
-				userId: "0",
-				groupId: "list2"
-			}
+		{
+			id: 1,
+			title: "Aモデル",
+			detail: "計画の設計",
+			connectId: "0",
+			userId: "0",
+			groupId: "list1",
+		},
+		{
+			id: 2,
+			title: "Bモデル",
+			detail: "評価するポイントを確認",
+			connectId: "0",
+			userId: "0",
+			groupId: "list2",
+		},
+		{
+			id: 3,
+			title: "Cモデル",
+			detail: "動作",
+			connectId: "0",
+			userId: "0",
+			groupId: "list2",
+		},
+		{
+			id: 4,
+			title: "Dモデル",
+			detail: "動作検証とフィードバックをする",
+			connectId: "0",
+			userId: "0",
+			groupId: "list2",
+		},
 	],
 	isLoading: false,
 	getCycleColumns: () => {},
@@ -64,9 +66,9 @@ export const useStoreCycle = create<StoreCycle>((set, get) => ({
 		const cycleColumns = get().cycleColumns;
 		const cycles = get().cycles;
 		const reColumns: CycleColumn[] = cycleColumns.map((column) => {
-			const list:Cycle[] = [];
+			const list: Cycle[] = [];
 			cycles.forEach((cycle) => {
-				if(column.cycleColumnId === cycle.groupId) {
+				if (column.cycleColumnId === cycle.groupId) {
 					list.push(cycle);
 				}
 			});
@@ -85,27 +87,27 @@ export const useStoreCycle = create<StoreCycle>((set, get) => ({
 	addCycleColumns: (title: string, detail: string) => {
 		const cycleColumns = get().cycleColumns;
 		const addColumn = {
-			cycleColumnId: `list${cycleColumns.length+1}`,
+			cycleColumnId: `list${cycleColumns.length + 1}`,
 			title: title,
 			detail: detail,
-			cards: []
+			cards: [],
 		};
 		set({
-			cycleColumns: [...cycleColumns,addColumn],
+			cycleColumns: [...cycleColumns, addColumn],
 		});
 	},
 	addCycle: (title: string, detail: string) => {
 		let cycles = get().cycles;
 		// ToDo DBに保存する場合にIDの設定は変更する
 		const addCycle = {
-			id: cycles.length+1,
+			id: cycles.length + 1,
 			title: title,
 			detail: detail,
 			connectId: "0",
 			userId: "0",
-			groupId: "list1"
+			groupId: "list1",
 		};
-		cycles = [...cycles,addCycle];
+		cycles = [...cycles, addCycle];
 		set({
 			cycles: cycles,
 		});

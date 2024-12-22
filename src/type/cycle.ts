@@ -12,7 +12,7 @@ export type CycleColumn = {
 	title: string;
 	detail: string;
 	cards: Cycle[];
-}
+};
 
 // export type CycleKanban = {
 // 	id: number;

@@ -1,11 +1,11 @@
-"use client"
-import Link from "next/link";
+"use client";
 import Image from "next/image";
+import Link from "next/link";
 
 import { Menu } from "../stories/Menu/Menu";
 
-import pathList from "../json/menuPathList.json";
 import menuList from "../json/menuInfoList.json";
+import pathList from "../json/menuPathList.json";
 
 import Logo from "../assets/images/logo.png";
 
@@ -21,7 +21,7 @@ export default function Header() {
 						height={40}
 						alt="health image"
 						style={{ width: "auto", objectFit: "cover" }}
-					/>	
+					/>
 				</div>
 				<div className="links pl-4">
 					{pathList.map((item) => (
@@ -37,7 +37,7 @@ export default function Header() {
 			</div>
 			<div>
 				<Menu pathList={menuList} size="large" />
-			 </div>
+			</div>
 		</div>
 	);
 }

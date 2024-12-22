@@ -1,5 +1,5 @@
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
-import { Plan } from "../type/plan";
+import type { Plan } from "../type/plan";
 
 import CNextPlanItem from "./CNextPlanItem";
 

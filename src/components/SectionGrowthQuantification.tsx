@@ -1,10 +1,10 @@
 "use client";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
-import { Textarea } from "../stories/TextArea/Textarea";
-import { Button } from "../stories/Button/Button";
+import { useState } from "react";
 import { useStoreNextPlan } from "../store/planNext";
+import { Button } from "../stories/Button/Button";
+import { Textarea } from "../stories/TextArea/Textarea";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
 import { copyClipbord } from "../lib/copyClipbord";
 
@@ -16,9 +16,9 @@ export default function SectionGrowthQuantification() {
 	const copyJsonAciton = () => {
 		let copyText = "";
 		copyText += "--------------\n";
-		nextPlans.forEach((plan) => {
+		for (const plan of nextPlans) {
 			copyText += `${plan.title} \n`;
-		});
+		}
 		copyText += "--------------\n";
 		copyText += textGrowth;
 		copyText += "計画に対して成長の過程を評価してください。";
@@ -51,19 +51,24 @@ export default function SectionGrowthQuantification() {
 					<div className="pb-4">
 						<Titleline3h title="次の計画" size="small" />
 					</div>
-					{nextPlans.map((plan,index) => (
-						<p key={`growthNextPlans${plan.connectId}-${index}}`} className="pb-2">
+					{nextPlans.map((plan, index) => (
+						<p
+							key={`growthNextPlans${plan.connectId}-${index}}`}
+							className="pb-2"
+						>
 							{plan.title}
 						</p>
 					))}
-					{ nextPlans.length === 0 && <div className="pb-4">
-						<Button
-							label="次の計画を立てる"
-							onClick={() => {
-								goPlanAction();
-							}}
-						/>
-					</div>}
+					{nextPlans.length === 0 && (
+						<div className="pb-4">
+							<Button
+								label="次の計画を立てる"
+								onClick={() => {
+									goPlanAction();
+								}}
+							/>
+						</div>
+					)}
 				</div>
 				<div className="p-2">
 					<Textarea

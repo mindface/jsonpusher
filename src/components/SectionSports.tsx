@@ -1,24 +1,24 @@
 "use client";
-import { useState, useMemo, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import bicycleImage from "../assets/images/bicycle.jpg";
 
-import { Ccheck } from "../stories/Ccheck/Ccheck";
 import { Button } from "../stories/Button/Button";
+import { Ccheck } from "../stories/Ccheck/Ccheck";
+// import { TextCommenter } from "../stories/TextComment/TextCommenter";
+import { Dialog } from "../stories/Dialog/Dialog";
 import { InputRange } from "../stories/InputRange/InputRange";
 import { Textarea } from "../stories/TextArea/Textarea";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
-// import { TextCommenter } from "../stories/TextComment/TextCommenter";
-import { Dialog } from "../stories/Dialog/Dialog";
 
 import { copyClipbord } from "../lib/copyClipbord";
 
 import { useStoreSportsText } from "../store/sportText";
 
-import SelectPartList from "../json/selectPartList.json";
-import SelectSportsPatternList from "../json/selectSportsPatternList.json";
-import SelectSportsList from "../json/selectSportsList.json";
 import SelectLevelList from "../json/selectLevelList.json";
+import SelectPartList from "../json/selectPartList.json";
+import SelectSportsList from "../json/selectSportsList.json";
+import SelectSportsPatternList from "../json/selectSportsPatternList.json";
 
 type SelectItem = {
 	check: boolean;
@@ -52,40 +52,42 @@ export default function SectionSports() {
 		return list.some((item: SelectItem) => item.label === name);
 	};
 
-	const keyWord = useCallback((setAi?: string) => {
-		let setText = "";
-		const sportsArray: string[] = [];
-		const selectPartsArray: string[] = [];
-		selectSports.forEach((item) => {
-			sportsArray.push(item.label);
-			// setText += item.label + " ";
-		});
-		if (selectSports.length > 0 && setAi) {
-			setText += JSON.stringify(sportsArray);
-			setText += "カテゴリの";
-		}
-		selectParts.forEach((item) => {
-			selectPartsArray.push(item.label);
-			// setText += item.label + " ";
-		});
-		if (selectParts.length > 0 && setAi) {
-			setText += JSON.stringify(selectPartsArray);
-			setText += "に関して";
-		}
-		selectPattern.forEach((item) => {
-			setText += item.label + " ";
-		});
-		if (selectPattern.length > 0 && setAi) {
-			setText += "について";
-		}
-		selectLevel.forEach((item) => {
-			setText += item.label;
-		});
-		if (selectLevel.length > 0 && setAi) {
-			setText += "で教えてください。";
-		}
-		return setText;
-	},[selectSports, selectParts, selectPattern, selectLevel]);
+	const keyWord = useCallback(
+		(setAi?: string) => {
+			let setText = "";
+			const sportsArray: string[] = [];
+			const selectPartsArray: string[] = [];
+			selectSports.forEach((item) => {
+				sportsArray.push(item.label);
+				// setText += item.label + " ";
+			});
+			if (selectSports.length > 0 && setAi) {
+				setText += JSON.stringify(sportsArray);
+				setText += "カテゴリの";
+			}
+			for (const selectPart of selectParts) {
+				selectPartsArray.push(selectPart.label);
+			}
+			if (selectParts.length > 0 && setAi) {
+				setText += JSON.stringify(selectPartsArray);
+				setText += "に関して";
+			}
+			for (const item of selectPattern) {
+				setText += `${item.label} `;
+			}
+			if (selectPattern.length > 0 && setAi) {
+				setText += "について";
+			}
+			for (const item of selectLevel) {
+				setText += item.label;
+			}
+			if (selectLevel.length > 0 && setAi) {
+				setText += "で教えてください。";
+			}
+			return setText;
+		},
+		[selectSports, selectParts, selectPattern, selectLevel],
+	);
 
 	useEffect(() => {
 		const newKeyWord = keyWord("ai");
@@ -93,7 +95,7 @@ export default function SectionSports() {
 			sportsTextSituationSet(newKeyWord);
 			setSportsText(newKeyWord);
 		}
-	},[keyWord, setSportsText,sportsTextSituation]);
+	}, [keyWord, setSportsText, sportsTextSituation]);
 
 	const changingParts = (check: boolean, label: string) => {
 		if (check && !checking(selectParts, label)) {
@@ -186,34 +188,32 @@ export default function SectionSports() {
 			<div className="flex justify-center p-2">
 				<Dialog label="スポーツ項目を選択する" type="button">
 					<div className="category-box--outer flex justify-center">
-						{selectSportsList &&
-							selectSportsList.map((categoryItem) => (
-								<div className="category-box p-2" key={categoryItem.categoryId}>
-									<h3 className="category-box__title">
-										{categoryItem.categoryName}
-									</h3>
-									<ul className="select-type">
-										{categoryItem.type.map((typeItem) => (
-											<li className="p-2" key={typeItem.id}>
-												<Ccheck
-													partsId={typeItem.id}
-													size="small"
-													label={typeItem.label}
-													changing={(check) =>
-														changingSports(check, typeItem.label, typeItem.id)
-													}
-												/>
-											</li>
-										))}
-									</ul>
-								</div>
-							))}
+						{selectSportsList?.map((categoryItem) => (
+							<div className="category-box p-2" key={categoryItem.categoryId}>
+								<h3 className="category-box__title">
+									{categoryItem.categoryName}
+								</h3>
+								<ul className="select-type">
+									{categoryItem.type.map((typeItem) => (
+										<li className="p-2" key={typeItem.id}>
+											<Ccheck
+												partsId={typeItem.id}
+												size="small"
+												label={typeItem.label}
+												changing={(check) =>
+													changingSports(check, typeItem.label, typeItem.id)
+												}
+											/>
+										</li>
+									))}
+								</ul>
+							</div>
+						))}
 					</div>
 				</Dialog>
 			</div>
-			<div className="select-sports-box flex pt-4 p-2">
-				{selectSports &&
-					selectSports.map((selectSports) => (
+			<div className="select-sports-box flex justify-center pt-4 pb-4 p-2">
+				{selectSports?.map((selectSports) => (
 						<span
 							className="inline-block mr-2 p-2 rounded-full border border-blue-400"
 							key={`select${selectSports.id}`}
@@ -224,8 +224,7 @@ export default function SectionSports() {
 			</div>
 			<div className="select-box flex justify-center pt-4">
 				<ul className="select-parts pr-4">
-					{selectPartList &&
-						selectPartList.map((item) => (
+					{selectPartList?.map((item) => (
 							<li className="p-2" key={item.id}>
 								<Ccheck
 									partsId={item.id}
@@ -260,8 +259,7 @@ export default function SectionSports() {
 							{userLevel} level
 						</div>
 					</li>
-					{selectSportsPatternListForLevel &&
-						selectSportsPatternListForLevel.map((categoryItem) => (
+					{selectSportsPatternListForLevel?.map((categoryItem) => (
 							<li className="p-2" key={categoryItem.categoryId}>
 								<Titleline3h title={categoryItem.categoryLabel} />
 								<ul className="level-list">
@@ -282,8 +280,7 @@ export default function SectionSports() {
 						))}
 				</ul>
 				<ul className="select-level">
-					{selectLevelList &&
-						selectLevelList.map((item) => (
+					{selectLevelList?.map((item) => (
 							<li className="p-2" key={item.id}>
 								<Ccheck
 									partsId={item.id}

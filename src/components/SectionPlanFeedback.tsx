@@ -3,7 +3,6 @@ import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import ContentPlanFeedback from "./ContentPlanFeedback";
 
 export default function SectionPlanFeedback() {
-
 	return (
 		<section className="section-skill-comparison">
 			<Titleline3h title="計画のフィードバック" size="large" />

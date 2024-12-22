@@ -1,11 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../stories/Button/Button";
 import { Input } from "../stories/Input/Input";
 
 import { useStoreCycle } from "../store/cycle";
 
-import { Cycle } from "../type/cycle";
+import type { Cycle } from "../type/cycle";
 
 type Props = {
 	type: string;
@@ -30,14 +30,14 @@ export default function CMakeCycleIEdit(props: Props) {
 	};
 
 	const updateCycleAction = () => {
-		if(item?.id) {
+		if (item?.id) {
 			const updateItem = {
 				id: item.id,
 				title: cycleTitle,
 				detail: cycleDetail,
 				connectId: "0",
 				userId: "0",
-				groupId: "list1"
+				groupId: "list1",
 			};
 			updateCycle(updateItem);
 		}

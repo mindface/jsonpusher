@@ -6,7 +6,6 @@ import ContentMakeCycleModel from "./ContentMakeCycleModel";
 
 // ToDo 今後firebaseと連携してく際にコンポーネントを分ける
 export default function SectionMakeCycle() {
-
 	return (
 		<section className="section-make-cycle">
 			<Titleline3h title="サイクル構造を作成する" size="large" />
@@ -32,7 +31,7 @@ export default function SectionMakeCycle() {
 					<Button label="構成の追加" onClick={addFrameBoxAction} />
 				</div>
 			</div> */}
-		  <div className="make-cycle-box">
+			<div className="make-cycle-box">
 				<div className="add-card-box">
 					<div className="flex">
 						<div className="w-[50%]">

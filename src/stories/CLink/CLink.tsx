@@ -1,5 +1,5 @@
-import React from "react";
 import NextLink from "next/link";
+import React from "react";
 
 import "./link.css";
 
@@ -24,11 +24,11 @@ export const CLink = ({
 		mode += ` ${className}`;
 	}
 	return (
-		<div
-			className="clink-box inline-block"
-			{...props}
-		>
-			<NextLink href={href} className={["clink", `clink--${size}`, mode].join(" ")} >
+		<div className="clink-box inline-block" {...props}>
+			<NextLink
+				href={href}
+				className={["clink", `clink--${size}`, mode].join(" ")}
+			>
 				{label}
 			</NextLink>
 		</div>
