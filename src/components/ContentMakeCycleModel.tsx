@@ -49,7 +49,7 @@ export default function SectionMakeCycle() {
 						※自分の評価を見直すために評価についても考えてみてください。
 					</p>
 				</div>
-				<CLink type="button" label="AIで確認してみる" href="useGemini" />
+				<CLink type="button" label="AIで質問する" href="/useGemini" />
 			</div>
 		</section>
 	);
