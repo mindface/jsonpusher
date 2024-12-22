@@ -11,12 +11,15 @@ import {
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { useMemo } from "react";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
+import { Button } from "../stories/Button/Button";
 
 import { useStoreCycle } from "../store/cycle";
 import CMakeCycleItem from "./CMakeCycleItem";
 
 import { useDroppable } from "@dnd-kit/core";
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
+
+import { copyClipbord } from "../lib/copyClipbord";
 
 export default function CMakeCycleList() {
 	const { cycles, setCycle } = useStoreCycle();
@@ -74,6 +77,14 @@ export default function CMakeCycleList() {
 		}),
 	);
 
+  const copyAction = () => {
+		let copyText= "";
+		cycles.forEach((cycle) => {
+			copyText += `${cycle.title}\n${cycle.detail}\n\n`;
+		});
+		copyClipbord(copyText);
+	}
+
 	return (
 		<div className="pb-4">
 			<div className="title-line-box pb-8">
@@ -98,6 +109,12 @@ export default function CMakeCycleList() {
 						</SortableContext>
 					</div>
 				</DndContext>
+			</div>
+			<div className="p-4">
+				<Button
+					label="作成したモデルをコピーする"
+					onClick={copyAction}
+				/>
 			</div>
 		</div>
 	);
