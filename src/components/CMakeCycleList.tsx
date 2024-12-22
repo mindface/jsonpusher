@@ -19,7 +19,7 @@ import { useDroppable } from "@dnd-kit/core";
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 
 export default function CMakeCycleList() {
-	const { cycles, setCycleColumns, cycleColumns, setCycle } = useStoreCycle();
+	const { cycles, setCycle } = useStoreCycle();
 	const { setNodeRef } = useDroppable({ id: 0 });
 
 	const list = useMemo(() => {
