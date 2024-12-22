@@ -23,5 +23,10 @@
 		"pathId": 5,
 		"path": "/useClaude",
 		"name": "質問する(claude)"
+	},
+	{
+		"pathId": 6,
+		"path": "/sportAndJob",
+		"name": "スポーツと仕事"
 	}
 ]

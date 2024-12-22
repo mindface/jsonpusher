@@ -1,9 +1,9 @@
 "use client";
-import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { Title3h } from "../stories/title3h/Title3h";
+import { useMemo, useState } from "react";
 import { Button } from "../stories/Button/Button";
 import { InputRange } from "../stories/InputRange/InputRange";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
 import SelectUpdateInformationExperience from "../json/selectUpdateInformationExperience.json";
 
@@ -31,7 +31,7 @@ export default function SectionUpdateInformationExperience() {
 
 	return (
 		<section className="section-level-up">
-			<Title3h title="経験と情報の更新" size="large" />
+			<Titleline3h title="経験と情報の更新" size="large" />
 			<div className="details">
 				<p className="text pb-2">経験が増えると使えるデータがあります。</p>
 				<p className="text pb-2">
@@ -67,13 +67,14 @@ export default function SectionUpdateInformationExperience() {
 						</div>
 					))}
 				</div>
-				<Title3h title="経験が変化して調整する情報設計" />
+				<Titleline3h title="経験が変化して調整する情報設計" />
 				<div className="mb-8 p-4 border rounded-lg max-w-[640px]">
 					<p className="text pb-2">
 						経験が増えて、過去のイメージを使い改善させることがあるでしょう。
 					</p>
 					<p className="text pb-2">
-						手首や内ももの使い方など細かい点から 「バットの位置をどこに保持しておくか」 なども考えられます。
+						手首や内ももの使い方など細かい点から
+						「バットの位置をどこに保持しておくか」 なども考えられます。
 					</p>
 					<p className="text">
 						経験の中から情報を選んで、変化する項目に加えるポイントについて考えてみましょう。

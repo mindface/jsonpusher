@@ -1,16 +1,16 @@
 "use client";
 import { useState } from "react";
-import { Title3h } from "../stories/title3h/Title3h";
 import { Button } from "../stories/Button/Button";
-import { Textarea } from "../stories/TextArea/Textarea";
 import { Dialog } from "../stories/Dialog/Dialog";
+import { Textarea } from "../stories/TextArea/Textarea";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
-import ContentPlanFeedback from "./ContentPlanFeedback"
+import ContentPlanFeedback from "./ContentPlanFeedback";
 
-import { useStoreSportsText } from "../store/sportText"
-import { useStoreHealthText } from "../store/healthText"
+import { useStoreHealthText } from "../store/healthText";
+import { useStoreSportsText } from "../store/sportText";
 
-import { GeminiResponse } from "../type/apiResponse";
+import type { GeminiResponse } from "../type/apiResponse";
 
 export default function Gemini() {
 	// const baseTextSize = 300;
@@ -43,25 +43,27 @@ export default function Gemini() {
 	const textChange = (text: string) => {
 		const regex1 = /\*\s\*\*(.*?)\*\*/g;
 		const regex2 = /\*\*(.*?)\*\*/g;
-		return text.replace(regex1, "<br /><br /><h2>$1</h2>").replace(regex2, "<h2>$1</h2>");
-	}
+		return text
+			.replace(regex1, "<br /><br /><h2>$1</h2>")
+			.replace(regex2, "<h2>$1</h2>");
+	};
 
 	const fetchGeminiApi = async () => {
-		const res = await fetch("/api/gamini",{
+		const res = await fetch("/api/gemini", {
 			method: "POST",
-			body: JSON.stringify({ prompt: sendTitle })
+			body: JSON.stringify({ prompt: sendTitle }),
 		});
 		const data: GeminiResponse = await res.json();
-		if(data.status <= 200){
+		if (data.status <= 200) {
 			_displayedChunksSet(textChange(data.content));
 			// validationTextSet(data.content);
 		}
-	}
+	};
 
 	return (
 		<div className={["gemini"].join(" ")}>
 			<div className="pb-2">
-				<Title3h title="ai [Gemini(google)] に質問する" />
+				<Titleline3h title="ai [Gemini(google)] に質問する" />
 				<div className="pb-4">
 					<div className="flex flex-wrap">
 						<div className="mr-4">
@@ -102,17 +104,21 @@ export default function Gemini() {
 			<div className="pb-4">
 				<div className="pb-8">
 					<Textarea
-					  className="w-full"
+						className="w-full"
 						placeholder=""
-					  value={sendTitle}
-						onChange={(value) => { sendTitleSet(value as string); }}
+						value={sendTitle}
+						onChange={(value) => {
+							sendTitleSet(value as string);
+						}}
 					/>
 				</div>
 				<p className="pb-2">
 					<Button
 						label="質問する"
 						size="small"
-					  onClick={() => { fetchGeminiApi(); }}
+						onClick={() => {
+							fetchGeminiApi();
+						}}
 					/>
 				</p>
 				<div className="view-content pb-4">
@@ -123,11 +129,12 @@ export default function Gemini() {
 							{chunk}
 						</div>
 					))} */}
-					<div className="put-text"
+					<div
+						className="put-text"
 						dangerouslySetInnerHTML={{
-							__html: _displayedChunks
+							__html: _displayedChunks,
 						}}
-					></div>
+					/>
 				</div>
 			</div>
 		</div>

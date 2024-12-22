@@ -1,15 +1,15 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
 import healthImage from "../assets/images/health.jpg";
 
-import { Ccheck } from "../stories/Ccheck/Ccheck";
 import { Button } from "../stories/Button/Button";
+import { Ccheck } from "../stories/Ccheck/Ccheck";
 import { Textarea } from "../stories/TextArea/Textarea";
 
+import SelectLevelList from "../json/selectLevelList.json";
 import SelectPartList from "../json/selectPartList.json";
 import SelectPatternList from "../json/selectPatternList.json";
-import SelectLevelList from "../json/selectLevelList.json";
 // import SelectHealthInfoCategoryList from "../json/selectHealthInfoCategoryList.json";
 
 import { useStoreHealthText } from "../store/healthText";
@@ -47,43 +47,45 @@ export default function SectionHealth() {
 		);
 	};
 
-	const keyWord = useCallback((setAi?: string) => {
-		let setText = "";
-		const selectPartsArray: string[] = [];
-		selectParts.forEach((item) => {
-			selectPartsArray.push(item.name);
-			// setText += item.name + " ";
-		});
-		if (selectParts.length > 0 && setAi) {
-			setText += JSON.stringify(selectPartsArray);
-			setText += "に関して";
-		}
-		selectPattern.forEach((item) => {
-			setText += item.name + " ";
-		});
-		if (selectPattern.length > 0 && setAi) {
-			setText += "ことについて";
-		}
-		selectLevel.forEach((item) => {
-			setText += item.name;
-		});
-		if (selectLevel.length > 0 && setAi) {
-			setText += "で教えてください。";
-		}
-		// selectSetText.forEach((item) => {
-		// 	item.list.forEach((text) => {
-		// 		setText += text;
-		// 	});
-		// });
-		if (
-			selectParts.length > 0 ||
-			selectPattern.length > 0 ||
-			selectLevel.length > 0
-		) {
-			setText = "健康を保つことの前提で " + setText;
-		}
-		return setText;
-	},[selectParts,selectPattern,selectLevel]);
+	const keyWord = useCallback(
+		(setAi?: string) => {
+			let setText = "";
+			const selectPartsArray: string[] = [];
+			for (const selectPart of selectParts) {
+				selectPartsArray.push(selectPart.name);
+			}
+			if (selectParts.length > 0 && setAi) {
+				setText += JSON.stringify(selectPartsArray);
+				setText += "に関して";
+			}
+			for (const item of selectPattern) {
+				setText += `${item.name} `;
+			}
+			if (selectPattern.length > 0 && setAi) {
+				setText += "ことについて";
+			}
+			for (const item of selectLevel) {
+				setText += item.name;
+			}
+			if (selectLevel.length > 0 && setAi) {
+				setText += "で教えてください。";
+			}
+			// selectSetText.forEach((item) => {
+			// 	item.list.forEach((text) => {
+			// 		setText += text;
+			// 	});
+			// });
+			if (
+				selectParts.length > 0 ||
+				selectPattern.length > 0 ||
+				selectLevel.length > 0
+			) {
+				setText = `健康を保つことの前提で ${setText}`;
+			}
+			return setText;
+		},
+		[selectParts, selectPattern, selectLevel],
+	);
 
 	useEffect(() => {
 		const newKeyWord = keyWord("ai");
@@ -91,7 +93,7 @@ export default function SectionHealth() {
 			healthTextSituationSet(newKeyWord);
 			setHealthText(newKeyWord);
 		}
-	},[keyWord,setHealthText,healthTextSituation]);
+	}, [keyWord, setHealthText, healthTextSituation]);
 
 	const changingParts = (check: boolean, name: string) => {
 		if (check && !checking(selectParts, name)) {

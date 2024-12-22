@@ -1,6 +1,6 @@
 "use client";
-import { Title3h } from "../stories/title3h/Title3h";
-import { Plan } from "../type/plan";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
+import type { Plan } from "../type/plan";
 
 import CPlanItem from "./CPlanItem";
 
@@ -13,7 +13,7 @@ export default function CPlanList(props: Props) {
 
 	return (
 		<div className="pb-4">
-			<Title3h title="現在の計画内容" size="small" />
+			<Titleline3h title="現在の計画内容" size="small" />
 			{items.map((plan) => (
 				<CPlanItem key={`CPlanItem${plan.id}`} item={plan} />
 			))}

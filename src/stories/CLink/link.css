@@ -1,0 +1,41 @@
+.clink--type-button {
+	display: inline-block;
+	cursor: pointer;
+	background-color: transparent;
+	border: 0;
+	border-radius: calc(infinity * 1px);
+	font-weight: 700;
+	line-height: 1;
+	font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	box-shadow: var(--foreground) 0px 0px 0px 1px inset;
+}
+.clink--type-button:hover {
+	color: var(--background);
+	background-color: var(--foreground);
+}
+
+.clink--type-link {
+	display: inline-block;
+}
+
+.clink--primary {
+	box-shadow: #1ea7fd 0px 0px 0px 1px inset;
+	color: #1ea7fd;
+}
+.clink--secondary {
+	box-shadow: var(--foreground) 0px 0px 0px 1px inset;
+	color: var(--foreground);
+	transition: background-color 0.2s;
+}
+.clink--small {
+	padding: 8px 12px;
+	font-size: 12px;
+}
+.clink--medium {
+	padding: 11px 20px;
+	font-size: 14px;
+}
+.clink--large {
+	padding: 12px 24px;
+	font-size: 16px;
+}

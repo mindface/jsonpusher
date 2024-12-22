@@ -8,4 +8,4 @@ export type MenuInfoList = {
 	pathId: string;
 	path: string;
 	name: string;
-}
+};

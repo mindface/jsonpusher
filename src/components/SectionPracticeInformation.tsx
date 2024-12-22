@@ -1,10 +1,10 @@
 "use client";
-import { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { Title3h } from "../stories/title3h/Title3h";
+import { useMemo, useState } from "react";
 import { Button } from "../stories/Button/Button";
 import { InputRange } from "../stories/InputRange/InputRange";
 import { Select } from "../stories/Select/Select";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
 import SelectSportsPracticeInfoList from "../json/selectSportsPracticeInfoList.json";
 
@@ -26,7 +26,7 @@ export default function SectionPracticeInformation() {
 
 	return (
 		<section className="section-level-up">
-			<Title3h title="練習量で増加する情報量" size="large" />
+			<Titleline3h title="練習量で増加する情報量" size="large" />
 			<div className="details">
 				<div className="sm:w-[640px] mb-8 p-4 border rounded-lg">
 					<p className="text pb-2">練習を継続すると情報が増えます。</p>
@@ -73,7 +73,7 @@ export default function SectionPracticeInformation() {
 						</div>
 					))}
 				</div>
-				<Title3h title="計画の再評価" size="medium" />
+				<Titleline3h title="計画の再評価" size="medium" />
 				<p className="text pb-8">
 					練習量で増えた情報を利用して計画を再評価させていきましょう。
 				</p>

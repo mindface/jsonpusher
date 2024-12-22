@@ -35,7 +35,7 @@ export const Input = ({
 				<input
 					type={type}
 					value={value}
-					className={["input","p-2","rounded-lg",type ?? ""].join(" ")}
+					className={["input", "p-2", "rounded-lg", type ?? ""].join(" ")}
 					min={min}
 					max={max}
 					onChange={(e) => {

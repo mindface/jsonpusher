@@ -1,12 +1,12 @@
 "use client";
-import { Title3h } from "../stories/title3h/Title3h";
 import { Button } from "../stories/Button/Button";
 import { Input } from "../stories/Input/Input";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
-import CPlanEdit from "../components/CPlanEdit";
 import CNextPlanEdit from "../components/CNextPlanEdit";
-import CPlanList from "../components/CPlanList";
 import CNextPlanList from "../components/CNextPlanList";
+import CPlanEdit from "../components/CPlanEdit";
+import CPlanList from "../components/CPlanList";
 
 import { useStorePlan } from "../store/plan";
 import { useStoreNextPlan } from "../store/planNext";
@@ -141,7 +141,7 @@ export default function ContentPlanFeedback() {
 					/>
 				</div>
 				<div className="pb-4">
-					<Title3h title="計画の作成" />
+					<Titleline3h title="計画の作成" />
 				</div>
 				<div className="flex">
 					<div className="pb-8 pr-8 w-[50%]">

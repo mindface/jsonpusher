@@ -1,6 +1,6 @@
 export const convertLinesToParagraphs = (text: string) => {
-	text = text.replace(/\r\n/g, "\n");
-	const paragraphs = text.split("\n");
+	const normalizedText = text.replace(/\r\n/g, "\n");
+	const paragraphs = normalizedText.split("\n");
 	if (text === "") {
 		return "";
 	}
