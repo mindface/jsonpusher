@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
+import { Loading } from "../stories/Loading/Loading";
 
 import CMakeCycleIEdit from "./CMakeCycleIEdit";
 import CMakeCycleList from "./CMakeCycleList";
@@ -39,7 +41,9 @@ export default function SectionMakeCycle() {
 						</div>
 						<div className="w-[50%]">
 							<CMakeCycleIEdit type="add" />
-							<CMakeCycleList />
+							<Suspense fallback={<Loading />}>
+								<CMakeCycleList />
+							</Suspense>
 						</div>
 					</div>
 					{/* <CMakeCycleList columns={cycleColumns} cycles={cycles}  /> */}
