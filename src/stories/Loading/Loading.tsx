@@ -19,7 +19,7 @@ export const Loading = ({
 	}
 	return (
 		<div
-			className={["loading", `loading--${size}`, mode].join(" ")}
+			className={["loading-box", `loading--${size}`, mode].join(" ")}
 		>
 			<div className="loading">
 				<svg viewBox="0 0 30 30">

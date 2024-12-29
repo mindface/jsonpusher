@@ -48,7 +48,12 @@ export async function middleware(request: NextRequest) {
 	const user = session?.user?.name ?? false;
 
 	// ログイン実装時の確認後調査
-	if ((path === "/" || path === "/health" || path === "/sports") && !user) {
+	if (
+		(path === "/" ||
+		 path === "/health" ||
+		 path === "/sports" ||
+		 path === "/sportAndJob")
+		 && !user) {
 		return NextResponse.redirect(new URL("/login", request.url));
 	}
 

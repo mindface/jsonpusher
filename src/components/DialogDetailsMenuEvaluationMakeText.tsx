@@ -19,9 +19,10 @@ export default function DialogDetailsMenuEvaluationMakeText(props: Props) {
 			<div className="inner">
 				<p className="p-4">{name}</p>
 				<div className="p-4 flex">
-					<div className="w-[50%]">
+					<div className="w-[50%] pr-8">
 						<Textarea
 							value={makeText}
+							className="w-full"
 							onChange={(value) => {
 								makeTextSet(value);
 							}}
