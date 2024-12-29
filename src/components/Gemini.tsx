@@ -14,7 +14,7 @@ import type { GeminiResponse } from "../type/apiResponse";
 
 export default function SectionQuestionAi() {
 	// const baseTextSize = 300;
-	const [useMachineLearningType, useMachineLearningSet] = useState("gemini");
+	const [useMachineLearningType,] = useState("gemini");
 	const [sendTitle, sendTitleSet] = useState("");
 	// const [validationText, validationTextSet] = useState("");
 	// const [displayedChunks, displayedChunksSet] = useState<string[]>([]);

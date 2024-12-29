@@ -16,7 +16,7 @@ import { fetchGeminiApi, fetchClaudeApi } from "../lib/fetchApiForAI";
 import aiCredit from "../json/aiCredit.json";
 
 export default function SectionQuestionAi() {
-	const [useMachineLearningType, useMachineLearningSet] = useState("gemini");
+	const [machineLearningType, machineLearningSet] = useState("gemini");
 	const [sendPrompt, sendPromptSet] = useState("");
 	const [sendLoading, sendLoadingSet] = useState(false);
 	const [_displayedChunks, _displayedChunksSet] = useState<string>("");
@@ -35,9 +35,9 @@ export default function SectionQuestionAi() {
 		let getText = "";
 		sendLoadingSet(true);
 		try {
-			if(useMachineLearningType === "gemini" && getText !== null && typeof getText === "string") {
+			if(machineLearningType === "gemini" && getText !== null && typeof getText === "string") {
 				getText = await fetchGeminiApi(sendPrompt);
-			}else if(useMachineLearningType === "claude" && getText !== null && typeof getText === "string"){
+			}else if(machineLearningType === "claude" && getText !== null && typeof getText === "string"){
 				getText = await fetchClaudeApi(sendPrompt);	
 			}
 			console.log(getText);
@@ -49,11 +49,11 @@ export default function SectionQuestionAi() {
 	};
 
 	const selectAiAction = (selectId: string) => {
-		useMachineLearningSet(selectId);
+		machineLearningSet(selectId);
 	};
 
 	const checkAiCredit = () => {
-		if(aiCredit.includes(useMachineLearningType)) {
+		if(aiCredit.includes(machineLearningType)) {
 			return true;
 		}else {
 			return false;
@@ -62,9 +62,9 @@ export default function SectionQuestionAi() {
 
 	return (
 		<section className="section-question-ai">
-			<div className={[useMachineLearningType].join(" ")}>
+			<div className={[machineLearningType].join(" ")}>
 				<div className="pb-2">
-					<Titleline3h title={`ai [${useMachineLearningType}] に質問する`} />
+					<Titleline3h title={`ai [${machineLearningType}] に質問する`} />
 					<div className="select-ai-box flex pb-4">
 						<div className="pr-4">
 							<Button
