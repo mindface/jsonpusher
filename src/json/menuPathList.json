@@ -23,5 +23,10 @@
 		"pathId": 5,
 		"path": "/sportAndJob",
 		"name": "スポーツと仕事"
+	},
+	{
+		"pathId": 6,
+		"path": "/memoryTask",
+		"name": "記録する"
 	}
 ]

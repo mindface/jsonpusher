@@ -7,6 +7,8 @@ import { signIn as signInByNextAuth } from "next-auth/react";
 import { Button } from "../stories/Button/Button";
 import { Input } from "../stories/Input/Input";
 
+import { useStoreMemoery } from "../store/memory";
+
 import {
   signInWithPopup,
   // GithubAuthProvider,
@@ -19,6 +21,7 @@ import type { AuthProvider } from "firebase/auth";
 
 export default function SectionLoginFirebase() {
 	const session = useSession();
+	const { addMemory } = useStoreMemoery();
 	const [userSwitch, setUserSwitch] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,7 +36,6 @@ export default function SectionLoginFirebase() {
         email,
         password
       );
-			console.log(userCredential);
       const idToken = await userCredential.user.getIdToken();
       await signInByNextAuth("credentials", {
         idToken,
@@ -76,12 +78,7 @@ export default function SectionLoginFirebase() {
 				<div className="login-info">
 					<div>
 					  <div className="pb-4">
-							<Button
-								label={userSwitch ? "新規登録" : "ログイン"}
-								onClick={() => {
-									setUserSwitch(!userSwitch);
-								}}
-							/>
+							{ userSwitch ? "ログイン" : "新規登録" }
 						</div>
 						<div className="pb-4">
 							<Input type="text" label="EMAIL:" value={email} onChange={(value) => { setEmail(value as string) }} />
@@ -109,6 +106,22 @@ export default function SectionLoginFirebase() {
 								label="google アカウント ログイン"
 								onClick={() => {
 									handleOAuthSignIn(googleProvider);
+								}}
+							/>
+						</div>
+					  <div className="pb-4">
+							<div className="pr-4 pb-4">
+								<Button
+									label={userSwitch ? "新規登録へ変更" : "ログインへ変更"}
+									onClick={() => {
+										setUserSwitch(!userSwitch);
+									}}
+								/>
+							</div>
+							<Button
+								label={"ユーザーを追加する"}
+								onClick={() => {
+									addMemory("test001","detail001");
 								}}
 							/>
 						</div>

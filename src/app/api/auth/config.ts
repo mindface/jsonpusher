@@ -57,12 +57,12 @@ export const ConfigNextAuth = NextAuth({
       return {
         ...user,
         ...token,
-      }
+      };
     },
     async session({ session }) {
       const firebaseUser = await adminAuth.getUserByEmail(session.user.email);
       session.user.uid = firebaseUser.uid;
-      return session
+      return session;
     },
   },
   adapter: FirestoreAdapter({

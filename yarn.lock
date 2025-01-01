@@ -6058,6 +6058,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dayjs@npm:^1.11.13":
+  version: 1.11.13
+  resolution: "dayjs@npm:1.11.13"
+  checksum: 10c0/a3caf6ac8363c7dade9d1ee797848ddcf25c1ace68d9fe8678ecf8ba0675825430de5d793672ec87b24a69bf04a1544b176547b2539982275d5542a7955f35b7
+  languageName: node
+  linkType: hard
+
 "debug@npm:2.6.9":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
@@ -8920,6 +8927,7 @@ __metadata:
     "@types/nodemailer": "npm:^6"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
+    dayjs: "npm:^1.11.13"
     eslint: "npm:^8"
     eslint-config-next: "npm:14.2.15"
     eslint-plugin-storybook: "npm:^0.9.0"

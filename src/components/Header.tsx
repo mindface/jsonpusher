@@ -18,7 +18,15 @@ export default function Header() {
 		signIn();
 	};
 	const signOutAction = () => {
-		signOut();
+		// なぜ手動で消すことになっているのか
+		if (typeof window !== "undefined") {
+			localStorage.removeItem("next-auth.session-token");
+			sessionStorage.removeItem("next-auth.session-token");
+			document.cookie = `next-auth.session-token=; path=/; expires=${new Date(0).toUTCString()}`;
+		}
+		signOut({
+			callbackUrl: "/login"
+		});
 	};
 	return (
 		<div className="flex items-center justify-between shadow-lg p-6 pb-4 ">

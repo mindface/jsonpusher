@@ -39,23 +39,26 @@ import { getToken } from "next-auth/jwt";
 // });
 
 export async function middleware(request: NextRequest) {
-	const response = NextResponse.next({
-		request: {
-			headers: request.headers,
-		},
-	});
+	// const response = NextResponse.next({
+	// 	request: {
+	// 		headers: request.headers,
+	// 	},
+	// });
 	const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
 	const protectedRoutes = ["/", "/health", "/sports", "/questionAi", "/sportAndJob"];
 	const path = new URL(request.url).pathname;
-  if (!protectedRoutes.includes(path)) {
+  if (path === "/login" || path.startsWith("/_next")) {
     return NextResponse.next();
   }
+  // if (protectedRoutes.includes(path)) {
+  //   return NextResponse.next();
+  // }
 
-	if (!token) {
+	if (protectedRoutes.includes(path) && !token) {
 		return NextResponse.redirect(new URL("/login", request.url));
 	}
 
-	return response;
+	return NextResponse.next();
 }
 
 export const config = {
