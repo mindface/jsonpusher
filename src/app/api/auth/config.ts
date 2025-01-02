@@ -1,48 +1,73 @@
-import NextAuth, { type NextAuthConfig } from "next-auth";
-import type { Provider } from "next-auth/providers";
-import GoogleProvider from "next-auth/providers/google";
+// import { handlers } from "../config";
 
-const { SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = process.env;
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { adminAuth, certSet } from "@/lib/firebaseAdmin";
+import { FirestoreAdapter } from "@auth/firebase-adapter";
+const { NEXTAUTH_SECRET } = process.env;
 
-if (!SECRET) throw new Error("You must provide SECRET env var.");
-if (!GOOGLE_CLIENT_ID) throw new Error("You must provide GOOGLE_ID env var.");
-if (!GOOGLE_CLIENT_SECRET)
-	throw new Error("You must provide GOOGLE_SECRET env var.");
+interface Credentials {
+  idToken?: string;
+}
 
-const providers: Provider[] = [
-	GoogleProvider({
-		clientId: GOOGLE_CLIENT_ID,
-		clientSecret: GOOGLE_CLIENT_SECRET,
-		authorization: {
-			params: {
-				redirect_uri: `${process.env.NEXT_PUBLIC_BASIC_URL}/api/auth/callback/google`,
-			},
-		},
-	}),
-];
+export const ConfigNextAuth = NextAuth({
+  secret: NEXTAUTH_SECRET,
+	// providers: [],
+  providers: [
+    CredentialsProvider({
+      authorize: async (credentials: Credentials) => {
+        const { idToken } = credentials;
+        if (idToken !== null) {
+          try {
+            const decoded = await adminAuth.verifyIdToken(idToken ?? "");
+            return { ...decoded };
+          } catch (error) {
+            console.log("Failed to verify ID token:", error);
+          }
+        }
+        return null;
+      },
+    }),
+  ],
+  session: {
+    strategy: "jwt",
+  },
+  callbacks: {
+    // async authorized({ auth, request: { nextUrl } }){
+    //   const isLoggedIn = !!auth?.user;
+    //   const isOnUser = nextUrl.pathname.includes("user");
+    //   if (isOnUser) {
+    //     if (isLoggedIn) return true;
+    //     return false;
+    //   } else if (isLoggedIn) {
+    //     return Response.redirect(new URL('/', nextUrl));
+    //   }
+    //   return true;
+    // },
+    // jwt: async ({ token, user }) => {
+    //   if (user) {
+    //     console.log("////////////////");
+    //     console.log(user);
+    //     token.name = user.name;
+    //   }
+    //   return token;
+    // },
+    async jwt({ token, trigger, session, user }) {
+      if (trigger === 'update') token.name = session?.user?.name
+      return {
+        ...user,
+        ...token,
+      };
+    },
+    async session({ session }) {
+      const firebaseUser = await adminAuth.getUserByEmail(session.user.email);
+      session.user.uid = firebaseUser.uid;
+      return session;
+    },
+  },
+  adapter: FirestoreAdapter({
+    credential: certSet
+  }),
+});
 
-export const authOptions: NextAuthConfig = {
-	providers: providers,
-	secret: SECRET,
-	callbacks: {
-		async session({ token, session }) {
-			if (token.sub && session.user) {
-				session.user.id = token.sub;
-			}
-			// 確認次第実装
-			// if (token.role && session.user) {
-			//   session.user.role = token.role as any;
-			// }
-			return session;
-		},
-		async jwt({ token }) {
-			if (!token.sub) return token;
-			// const existingUser = await getUserById(token.sub);
-			// if (!existingUser) return token;
-			// token.role = existingUser.role;
-			return token;
-		},
-	},
-};
-
-export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+export const { handlers, auth, signIn, signOut } = ConfigNextAuth;

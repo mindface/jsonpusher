@@ -1,0 +1,10 @@
+.memory-task-item__edit {
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+
+.open .memory-task-item__edit {
+	visibility: visible;
+	opacity: 1;
+}

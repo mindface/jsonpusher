@@ -1,5 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
-import { auth } from "./app/api/auth/config";
+import { getToken } from "next-auth/jwt";
+// import { auth } from "./lib/firebaseClient";
+// import { auth } from "./app/api/auth/config";
 // import { withAuth } from 'next-auth/middleware';
 // 認証基盤の自作するケースの確認で残している
 // export function middleware(request: NextRequest) {
@@ -37,27 +39,26 @@ import { auth } from "./app/api/auth/config";
 // });
 
 export async function middleware(request: NextRequest) {
-	const response = NextResponse.next({
-		request: {
-			headers: request.headers,
-		},
-	});
-
+	// const response = NextResponse.next({
+	// 	request: {
+	// 		headers: request.headers,
+	// 	},
+	// });
+	const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
+	const protectedRoutes = ["/", "/health", "/sports", "/questionAi", "/sportAndJob"];
 	const path = new URL(request.url).pathname;
-	const session = await auth();
-	const user = session?.user?.name ?? false;
+  if (path === "/login" || path.startsWith("/_next")) {
+    return NextResponse.next();
+  }
+  // if (protectedRoutes.includes(path)) {
+  //   return NextResponse.next();
+  // }
 
-	// ログイン実装時の確認後調査
-	if (
-		(path === "/" ||
-		 path === "/health" ||
-		 path === "/sports" ||
-		 path === "/sportAndJob")
-		 && !user) {
+	if (protectedRoutes.includes(path) && !token) {
 		return NextResponse.redirect(new URL("/login", request.url));
 	}
 
-	return response;
+	return NextResponse.next();
 }
 
 export const config = {
