@@ -10,7 +10,7 @@ export default function SectionMemoryTask() {
 	const { memories, getMemory } = useStoreMemoery();
 	useEffect(() => {
 		getMemory();
-	},[]);
+	},[getMemory]);
 
 	return (
 		<section className="section-memory-task">

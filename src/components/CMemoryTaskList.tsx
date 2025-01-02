@@ -29,9 +29,12 @@ export default function CMemoryTaskList(props: Props) {
 						</ul>
 					</div>
 				</div>
-				{items.map((memory,index) => (
-					<CMemoryTaskItem key={`CMemoryTaskItem${memory.id}${index}`} item={memory} />
-				))}
+				{ items.length > 0 ?
+					items.map((memory,index) => (
+						<CMemoryTaskItem key={`CMemoryTaskItem${memory.id}${index}`} item={memory} />
+					)) :
+					<div className="p-4">タスクを登録してください。</div>
+				}
 			</div>
 		</div>
 	);
