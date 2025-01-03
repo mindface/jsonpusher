@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "../stories/Button/Button";
 import { Input } from "../stories/Input/Input";
+import { Textarea } from "../stories/TextArea/Textarea";
 
 import { useStoreMemoery } from "../store/memory";
 
@@ -60,39 +61,39 @@ export default function CMemoryTaskEdit(props: Props) {
 					max={1000}
 				/>
 			</div>
-			<div className="flex pb-2">
-				<Input
-					type="text"
+			<div className="pb-2">
+				<Textarea
 					value={memoryTaskDetail}
-					className={type === "edit" ? "label-dark" : ""}
+					outerClassName={type === "edit" ? "label-black" : ""}
 					label="詳細"
 					onChange={(value) => {
 						memoryTaskDetailSet(value as string);
 					}}
-					max={1000}
 				/>
-				<Button
-					label={type === "edit" ? "更新" : "追加"}
-					size="small"
-					primary={true}
-					onClick={() => {
-						if (type === "edit") {
-							updatePlanAction();
-						} else {
-							addPlanAction();
-						}
-					}}
-				/>
-				{type === "edit" && (
+				<div className="pt-8">
 					<Button
-						label="削除"
+						label={type === "edit" ? "更新" : "追加"}
 						size="small"
-						primary={false}
+						primary={true}
 						onClick={() => {
-							deletePlanAction();
+							if (type === "edit") {
+								updatePlanAction();
+							} else {
+								addPlanAction();
+							}
 						}}
 					/>
-				)}
+					{type === "edit" && (
+						<Button
+							label="削除"
+							size="small"
+							primary={false}
+							onClick={() => {
+								deletePlanAction();
+							}}
+						/>
+					)}
+				</div>
 			</div>
 		</div>
 	);

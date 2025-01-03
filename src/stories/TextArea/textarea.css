@@ -7,11 +7,12 @@
 }
 
 .label-black .label {
-	color: var(--font-black);
+	color: var(--background);
 }
 
 .label-black .textarea {
-	box-shadow: 0 0 1px var(--font-black) inset;
+	color: var(--background);
+	box-shadow: 0 0 1px var(--background) inset;
 }
 
 .textarea.auto {
