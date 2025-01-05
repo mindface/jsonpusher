@@ -53,6 +53,7 @@ export const ConfigNextAuth = NextAuth({
     //   return token;
     // },
     async jwt({ token, trigger, session, user }) {
+      console.log(token);
       if (trigger === 'update') token.name = session?.user?.name
       return {
         ...user,
