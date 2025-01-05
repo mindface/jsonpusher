@@ -57,7 +57,7 @@ export async function middleware(request: NextRequest) {
   //   return NextResponse.next();
   // }
 
-	if (protectedRoutes.includes(path) && !token) {
+	if (protectedRoutes.includes(path) && token && !token.uid) {
 		console.log("NextResponse.redirect(new URL(/login, request.url)");
 		return NextResponse.redirect(new URL("/login", request.url));
 	}
