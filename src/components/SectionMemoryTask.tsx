@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
+import { Dialog } from "../stories/Dialog/Dialog";
 
 import CMemoryTaskEdit from "./CMemoryTaskEdit";
 import CMemoryTaskList from "./CMemoryTaskList";
@@ -16,7 +17,12 @@ export default function SectionMemoryTask() {
 		<section className="section-memory-task">
 			<Titleline3h title="記録をするための情報を考える" size="large" />
 			<div className="memory-task-box">
-				<CMemoryTaskEdit type="add" />
+				<Dialog
+				  label="記録を追加する"
+					type="button"
+				>
+					<CMemoryTaskEdit type="add" />
+				</Dialog>
 				<CMemoryTaskList items={memories} />
 			</div>
 		</section>

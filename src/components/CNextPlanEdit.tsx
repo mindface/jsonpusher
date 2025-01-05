@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "../stories/Button/Button";
 import { Input } from "../stories/Input/Input";
 
@@ -13,17 +13,10 @@ type Props = {
 };
 
 export default function CNextPlanEdit(props: Props) {
-	const [planTitle, planTitleSet] = useState("");
-	const [planDetails, planDetailsSet] = useState("");
-	const { addNextPlan, updateNextPlan, deleteNextPlan } = useStoreNextPlan();
 	const { type, item } = props;
-
-	useEffect(() => {
-		if (type === "edit" && item?.title && item?.details) {
-			planTitleSet(item?.title);
-			planDetailsSet(item?.details);
-		}
-	}, [type, item?.title, item?.details]);
+	const [planTitle, planTitleSet] = useState(item?.title ?? "");
+	const [planDetails, planDetailsSet] = useState(item?.details ?? "");
+	const { addNextPlan, updateNextPlan, deleteNextPlan } = useStoreNextPlan();
 
 	const addPlanAction = () => {
 		addNextPlan(planTitle, planDetails);
@@ -53,7 +46,7 @@ export default function CNextPlanEdit(props: Props) {
 				<Input
 					type="text"
 					value={planTitle}
-					className={type === "edit" ? "label-dark" : ""}
+					outerClassName={type === "edit" ? "label-dark" : ""}
 					label="タイトル"
 					onChange={(value) => {
 						planTitleSet(value as string);
@@ -66,7 +59,7 @@ export default function CNextPlanEdit(props: Props) {
 					type="text"
 					label="詳細"
 					value={planDetails}
-					className={type === "edit" ? "label-dark" : ""}
+					outerClassName={type === "edit" ? "label-dark" : ""}
 					onChange={(value) => {
 						planDetailsSet(value as string);
 					}}

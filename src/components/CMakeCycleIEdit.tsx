@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "../stories/Button/Button";
 import { Input } from "../stories/Input/Input";
 
@@ -13,17 +13,10 @@ type Props = {
 };
 
 export default function CMakeCycleIEdit(props: Props) {
-	const [cycleTitle, cycleTitleSet] = useState("");
-	const [cycleDetail, cycleDetailSet] = useState("");
-	const { addCycle, updateCycle, deleteCycle } = useStoreCycle();
 	const { type, item } = props;
-
-	useEffect(() => {
-		if (type === "edit" && item?.title && item?.detail) {
-			cycleTitleSet(item?.title);
-			cycleDetailSet(item?.detail);
-		}
-	}, [type, item?.title, item?.detail]);
+	const [cycleTitle, cycleTitleSet] = useState(item?.title ?? "");
+	const [cycleDetail, cycleDetailSet] = useState(item?.detail ?? "");
+	const { addCycle, updateCycle, deleteCycle } = useStoreCycle();
 
 	const addCycleAction = () => {
 		addCycle(cycleTitle, cycleDetail);
@@ -55,7 +48,7 @@ export default function CMakeCycleIEdit(props: Props) {
 				<Input
 					type="text"
 					value={cycleTitle}
-					className={type === "edit" ? "label-dark" : ""}
+					outerClassName={type === "edit" ? "label-dark" : ""}
 					label="タイトル"
 					onChange={(value) => {
 						cycleTitleSet(value as string);
@@ -68,7 +61,7 @@ export default function CMakeCycleIEdit(props: Props) {
 					type="text"
 					label="詳細"
 					value={cycleDetail}
-					className={type === "edit" ? "label-dark" : ""}
+					outerClassName={type === "edit" ? "label-dark" : ""}
 					onChange={(value) => {
 						cycleDetailSet(value as string);
 					}}
