@@ -1,4 +1,3 @@
-"use client";
 // import SectionLogin from "../../components/SectionLogin";
 import SectionLoginFirebase from "../../components/SectionLoginFirebase";
 
