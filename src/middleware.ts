@@ -45,7 +45,7 @@ export async function middleware(request: NextRequest) {
 	// 	},
 	// });
 	const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
-	// const protectedRoutes = ["/", "/health", "/sports", "/questionAi", "/sportAndJob"];
+	const protectedRoutes = ["/", "/health", "/sports", "/questionAi", "/sportAndJob"];
 	const path = new URL(request.url).pathname;
   if (path === "/login" || path.startsWith("/_next")) {
     return NextResponse.next();
@@ -53,8 +53,9 @@ export async function middleware(request: NextRequest) {
   // if (protectedRoutes.includes(path)) {
   //   return NextResponse.next();
   // }
+	console.log(token);
 
-	if (!token) {
+	if (protectedRoutes.includes(path) && !token) {
 		return NextResponse.redirect(new URL("/login", request.url));
 	}
 
