@@ -40,7 +40,6 @@ import { getToken } from "next-auth/jwt";
 // });
 
 export async function middleware(request: NextRequest) {
-	const response = NextResponse.next();
 	// const response = NextResponse.next({
 	// 	request: {
 	// 		headers: request.headers,
