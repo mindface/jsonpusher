@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
+import Cors from "cors";
 // import { auth } from "./lib/firebaseClient";
 // import { auth } from "./app/api/auth/config";
 // import { withAuth } from 'next-auth/middleware';
@@ -38,7 +39,37 @@ import { getToken } from "next-auth/jwt";
 //   },
 // });
 
+const cors = Cors({
+  methods: ["GET", "POST", "HEAD"],
+  origin: ["http://localhost:3000", "https://jsonpusher.vercel.app"],
+});
+
+async function runMiddleware(req: NextRequest, cors: any) {
+  return new Promise((resolve, reject) => {
+    cors(
+      {
+        headers: req.headers,
+        method: req.method,
+        url: req.url,
+      },
+      {
+        end: () => resolve(null),
+        setHeader: (key: string, value: string) => {
+          req.headers.set(key, value);
+        },
+      },
+      (result: any) => {
+        if (result instanceof Error) {
+          return reject(result);
+        }
+        return resolve(result);
+      }
+    );
+  });
+}
+
 export async function middleware(request: NextRequest) {
+	await runMiddleware(request, cors);
 	// const response = NextResponse.next({
 	// 	request: {
 	// 		headers: request.headers,
