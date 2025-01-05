@@ -14,17 +14,10 @@ type Props = {
 };
 
 export default function CMemoryTaskEdit(props: Props) {
-	const [memoryTaskTitle, memoryTaskTitleSet] = useState("");
-	const [memoryTaskDetail, memoryTaskDetailSet] = useState("");
-	const { addMemory, updateMemory, deleteMemory } = useStoreMemoery();
 	const { type, item } = props;
-
-	useEffect(() => {
-		if (type === "edit" && item?.title && item?.detail) {
-			memoryTaskTitleSet(item?.title);
-			memoryTaskDetailSet(item?.detail);
-		}
-	}, [type, item?.title, item?.detail]);
+	const [memoryTaskTitle, memoryTaskTitleSet] = useState(item?.title ?? "");
+	const [memoryTaskDetail, memoryTaskDetailSet] = useState(item?.detail ?? "");
+	const { addMemory, updateMemory, deleteMemory } = useStoreMemoery();
 
 	const addPlanAction = () => {
 		addMemory(memoryTaskTitle, memoryTaskDetail);
@@ -49,11 +42,12 @@ export default function CMemoryTaskEdit(props: Props) {
 
 	return (
 		<div className="pb-4">
-			<div className="pb-2">
+			<div className="mb-4 pb-4 border-b">
 				<Input
 					type="text"
 					value={memoryTaskTitle}
-					className={type === "edit" ? "label-dark" : ""}
+					className="w-full"
+					outerClassName={type === "edit" ? "label-dark" : ""}
 					label="タイトル"
 					onChange={(value) => {
 						memoryTaskTitleSet(value as string);
@@ -64,25 +58,28 @@ export default function CMemoryTaskEdit(props: Props) {
 			<div className="pb-2">
 				<Textarea
 					value={memoryTaskDetail}
+					className="w-full"
 					outerClassName={type === "edit" ? "label-black" : ""}
 					label="詳細"
 					onChange={(value) => {
 						memoryTaskDetailSet(value as string);
 					}}
 				/>
-				<div className="pt-8">
-					<Button
-						label={type === "edit" ? "更新" : "追加"}
-						size="small"
-						primary={true}
-						onClick={() => {
-							if (type === "edit") {
-								updatePlanAction();
-							} else {
-								addPlanAction();
-							}
-						}}
-					/>
+				<div className="pt-4 flex">
+					<div className="pr-4">
+						<Button
+							label={type === "edit" ? "更新" : "追加"}
+							size="small"
+							primary={true}
+							onClick={() => {
+								if (type === "edit") {
+									updatePlanAction();
+								} else {
+									addPlanAction();
+								}
+							}}
+						/>
+					</div>
 					{type === "edit" && (
 						<Button
 							label="削除"

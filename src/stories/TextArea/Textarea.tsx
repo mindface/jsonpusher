@@ -32,7 +32,7 @@ export const Textarea = ({
 		setClassName += ` ${size}`;
 	}
 	return (
-		<div className={`textarea-box ${outerClassName ?? ""}`}>
+		<div className={`textarea-box p-2 ${outerClassName ?? ""}`}>
 			{label && <span className="label inline-block pb-4">{label}</span>}
 			<textarea
 				className={setClassName}

@@ -2,17 +2,17 @@
 	display: block;
 	background-color: transparent;
 	border: 0;
-	box-shadow: 0 0 1px var(--foreground) inset;
+	box-shadow: 0 0 1px var(--menu-font-color) inset;
 	resize: both;
 }
 
 .label-black .label {
-	color: var(--background);
+	color: var(--menu-font-color);
 }
 
 .label-black .textarea {
-	color: var(--background);
-	box-shadow: 0 0 1px var(--background) inset;
+	color: var(--menu-font-color);
+	box-shadow: 0 0 1px var(--menu-font-color) inset;
 }
 
 .textarea.auto {

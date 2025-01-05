@@ -1,17 +1,17 @@
-.small .title3h {
+.small .titleline3h {
 	font-size: 1.4rem;
 }
 
-.medium .title3h {
+.medium .titleline3h {
 	margin-bottom: 8px;
 }
 
-.large .title3h {
+.large .titleline3h {
 	margin-bottom: 16px;
 	font-size: 2rem;
 }
 
-.title3h::after {
+.titleline3h::after {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -24,10 +24,10 @@
 	color: var(--foreground);
 }
 
-.small .title3h::after {
+.small .titleline3h::after {
 	width: 60px;
 }
 
-.large .title3h::after {
+.large .titleline3h::after {
 	width: 100px;
 }

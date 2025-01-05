@@ -53,7 +53,7 @@ export default function CPlanEdit(props: Props) {
 				<Input
 					type="text"
 					value={planTitle}
-					className={type === "edit" ? "label-dark" : ""}
+					outerClassName={type === "edit" ? "label-dark" : ""}
 					label="タイトル"
 					onChange={(value) => {
 						planTitleSet(value as string);
@@ -65,7 +65,7 @@ export default function CPlanEdit(props: Props) {
 				<Input
 					type="text"
 					value={planDetails}
-					className={type === "edit" ? "label-dark" : ""}
+					outerClassName={type === "edit" ? "label-dark" : ""}
 					label="詳細"
 					onChange={(value) => {
 						planDetailsSet(value as string);
