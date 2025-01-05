@@ -15,7 +15,9 @@ import Logo from "../assets/images/logo.png";
 export default function Header() {
 	const session = useSession();
 	const signInAction = () => {
-		signIn();
+		signIn("credentials",{
+			callbackUrl: "/"
+		});
 	};
 	const signOutAction = () => {
 		// なぜ手動で消すことになっているのか

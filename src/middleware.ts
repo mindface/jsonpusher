@@ -50,12 +50,8 @@ export async function middleware(request: NextRequest) {
   if (path === "/login" || path.startsWith("/_next")) {
     return NextResponse.next();
   }
-  // if (protectedRoutes.includes(path)) {
-  //   return NextResponse.next();
-  // }
-	console.log(token);
 
-	if (protectedRoutes.includes(path) && !token) {
+	if (!token) {
 		return NextResponse.redirect(new URL("/login", request.url));
 	}
 
