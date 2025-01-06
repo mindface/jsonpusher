@@ -7,7 +7,7 @@ import CMemoryTaskEdit from "./CMemoryTaskEdit";
 
 import type { Memory } from "../../type/memory";
 
-import { convertTimestampToDayjs } from "../../lib/formater";
+import { ForMatter } from "../../lib/formater";
 
 type Props = {
 	item: Memory;
@@ -25,7 +25,7 @@ export default function CMemoryTaskItem(props: Props) {
 						<h4 className={["memory-task-item__title", "p-2"].join(" ")}>{item.title}</h4>
 					</li>
 					<li className="item w-[120px]">
-						<time className="p-2 flex justify-center items-center" dateTime={convertTimestampToDayjs(item.createAt)}>{convertTimestampToDayjs(item.createAt)}</time>
+						<time className="p-2 flex justify-center items-center" dateTime={ForMatter.convertTimestampToDayjs(item.createAt)}>{ForMatter.convertTimestampToDayjs(item.createAt)}</time>
 					</li>
 					<li className="item w-[80px]">
 						<Button
