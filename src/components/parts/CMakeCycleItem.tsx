@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
-import { Button } from "../stories/Button/Button";
-import styles from "../styles/cNextPlanItem.module.css";
+import { Button } from "../../stories/Button/Button";
+import styles from "../../styles/cNextPlanItem.module.css";
 
-import CMakeCycleIEdit from "../components/CMakeCycleIEdit";
+import CMakeCycleIEdit from "./CMakeCycleIEdit";
 
-import type { Cycle } from "../type/cycle";
+import type { Cycle } from "../../type/cycle";
 
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";

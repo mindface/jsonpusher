@@ -3,10 +3,10 @@ import { Button } from "../stories/Button/Button";
 import { Input } from "../stories/Input/Input";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
-import CNextPlanEdit from "../components/CNextPlanEdit";
-import CNextPlanList from "../components/CNextPlanList";
-import CPlanEdit from "../components/CPlanEdit";
-import CPlanList from "../components/CPlanList";
+import CNextPlanEdit from "./parts/CNextPlanEdit";
+import CNextPlanList from "./parts/CNextPlanList";
+import CPlanEdit from "./parts/CPlanEdit";
+import CPlanList from "./parts/CPlanList";
 
 import { useStorePlan } from "../store/plan";
 import { useStoreNextPlan } from "../store/planNext";

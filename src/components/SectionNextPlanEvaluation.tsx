@@ -4,8 +4,8 @@ import { Button } from "../stories/Button/Button";
 import { Textarea } from "../stories/TextArea/Textarea";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
-import CNextPlanEdit from "../components/CNextPlanEdit";
-import CNextPlanList from "../components/CNextPlanList";
+import CNextPlanEdit from "./parts/CNextPlanEdit";
+import CNextPlanList from "./parts/CNextPlanList";
 
 import { useStoreNextPlan } from "../store/planNext";
 

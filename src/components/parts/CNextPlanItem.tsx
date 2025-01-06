@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
-import { Button } from "../stories/Button/Button";
-import styles from "../styles/cNextPlanItem.module.css";
+import { Button } from "../../stories/Button/Button";
+import styles from "../../styles/cNextPlanItem.module.css";
 
-import CNextPlanEdit from "../components/CNextPlanEdit";
+import CNextPlanEdit from "./CNextPlanEdit";
 
-import type { Plan } from "../type/plan";
+import type { Plan } from "../../type/plan";
 
 type Props = {
 	item: Plan;

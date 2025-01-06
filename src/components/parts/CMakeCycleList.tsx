@@ -10,16 +10,16 @@ import {
 } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { useMemo } from "react";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
-import { Button } from "../stories/Button/Button";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
+import { Button } from "../../stories/Button/Button";
 
-import { useStoreCycle } from "../store/cycle";
+import { useStoreCycle } from "../../store/cycle";
 import CMakeCycleItem from "./CMakeCycleItem";
 
 import { useDroppable } from "@dnd-kit/core";
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 
-import { copyClipbord } from "../lib/copyClipbord";
+import { copyClipbord } from "../../lib/copyClipbord";
 
 export default function CMakeCycleList() {
 	const { cycles, setCycle } = useStoreCycle();

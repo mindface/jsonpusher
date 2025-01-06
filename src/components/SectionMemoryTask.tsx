@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { Dialog } from "../stories/Dialog/Dialog";
 
-import CMemoryTaskEdit from "./CMemoryTaskEdit";
-import CMemoryTaskList from "./CMemoryTaskList";
+import CMemoryTaskEdit from "./parts/CMemoryTaskEdit";
+import CMemoryTaskList from "./parts/CMemoryTaskList";
 
 import { useStoreMemoery } from "../store/memory";
 
