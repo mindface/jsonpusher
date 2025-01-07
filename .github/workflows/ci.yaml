@@ -45,8 +45,8 @@ jobs:
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
         run: yarn build
 
-      - name: Export Environment Variables
-        run: export $(cat .env | xargs)
+      - name: Debug Vercel Token
+        run: echo "VERCEL_TOKEN=${{ secrets.VERCEL_TOKEN }}" | grep VERCEL_TOKEN
 
       - name: Install Vercel CLI
         run: yarn dlx vercel@latest
