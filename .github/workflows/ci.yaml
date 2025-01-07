@@ -51,9 +51,6 @@ jobs:
       - name: Install Vercel CLI
         run: yarn dlx vercel@latest
 
-      - name: Authenticate with Vercel
-        run: vercel login --token ${{ secrets.VERCEL_TOKEN }}
-
       - name: Pull Vercel Environment Information
         run: |
           vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
