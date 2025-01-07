@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
-import { Button } from "../stories/Button/Button";
-import { Input } from "../stories/Input/Input";
+import { Button } from "../../stories/Button/Button";
+import { Input } from "../../stories/Input/Input";
 
-import { useStoreCycle } from "../store/cycle";
+import { useStoreCycle } from "../../store/cycle";
 
-import type { Cycle } from "../type/cycle";
+import type { Cycle } from "../../type/cycle";
 
 type Props = {
 	type: string;

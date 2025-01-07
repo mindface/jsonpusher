@@ -1,12 +1,12 @@
 "use client";
 import { useState } from "react";
-import { Button } from "../stories/Button/Button";
-import { Input } from "../stories/Input/Input";
-import { Textarea } from "../stories/TextArea/Textarea";
+import { Button } from "../../stories/Button/Button";
+import { Input } from "../../stories/Input/Input";
+import { Textarea } from "../../stories/TextArea/Textarea";
 
-import { useStoreMemoery } from "../store/memory";
+import { useStoreMemoery } from "../../store/memory";
 
-import type { Memory } from "../type/memory";
+import type { Memory } from "../../type/memory";
 
 type Props = {
 	type: string;

@@ -5,7 +5,7 @@ import nodemailer from "nodemailer";
 import {
 	convertLinesToParagraphs,
 	sanitaizeText,
-} from "../../../lib/convertString";
+} from "../../../utils/convertString";
 
 // test用
 export async function GET() {

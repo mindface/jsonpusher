@@ -14,7 +14,7 @@ import SelectPatternList from "../json/selectPatternList.json";
 
 import { useStoreHealthText } from "../store/healthText";
 
-import { copyClipbord } from "../lib/copyClipbord";
+import { copyClipbord } from "../utils/copyClipbord";
 
 type SelectList = { check: boolean; name: string };
 type SelectTextList = { check: boolean; list: string[] };

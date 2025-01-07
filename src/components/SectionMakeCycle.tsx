@@ -2,8 +2,8 @@ import { Suspense } from "react";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { Loading } from "../stories/Loading/Loading";
 
-import CMakeCycleIEdit from "./CMakeCycleIEdit";
-import CMakeCycleList from "./CMakeCycleList";
+import CMakeCycleIEdit from "./parts/CMakeCycleIEdit";
+import CMakeCycleList from "./parts/CMakeCycleList";
 import ContentMakeCycleModel from "./ContentMakeCycleModel";
 
 // ToDo 今後firebaseと連携してく際にコンポーネントを分ける

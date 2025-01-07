@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { type NextRequest, NextResponse } from "next/server";
-import { sanitaizeText } from "../../../lib/convertString";
+import { sanitaizeText } from "../../../utils/convertString";
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GENERATIVE_AI ?? "");
 

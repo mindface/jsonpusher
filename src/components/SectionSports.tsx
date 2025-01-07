@@ -11,7 +11,7 @@ import { InputRange } from "../stories/InputRange/InputRange";
 import { Textarea } from "../stories/TextArea/Textarea";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
-import { copyClipbord } from "../lib/copyClipbord";
+import { copyClipbord } from "../utils/copyClipbord";
 
 import { useStoreSportsText } from "../store/sportText";
 

@@ -1,6 +1,6 @@
 "use client";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
-import type { Memory } from "../type/memory";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
+import type { Memory } from "../../type/memory";
 
 import CMemoryTaskItem from "./CMemoryTaskItem";
 

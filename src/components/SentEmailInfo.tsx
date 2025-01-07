@@ -10,7 +10,7 @@ import styles from "../styles/sentEmailInfo.module.css";
 
 import emailSvg from "../assets/images/email.svg";
 
-import { invalidCheckEmail } from "../lib/validChecker";
+import { ValidChecker } from "../utils/validChecker";
 
 export default function SentEmailInfo() {
 	const [viewSwitch, viewSwitchSet] = useState(false);
@@ -31,7 +31,7 @@ export default function SentEmailInfo() {
 			validationTextSet("全ての入力項目を埋めてください。");
 			return;
 		}
-		if (!invalidCheckEmail(sendEmail)) {
+		if (!ValidChecker.invalidCheckEmail(sendEmail)) {
 			validationTextSet("メールを正しい形式で入力してください。");
 			return;
 		} else {

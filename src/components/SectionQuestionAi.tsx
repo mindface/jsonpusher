@@ -40,7 +40,6 @@ export default function SectionQuestionAi() {
 			}else if(machineLearningType === "claude" && getText !== null && typeof getText === "string"){
 				getText = await fetchClaudeApi(sendPrompt);	
 			}
-			console.log(getText);
 			sendLoadingSet(false);
 			_displayedChunksSet(textChange(getText));
 		} catch (error) {

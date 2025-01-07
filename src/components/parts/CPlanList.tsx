@@ -1,6 +1,6 @@
 "use client";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
-import type { Plan } from "../type/plan";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
+import type { Plan } from "../../type/plan";
 
 import CPlanItem from "./CPlanItem";
 
