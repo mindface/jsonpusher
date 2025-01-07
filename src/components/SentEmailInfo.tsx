@@ -10,7 +10,7 @@ import styles from "../styles/sentEmailInfo.module.css";
 
 import emailSvg from "../assets/images/email.svg";
 
-import { ValidChecker } from "../lib/validChecker";
+import { ValidChecker } from "../utils/validChecker";
 
 export default function SentEmailInfo() {
 	const [viewSwitch, viewSwitchSet] = useState(false);

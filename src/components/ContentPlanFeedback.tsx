@@ -13,7 +13,7 @@ import { useStoreNextPlan } from "../store/planNext";
 
 import type { Plan } from "../type/plan";
 
-import { copyClipbord } from "../lib/copyClipbord";
+import { copyClipbord } from "../utils/copyClipbord";
 
 export default function ContentPlanFeedback() {
 	const { plans, setPlans } = useStorePlan();

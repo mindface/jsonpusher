@@ -9,7 +9,7 @@ import CNextPlanList from "./parts/CNextPlanList";
 
 import { useStoreNextPlan } from "../store/planNext";
 
-import { copyClipbord } from "../lib/copyClipbord";
+import { copyClipbord } from "../utils/copyClipbord";
 
 import type { Plan } from "../type/plan";
 

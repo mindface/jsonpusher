@@ -7,7 +7,7 @@ import CMemoryTaskEdit from "./CMemoryTaskEdit";
 
 import type { Memory } from "../../type/memory";
 
-import { ForMatter } from "../../lib/formater";
+import { ForMatter } from "../../utils/formater";
 
 type Props = {
 	item: Memory;

@@ -19,7 +19,7 @@ import CMakeCycleItem from "./CMakeCycleItem";
 import { useDroppable } from "@dnd-kit/core";
 import { SortableContext, rectSortingStrategy } from "@dnd-kit/sortable";
 
-import { copyClipbord } from "../../lib/copyClipbord";
+import { copyClipbord } from "../../utils/copyClipbord";
 
 export default function CMakeCycleList() {
 	const { cycles, setCycle } = useStoreCycle();

@@ -9,7 +9,7 @@ import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import ContentDetailsMenuEvaluation from "./ContentDetailsMenuEvaluation";
 import SectionValuationAssessment from "./SectionValuationAssessment";
 
-import { copyClipbord } from "../lib/copyClipbord";
+import { copyClipbord } from "../utils/copyClipbord";
 
 import menuInfoList from "../json/menuInfoList.json";
 import modelTextList from "../json/modelTextList.json";
