@@ -17,11 +17,12 @@ export default function AdSense() {
 		<div className="ad-sense" key={pathName}>
 			<ins
 				style={{ display: "block" }}
+				className="adsbygoogle"
+				data-adtest={process.env.NODE_ENV === "development" ? "on" : "off"}
 				data-ad-client="ca-pub-7006357860917162"
-				data-ad-slot="1234567890"
+				data-ad-slot="8558049857"
 				data-ad-format="auto"
-				data-full-width-responsive="true"
-			></ins>
+				data-full-width-responsive="true"></ins>
 		</div>
 	);
 }
