@@ -4,25 +4,15 @@ import { usePathname } from "next/navigation";
 
 export default function AdSense() {
 	const pathName = usePathname();
-	useEffect(() => {
-		const script = document.createElement("script");
-		script.src =
-			"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7006357860917162";
-		script.async = true;
-		script.crossOrigin = "anonymous";
-		script.setAttribute("data-ad-client", "ca-pub-7006357860917162");
-		document.body.appendChild(script);
-		if (typeof window !== "undefined" && window.adsbygoogle) {
-			try {
-				(window.adsbygoogle = window.adsbygoogle || []).push({});
-			} catch (err) {
-				console.log(err);
-			}
-		}
-		return () => {
-			document.body.removeChild(script);
-		};
-	}, [pathName]);
+
+  useEffect(() => {
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (err) {
+      console.error(err);
+    }
+  }, [pathName]);
+
 	return (
 		<div className="ad-sense" key={pathName}>
 			<ins
