@@ -30,11 +30,13 @@ export const Button = ({
 			{...props}
 		>
 			{label}
-			{ backgroundColor && <style jsx>{`
+			{backgroundColor && (
+				<style jsx>{`
         button {
           background-color: ${backgroundColor};
         }
-      `}</style>}
+      `}</style>
+			)}
 		</button>
 	);
 };

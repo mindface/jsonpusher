@@ -91,7 +91,32 @@
 			{
 				"id": "martialArts01",
 				"skillLevel": 1,
-				"label": "柔道"
+				"label": "鏡や動画で形の確認(例えば投げ技では崩し・作り・掛けなど)"
+			},
+			{
+				"id": "martialArts02",
+				"skillLevel": 2,
+				"label": "技の種類を広げる(得意技に派生技や連絡技を追加することで対応力を高める)"
+			},
+			{
+				"id": "martialArts03",
+				"skillLevel": 3,
+				"label": "パートナー練習との練習で効果的な使い方を記録する。(人の動きを把握する)"
+			},
+			{
+				"id": "martialArts04",
+				"skillLevel": 4,
+				"label": "柔道に特化したトレーニングを試合で使うイメージで目的化していく"
+			},
+			{
+				"id": "martialArts05",
+				"skillLevel": 5,
+				"label": "戦術の分析(自分や他の選手の試合動画を観察し、技のかけ方、相手との駆け引き、タイミングを学びます)"
+			},
+			{
+				"id": "martialArts06",
+				"skillLevel": 6,
+				"label": "試合で試した技に対してのフィードバックをどうすれば効果が上がる、反復練習になるかを考える"
 			}
 		]
 	},
@@ -103,7 +128,37 @@
 			{
 				"id": "waterSports01",
 				"skillLevel": 1,
-				"label": "水泳"
+				"label": "動画や鏡を利用したフォーム(基本姿勢)の確認"
+			},
+			{
+				"id": "waterSports02",
+				"skillLevel": 2,
+				"label": "フォームを安定させるための体幹の安定をしていく構造化"
+			},
+			{
+				"id": "waterSports03",
+				"skillLevel": 3,
+				"label": "考えるために持久力トレーニングとインターバルトレーニングでのフォームへのフィードバックを開始する"
+			},
+			{
+				"id": "waterSports04",
+				"skillLevel": 4,
+				"label": "ストロークやキックに特化したドリル練習を取り入れて、技術を細かく磨く"
+			},
+			{
+				"id": "waterSports05",
+				"skillLevel": 5,
+				"label": "無意識にフォームを安定させるための肩・背中・腕の強化(プルアップやダンベルローイングで、ストローク力を向上)"
+			},
+			{
+				"id": "waterSports06",
+				"skillLevel": 6,
+				"label": "泳ぎに関してリズムの確立し、ストロークや横向き呼吸のパタンを評価を効果検証する"
+			},
+			{
+				"id": "waterSports07",
+				"skillLevel": 7,
+				"label": "習得した戦略(ダイブのフォームを改善し、水中での加速や壁を蹴るタイミングと水中ドルフィンキックを組み合わせ)の注意するイメージへアプローチする"
 			}
 		]
 	},
@@ -115,7 +170,37 @@
 			{
 				"id": "winterSports01",
 				"skillLevel": 1,
-				"label": "スキー"
+				"label": "ニュートラルポジションを把握して、重心移動の意識して滑ることができる"
+			},
+			{
+				"id": "winterSports02",
+				"skillLevel": 2,
+				"label": "自分のレベルや滑りたい雪質に合った長さ・形状のスキーを選ぶ"
+			},
+			{
+				"id": "winterSports03",
+				"skillLevel": 3,
+				"label": "プランクやロシアンツイストでバランスを向上するために体幹を鍛える"
+			},
+			{
+				"id": "winterSports04",
+				"skillLevel": 4,
+				"label": "トレーニングの効果を試合で考えて調整する"
+			},
+			{
+				"id": "winterSports05",
+				"skillLevel": 5,
+				"label": "動画や鏡で観察して、意識している点とフォームの結果をプレーの向上に紐付ける"
+			},
+			{
+				"id": "winterSports06",
+				"skillLevel": 6,
+				"label": "成功体験を積み重ね、自分の進歩を意識する情報を定量化していく"
+			},
+			{
+				"id": "winterSports07",
+				"skillLevel": 7,
+				"label": "エッジを立ててターンする感覚を掴むため、緩やかな斜面で片足ドリルを実施するなどの技術をメタ認知する"
 			}
 		]
 	},
@@ -127,7 +212,32 @@
 			{
 				"id": "otherSports01",
 				"skillLevel": 1,
-				"label": "体操"
+				"label": "技を行う際の姿勢や動作をビデオで撮影し、正確なフォームになっているか確認"
+			},
+			{
+				"id": "otherSports02",
+				"skillLevel": 2,
+				"label": "体幹強化、上半身強化、下半身強化、持久力の向上を含めた基礎体力の強化"
+			},
+			{
+				"id": "otherSports03",
+				"skillLevel": 3,
+				"label": "関節の可動域を広げる(股関節、肩、手首、足首などの可動域)"
+			},
+			{
+				"id": "otherSports04",
+				"skillLevel": 4,
+				"label": "自分の改善点のある技をリスト化し、改善の優先順位を決める"
+			},
+			{
+				"id": "otherSports05",
+				"skillLevel": 5,
+				"label": "技別の練習(倒立、バク転、跳馬、吊り輪など)を確認箇所を定義した内容と改善箇所を別の部分で確認してみる"
+			},
+			{
+				"id": "otherSports06",
+				"skillLevel": 6,
+				"label": "定期的に練習計画を見直し、効果的なトレーニングを選ぶことを感覚的な指標から定量化させる"
 			}
 		]
 	}

@@ -21,9 +21,7 @@ export const Ccheck = ({
 	changing,
 	...props
 }: CcheckProps) => {
-	const mode = primary
-		? "ccheck--primary"
-		: "ccheck--secondary";
+	const mode = primary ? "ccheck--primary" : "ccheck--secondary";
 	return (
 		<div className="ccheck">
 			<input
@@ -37,19 +35,17 @@ export const Ccheck = ({
 			/>
 			<label
 				htmlFor={`${partsId}-item`}
-				className={[
-					"label ccheck",
-					`ccheck--${size}`,
-					mode,
-				].join(" ")}
+				className={["label ccheck", `ccheck--${size}`, mode].join(" ")}
 				{...props}
 			>
 				{label}
-				{backgroundColor && <style jsx>{`
+				{backgroundColor && (
+					<style jsx>{`
           button {
             background-color: ${backgroundColor};
           }
-        `}</style>}
+        `}</style>
+				)}
 			</label>
 		</div>
 	);

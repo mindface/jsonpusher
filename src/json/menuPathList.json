@@ -16,7 +16,17 @@
 	},
 	{
 		"pathId": 4,
-		"path": "/useGemini",
-		"name": "質問する"
+		"path": "/questionAi",
+		"name": "質問する(AI)"
+	},
+	{
+		"pathId": 5,
+		"path": "/sportAndJob",
+		"name": "スポーツと仕事"
+	},
+	{
+		"pathId": 6,
+		"path": "/memoryTask",
+		"name": "記録する"
 	}
 ]

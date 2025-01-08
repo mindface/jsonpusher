@@ -1,4 +1,7 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
+import { getToken } from "next-auth/jwt";
+
+// import { auth } from "./lib/firebaseClient";
 // import { auth } from "./app/api/auth/config";
 // import { withAuth } from 'next-auth/middleware';
 // 認証基盤の自作するケースの確認で残している
@@ -8,11 +11,11 @@ import { NextResponse, type NextRequest } from "next/server";
 //   const allCookies = request.cookies.getAll()
 //   console.log(allCookies)
 //   console.log("/////////////")
- 
+
 //   request.cookies.has('nextjs') // => true
 //   request.cookies.delete('nextjs')
 //   request.cookies.has('nextjs') // => false
- 
+
 //   // Setting cookies on the response using the `ResponseCookies` API
 //   const response = NextResponse.next()
 //   response.cookies.set('vercel', 'fast')
@@ -24,7 +27,7 @@ import { NextResponse, type NextRequest } from "next/server";
 //   cookie = response.cookies.get('vercel')
 //   console.log(cookie) // => { name: 'vercel', value: 'fast', Path: '/' }
 //   // The outgoing response will have a `Set-Cookie:vercel=fast;path=/` header.
- 
+
 //   return response
 // }
 // export default withAuth({
@@ -37,32 +40,30 @@ import { NextResponse, type NextRequest } from "next/server";
 // });
 
 export async function middleware(request: NextRequest) {
-  const response = NextResponse.next({
-    request: {
-      headers: request.headers,
-    },
-  });
-
-  // const path = new URL(request.url).pathname;
-  // const session = await auth();
-  // const user = session?.user?.name ?? false;s
-
-  // ログイン実装時の確認後調査
-  // if (
-  //   (path === "/" ||
-  //     path === "/health" ||
-  //     path === "/sports") &&
-  //   !user
-  // ) {
-  //   return NextResponse.redirect(new URL("/login", request.url));
+	// const response = NextResponse.next({
+	// 	request: {
+	// 		headers: request.headers,
+	// 	},
+	// });
+	const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
+	const protectedRoutes = ["/", "/health", "/sports", "/questionAi", "/sportAndJob"];
+	const path = new URL(request.url).pathname;
+  if (path === "/login" || path.startsWith("/_next")) {
+    return NextResponse.next();
+  }
+  // if (protectedRoutes.includes(path)) {
+  //   return NextResponse.next();
   // }
 
-  return response;
+	if (protectedRoutes.includes(path) && !token?.uid) {
+		return NextResponse.redirect(new URL("/login", request.url));
+	}
+	return NextResponse.next();
 }
 
 export const config = {
-  matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
-    "/login"
-  ],
+	matcher: [
+		"/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+		"/login",
+	],
 };

@@ -1,18 +1,15 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { env } from "node:process";
+import { type NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import { env } from "process";
+
 import {
-	sanitaizeText,
 	convertLinesToParagraphs,
-} from "../../../lib/convertString";
+	sanitaizeText,
+} from "../../../utils/convertString";
 
 // test用
 export async function GET() {
-	try {
-		return NextResponse.json({ name: "Contact Api" });
-	} catch (error) {
-		throw error;
-	}
+	return NextResponse.json({ name: "Contact Api" });
 }
 
 export async function POST(reqest: NextRequest) {
@@ -43,7 +40,7 @@ export async function POST(reqest: NextRequest) {
 	const mailThanksOptions = {
 		from: env.NODEMAILER_EMAIL,
 		to: _email,
-		subject: `計画に関して記録する情報です。`,
+		subject: "計画に関して記録する情報です。",
 		text: `${_name}様`,
 		html: `
     <p>${_name}様</p>

@@ -77,17 +77,5 @@
 				"label": "ランニングフォームで股関節を注意して膝と足の着地を注意する"
 			}
 		]
-	},
-	{
-		"categoryId": "otherSports",
-		"categoryName": "その他 (体操)",
-		"viewer": false,
-		"list": [
-			{
-				"id": "otherSports01",
-				"skillLevel": 1,
-				"label": "体操"
-			}
-		]
 	}
 ]

@@ -1,32 +1,37 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
 import healthImage from "../assets/images/health.jpg";
 
-import { Ccheck } from "../stories/Ccheck/Ccheck";
 import { Button } from "../stories/Button/Button";
+import { Ccheck } from "../stories/Ccheck/Ccheck";
 import { Textarea } from "../stories/TextArea/Textarea";
 
+import SelectLevelList from "../json/selectLevelList.json";
 import SelectPartList from "../json/selectPartList.json";
 import SelectPatternList from "../json/selectPatternList.json";
-import SelectLevelList from "../json/selectLevelList.json";
-import SelectHealthInfoCategoryList from "../json/selectHealthInfoCategoryList.json";
+// import SelectHealthInfoCategoryList from "../json/selectHealthInfoCategoryList.json";
 
-import { copyClipbord } from "../lib/copyClipbord";
+import { useStoreHealthText } from "../store/healthText";
+
+import { copyClipbord } from "../utils/copyClipbord";
 
 type SelectList = { check: boolean; name: string };
 type SelectTextList = { check: boolean; list: string[] };
 
 export default function SectionHealth() {
+	const { healthText, setHealthText } = useStoreHealthText();
+
 	const [viewTextSwitch, viewTextSwitchSet] = useState(false);
 	const [selectParts, selectPartsSet] = useState<SelectList[]>([]);
 	const [selectPattern, selectPatternSet] = useState<SelectList[]>([]);
 	const [selectLevel, selectLevelSet] = useState<SelectList[]>([]);
-	const [selectSetText, selectSetTextSet] = useState<SelectTextList[]>([]);
+	// const [selectSetText, selectSetTextSet] = useState<SelectTextList[]>([]);
+	const [healthTextSituation, healthTextSituationSet] = useState(healthText);
 	const selectPartList = SelectPartList;
 	const selectPatternList = SelectPatternList;
 	const selectLevelList = SelectLevelList;
-	const selectHealthInfoCategoryList = SelectHealthInfoCategoryList;
+	// const selectHealthInfoCategoryList = SelectHealthInfoCategoryList;
 
 	const checking = (
 		list: SelectList[] | SelectTextList[],
@@ -42,41 +47,53 @@ export default function SectionHealth() {
 		);
 	};
 
-	const keyWord = (setAi?: string) => {
-		let setText = "";
-		selectParts.forEach((item) => {
-			setText += item.name + " ";
-		});
-		if (selectParts.length > 0 && setAi) {
-			setText += "に関して";
-		}
-		selectPattern.forEach((item) => {
-			setText += item.name + " ";
-		});
-		if (selectPattern.length > 0 && setAi) {
-			setText += "について";
-		}
-		selectLevel.forEach((item) => {
-			setText += item.name;
-		});
-		if (selectLevel.length > 0 && setAi) {
-			setText += "で教えてください。";
-		}
-		selectSetText.forEach((item) => {
-			item.list.forEach((text) => {
-				setText += text;
-			});
-		});
-		if (
-			selectParts.length > 0 ||
-			selectPattern.length > 0 ||
-			selectLevel.length > 0
-		) {
-			setText = "健康を保つことの前提で " + setText;
-		}
+	const keyWord = useCallback(
+		(setAi?: string) => {
+			let setText = "";
+			const selectPartsArray: string[] = [];
+			for (const selectPart of selectParts) {
+				selectPartsArray.push(selectPart.name);
+			}
+			if (selectParts.length > 0 && setAi) {
+				setText += JSON.stringify(selectPartsArray);
+				setText += "に関して";
+			}
+			for (const item of selectPattern) {
+				setText += `${item.name} `;
+			}
+			if (selectPattern.length > 0 && setAi) {
+				setText += "ことについて";
+			}
+			for (const item of selectLevel) {
+				setText += item.name;
+			}
+			if (selectLevel.length > 0 && setAi) {
+				setText += "で教えてください。";
+			}
+			// selectSetText.forEach((item) => {
+			// 	item.list.forEach((text) => {
+			// 		setText += text;
+			// 	});
+			// });
+			if (
+				selectParts.length > 0 ||
+				selectPattern.length > 0 ||
+				selectLevel.length > 0
+			) {
+				setText = `健康を保つことの前提で ${setText}`;
+			}
+			return setText;
+		},
+		[selectParts, selectPattern, selectLevel],
+	);
 
-		return setText;
-	};
+	useEffect(() => {
+		const newKeyWord = keyWord("ai");
+		if (newKeyWord !== healthTextSituation) {
+			healthTextSituationSet(newKeyWord);
+			setHealthText(newKeyWord);
+		}
+	}, [keyWord, setHealthText, healthTextSituation]);
 
 	const changingParts = (check: boolean, name: string) => {
 		if (check && !checking(selectParts, name)) {
@@ -105,16 +122,16 @@ export default function SectionHealth() {
 		}
 	};
 
-	const changingSetText = (check: boolean, list: string[]) => {
-		if (check && !checking(selectSetText, list)) {
-			selectSetTextSet([...selectSetText, { check, list }]);
-		} else {
-			const _list = selectSetText.filter(
-				(item) => !item.list.some((text: string) => list.includes(text)),
-			);
-			selectSetTextSet(_list);
-		}
-	};
+	// const changingSetText = (check: boolean, list: string[]) => {
+	// 	if (check && !checking(selectSetText, list)) {
+	// 		selectSetTextSet([...selectSetText, { check, list }]);
+	// 	} else {
+	// 		const _list = selectSetText.filter(
+	// 			(item) => !item.list.some((text: string) => list.includes(text)),
+	// 		);
+	// 		selectSetTextSet(_list);
+	// 	}
+	// };
 
 	const copyAciton = () => {
 		const copyText = keyWord("ai");
@@ -138,7 +155,7 @@ export default function SectionHealth() {
 					changing={(check) => viewTextSwitchSet(check)}
 				/>
 			</div>
-			<div className="flex justify-center">
+			<div className="flex justify-center pb-8">
 				<Image
 					src={healthImage}
 					className="rounded-lg"
@@ -149,10 +166,10 @@ export default function SectionHealth() {
 					style={{ width: "auto", objectFit: "cover" }}
 				/>
 				{viewTextSwitch && (
-					<Textarea value={keyWord("ai")} outerClassName="p-8" />
+					<Textarea value={healthTextSituation} outerClassName="p-8" />
 				)}
 			</div>
-			<div className="select-box flex pt-4">
+			<div className="select-box flex justify-center pt-4">
 				<ul className="select-parts">
 					{selectPartList.map((item) => (
 						<li className="p-2" key={item.id}>
@@ -190,7 +207,7 @@ export default function SectionHealth() {
 						</li>
 					))}
 				</ul>
-				<ul className="select-info-category">
+				{/* <ul className="select-info-category">
 					{selectHealthInfoCategoryList.map((item) => (
 						<li className="p-2" key={item.id}>
 							<Ccheck
@@ -201,10 +218,15 @@ export default function SectionHealth() {
 							/>
 						</li>
 					))}
-				</ul>
+				</ul> */}
 			</div>
 			<div className="flex justify-end">
-				<Button label="copy" size="small" onClick={copyAciton} />
+				<Button
+					label="copy"
+					size="small"
+					onClick={copyAciton}
+					className="mr-2"
+				/>
 				<Button
 					label="google search"
 					size="small"

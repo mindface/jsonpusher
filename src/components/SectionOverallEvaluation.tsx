@@ -1,15 +1,15 @@
 "use client";
 import { useState } from "react";
-import { Title3h } from "../stories/title3h/Title3h";
-import { InputRange } from "../stories/InputRange/InputRange";
-import { Textarea } from "../stories/TextArea/Textarea";
 import { Button } from "../stories/Button/Button";
 import { Dialog } from "../stories/Dialog/Dialog";
+import { InputRange } from "../stories/InputRange/InputRange";
+import { Textarea } from "../stories/TextArea/Textarea";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
-import SectionValuationAssessment from "./SectionValuationAssessment";
 import ContentDetailsMenuEvaluation from "./ContentDetailsMenuEvaluation";
+import SectionValuationAssessment from "./SectionValuationAssessment";
 
-import { copyClipbord } from "../lib/copyClipbord";
+import { copyClipbord } from "../utils/copyClipbord";
 
 import menuInfoList from "../json/menuInfoList.json";
 import modelTextList from "../json/modelTextList.json";
@@ -23,18 +23,23 @@ export default function SectionOverallEvaluation() {
 		menuInfoList.map((item) => [item.pathId, 0]),
 	);
 	const [evaluationText, evaluationTextSet] = useState("");
-	const [leaveNumber,leaveNumberSet] = useState(0);
+	const [leaveNumber, leaveNumberSet] = useState(0);
 	const [evaluationObj, evaluationObjSet] = useState<EvaluationType>(
 		initialEvaluationObjState,
 	);
 
 	const copyExperience = () => {
 		let copyText = "";
-		menuInfoList.forEach((menuItem) => {
-			if(leaveNumber <= (evaluationObj[menuItem.pathId])) {
-				copyText += `${menuItem.name} ${evaluationObj[menuItem.pathId]} \n\n`;
+		for (const menuInfo of menuInfoList) {
+			if (leaveNumber <= evaluationObj[menuInfo.pathId]) {
+				copyText += `${menuInfo.name} ${evaluationObj[menuInfo.pathId]} \n\n`;
 			}
-		});
+		}
+		// menuInfoList.forEach((menuItem) => {
+		// 	if (leaveNumber <= evaluationObj[menuItem.pathId]) {
+		// 		copyText += `${menuItem.name} ${evaluationObj[menuItem.pathId]} \n\n`;
+		// 	}
+		// });
 		copyText += "\n\n";
 		copyText += evaluationText;
 		copyClipbord(copyText);
@@ -42,7 +47,7 @@ export default function SectionOverallEvaluation() {
 
 	return (
 		<section className="section-level-up">
-			<Title3h title="自分が評価したことを分析する" size="large" />
+			<Titleline3h title="自分が評価したことを分析する" size="large" />
 			<div className="details">
 				<div className="text flex pb-4">
 					自分で考えた改善方法を評価してみましょう。
@@ -55,7 +60,9 @@ export default function SectionOverallEvaluation() {
 						leaveNumber={leaveNumber}
 						menuInfoList={menuInfoList}
 						evaluationObj={evaluationObj}
-						onEvaluationObjSet={(obj) => { evaluationObjSet(obj); }}
+						onEvaluationObjSet={(obj) => {
+							evaluationObjSet(obj);
+						}}
 					/>
 					<div className="details-menu-evaluation-input md:w-[50%]">
 						<div className="pt-4 md:pt-2 pb-4">
@@ -115,7 +122,7 @@ export default function SectionOverallEvaluation() {
 									}}
 								/>
 								<span className="text-4xl text-slate-500 dark:text-slate-300">
-									{ leaveNumber }
+									{leaveNumber}
 								</span>
 							</div>
 						</div>

@@ -1,16 +1,16 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 import { Button } from "../stories/Button/Button";
+import { IconButton } from "../stories/IconButton/IconButton";
 import { Input } from "../stories/Input/Input";
 import { Textarea } from "../stories/TextArea/Textarea";
-import { IconButton } from "../stories/IconButton/IconButton";
 
 import styles from "../styles/sentEmailInfo.module.css";
 
 import emailSvg from "../assets/images/email.svg";
 
-import { invalidCheckEmail } from "../lib/validChecker";
+import { ValidChecker } from "../utils/validChecker";
 
 export default function SentEmailInfo() {
 	const [viewSwitch, viewSwitchSet] = useState(false);
@@ -30,7 +30,8 @@ export default function SentEmailInfo() {
 		if (sendTitle === "" || sendBody === "" || sendName === "") {
 			validationTextSet("全ての入力項目を埋めてください。");
 			return;
-		} else if (!invalidCheckEmail(sendEmail)) {
+		}
+		if (!ValidChecker.invalidCheckEmail(sendEmail)) {
 			validationTextSet("メールを正しい形式で入力してください。");
 			return;
 		} else {
@@ -45,7 +46,7 @@ export default function SentEmailInfo() {
 	};
 
 	return (
-		<div className={[viewSwitch ? styles["open"] : ""].join(" ")}>
+		<div className={[viewSwitch ? styles.open : ""].join(" ")}>
 			<div
 				className={[
 					styles["sent-email-info"],

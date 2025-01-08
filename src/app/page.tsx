@@ -1,5 +1,5 @@
-import type { Metadata } from "next/types";
 import Image from "next/image";
+import type { Metadata } from "next/types";
 import mainImage from "../assets/images/main-image.jpg";
 
 export const metadata: Metadata = {
@@ -33,7 +33,7 @@ export default function Home() {
 					</p>
 				</div>
 			</main>
-			<footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
+			<footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center" />
 		</div>
 	);
 }
