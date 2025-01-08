@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 import { Button } from "../stories/Button/Button";
 import { Menu } from "../stories/Menu/Menu";
@@ -14,10 +15,9 @@ import Logo from "../assets/images/logo.png";
 
 export default function Header() {
 	const session = useSession();
+	const router = useRouter();
 	const signInAction = () => {
-		signIn("credentials",{
-			callbackUrl: "/"
-		});
+		router.push("/login");
 	};
 	const signOutAction = () => {
 		// なぜ手動で消すことになっているのか
