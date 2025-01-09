@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import path from 'path';
 const filePath = path.join(__dirname, '../public/file.txt');
 
+// 実際のページでのテスト
 test.describe("Input component", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("http://localhost:3000/planFeedback");

@@ -11,7 +11,8 @@
 		"bfmt": "biome format ./src --write",
 		"blint": "biome lint ./src",
 		"bfl": "biome check --apply ./src",
-		"test:e2e": "start-storybook -p 6006 & playwright test"
+		"test:e2e": "playwright test",
+		"test-storybook": "test-storybook"
 	},
 	"dependencies": {
 		"@anthropic-ai/sdk": "^0.32.1",

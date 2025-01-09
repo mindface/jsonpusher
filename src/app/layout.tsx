@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-
 import { SessionProvider } from "next-auth/react";
 
+import AdSenseScript from "../components/AdSenseScript";
 import AdSense from "../components/AdSense";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -42,6 +42,7 @@ export default function RootLayout({
 					<AdSense />
 					<Footer />
 				</SessionProvider>
+				<AdSenseScript />
 			</body>
 		</html>
 	);
