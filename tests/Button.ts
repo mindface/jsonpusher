@@ -4,13 +4,19 @@ test.describe("Storybook: Button component", () => {
   const baseStorybook = "http://localhost:6006/iframe.html?id=";
 
   test("should render with default properties", async ({ page }) => {
-    await page.goto('http://localhost:6006/iframe.html?viewMode=docs&id=example-button--docs');
+    await page.goto('http://localhost:6006/?path=/docs/example-button--docs');
     // const html = await page.content();
-    // console.log(html);
-    // await page.waitForSelector('button', { timeout: 10000 });
-    const button = page.locator('.button--primary', { hasText: 'Primary Button' }).first();;
+    const button = await page.locator('button').first();
     await expect(button).toBeVisible({ timeout: 10000 });
-    // await expect(button).toHaveText('');
+  });
+
+  test("should render with primary properties", async ({ page }) => {
+    await page.goto('http://localhost:6006/?path=/story/example-button--primary');
+    const button = await page.locator('.button').first();
+    console.log("¥¥¥¥¥¥¥¥¥¥");
+    console.log(button);
+    await expect(button).toBeVisible({ timeout: 10000 });
+    await expect(button).toHaveText('Button');
   });
 });
 
