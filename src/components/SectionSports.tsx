@@ -214,27 +214,27 @@ export default function SectionSports() {
 			</div>
 			<div className="select-sports-box flex justify-center pt-4 pb-4 p-2">
 				{selectSports?.map((selectSports) => (
-						<span
-							className="inline-block mr-2 p-2 rounded-full border border-blue-400"
-							key={`select${selectSports.id}`}
-						>
-							{selectSports.label}
-						</span>
-					))}
+					<span
+						className="inline-block mr-2 p-2 rounded-full border border-blue-400"
+						key={`select${selectSports.id}`}
+					>
+						{selectSports.label}
+					</span>
+				))}
 			</div>
 			<div className="select-box flex justify-center pt-4">
 				<ul className="select-parts pr-4">
 					{selectPartList?.map((item) => (
-							<li className="p-2" key={item.id}>
-								<Ccheck
-									partsId={item.id}
-									size="small"
-									primary={true}
-									label={item.label}
-									changing={(check) => changingParts(check, item.label)}
-								/>
-							</li>
-						))}
+						<li className="p-2" key={item.id}>
+							<Ccheck
+								partsId={item.id}
+								size="small"
+								primary={true}
+								label={item.label}
+								changing={(check) => changingParts(check, item.label)}
+							/>
+						</li>
+					))}
 				</ul>
 				<ul className="select-pattern">
 					<li className="p-2">
@@ -260,36 +260,36 @@ export default function SectionSports() {
 						</div>
 					</li>
 					{selectSportsPatternListForLevel?.map((categoryItem) => (
-							<li className="p-2" key={categoryItem.categoryId}>
-								<Titleline3h title={categoryItem.categoryLabel} />
-								<ul className="level-list">
-									{categoryItem.list.map((levelItem) => (
-										<li className="level-item pb-2" key={levelItem.id}>
-											<Ccheck
-												partsId={levelItem.id ?? ""}
-												size="small"
-												label={levelItem.label}
-												changing={(check) =>
-													changingPattern(check, levelItem.label)
-												}
-											/>
-										</li>
-									))}
-								</ul>
-							</li>
-						))}
+						<li className="p-2" key={categoryItem.categoryId}>
+							<Titleline3h title={categoryItem.categoryLabel} />
+							<ul className="level-list">
+								{categoryItem.list.map((levelItem) => (
+									<li className="level-item pb-2" key={levelItem.id}>
+										<Ccheck
+											partsId={levelItem.id ?? ""}
+											size="small"
+											label={levelItem.label}
+											changing={(check) =>
+												changingPattern(check, levelItem.label)
+											}
+										/>
+									</li>
+								))}
+							</ul>
+						</li>
+					))}
 				</ul>
 				<ul className="select-level">
 					{selectLevelList?.map((item) => (
-							<li className="p-2" key={item.id}>
-								<Ccheck
-									partsId={item.id}
-									size="small"
-									label={item.label}
-									changing={(check) => changingLevel(check, item.label)}
-								/>
-							</li>
-						))}
+						<li className="p-2" key={item.id}>
+							<Ccheck
+								partsId={item.id}
+								size="small"
+								label={item.label}
+								changing={(check) => changingLevel(check, item.label)}
+							/>
+						</li>
+					))}
 				</ul>
 			</div>
 			<div className="flex justify-end pb-2">

@@ -34,11 +34,23 @@ export const Input = ({
 	return (
 		<div className="input-box">
 			<span className={setClassName}>
-				{label && <label className={["label","inline-block",setInputSizeClass].join(" ")}>{label}</label>}
+				{label && (
+					<label
+						className={["label", "inline-block", setInputSizeClass].join(" ")}
+					>
+						{label}
+					</label>
+				)}
 				<input
 					type={type}
 					value={value}
-					className={["input", "p-2", "rounded-lg", type ?? "", className ?? ""].join(" ")}
+					className={[
+						"input",
+						"p-2",
+						"rounded-lg",
+						type ?? "",
+						className ?? "",
+					].join(" ")}
 					min={min}
 					max={max}
 					onChange={(e) => {

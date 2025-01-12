@@ -35,10 +35,18 @@ export default function SectionQuestionAi() {
 		let getText = "";
 		sendLoadingSet(true);
 		try {
-			if(machineLearningType === "gemini" && getText !== null && typeof getText === "string") {
+			if (
+				machineLearningType === "gemini" &&
+				getText !== null &&
+				typeof getText === "string"
+			) {
 				getText = await fetchGeminiApi(sendPrompt);
-			}else if(machineLearningType === "claude" && getText !== null && typeof getText === "string"){
-				getText = await fetchClaudeApi(sendPrompt);	
+			} else if (
+				machineLearningType === "claude" &&
+				getText !== null &&
+				typeof getText === "string"
+			) {
+				getText = await fetchClaudeApi(sendPrompt);
 			}
 			sendLoadingSet(false);
 			_displayedChunksSet(textChange(getText));
@@ -52,12 +60,12 @@ export default function SectionQuestionAi() {
 	};
 
 	const checkAiCredit = () => {
-		if(aiCredit.includes(machineLearningType)) {
+		if (aiCredit.includes(machineLearningType)) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
-	}
+	};
 
 	return (
 		<section className="section-question-ai">
@@ -101,7 +109,9 @@ export default function SectionQuestionAi() {
 									onChange={() => {}}
 								>
 									<div className="p-8">
-										{sportsText !== "" ? sportsText : "質問を作成してください。"}
+										{sportsText !== ""
+											? sportsText
+											: "質問を作成してください。"}
 									</div>
 								</Dialog>
 							</div>
@@ -112,14 +122,16 @@ export default function SectionQuestionAi() {
 									onChange={() => {}}
 								>
 									<div className="p-8">
-										{healthText !== "" ? healthText : "質問を作成してください。"}
+										{healthText !== ""
+											? healthText
+											: "質問を作成してください。"}
 									</div>
 								</Dialog>
 							</div>
 						</div>
 					</div>
 				</div>
-				{ checkAiCredit() ?  
+				{checkAiCredit() ? (
 					<div className="pb-4">
 						<div className="pb-8">
 							<Textarea
@@ -132,15 +144,17 @@ export default function SectionQuestionAi() {
 							/>
 						</div>
 						<div className="pb-2">
-							{sendLoading ?
-								<Loading /> :
+							{sendLoading ? (
+								<Loading />
+							) : (
 								<Button
 									label="質問する"
 									size="small"
 									onClick={() => {
 										fetchAIApi();
 									}}
-								/>}
+								/>
+							)}
 						</div>
 						<div className="view-content pb-4">
 							<p className="pb-4">aiの返答が返ってきます。</p>
@@ -158,11 +172,11 @@ export default function SectionQuestionAi() {
 							/>
 						</div>
 					</div>
-					:
+				) : (
 					<div className="pb-4">
-						<p>現在apiを使える資金がないため停止しています。
-						</p>
-					</div>}
+						<p>現在apiを使える資金がないため停止しています。</p>
+					</div>
+				)}
 			</div>
 		</section>
 	);

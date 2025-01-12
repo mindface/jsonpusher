@@ -14,7 +14,7 @@ import type { GeminiResponse } from "../type/apiResponse";
 
 export default function SectionQuestionAi() {
 	// const baseTextSize = 300;
-	const [useMachineLearningType,] = useState("gemini");
+	const [useMachineLearningType] = useState("gemini");
 	const [sendTitle, sendTitleSet] = useState("");
 	// const [validationText, validationTextSet] = useState("");
 	// const [displayedChunks, displayedChunksSet] = useState<string[]>([]);
@@ -85,7 +85,9 @@ export default function SectionQuestionAi() {
 									onChange={() => {}}
 								>
 									<div className="p-8">
-										{sportsText !== "" ? sportsText : "質問を作成してください。"}
+										{sportsText !== ""
+											? sportsText
+											: "質問を作成してください。"}
 									</div>
 								</Dialog>
 							</div>
@@ -96,7 +98,9 @@ export default function SectionQuestionAi() {
 									onChange={() => {}}
 								>
 									<div className="p-8">
-										{healthText !== "" ? healthText : "質問を作成してください。"}
+										{healthText !== ""
+											? healthText
+											: "質問を作成してください。"}
 									</div>
 								</Dialog>
 							</div>

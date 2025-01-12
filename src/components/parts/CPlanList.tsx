@@ -15,7 +15,7 @@ export default function CPlanList(props: Props) {
 		<div className="pb-4">
 			<Titleline3h title="現在の計画内容" size="small" />
 			{items.map((plan) => (
-			  <CPlanItem key={`CPlanItem${plan.id}`} item={plan} />
+				<CPlanItem key={`CPlanItem${plan.id}`} item={plan} />
 			))}
 		</div>
 	);

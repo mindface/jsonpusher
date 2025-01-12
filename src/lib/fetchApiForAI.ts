@@ -10,7 +10,7 @@ export const fetchGeminiApi = async (sendPrompt: string): Promise<string> => {
 		if (data.status <= 200) {
 			return data.content;
 		}
-	} catch(error) {
+	} catch (error) {
 		console.error(error);
 	}
 	return "no work api";
@@ -23,14 +23,12 @@ export const fetchClaudeApi = async (sendPrompt: string): Promise<string> => {
 			body: JSON.stringify({ prompt: sendPrompt }),
 		});
 		const data = await res.json();
-		console.log(data)
+		console.log(data);
 		if (data.status <= 200) {
 			return data.content;
 		}
-	} catch(error) {
+	} catch (error) {
 		console.error(error);
 	}
 	return "no work api";
 };
-
-

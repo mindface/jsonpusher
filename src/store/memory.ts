@@ -1,7 +1,16 @@
 import { create } from "zustand";
 import type { Memory } from "../type/memory";
 import { db } from "../lib/firebaseClient";
-import { doc, collection, addDoc, updateDoc, getDocs, query, where, Timestamp } from 'firebase/firestore';
+import {
+	doc,
+	collection,
+	addDoc,
+	updateDoc,
+	getDocs,
+	query,
+	where,
+	Timestamp,
+} from "firebase/firestore";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 interface StoreMemoery {
@@ -9,7 +18,10 @@ interface StoreMemoery {
 	isLoading: boolean;
 
 	getMemory: () => void;
-	addMemory: (title: string, detail: string) => Promise<void | { saveResult: string }>;
+	addMemory: (
+		title: string,
+		detail: string,
+	) => Promise<void | { saveResult: string }>;
 	updateMemory: (memory: Memory) => void | { saveResult: string };
 	deleteMemory: (memory: Memory) => void;
 	setMemory: (memories: Memory[]) => void;
@@ -33,20 +45,20 @@ export const useStoreMemoery = create<StoreMemoery>((set, get) => ({
 	],
 	isLoading: false,
 	getMemory: async () => {
-    const auth = await getAuth();
+		const auth = await getAuth();
 		onAuthStateChanged(auth, async (user) => {
 			if (user) {
 				const userCollectionRef = collection(db, "users", user.uid, "memories");
 				const q = query(
 					userCollectionRef,
 					where("userId", "==", user.uid),
-					where("status", "==", "run")
+					where("status", "==", "run"),
 				);
 				const querySnapshot = await getDocs(q);
 				const list = querySnapshot.docs.map((doc) => ({
-					 ...doc.data(),
-					 memoryId: doc.id
-					})) as Memory[];
+					...doc.data(),
+					memoryId: doc.id,
+				})) as Memory[];
 				set({ memories: list });
 			} else {
 				console.log("No user is signed in.");
@@ -55,12 +67,12 @@ export const useStoreMemoery = create<StoreMemoery>((set, get) => ({
 	},
 	addMemory: async (title: string, detail: string) => {
 		const memories = get().memories;
-    const auth = getAuth();
-    const user = auth.currentUser;
-    if (user) {
+		const auth = getAuth();
+		const user = auth.currentUser;
+		if (user) {
 			const addMemory = {
-				id: memories.length+1,
-        title,
+				id: memories.length + 1,
+				title,
 				detail,
 				connectId: "string;",
 				userId: user.uid,
@@ -68,24 +80,30 @@ export const useStoreMemoery = create<StoreMemoery>((set, get) => ({
 				groupId: "string;",
 				status: "run",
 				createAt: Timestamp.now(),
-				updateAt: Timestamp.now()
+				updateAt: Timestamp.now(),
 			};
 			const userDocRef = doc(db, "users", user.uid);
-      const userCollectionRef = collection(userDocRef, "memories");
-      await addDoc(userCollectionRef, {
-        ...addMemory
-      });
-			set({
-				memories: [...memories,addMemory],
+			const userCollectionRef = collection(userDocRef, "memories");
+			await addDoc(userCollectionRef, {
+				...addMemory,
 			});
-			return { saveResult: "success" }
-    }
+			set({
+				memories: [...memories, addMemory],
+			});
+			return { saveResult: "success" };
+		}
 	},
 	updateMemory: (updateMemories: Memory) => {
-    const auth = getAuth();
+		const auth = getAuth();
 		onAuthStateChanged(auth, async (user) => {
 			if (user) {
-				const memoryDocRef = doc(db, "users", user.uid, "memories", updateMemories.memoryId);
+				const memoryDocRef = doc(
+					db,
+					"users",
+					user.uid,
+					"memories",
+					updateMemories.memoryId,
+				);
 				await updateDoc(memoryDocRef, {
 					...updateMemories,
 					updateAt: new Date(),
@@ -100,7 +118,13 @@ export const useStoreMemoery = create<StoreMemoery>((set, get) => ({
 		const auth = getAuth();
 		onAuthStateChanged(auth, async (user) => {
 			if (user) {
-				const memoryDocRef = doc(db, "users", user.uid, "memories", updateMemories.memoryId);
+				const memoryDocRef = doc(
+					db,
+					"users",
+					user.uid,
+					"memories",
+					updateMemories.memoryId,
+				);
 				await updateDoc(memoryDocRef, {
 					...updateMemories,
 					status: "stop",

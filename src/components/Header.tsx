@@ -27,7 +27,7 @@ export default function Header() {
 			document.cookie = `next-auth.session-token=; path=/; expires=${new Date(0).toUTCString()}`;
 		}
 		signOut({
-			callbackUrl: "/login"
+			callbackUrl: "/login",
 		});
 	};
 	return (

@@ -77,13 +77,13 @@ export default function CMakeCycleList() {
 		}),
 	);
 
-  const copyAction = () => {
-		let copyText= "";
+	const copyAction = () => {
+		let copyText = "";
 		cycles.forEach((cycle) => {
 			copyText += `${cycle.title}\n${cycle.detail}\n\n`;
 		});
 		copyClipbord(copyText);
-	}
+	};
 
 	return (
 		<div className="pb-4">
@@ -111,10 +111,7 @@ export default function CMakeCycleList() {
 				</DndContext>
 			</div>
 			<div className="p-4">
-				<Button
-					label="作成したモデルをコピーする"
-					onClick={copyAction}
-				/>
+				<Button label="作成したモデルをコピーする" onClick={copyAction} />
 			</div>
 		</div>
 	);

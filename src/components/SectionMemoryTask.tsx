@@ -11,16 +11,13 @@ export default function SectionMemoryTask() {
 	const { memories, getMemory } = useStoreMemoery();
 	useEffect(() => {
 		getMemory();
-	},[getMemory]);
+	}, [getMemory]);
 
 	return (
 		<section className="section-memory-task">
 			<Titleline3h title="記録をするための情報を考える" size="large" />
 			<div className="memory-task-box">
-				<Dialog
-				  label="記録を追加する"
-					type="button"
-				>
+				<Dialog label="記録を追加する" type="button">
 					<CMemoryTaskEdit type="add" />
 				</Dialog>
 				<CMemoryTaskList items={memories} />

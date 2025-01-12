@@ -19,22 +19,29 @@ export default function CMemoryTaskList(props: Props) {
 					<div className="memory-task-item--inner">
 						<ul className="list flex">
 							<li className="item flex-grow">
-								<h4 className={["memory-task-item__title", "p-2"].join(" ")}>タイトル</h4>
+								<h4 className={["memory-task-item__title", "p-2"].join(" ")}>
+									タイトル
+								</h4>
 							</li>
 							<li className="item w-[120px]">
-								<time className="p-2 flex justify-center items-center">登録時期</time>
+								<time className="p-2 flex justify-center items-center">
+									登録時期
+								</time>
 							</li>
-							<li className="item w-[80px]">
-							</li>
+							<li className="item w-[80px]"></li>
 						</ul>
 					</div>
 				</div>
-				{ items.length > 0 ?
-					items.map((memory,index) => (
-						<CMemoryTaskItem key={`CMemoryTaskItem${memory.id}${index}`} item={memory} />
-					)) :
+				{items.length > 0 ? (
+					items.map((memory, index) => (
+						<CMemoryTaskItem
+							key={`CMemoryTaskItem${memory.id}${index}`}
+							item={memory}
+						/>
+					))
+				) : (
 					<div className="p-4">タスクを登録してください。</div>
-				}
+				)}
 			</div>
 		</div>
 	);

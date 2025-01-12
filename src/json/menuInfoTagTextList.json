@@ -74,7 +74,7 @@
 				"tagId": "processPlanning",
 				"tagName": "計画をプロセス化",
 				"text": "計画を実行するパタンとして構造化し、計画のサイクル構造をパタン化する"
-			}	
+			}
 		]
 	},
 	{
@@ -140,7 +140,7 @@
 				"tagId": "havePurposeAmountPractice",
 				"tagName": "練習量に目的を持つ",
 				"text": "練習量を決めるのではなく、覚える時期と調整する時期などで目的を設定していく"
-			}	
+			}
 		]
 	},
 	{
@@ -201,7 +201,7 @@
 				"tagId": "experienceAndRecords",
 				"tagName": "経験と記録",
 				"text": "経験と記録した情報を比較して効果のある方法へ調整する。"
-			}	
+			}
 		]
 	}
 ]

@@ -22,10 +22,17 @@ export default function CMemoryTaskItem(props: Props) {
 			<div className="memory-task-item--inner">
 				<ul className="list flex">
 					<li className="item flex-grow">
-						<h4 className={["memory-task-item__title", "p-2"].join(" ")}>{item.title}</h4>
+						<h4 className={["memory-task-item__title", "p-2"].join(" ")}>
+							{item.title}
+						</h4>
 					</li>
 					<li className="item w-[120px]">
-						<time className="p-2 flex justify-center items-center" dateTime={ForMatter.convertTimestampToDayjs(item.createAt)}>{ForMatter.convertTimestampToDayjs(item.createAt)}</time>
+						<time
+							className="p-2 flex justify-center items-center"
+							dateTime={ForMatter.convertTimestampToDayjs(item.createAt)}
+						>
+							{ForMatter.convertTimestampToDayjs(item.createAt)}
+						</time>
 					</li>
 					<li className="item w-[80px]">
 						<Button

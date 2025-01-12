@@ -1,18 +1,17 @@
-
 .loading svg {
 	width: 65px;
-  height: 65px;
-  margin: auto;
+	height: 65px;
+	margin: auto;
 }
 
 .loading--small svg {
 	width: 30px;
-  height: 30px;
+	height: 30px;
 }
 
 .loading--large svg {
 	width: 80px;
-  height: 80px;
+	height: 80px;
 }
 
 .loading-path {
@@ -46,9 +45,8 @@
 	animation-delay: .8s;
 }
 
-
 @keyframes fadeColor {
-  to {
-    fill: #1ea7fd;
-  }
+	to {
+		fill: #1ea7fd;
+	}
 }
