@@ -78,6 +78,7 @@ export default function SectionMemoryView() {
 				</div>
 				<FullCalendar
 				  ref={carendarRef}
+					navLinks={true}
 					plugins={[dayGridPlugin]}
 					headerToolbar={{
 						right: 'dayGridMonth,dayGridWeek',
