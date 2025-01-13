@@ -36,21 +36,6 @@ export default function SectionMemoryView() {
 		getMemory()
 	}, [getMemory]);
 
-	const handlePrev = () => {
-    const calendarApi = carendarRef.current?.getApi();
-    calendarApi?.prev();
-  };
-
-  const handleNext = () => {
-    const calendarApi = carendarRef.current?.getApi();
-    calendarApi?.next();
-  };
-
-  const handleToday = () => {
-    const calendarApi = carendarRef.current?.getApi();
-    calendarApi?.today();
-  };
-
 	const carenderEvent = (item: EventClickArg) => {
     setSelectedEvent({
       title: item.event.title || '無題のイベント',
@@ -76,17 +61,16 @@ export default function SectionMemoryView() {
 		<section className="section-memory-task">
 			<Titleline3h title="記録を確認する" size="large" />
 			<div className="memory-carender-box sm:max-w-[860px] m-auto">
-				<div className="mb-4">
-					<button className="mr-2 p-2 border rounded-lg" onClick={handlePrev}>前の月</button>
-					<button className="mr-2 p-2 border rounded-lg" onClick={handleToday}>今月</button>
-					<button className="p-2 border rounded-lg" onClick={handleNext}>次の月</button>
-				</div>
 				<FullCalendar
 				  ref={carendarRef}
 					navLinks={true}
+					editable={true}
+					selectable={true}
 					plugins={[dayGridPlugin]}
 					headerToolbar={{
-						right: 'dayGridMonth,dayGridWeek',
+						left: 'prev,next today',
+						center: 'title',
+						right: 'dayGridMonth,dayGridWeek,dayGridDay',
 					}}
 					initialView="dayGridMonth"
 					events={carenderEvents ?? []}
