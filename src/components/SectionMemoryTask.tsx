@@ -1,3 +1,4 @@
+"use client"
 import { useEffect } from "react";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { Dialog } from "../stories/Dialog/Dialog";
