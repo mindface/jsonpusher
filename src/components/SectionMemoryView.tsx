@@ -83,6 +83,16 @@ export default function SectionMemoryView() {
 						}
 						return "rounded-lg p-1 cursor-pointer";
 					}}
+					eventDidMount={(info) => {
+						const eventContainer = info.el.closest(".fc-daygrid-day-events");
+						if (eventContainer) {
+							eventContainer.classList.add(styles["custom-daygrid-events"]); // カスタムクラスを追加
+						}
+					}}
+					dayMaxEvents={2}
+					moreLinkContent={(args) => {
+						return `さらに ${args.num} 件`;
+					}}
 				/>
 				<Dialog
 					type="none"
