@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { type ReactNode, useRef, useState } from "react";
 import { Button } from "../Button/Button";
 import "./dialog.css";
@@ -6,8 +6,9 @@ import "./dialog.css";
 export interface DialogProps {
 	className?: string;
 	size?: "small" | "medium" | "large";
-	type: "icon" | "button";
+	type: "icon" | "button" | "none";
 	label?: string;
+	ounterActionValue?: boolean;
 	onChange?: (value: boolean) => void;
 	children: ReactNode;
 }
@@ -17,6 +18,7 @@ export const Dialog = ({
 	size = "medium",
 	label,
 	type,
+	ounterActionValue,
 	onChange,
 	children,
 }: DialogProps) => {
@@ -43,6 +45,11 @@ export const Dialog = ({
 			dialogElement.current?.classList.add("open");
 		}
 	};
+	useEffect(() => {
+		if(ounterActionValue) {
+			switchAction();
+		}
+	},[ounterActionValue]);
 	return (
 		<div className="dialog-box" ref={dialogElement}>
 			{type === "icon" && (

@@ -28,5 +28,10 @@
 		"pathId": 6,
 		"path": "/memoryTask",
 		"name": "記録する"
+	},
+	{
+		"pathId": 7,
+		"path": "/memoryView",
+		"name": "タスクカレンダー"
 	}
 ]

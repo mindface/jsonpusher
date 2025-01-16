@@ -6,6 +6,8 @@ import updateInfo03 from "../../assets/images/update_info03.jpg";
 import updateInfo04 from "../../assets/images/update_info04.jpg";
 import updateInfo05 from "../../assets/images/update_info05.jpg";
 import updateInfo06 from "../../assets/images/update_info06.jpg";
+import updateInfo07 from "../../assets/images/update_info07.webp";
+import updateInfo08 from "../../assets/images/update_info08.webp";
 
 type Props = {
 	imageId: string;
@@ -27,6 +29,10 @@ export default function UpdateInformationExperienceImages(props: Props) {
 				return updateInfo05;
 			case "6":
 				return updateInfo06;
+			case "7":
+				return updateInfo07;
+			case "8":
+				return updateInfo08;
 			default:
 				return updateInfo01;
 		}
@@ -39,7 +45,7 @@ export default function UpdateInformationExperienceImages(props: Props) {
 			height={200}
 			alt="sports image"
 			priority
-			style={{ objectFit: "cover", height: "auto" }}
+			style={{ objectFit: "cover", width: "auto" }}
 		/>
 	);
 }

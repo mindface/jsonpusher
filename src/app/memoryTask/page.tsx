@@ -1,4 +1,3 @@
-"use client";
 import SectionMemoryTask from "../../components/SectionMemoryTask";
 
 export default function MemoryTask() {

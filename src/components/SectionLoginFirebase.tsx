@@ -80,8 +80,9 @@ export default function SectionLoginFirebase() {
 			<div
 				className={[
 					"login-box",
-					"flex",
+					"sm:flex",
 					"justify-center",
+					"sm:pb-4",
 					userSwitch ? "animate-scale-up" : "animate-scale-down",
 				].join(" ")}
 				ref={loginDom}
