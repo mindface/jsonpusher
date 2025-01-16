@@ -52,6 +52,7 @@ export default function SentEmailInfo() {
 					styles["sent-email-info"],
 					"sent-email-info",
 					"fixed",
+					"z-10",
 					"bottom-10",
 					"right-10",
 					"pb-4",
@@ -75,7 +76,8 @@ export default function SentEmailInfo() {
 								type="text"
 								value={sendTitle}
 								label="タイトル"
-								className="auto label-black"
+								className="auto"
+								outerClassName="label-black"
 								onChange={(value) => {
 									sendTitleSet(value as string);
 								}}
@@ -87,7 +89,8 @@ export default function SentEmailInfo() {
 								type="text"
 								value={sendName}
 								label="ネーム"
-								className="auto label-black"
+								className="auto"
+								outerClassName="label-black"
 								onChange={(value) => {
 									sendNameSet(value as string);
 								}}
@@ -99,7 +102,8 @@ export default function SentEmailInfo() {
 								type="text"
 								value={sendEmail}
 								label="メールアドレス"
-								className="auto label-black"
+								className="auto"
+								outerClassName="label-black"
 								onChange={(value) => {
 									sendEmailSet(value as string);
 								}}
