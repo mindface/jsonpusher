@@ -31,8 +31,26 @@ export default function Header() {
 		});
 	};
 	return (
-		<div className="flex items-center justify-between shadow-lg p-6 pb-4 ">
-			<div className="left-box flex items-center">
+		<div className="flex items-center justify-between shadow-lg p-6 pb-4">
+			<div className="header-side h-[100vh] group fixed top-0 left-0 bg-white">
+				<menu className="side-menu space-y-2 w-[20px] hover:w-[230px] transition-all duration-300 group-hover:max-w-xs">
+					<li className="menu-item overflow-hidden">
+						{pathList.map((item) => (
+							<Link
+								key={item.pathId}
+								href={item.path}
+								className="block mr-2 p-2 leading-none rounded-lg text-gray-700 whitespace-nowrap"
+							>
+								<span className="icon inline-block pr-2">X</span>
+								<span className="inline-block text-sm font-medium">
+									{item.name}
+								</span>
+							</Link>
+						))}
+					</li>
+				</menu>
+			</div>
+			<div className="left-box flex items-center pl-12">
 				<div className="logo-box">
 					<Image
 						src={Logo}
@@ -42,17 +60,6 @@ export default function Header() {
 						alt="health image"
 						style={{ width: "auto", objectFit: "cover" }}
 					/>
-				</div>
-				<div className="links pl-4">
-					{pathList.map((item) => (
-						<Link
-							key={item.pathId}
-							href={item.path}
-							className="inline-block mr-2 p-2 leading-none rounded-lg transition-colors link"
-						>
-							{item.name}
-						</Link>
-					))}
 				</div>
 			</div>
 			<div className="flex">
