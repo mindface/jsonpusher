@@ -8,6 +8,8 @@ import { signOut, useSession } from "next-auth/react";
 import { Button } from "../stories/Button/Button";
 import { Menu } from "../stories/Menu/Menu";
 
+import HeaderIcons from "./parts/HeaderIcons";
+
 import menuList from "../json/menuInfoList.json";
 import pathList from "../json/menuPathList.json";
 
@@ -33,16 +35,16 @@ export default function Header() {
 	return (
 		<div className="flex items-center justify-between shadow-lg p-6 pb-4">
 			<div className="header-side h-[100vh] group fixed top-0 left-0 bg-white">
-				<menu className="side-menu space-y-2 w-[20px] hover:w-[230px] transition-all duration-300 group-hover:max-w-xs">
-					<li className="menu-item overflow-hidden">
+				<menu className="side-menu space-y-2 w-[24px] hover:w-[230px] transition-all duration-300 group-hover:max-w-xs">
+					<li className="menu-item overflow-hidden w-[230px]">
 						{pathList.map((item) => (
 							<Link
 								key={item.pathId}
 								href={item.path}
-								className="block mr-2 p-2 leading-none rounded-lg text-gray-700 whitespace-nowrap"
+								className="flex items-center mr-2 p-2 leading-none rounded-lg text-gray-700 whitespace-nowrap"
 							>
-								<span className="icon inline-block pr-2">X</span>
-								<span className="inline-block text-sm font-medium">
+								<span className="icon inline-block w-[20px] pr-2"><HeaderIcons iconId={item.pathId} /></span>
+								<span className="inline-block font-medium text-lg">
 									{item.name}
 								</span>
 							</Link>
