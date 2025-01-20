@@ -1,5 +1,6 @@
 .header-side-icon:hover {
-	background-color: var(--menu-bg-color);
+	background-color: var(--color-black);
+	color: var(--color-white);
 }
 
 .header-side-icon:hover svg path {
