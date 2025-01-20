@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import Home from "../../assets/svg/home.svg";
 import Health from "../../assets/svg/health.svg";
 import Sports from "../../assets/svg/sports.svg";
@@ -10,10 +8,11 @@ import Carender from "../../assets/svg/carender.svg";
 
 type Props = {
 	iconId: number;
+	className?: string;
 };
 
 export default function NavIcons(props: Props) {
-	const { iconId } = props;
+	const { iconId, className } = props;
 	const setImage = () => {
 		switch (iconId) {
 			case 1:
@@ -34,15 +33,17 @@ export default function NavIcons(props: Props) {
 				return Home;
 		}
 	};
+	const Icon = setImage();
 	return (
-		<Image
-			src={setImage()}
-			className="rounded-lg"
-			width={20}
-			height={20}
-			alt="icon"
-			priority
-			style={{ objectFit: "cover", width: "20px" }}
+		<>
+		<Icon
+			width="20"
+			height="20"
+			className={["header-side-icon",className ?? ""].join(" ")}
+			style={
+				{ objectFit: "cover", width: "20px", height: "auto" }
+			}
 		/>
+		</>
 	);
 }

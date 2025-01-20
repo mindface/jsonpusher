@@ -8,6 +8,20 @@ const nextConfig = {
         ignored: ["**/node_modules/**", "**/.git/**", "**/.next/**"],
       };
     }
+    config.module.rules.push({
+      test: /\.svg$/,
+      issuer: {
+        and: [/\.(js|ts)x?$/],
+      },
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            svgo: false, // 圧縮を無効にする設定
+          },
+        },
+      ],
+    });
     return config;
   },
   images: {

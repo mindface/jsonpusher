@@ -1,0 +1,11 @@
+.header-side-icon:hover {
+	background-color: var(--menu-bg-color);
+}
+
+.header-side-icon:hover svg path {
+	fill: #fff;
+}
+
+.header-side-icon:hover svg rect {
+	fill: #fff;
+}

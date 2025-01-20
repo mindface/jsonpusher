@@ -15,6 +15,8 @@ import pathList from "../json/menuPathList.json";
 
 import Logo from "../assets/images/logo.png";
 
+import styles from "../styles/cHeader.module.css";
+
 export default function Header() {
 	const session = useSession();
 	const router = useRouter();
@@ -34,16 +36,31 @@ export default function Header() {
 	};
 	return (
 		<div className="flex items-center justify-between shadow-lg p-6 pb-4">
-			<div className="header-side h-[100vh] group fixed top-0 left-0 bg-white">
-				<menu className="side-menu space-y-2 w-[24px] hover:w-[230px] transition-all duration-300 group-hover:max-w-xs">
-					<li className="menu-item overflow-hidden w-[230px]">
+			<div className="header-side h-[100vh] group fixed top-0 left-0 bg-white shadow">
+				<menu className="side-menu overflow-hidden space-y-2 w-[28px] hover:w-[230px] transition-all duration-300 group-hover:max-w-xs">
+					<li className="menu-item w-[230px]">
 						{pathList.map((item) => (
 							<Link
 								key={item.pathId}
 								href={item.path}
-								className="flex items-center mr-2 p-2 leading-none rounded-lg text-gray-700 whitespace-nowrap"
+								className={[
+									"flex",
+									"items-center",
+									"mr-2",
+									"p-2",
+									"leading-none",
+									"rounded-lg",
+									"text-gray-700",
+									"whitespace-nowrap",
+									styles["header-side-icon"]
+								].join(" ")}
 							>
-								<span className="icon inline-block w-[20px] pr-2"><HeaderIcons iconId={item.pathId} /></span>
+								<span className="icon inline-block w-[20px] mr-2">
+									<HeaderIcons
+									  iconId={item.pathId}
+									  className="hover:text-white"
+									/>
+								</span>
 								<span className="inline-block font-medium text-lg">
 									{item.name}
 								</span>

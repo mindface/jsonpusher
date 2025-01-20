@@ -47,6 +47,7 @@
 		"@storybook/nextjs": "^8.3.5",
 		"@storybook/react": "^8.3.5",
 		"@storybook/test": "^8.3.5",
+		"@svgr/webpack": "^8.1.0",
 		"@testing-library/react": "^16.0.1",
 		"@types/next-auth": "^3.15.0",
 		"@types/node": "^20",
