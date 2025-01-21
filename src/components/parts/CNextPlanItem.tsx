@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "../../stories/Button/Button";
 import styles from "../../styles/cNextPlanItem.module.css";
 
@@ -13,7 +13,17 @@ type Props = {
 
 export default function CNextPlanItem(props: Props) {
 	const [itemView, itemViewSet] = useState(false);
+	const [editClass, editClassSet] = useState("left-0");
 	const { item } = props;
+	const divRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		const taget = divRef.current?.getBoundingClientRect();
+		console.log(taget);
+		if(taget && (taget?.left > window.innerWidth / 2) ) {
+			editClassSet("right-0");
+		}
+	},[]);
 
 	return (
 		<div className={["next-plan-item", "p-2"].join(" ")}>
@@ -35,7 +45,18 @@ export default function CNextPlanItem(props: Props) {
 				].join(" ")}
 			>
 				<div
-					className={`${styles["next-plan-item__edit"]} absolute p-2 top-0 right-0 w-[380px] bg-white shadow-lg rounded-lg`}
+				  ref={divRef}
+					className={[
+						styles["next-plan-item__edit"],
+						editClass,
+						"absolute",
+						"p-2",
+						"top-0",
+						"w-[380px]",
+						"bg-white",
+						"shadow-lg",
+						"rounded-lg"
+					].join(" ")}
 				>
 					<CNextPlanEdit type="edit" item={item} />
 				</div>

@@ -36,7 +36,7 @@ export default function Header() {
 	};
 	return (
 		<div className="flex items-center justify-between shadow-lg p-6 pb-4">
-			<div className="header-side h-[100vh] group fixed top-0 left-0 bg-white shadow">
+			<div className="header-side h-[100vh] group fixed z-10 top-0 left-0 bg-white shadow">
 				<menu className="side-menu overflow-hidden space-y-2 w-[28px] hover:w-[230px] transition-all duration-300 group-hover:max-w-xs">
 					<li className="menu-item w-[230px]">
 						{pathList.map((item) => (
