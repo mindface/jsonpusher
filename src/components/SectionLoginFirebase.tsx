@@ -20,7 +20,7 @@ import type { AuthProvider } from "firebase/auth";
 export default function SectionLoginFirebase() {
 	const session = useSession();
 	const loginDom = useRef(null);
-	const [userSwitch, setUserSwitch] = useState(false);
+	const [userSwitch, setUserSwitch] = useState(true);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const googleProvider = new GoogleAuthProvider();
@@ -96,7 +96,7 @@ export default function SectionLoginFirebase() {
 						<div className="pb-4 ">{userSwitch ? "ログイン" : "新規登録"}</div>
 						<div className="pb-4">
 							<Input
-								type="text"
+								type="email"
 								label="EMAIL:"
 								value={email}
 								onChange={(value) => {
@@ -106,7 +106,7 @@ export default function SectionLoginFirebase() {
 						</div>
 						<div className="pb-4">
 							<Input
-								type="text"
+								type="password"
 								label="PASS:"
 								value={password}
 								onChange={(value) => {
@@ -119,6 +119,7 @@ export default function SectionLoginFirebase() {
 								<div className="pt-4 pb-4">
 									<Button
 										label="ログイン"
+										className="login-btn"
 										onClick={() => {
 											signInAction();
 										}}

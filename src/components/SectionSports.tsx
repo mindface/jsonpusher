@@ -160,7 +160,7 @@ export default function SectionSports() {
 	}, [userLevel, selectSportsPatternList]);
 
 	return (
-		<section className="section-health">
+		<section className="section-sports">
 			<div className="text-center pb-4">
 				選択をして、aiに質問するテキストを作成します。
 				<Ccheck
