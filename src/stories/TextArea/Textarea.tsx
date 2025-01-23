@@ -19,7 +19,7 @@ export const Textarea = ({
 	size = "medium",
 	rows = 10,
 	cols = 30,
-	value,
+	value = "This is a test input.",
 	label,
 	placeholder,
 	onChange,

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./Ccheck.css";
 
@@ -21,6 +21,7 @@ export const Ccheck = ({
 	changing,
 	...props
 }: CcheckProps) => {
+	const [checker, checkerSet] = useState(false);
 	const mode = primary ? "ccheck--primary" : "ccheck--secondary";
 	return (
 		<div className="ccheck">
@@ -28,7 +29,9 @@ export const Ccheck = ({
 				type="checkbox"
 				id={`${partsId}-item`}
 				className="input"
+				checked={checker}
 				onChange={(e) => {
+					checkerSet(e.target.checked);
 					changing(e.target.checked);
 				}}
 				hidden

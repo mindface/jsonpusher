@@ -29,6 +29,12 @@ const nextConfig = {
       "lh3.googleusercontent.com",
       "pagead2.googlesyndication.com"
     ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "example.com",
+      },
+    ],
   },
 };
 

@@ -17,13 +17,15 @@ export async function middleware(request: NextRequest) {
 		"/sports",
 		"/questionAi",
 		"/sportAndJob",
+		"/memoryTask",
+		"/memoryView"
 	];
 	const path = new URL(request.url).pathname;
 	if (path === "/login" || path.startsWith("/_next")) {
 		return NextResponse.next();
 	}
 
-	if (protectedRoutes.includes(path) && !token?.uid) {
+	if (process.env.APP_ENV !== "test" && protectedRoutes.includes(path) && !token?.uid) {
 		return NextResponse.redirect(new URL("/login", request.url));
 	}
 	return NextResponse.next();
