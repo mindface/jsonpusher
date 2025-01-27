@@ -32,8 +32,8 @@ export const useStoreMemoery = create<StoreMemoery>((set, get) => ({
 	memories: [
 		{
 			id: 1,
-			title: "check api memories title01",
-			detail: "check api detail01",
+			title: "loading...",
+			detail: "loading...",
 			connectId: "",
 			userId: "",
 			memoryId: "",

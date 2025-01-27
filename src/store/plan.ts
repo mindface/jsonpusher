@@ -1,56 +1,79 @@
 import { create } from "zustand";
 import type { Plan } from "../type/plan";
+import {
+	Timestamp,
+} from "firebase/firestore";
+
+import { FirestorePlanActions } from "../lib/firestorePlanActions";
 
 interface StorePlan {
 	plans: Plan[];
 	isLoading: boolean;
+	isError: boolean;
 
 	getPlans: () => void;
 	setPlans: (plans: Plan[]) => void;
-	addPlan: (title: string, details: string) => void | { saveResult: string };
-	updatePlan: (plan: Plan) => void | { saveResult: string };
-	deletePlan: (planId: string) => void;
+	addPlan: (title: string, details: string) => Promise<void | { saveResult: string }>;
+	updatePlan: (plan: Plan) => Promise<void | { saveResult: string }>;
+	deletePlan: (updatePlan: Plan) => void;
 	reset: () => void;
 }
 
 export const useStorePlan = create<StorePlan>((set, get) => ({
 	plans: [],
 	isLoading: false,
-	getPlans: () => {},
+	isError: false,
+	getPlans: async () => {
+		const firestorePlanActions = new FirestorePlanActions();
+		const list = await firestorePlanActions.getAction("plan");
+		set({ plans: list });
+	},
 	setPlans: (plans) => {
 		set({
 			plans: plans,
 		});
 	},
-	addPlan: (title: string, details: string) => {
+	addPlan: async (title: string, details: string) => {
+		const firestorePlanActions = new FirestorePlanActions();
 		const plans = get().plans;
+		//TODO idは自動で割り振られるので空にしているが、実装で困るケースを調査して改善予定
 		const addPlan = {
-			id: `plan${plans.length + 1}`,
+			id: "",
 			title: title,
 			details: details,
-			connectId: "addPlanId",
+			userId: "",
+			planId: "",
+			connectId: "string;",
+			status: "run",
+			groupId: "string;",
+			createAt: Timestamp.now(),
+			updateAt: Timestamp.now(),
 		};
-		const list = [...get().plans, addPlan];
-		set({
-			plans: list,
-		});
+		const res = await firestorePlanActions.addAction(addPlan,"plan");
+		if(res.status === "success") {
+			get().getPlans();
+		} else if(res.status === "error") {
+			alert("管理者に問い合わせてください。");
+		}
+		return { saveResult: "success" };
 	},
-	updatePlan: (updatePlan: Plan) => {
-		const list = get().plans.map((plan) => {
-			if (plan.id === updatePlan.id) {
-				return updatePlan;
-			}
-			return plan;
-		});
-		set({
-			plans: list,
-		});
+	updatePlan: async (updatePlan: Plan) => {
+		const firestorePlanActions = new FirestorePlanActions();
+		const res = await firestorePlanActions.updatePlan(updatePlan,"plan");
+		if(res.status === "success") {
+			get().getPlans();
+		} else if(res.status === "error") {
+			alert("管理者に問い合わせてください。");
+		}
 	},
-	deletePlan: (planId: string) => {
-		const list = get().plans.filter((item) => item.id !== planId);
-		set({
-			plans: list,
-		});
+	deletePlan: async (updatePlan: Plan) => {
+		const firestorePlanActions = new FirestorePlanActions();
+		const res = await firestorePlanActions.deletePlan(updatePlan,"plan");
+		if(res.status === "success") {
+			get().getPlans();
+		} else if(res.status === "error") {
+			alert("管理者に問い合わせてください。");
+		}
 	},
 	reset: () => {
 		set({
