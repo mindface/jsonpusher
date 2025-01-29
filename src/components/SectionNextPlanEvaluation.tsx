@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../stories/Button/Button";
 import { Textarea } from "../stories/TextArea/Textarea";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
@@ -10,13 +10,14 @@ import CNextPlanList from "./parts/CNextPlanList";
 import { useStoreNextPlan } from "../store/planNext";
 
 import { copyClipbord } from "../utils/copyClipbord";
+import { stringWidth, padEndWidth } from "../utils/convertString";
 
 import type { Plan } from "../type/plan";
 
 export default function SectionNextPlanEvaluation() {
-	const { nextPlans } = useStoreNextPlan();
+	const { nextPlans, getNextPlans } = useStoreNextPlan();
 	const [planEvaluation, planEvaluationSet] = useState("");
-
+	
 	const copyTextAciton = () => {
 		const columns = ["id", "title","details"];
 		let formattedTable = "";
@@ -26,19 +27,19 @@ export default function SectionNextPlanEvaluation() {
 				col.length,
 				...nextPlans.map((row) => {
 					const value = row[col as keyof Plan];
-					return typeof value === "string" ? value.length : 0;
+					return typeof value === "string" ? stringWidth(value) : 0;
 				}),
 			),
 		);
 		const header = columns
-			.map((col, index) => col.padEnd(colWidths[index]))
+			.map((col, index) => padEndWidth(col, colWidths[index]))
 			.join(" | ");
-		const separator = "-".repeat(header.length);
+		const separator = "-".repeat(stringWidth(header) + (columns.length - 1) * 3);
 		const formattedRows = nextPlans.map((row) =>
 			columns
 				.map((col, index) => {
 					const value = row[col as keyof Plan];
-					return typeof value === "string" ? value.padEnd(colWidths[index]) : 0;
+					return typeof value === "string" ? padEndWidth(value,colWidths[index]) : "";
 				})
 				.join(" | "),
 		);
@@ -52,7 +53,6 @@ export default function SectionNextPlanEvaluation() {
 
 		const copyText = `${formattedTable}
 
-
 		上記のように計画しています。
 		-------------
 		${planEvaluation}
@@ -60,6 +60,10 @@ export default function SectionNextPlanEvaluation() {
 
 		copyClipbord(copyText);
 	};
+
+	useEffect(() => {
+		getNextPlans();
+	},[getNextPlans]);
 
 	return (
 		<section className="section-skill-comparison">
