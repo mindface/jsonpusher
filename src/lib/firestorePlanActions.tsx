@@ -1,4 +1,4 @@
-import type { Plan } from "../type/plan";
+import type { Plan, AddPlan } from "../type/plan";
 import { db } from "../lib/firebaseClient";
 import { getAuth, onAuthStateChanged, Auth } from "firebase/auth";
 import {
@@ -22,7 +22,6 @@ export class FirestorePlanActions {
 
 	async getAction(targetType: string): Promise<Plan[]> {
 		const auth = await this.auth;
-		const currentId = auth.currentUser;
 		return new Promise((resolve, reject) => {
 			onAuthStateChanged(auth, async (user) => {
 				if (user) {
@@ -49,7 +48,7 @@ export class FirestorePlanActions {
 		});
 	}
 
-	async addAction(addPlan: Plan, targetType: SetType): Promise<{status:string}> {
+	async addAction(addPlan: AddPlan, targetType: SetType): Promise<{status:string}> {
 		const auth = await this.auth;
 		const user = auth.currentUser;
 		return new Promise( async (resolve, reject) => {

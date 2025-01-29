@@ -1,17 +1,6 @@
 import { create } from "zustand";
 import type { Plan } from "../type/plan";
-import { db } from "../lib/firebaseClient";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import {
-	doc,
-	collection,
-	addDoc,
-	updateDoc,
-	getDocs,
-	query,
-	where,
-	Timestamp,
-} from "firebase/firestore";
+import { Timestamp } from "firebase/firestore";
 
 import { FirestorePlanActions } from "../lib/firestorePlanActions";
 
@@ -69,7 +58,7 @@ export const useStoreNextPlan = create<StorePlanNext>((set, get) => ({
 	},
 	updateNextPlan: async (updatePlan: Plan) => {
 		const firestorePlanActions = new FirestorePlanActions();
-		const res = await firestorePlanActions.updatePlan(updatePlan,"plan");
+		const res = await firestorePlanActions.updatePlan(updatePlan,"nextPlan");
 		if(res.status === "success") {
 			get().getNextPlans();
 		} else if(res.status === "error") {
@@ -78,7 +67,7 @@ export const useStoreNextPlan = create<StorePlanNext>((set, get) => ({
 	},
 	deleteNextPlan: async (updatePlan: Plan) => {
 		const firestorePlanActions = new FirestorePlanActions();
-		const res = await firestorePlanActions.deletePlan(updatePlan,"plan");
+		const res = await firestorePlanActions.deletePlan(updatePlan,"nextPlan");
 		if(res.status === "success") {
 			get().getNextPlans();
 		} else if(res.status === "error") {

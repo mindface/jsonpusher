@@ -1,7 +1,7 @@
 import { Timestamp } from "firebase/firestore";
 
 export type Plan = {
-	id?: string;
+	id: string;
 	title: string;
 	details: string;
 	userId: string;
@@ -12,3 +12,7 @@ export type Plan = {
 	createAt: Timestamp;
 	updateAt: Timestamp;
 };
+
+export interface AddPlan extends Omit<Plan,"id"> {
+	id?: string;
+}

@@ -128,7 +128,7 @@ export default function ContentPlanFeedback() {
 	useEffect(() => {
 		getPlans();
 		getNextPlans();
-	},[]);
+	},[getPlans,getNextPlans]);
 
 	return (
 		<div className="content">

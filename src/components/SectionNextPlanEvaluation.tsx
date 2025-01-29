@@ -18,13 +18,16 @@ export default function SectionNextPlanEvaluation() {
 	const [planEvaluation, planEvaluationSet] = useState("");
 
 	const copyTextAciton = () => {
-		const columns = ["id", "title"];
+		const columns = ["id", "title","details"];
 		let formattedTable = "";
 
 		const colWidths = columns.map((col) =>
 			Math.max(
 				col.length,
-				...nextPlans.map((row) => row[col as keyof Plan].length),
+				...nextPlans.map((row) => {
+					const value = row[col as keyof Plan];
+					return typeof value === "string" ? value.length : 0;
+				}),
 			),
 		);
 		const header = columns
@@ -33,7 +36,10 @@ export default function SectionNextPlanEvaluation() {
 		const separator = "-".repeat(header.length);
 		const formattedRows = nextPlans.map((row) =>
 			columns
-				.map((col, index) => row[col as keyof Plan].padEnd(colWidths[index]))
+				.map((col, index) => {
+					const value = row[col as keyof Plan];
+					return typeof value === "string" ? value.padEnd(colWidths[index]) : 0;
+				})
 				.join(" | "),
 		);
 		formattedTable = [
@@ -45,6 +51,8 @@ export default function SectionNextPlanEvaluation() {
 		].join("\n");
 
 		const copyText = `${formattedTable}
+
+
 		上記のように計画しています。
 		-------------
 		${planEvaluation}
@@ -59,7 +67,7 @@ export default function SectionNextPlanEvaluation() {
 			<div className="details">
 				<p className="text pb-2">計画の評価を形成します。</p>
 				<p className="text pb-4">自分で精査するための評価を記述します。</p>
-				<Titleline3h title="計画の追加" size="small" />
+				<Titleline3h title="次の計画の追加" size="small" />
 				<div className="flex">
 					<div className="pb-8">
 						<CNextPlanEdit type="add" />

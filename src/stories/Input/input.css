@@ -3,7 +3,7 @@
 	appearance: none;
 	outline: none;
 	display: inline-block;
-	background: #fff;
+	background: var(--color-white);
 	color: var(--input-font-color);
 	border: 0;
 	line-height: 1;
