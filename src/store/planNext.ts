@@ -25,8 +25,8 @@ interface StorePlanNext {
 		title: string,
 		details: string,
 	) => Promise<void | { saveResult: string }>;
-	updateNextPlan: (plan: Plan) => void | { saveResult: string };
-	deleteNextPlan: (planId: string) => void;
+	updateNextPlan: (updatePlan: Plan) => Promise<void>;
+	deleteNextPlan: (updatePlan: Plan) => void;
 	nextReset: () => void;
 	copyPlans: (plans: Plan[]) => void;
 }
@@ -35,25 +35,9 @@ export const useStoreNextPlan = create<StorePlanNext>((set, get) => ({
 	nextPlans: [],
 	isLoading: false,
 	getNextPlans: async () => {
-		const auth = await getAuth();
-		onAuthStateChanged(auth, async (user) => {
-			if (user) {
-				const userCollectionRef = collection(db, "users", user.uid, "nextPlan");
-				const q = query(
-					userCollectionRef,
-					where("userId", "==", user.uid),
-					where("status", "==", "run"),
-				);
-				const querySnapshot = await getDocs(q);
-				const list = querySnapshot.docs.map((doc) => ({
-					...doc.data(),
-				})) as Plan[];
-				console.log(list);
-				set({ nextPlans: list });
-			} else {
-				console.log("No user is signed in.");
-			}
-		});
+		const firestorePlanActions = new FirestorePlanActions();
+		const list = await firestorePlanActions.getAction("nextPlan");
+		set({ nextPlans: list });
 	},
 	setNextPlans: (plans) => {
 		set({
@@ -61,64 +45,45 @@ export const useStoreNextPlan = create<StorePlanNext>((set, get) => ({
 		});
 	},
 	addNextPlan: async (title: string, details: string) => {
-		const plans = get().nextPlans;
-		const auth = getAuth();
-		const user = auth.currentUser;
-		if (user) {
-				const addPlan = {
-					id: `plan${plans.length + 1}`,
-					title: title,
-					details: details,
-					userId: user.uid,
-					planId: "",
-					connectId: "string;",
-					status: "run",
-					groupId: "string;",
-					createAt: Timestamp.now(),
-					updateAt: Timestamp.now(),
-				};
-				const userDocRef = doc(db, "users", user.uid);
-				const userCollectionRef = collection(userDocRef, "nextPlan");
-				const planId = userCollectionRef.id;
-				await addDoc(userCollectionRef, {
-					...addPlan,
-					planId
-				});
-			const list = [...get().nextPlans, addPlan];
-			set({
-				nextPlans: list,
-			});
-		} else {
-			console.log("No user is signed in.");
+		const firestorePlanActions = new FirestorePlanActions();
+		//TODO idは自動で割り振られるので空にしているが、実装で困るケースを調査して改善予定
+		const addNextPlan = {
+			id: "",
+			title: title,
+			details: details,
+			userId: "",
+			planId: "",
+			connectId: "string;",
+			status: "run",
+			groupId: "string;",
+			createAt: Timestamp.now(),
+			updateAt: Timestamp.now(),
+		};
+		const res = await firestorePlanActions.addAction(addNextPlan,"nextPlan");
+		if(res.status === "success") {
+			get().getNextPlans();
+		} else if(res.status === "error") {
+			alert("管理者に問い合わせてください。");
 		}
 		return { saveResult: "success" };
 	},
-	updateNextPlan: (updatePlan: Plan) => {
-		const auth = getAuth();
-		onAuthStateChanged(auth, async (user) => {
-			if (user) {
-				const planDocRef = doc(
-					db,
-					"users",
-					user.uid,
-					"nextPlan",
-					updatePlan.planId,
-				);
-				await updateDoc(planDocRef, {
-					...updatePlan,
-					updateAt: new Date(),
-				});
-				get().getNextPlans();
-			} else {
-				console.log("No user is signed in.");
-			}
-		});
+	updateNextPlan: async (updatePlan: Plan) => {
+		const firestorePlanActions = new FirestorePlanActions();
+		const res = await firestorePlanActions.updatePlan(updatePlan,"plan");
+		if(res.status === "success") {
+			get().getNextPlans();
+		} else if(res.status === "error") {
+			alert("管理者に問い合わせてください。");
+		}
 	},
-	deleteNextPlan: (planId: string) => {
-		const list = get().nextPlans.filter((item) => item.id !== planId);
-		set({
-			nextPlans: list,
-		});
+	deleteNextPlan: async (updatePlan: Plan) => {
+		const firestorePlanActions = new FirestorePlanActions();
+		const res = await firestorePlanActions.deletePlan(updatePlan,"plan");
+		if(res.status === "success") {
+			get().getNextPlans();
+		} else if(res.status === "error") {
+			alert("管理者に問い合わせてください。");
+		}
 	},
 	nextReset: () => {
 		set({

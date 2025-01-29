@@ -35,7 +35,6 @@ export const useStorePlan = create<StorePlan>((set, get) => ({
 	},
 	addPlan: async (title: string, details: string) => {
 		const firestorePlanActions = new FirestorePlanActions();
-		const plans = get().plans;
 		//TODO idは自動で割り振られるので空にしているが、実装で困るケースを調査して改善予定
 		const addPlan = {
 			id: "",

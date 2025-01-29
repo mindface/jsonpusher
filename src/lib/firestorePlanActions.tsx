@@ -19,6 +19,7 @@ export class FirestorePlanActions {
 	constructor() {
 		this.auth = getAuth();
 	}
+
 	async getAction(targetType: string): Promise<Plan[]> {
 		const auth = await this.auth;
 		const currentId = auth.currentUser;
@@ -47,6 +48,7 @@ export class FirestorePlanActions {
 			});
 		});
 	}
+
 	async addAction(addPlan: Plan, targetType: SetType): Promise<{status:string}> {
 		const auth = await this.auth;
 		const user = auth.currentUser;
@@ -74,6 +76,7 @@ export class FirestorePlanActions {
 			}
 		});
 	}
+	
 	async updatePlan(updatePlan: Plan, targetType: SetType): Promise<{status:string}> {
 		const auth = await this.auth;
 		return new Promise((resolve, reject) => {
@@ -103,6 +106,7 @@ export class FirestorePlanActions {
 			});		
 		});
 	}
+
 	deletePlan(updatePlan: Plan, targetType: SetType): Promise<{status:string}> {
 		const auth = getAuth();
 		return new Promise((resolve, reject) => {

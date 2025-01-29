@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Button } from "../../stories/Button/Button";
 import { Input } from "../../stories/Input/Input";
+import { Textarea } from "../../stories/TextArea/Textarea";
 
 import { useStoreNextPlan } from "../../store/planNext";
 
@@ -25,7 +26,7 @@ export default function CNextPlanEdit(props: Props) {
 	const updatePlanAction = () => {
 		if (item?.id && item?.connectId) {
 			const updateItem = {
-				id: item?.id,
+				...item,
 				title: planTitle,
 				details: planDetails,
 				connectId: item?.connectId,
@@ -35,8 +36,8 @@ export default function CNextPlanEdit(props: Props) {
 	};
 
 	const deletePlanAction = () => {
-		if (item?.id) {
-			deleteNextPlan(item?.id);
+		if (item) {
+			deleteNextPlan(item);
 		}
 	};
 
@@ -54,17 +55,17 @@ export default function CNextPlanEdit(props: Props) {
 					max={1000}
 				/>
 			</div>
-			<div className="flex pb-2">
-				<Input
-					type="text"
+			<div className="pb-2">
+				<Textarea
 					label="詳細"
 					value={planDetails}
 					outerClassName={type === "edit" ? "label-dark" : ""}
 					onChange={(value) => {
 						planDetailsSet(value as string);
 					}}
-					max={1000}
 				/>
+			</div>
+			<div className="pb-2">
 				<Button
 					label={type === "edit" ? "更新" : "追加"}
 					size="small"
