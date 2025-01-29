@@ -49,7 +49,7 @@ export const Dialog = ({
 		if(ounterActionValue) {
 			switchAction();
 		}
-	},[ounterActionValue]);
+	},[ounterActionValue,switchAction]);
 	return (
 		<div className="dialog-box" ref={dialogElement}>
 			{type === "icon" && (

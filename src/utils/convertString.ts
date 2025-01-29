@@ -30,7 +30,7 @@ export const stringWidth = (str:string): number => {
 }
 
 export const padEndWidth = (str:string, targetWidth: number): string => {
-	let currentidth = stringWidth(str);
+	const currentidth = stringWidth(str);
 	const padding = " ".repeat(targetWidth-currentidth);
 	return str + padding;
 }
