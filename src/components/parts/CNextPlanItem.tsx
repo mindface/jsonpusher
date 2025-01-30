@@ -19,7 +19,6 @@ export default function CNextPlanItem(props: Props) {
 
 	useEffect(() => {
 		const taget = divRef.current?.getBoundingClientRect();
-		console.log(taget);
 		if(taget && (taget?.left > window.innerWidth / 2) ) {
 			editClassSet("right-0");
 		}

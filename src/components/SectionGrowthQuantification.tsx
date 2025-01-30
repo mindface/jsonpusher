@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useStoreNextPlan } from "../store/planNext";
 import { Button } from "../stories/Button/Button";
 import { Textarea } from "../stories/TextArea/Textarea";
@@ -9,7 +9,7 @@ import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { copyClipbord } from "../utils/copyClipbord";
 
 export default function SectionGrowthQuantification() {
-	const { nextPlans } = useStoreNextPlan();
+	const { nextPlans, getNextPlans } = useStoreNextPlan();
 	const [textGrowth, textGrowthSet] = useState("");
 	const router = useRouter();
 
@@ -28,6 +28,10 @@ export default function SectionGrowthQuantification() {
 	const goPlanAction = () => {
 		router.push("/planFeedback");
 	};
+
+	useEffect(() => {
+		getNextPlans();
+	},[getNextPlans]);
 
 	return (
 		<section className="section-skill-comparison">

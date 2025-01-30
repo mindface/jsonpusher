@@ -7,7 +7,7 @@ const meta = {
 	title: "Example/Menu",
 	component: Menu,
 	parameters: {
-		layout: "centered",
+		layout: "fullscreen",
 	},
 	tags: ["autodocs"],
 	argTypes: {},
@@ -20,13 +20,21 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
 	args: {
 		primary: true,
-		pathList: [],
+		pathList: [
+			{ pathId: "home", name: "Home", path: "/" },
+			{ pathId: "about", name: "About", path: "/about" },
+			{ pathId: "contact", name: "Contact", path: "/contact" },
+		],
 	},
 };
 
 export const Secondary: Story = {
 	args: {
 		primary: false,
-		pathList: [],
+		pathList: [
+			{ pathId: "home", name: "Home", path: "/" },
+			{ pathId: "about", name: "About", path: "/about" },
+			{ pathId: "contact", name: "Contact", path: "/contact" },
+		],
 	},
 };

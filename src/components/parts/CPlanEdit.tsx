@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "../../stories/Button/Button";
 import { Input } from "../../stories/Input/Input";
+import { Textarea } from "../../stories/TextArea/Textarea";
 
 import { useStorePlan } from "../../store/plan";
 
@@ -32,7 +33,7 @@ export default function CPlanEdit(props: Props) {
 	const updatePlanAction = () => {
 		if (item?.id && item?.connectId) {
 			const updateItem = {
-				id: item?.id,
+				...item,
 				title: planTitle,
 				details: planDetails,
 				connectId: item?.connectId,
@@ -43,7 +44,7 @@ export default function CPlanEdit(props: Props) {
 
 	const deletePlanAction = () => {
 		if (item?.id) {
-			deletePlan(item?.id);
+			deletePlan(item);
 		}
 	};
 
@@ -61,17 +62,17 @@ export default function CPlanEdit(props: Props) {
 					max={1000}
 				/>
 			</div>
-			<div className="flex pb-2">
-				<Input
-					type="text"
+			<div className="pb-2">
+				<Textarea
 					value={planDetails}
 					outerClassName={type === "edit" ? "label-dark" : ""}
 					label="詳細"
 					onChange={(value) => {
 						planDetailsSet(value as string);
 					}}
-					max={1000}
 				/>
+			</div>
+			<div className="pb-2">
 				<Button
 					label={type === "edit" ? "更新" : "追加"}
 					size="small"

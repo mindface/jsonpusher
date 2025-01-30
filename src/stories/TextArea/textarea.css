@@ -1,6 +1,7 @@
 .textarea {
 	display: block;
-	background-color: transparent;
+	background-color: var(--color-white);
+	color: var(--input-font-color);
 	border: 0;
 	box-shadow: 0 0 1px var(--menu-font-color) inset;
 	resize: both;
