@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./textCommenter.css";
 
 export interface TextCommenterProps {

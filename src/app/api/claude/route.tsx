@@ -1,19 +1,15 @@
-import { Anthropic } from '@anthropic-ai/sdk';
-import { NextResponse, type NextRequest } from "next/server";
+import { Anthropic } from "@anthropic-ai/sdk";
+import { type NextRequest, NextResponse } from "next/server";
 // import {
 // 	sanitaizeText,
 // } from "../../../lib/convertString";
 
 const client = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY
+	apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
 export async function GET() {
-	try {
-		return NextResponse.json({ name: "Contact Api" });
-	} catch (error) {
-		throw error;
-	}
+	return NextResponse.json({ name: "Contact Api" });
 }
 
 export async function POST(reqest: NextRequest) {
@@ -28,20 +24,28 @@ export async function POST(reqest: NextRequest) {
 			system: "短い詩でのみ応答してください。",
 			messages: [
 				{
-					"role": "user",
-					"content": [
+					role: "user",
+					content: [
 						{
-							"type": "text",
-							"text": prompt
-						}
-					]
-				}
-			]
+							type: "text",
+							text: prompt,
+						},
+					],
+				},
+			],
 		});
-		console.log('Response:', result.content);
-		return NextResponse.json({ message: "Success", status: 200, content: result.content });
+		console.log("Response:", result.content);
+		return NextResponse.json({
+			message: "Success",
+			status: 200,
+			content: result.content,
+		});
 	} catch (error) {
-		console.log(error);
-		return NextResponse.json({ message: "Failed", status: 500, content: "no content" });
+		console.error(error);
+		return NextResponse.json({
+			message: "Failed",
+			status: 500,
+			content: "no content",
+		});
 	}
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./Ccheck.css";
 
@@ -21,35 +21,34 @@ export const Ccheck = ({
 	changing,
 	...props
 }: CcheckProps) => {
-	const mode = primary
-		? "ccheck--primary"
-		: "ccheck--secondary";
+	const [checker, checkerSet] = useState(false);
+	const mode = primary ? "ccheck--primary" : "ccheck--secondary";
 	return (
 		<div className="ccheck">
 			<input
 				type="checkbox"
 				id={`${partsId}-item`}
 				className="input"
+				checked={checker}
 				onChange={(e) => {
+					checkerSet(e.target.checked);
 					changing(e.target.checked);
 				}}
 				hidden
 			/>
 			<label
 				htmlFor={`${partsId}-item`}
-				className={[
-					"label ccheck",
-					`ccheck--${size}`,
-					mode,
-				].join(" ")}
+				className={["label ccheck", `ccheck--${size}`, mode].join(" ")}
 				{...props}
 			>
 				{label}
-				{backgroundColor && <style jsx>{`
+				{backgroundColor && (
+					<style jsx>{`
           button {
             background-color: ${backgroundColor};
           }
-        `}</style>}
+        `}</style>
+				)}
 			</label>
 		</div>
 	);

@@ -1,5 +1,8 @@
 import { create } from "zustand";
-import { Plan } from "../type/plan";
+import type { Plan } from "../type/plan";
+import { Timestamp } from "firebase/firestore";
+
+import { FirestorePlanActions } from "../lib/firestorePlanActions";
 
 interface StorePlanNext {
 	nextPlans: Plan[];
@@ -10,9 +13,9 @@ interface StorePlanNext {
 	addNextPlan: (
 		title: string,
 		details: string,
-	) => void | { saveResult: string };
-	updateNextPlan: (plan: Plan) => void | { saveResult: string };
-	deleteNextPlan: (planId: string) => void;
+	) => Promise<void | { saveResult: string }>;
+	updateNextPlan: (updatePlan: Plan) => Promise<void>;
+	deleteNextPlan: (updatePlan: Plan) => void;
 	nextReset: () => void;
 	copyPlans: (plans: Plan[]) => void;
 }
@@ -20,41 +23,56 @@ interface StorePlanNext {
 export const useStoreNextPlan = create<StorePlanNext>((set, get) => ({
 	nextPlans: [],
 	isLoading: false,
-	getNextPlans: () => {},
+	getNextPlans: async () => {
+		const firestorePlanActions = new FirestorePlanActions();
+		const list = await firestorePlanActions.getAction("nextPlan");
+		set({ nextPlans: list });
+	},
 	setNextPlans: (plans) => {
 		set({
 			nextPlans: plans,
 		});
 	},
-	addNextPlan: (title: string, details: string) => {
-		const plans = get().nextPlans;
-		const addPlan = {
-			id: `nextPlan${plans.length + 1}`,
+	addNextPlan: async (title: string, details: string) => {
+		const firestorePlanActions = new FirestorePlanActions();
+		//TODO idは自動で割り振られるので空にしているが、実装で困るケースを調査して改善予定
+		const addNextPlan = {
+			id: "",
 			title: title,
 			details: details,
-			connectId: "addNextPlanId",
+			userId: "",
+			planId: "",
+			connectId: "string;",
+			status: "run",
+			groupId: "string;",
+			createAt: Timestamp.now(),
+			updateAt: Timestamp.now(),
 		};
-		const list = [...get().nextPlans, addPlan];
-		set({
-			nextPlans: list,
-		});
+		const res = await firestorePlanActions.addAction(addNextPlan,"nextPlan");
+		if(res.status === "success") {
+			get().getNextPlans();
+		} else if(res.status === "error") {
+			alert("管理者に問い合わせてください。");
+		}
+		return { saveResult: "success" };
 	},
-	updateNextPlan: (updatePlan: Plan) => {
-		const list = get().nextPlans.map((plan) => {
-			if (plan.id === updatePlan.id) {
-				return updatePlan;
-			}
-			return plan;
-		});
-		set({
-			nextPlans: list,
-		});
+	updateNextPlan: async (updatePlan: Plan) => {
+		const firestorePlanActions = new FirestorePlanActions();
+		const res = await firestorePlanActions.updatePlan(updatePlan,"nextPlan");
+		if(res.status === "success") {
+			get().getNextPlans();
+		} else if(res.status === "error") {
+			alert("管理者に問い合わせてください。");
+		}
 	},
-	deleteNextPlan: (planId: string) => {
-		const list = get().nextPlans.filter((item) => item.id !== planId);
-		set({
-			nextPlans: list,
-		});
+	deleteNextPlan: async (updatePlan: Plan) => {
+		const firestorePlanActions = new FirestorePlanActions();
+		const res = await firestorePlanActions.deletePlan(updatePlan,"nextPlan");
+		if(res.status === "success") {
+			get().getNextPlans();
+		} else if(res.status === "error") {
+			alert("管理者に問い合わせてください。");
+		}
 	},
 	nextReset: () => {
 		set({

@@ -1,23 +1,24 @@
 "use client";
-import { Title3h } from "../stories/title3h/Title3h";
+import { useEffect } from "react";
 import { Button } from "../stories/Button/Button";
 import { Input } from "../stories/Input/Input";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
-import CPlanEdit from "../components/CPlanEdit";
-import CNextPlanEdit from "../components/CNextPlanEdit";
-import CPlanList from "../components/CPlanList";
-import CNextPlanList from "../components/CNextPlanList";
+import CNextPlanEdit from "./parts/CNextPlanEdit";
+import CNextPlanList from "./parts/CNextPlanList";
+import CPlanEdit from "./parts/CPlanEdit";
+import CPlanList from "./parts/CPlanList";
 
 import { useStorePlan } from "../store/plan";
 import { useStoreNextPlan } from "../store/planNext";
 
 import type { Plan } from "../type/plan";
 
-import { copyClipbord } from "../lib/copyClipbord";
+import { copyClipbord } from "../utils/copyClipbord";
 
 export default function ContentPlanFeedback() {
-	const { plans, setPlans } = useStorePlan();
-	const { nextPlans, copyPlans, setNextPlans } = useStoreNextPlan();
+	const { plans, setPlans, getPlans } = useStorePlan();
+	const { nextPlans, copyPlans, setNextPlans, getNextPlans } = useStoreNextPlan();
 
 	const copyAciton = () => {
 		copyPlans(plans);
@@ -46,7 +47,6 @@ export default function ContentPlanFeedback() {
 			reader.onload = (e) => {
 				try {
 					const jsonData = JSON.parse(e.target?.result as string);
-					console.log(jsonData);
 					if (jsonData.plans) {
 						setPlans(jsonData.plans);
 					}
@@ -75,7 +75,7 @@ export default function ContentPlanFeedback() {
 			const colWidths = columns.map((col) =>
 				Math.max(
 					col.length,
-					...plans.map((row) => row[col as keyof Plan].length),
+					...plans.map((row) => (row[col as keyof Plan] as string).length),
 				),
 			);
 			const header = columns
@@ -84,7 +84,7 @@ export default function ContentPlanFeedback() {
 			const separator = "-".repeat(header.length);
 			const formattedRows = plans.map((row) =>
 				columns
-					.map((col, index) => row[col as keyof Plan].padEnd(colWidths[index]))
+					.map((col, index) => (row[col as keyof Plan] as string).padEnd(colWidths[index]))
 					.join(" | "),
 			);
 			formattedTable = [
@@ -100,7 +100,7 @@ export default function ContentPlanFeedback() {
 			const colWidths = columns.map((col) =>
 				Math.max(
 					col.length,
-					...nextPlans.map((row) => row[col as keyof Plan].length),
+					...nextPlans.map((row) => (row[col as keyof Plan] as string).length),
 				),
 			);
 			const header = columns
@@ -109,7 +109,7 @@ export default function ContentPlanFeedback() {
 			const separator = "-".repeat(header.length);
 			const formattedRows = nextPlans.map((row) =>
 				columns
-					.map((col, index) => row[col as keyof Plan].padEnd(colWidths[index]))
+					.map((col, index) => (row[col as keyof Plan] as string).padEnd(colWidths[index]))
 					.join(" | "),
 			);
 			console.log(colWidths);
@@ -124,6 +124,11 @@ export default function ContentPlanFeedback() {
 
 		copyClipbord(formattedTable);
 	};
+
+	useEffect(() => {
+		getPlans();
+		getNextPlans();
+	},[getPlans,getNextPlans]);
 
 	return (
 		<div className="content">
@@ -141,7 +146,7 @@ export default function ContentPlanFeedback() {
 					/>
 				</div>
 				<div className="pb-4">
-					<Title3h title="計画の作成" />
+					<Titleline3h title="計画の作成" />
 				</div>
 				<div className="flex">
 					<div className="pb-8 pr-8 w-[50%]">

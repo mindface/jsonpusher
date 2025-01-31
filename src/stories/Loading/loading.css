@@ -1,0 +1,52 @@
+.loading svg {
+	width: 65px;
+	height: 65px;
+	margin: auto;
+}
+
+.loading--small svg {
+	width: 30px;
+	height: 30px;
+}
+
+.loading--large svg {
+	width: 80px;
+	height: 80px;
+}
+
+.loading-path {
+	animation: fadeColor infinite .8s reverse;
+	width: 3px;
+	height: 9px;
+}
+
+.loading-path._no1 {
+	animation-delay: .1s;
+}
+.loading-path._no2 {
+	animation-delay: .2s;
+}
+.loading-path._no3 {
+	animation-delay: .3s;
+}
+.loading-path._no4 {
+	animation-delay: .4s;
+}
+.loading-path._no5 {
+	animation-delay: .5s;
+}
+.loading-path._no6 {
+	animation-delay: .6s;
+}
+.loading-path._no7 {
+	animation-delay: .7s;
+}
+.loading-path._no8 {
+	animation-delay: .8s;
+}
+
+@keyframes fadeColor {
+	to {
+		fill: #1ea7fd;
+	}
+}

@@ -1,17 +1,19 @@
 .textarea {
 	display: block;
-	background-color: transparent;
+	background-color: var(--color-white);
+	color: var(--input-font-color);
 	border: 0;
-	box-shadow: 0 0 1px var(--foreground) inset;
+	box-shadow: 0 0 1px var(--menu-font-color) inset;
 	resize: both;
 }
 
 .label-black .label {
-	color: var(--font-black);
+	color: var(--menu-font-color);
 }
 
 .label-black .textarea {
-	box-shadow: 0 0 1px var(--font-black) inset;
+	color: var(--menu-font-color);
+	box-shadow: 0 0 1px var(--menu-font-color) inset;
 }
 
 .textarea.auto {

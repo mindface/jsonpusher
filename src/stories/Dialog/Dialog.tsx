@@ -1,13 +1,14 @@
-import React from "react";
-import { ReactNode, useRef, useState } from "react";
+import React, { useEffect } from "react";
+import { type ReactNode, useRef, useState } from "react";
 import { Button } from "../Button/Button";
 import "./dialog.css";
 
 export interface DialogProps {
 	className?: string;
 	size?: "small" | "medium" | "large";
-	type: "icon" | "button";
+	type: "icon" | "button" | "none";
 	label?: string;
+	ounterActionValue?: boolean;
 	onChange?: (value: boolean) => void;
 	children: ReactNode;
 }
@@ -17,11 +18,12 @@ export const Dialog = ({
 	size = "medium",
 	label,
 	type,
+	ounterActionValue,
 	onChange,
 	children,
 }: DialogProps) => {
 	const dialogElement = useRef<HTMLDivElement>(null);
-	const [dialogSwitch,dialogSwitchSet] = useState(false);
+	const [dialogSwitch, dialogSwitchSet] = useState(false);
 	const onChangeAction = onChange;
 	let setClassName = "dialog p-2 rounded-lg";
 	if (className) {
@@ -31,7 +33,7 @@ export const Dialog = ({
 		setClassName += ` ${size}`;
 	}
 	const switchAction = () => {
-		if(onChangeAction) {
+		if (onChangeAction) {
 			onChangeAction(!dialogSwitch);
 		}
 		dialogSwitchSet(!dialogSwitch);
@@ -43,20 +45,30 @@ export const Dialog = ({
 			dialogElement.current?.classList.add("open");
 		}
 	};
+	useEffect(() => {
+		if(ounterActionValue) {
+			switchAction();
+		}
+	},[ounterActionValue,switchAction]);
 	return (
 		<div className="dialog-box" ref={dialogElement}>
-			{ type === "icon" &&
+			{type === "icon" && (
 				<button
 					onClick={switchAction}
-					className={type ? `button inline-block ${type}` : "button inline-block"}
+					className={
+						type ? `button inline-block ${type}` : "button inline-block"
+					}
 				>
 					{label ? label : "view"}
-				</button>}
-			{ type === "button" && <Button
-				label={label ?? "no label"}
-				size="small"
-				onClick={switchAction}
-			/> }
+				</button>
+			)}
+			{type === "button" && (
+				<Button
+					label={label ?? "no label"}
+					size="small"
+					onClick={switchAction}
+				/>
+			)}
 			<div className="overlay fixed top-0 left-0 bg-stone-900/90"></div>
 			<div className={setClassName}>
 				<button

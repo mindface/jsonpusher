@@ -1,16 +1,13 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
 import { Button } from "../stories/Button/Button";
+import { IconButton } from "../stories/IconButton/IconButton";
 import { Input } from "../stories/Input/Input";
 import { Textarea } from "../stories/TextArea/Textarea";
-import { IconButton } from "../stories/IconButton/IconButton";
 
 import styles from "../styles/sentEmailInfo.module.css";
 
-import emailSvg from "../assets/images/email.svg";
-
-import { invalidCheckEmail } from "../lib/validChecker";
+import { ValidChecker } from "../utils/validChecker";
 
 export default function SentEmailInfo() {
 	const [viewSwitch, viewSwitchSet] = useState(false);
@@ -30,7 +27,8 @@ export default function SentEmailInfo() {
 		if (sendTitle === "" || sendBody === "" || sendName === "") {
 			validationTextSet("全ての入力項目を埋めてください。");
 			return;
-		} else if (!invalidCheckEmail(sendEmail)) {
+		}
+		if (!ValidChecker.invalidCheckEmail(sendEmail)) {
 			validationTextSet("メールを正しい形式で入力してください。");
 			return;
 		} else {
@@ -45,12 +43,13 @@ export default function SentEmailInfo() {
 	};
 
 	return (
-		<div className={[viewSwitch ? styles["open"] : ""].join(" ")}>
+		<div className={[viewSwitch ? styles.open : ""].join(" ")}>
 			<div
 				className={[
 					styles["sent-email-info"],
 					"sent-email-info",
 					"fixed",
+					"z-10",
 					"bottom-10",
 					"right-10",
 					"pb-4",
@@ -64,7 +63,9 @@ export default function SentEmailInfo() {
 							viewSwitchSet(!viewSwitch);
 						}}
 					>
-						<Image width={30} height={30} src={emailSvg} alt="email svg" />
+						<svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fillRule="evenodd" clipRule="evenodd" d="M3.75 5.25L3 6V18L3.75 18.75H20.25L21 18V6L20.25 5.25H3.75ZM4.5 7.6955V17.25H19.5V7.69525L11.9999 14.5136L4.5 7.6955ZM18.3099 6.75H5.68986L11.9999 12.4864L18.3099 6.75Z" fill="#080341"/>
+						</svg>
 					</IconButton>
 				</div>
 				<div className="sent-email-info__edit-wrap p-4 rounded-lg bg-white shadow-lg shadow-brack-500/40">
@@ -74,7 +75,8 @@ export default function SentEmailInfo() {
 								type="text"
 								value={sendTitle}
 								label="タイトル"
-								className="auto label-black"
+								className="auto"
+								outerClassName="label-black"
 								onChange={(value) => {
 									sendTitleSet(value as string);
 								}}
@@ -86,7 +88,8 @@ export default function SentEmailInfo() {
 								type="text"
 								value={sendName}
 								label="ネーム"
-								className="auto label-black"
+								className="auto"
+								outerClassName="label-black"
 								onChange={(value) => {
 									sendNameSet(value as string);
 								}}
@@ -98,7 +101,8 @@ export default function SentEmailInfo() {
 								type="text"
 								value={sendEmail}
 								label="メールアドレス"
-								className="auto label-black"
+								className="auto"
+								outerClassName="label-black"
 								onChange={(value) => {
 									sendEmailSet(value as string);
 								}}

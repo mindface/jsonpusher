@@ -1,0 +1,12 @@
+.header-side-icon:hover {
+	background-color: var(--color-black);
+	color: var(--color-white);
+}
+
+.header-side-icon:hover svg path {
+	fill: #fff;
+}
+
+.header-side-icon:hover svg rect {
+	fill: #fff;
+}

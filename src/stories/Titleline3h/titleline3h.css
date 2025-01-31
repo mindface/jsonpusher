@@ -1,0 +1,33 @@
+.small .titleline3h {
+	font-size: 1.4rem;
+}
+
+.medium .titleline3h {
+	margin-bottom: 8px;
+}
+
+.large .titleline3h {
+	margin-bottom: 16px;
+	font-size: 2rem;
+}
+
+.titleline3h::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: calc(100% + 5px);
+	bottom: 0;
+	width: 80px;
+	height: 1px;
+	margin: auto;
+	background-color: var(--foreground);
+	color: var(--foreground);
+}
+
+.small .titleline3h::after {
+	width: 60px;
+}
+
+.large .titleline3h::after {
+	width: 100px;
+}

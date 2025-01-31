@@ -1,8 +1,8 @@
 "use client";
-import { useState, useMemo } from "react";
-import { Title3h } from "../stories/title3h/Title3h";
+import { useMemo, useState } from "react";
 import { InputRange } from "../stories/InputRange/InputRange";
 import { Select } from "../stories/Select/Select";
+import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
 import SelectSkillComparisonList from "../json/selectSkillComparisonList.json";
 
@@ -19,7 +19,7 @@ export default function SectionSkillComparison() {
 
 	return (
 		<section className="section-skill-comparison">
-			<Title3h title="スキルを比較する" size="large" />
+			<Titleline3h title="スキルを比較する" size="large" />
 			<div className="details">
 				<p className="text pb-2">
 					向上を目指す時に過去の記録と現状の状態を比較します。
@@ -71,7 +71,7 @@ export default function SectionSkillComparison() {
 						結果とベースとなる構造をもとに計画した練習01と計画した練習02を比較して、結果の良い方を選択することになります。この「良い方」とは目的の近い結果を再現性のある方になります。
 					</p>
 				</div>
-				<Title3h title="比較内容について" />
+				<Titleline3h title="比較内容について" />
 				<div className="flex pb-12">
 					<div className="mr-4 p-4 pr-8 border rounded-lg">
 						<h4 className="title pb-4">過去の情報</h4>

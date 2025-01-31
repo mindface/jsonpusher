@@ -4,20 +4,20 @@
 		"path": "/overallEvaluation",
 		"name": "評価を構造化して分析する",
 		"tagList": [
-			{ 
+			{
 				"tagId": "structuring",
 				"tagName": "構造化",
-				"text":"構造化して情報の検索、解析、活用がしやすくし、データ処理や意思決定のスピードを向上させる"
+				"text": "構造化して情報の検索、解析、活用がしやすくし、データ処理や意思決定のスピードを向上させる"
 			},
 			{
 				"tagId": "restructuring",
 				"tagName": "再構造化",
-				"text":"情報を評価した構造をマインドマップや分析ツールを利用して再評価する"
+				"text": "情報を評価した構造をマインドマップや分析ツールを利用して再評価する"
 			},
-			{ 
+			{
 				"tagId": "usualStructuralEvaluation",
 				"tagName": "普段の構造評価",
-				"text":"普段情報(練習や学習)を設計していくことに関して、別のパタンのケースと比較する"
+				"text": "普段情報(練習や学習)を設計していくことに関して、別のパタンのケースと比較する"
 			}
 		]
 	},
@@ -26,10 +26,10 @@
 		"path": "/levelUpPattern",
 		"name": "レベルアップのパターン",
 		"tagList": [
-			{ 
+			{
 				"tagId": "levelQuantification",
 				"tagName": "レベルの定量化",
-				"text":"自分でできることをレベルとして評価して、記録することができる"
+				"text": "自分でできることをレベルとして評価して、記録することができる"
 			}
 		]
 	},
@@ -38,10 +38,20 @@
 		"path": "/levelSkillComparison",
 		"name": "スキルを比較するということ",
 		"tagList": [
-			{ 
-				"tagId": "levelQuantification",
+			{
+				"tagId": "ReproducibilityTechnology",
 				"tagName": "技術の再現性",
-				"text":"再現性の高い情報にするために、どんな意識をしているか情報化する"
+				"text": "再現性の高い情報にするために、どんな意識をしているか情報化する"
+			},
+			{
+				"tagId": "comparisonPastAndPresent",
+				"tagName": "過去と現在の比較",
+				"text": "フォームから考え方までを比較して、目的に沿って選択する"
+			},
+			{
+				"tagId": "shareableInformation",
+				"tagName": "共有可能な情報",
+				"text": "感覚で比較するとズレが発生することが多く定量化する"
 			}
 		]
 	},
@@ -53,7 +63,17 @@
 			{
 				"tagId": "effectPlan",
 				"tagName": "計画を効果",
-				"text":"計画を立てることに関して情報化する"
+				"text": "計画を立てることに関して情報化する"
+			},
+			{
+				"tagId": "practiceVerifiable",
+				"tagName": "練習を検証可能にする",
+				"text": "練習を記録して、過去の情報と検証可能にする"
+			},
+			{
+				"tagId": "processPlanning",
+				"tagName": "計画をプロセス化",
+				"text": "計画を実行するパタンとして構造化し、計画のサイクル構造をパタン化する"
 			}
 		]
 	},
@@ -65,7 +85,17 @@
 			{
 				"tagId": "planFeedback",
 				"tagName": "計画のフィードバック",
-				"text":"計画を実行して、その結果と別の計画の比較した要因をなぜその要因にしたか考慮する"
+				"text": "計画を実行して、その結果と別の計画の比較した要因をなぜその要因にしたか考慮する"
+			},
+			{
+				"tagId": "checkRating",
+				"tagName": "評価をチェック",
+				"text": "自分の評価をチェックして計画を化する"
+			},
+			{
+				"tagId": "planFeedback",
+				"tagName": "計画のフィードバック",
+				"text": "計画を実行して、その結果と別の計画の比較した要因をなぜその要因にしたか考慮する"
 			}
 		]
 	},
@@ -77,7 +107,17 @@
 			{
 				"tagId": "relevanceFactors",
 				"tagName": "要因の妥当性",
-				"text":"成長したと判断した自分の定量化した情報について評価する"
+				"text": "成長したと判断した自分の定量化した情報について評価する"
+			},
+			{
+				"tagId": "meansOfMeasurement",
+				"tagName": "計測する手段",
+				"text": "計測する手段は現状は動画か静止画像や計測値になり、感覚値にしないようにする"
+			},
+			{
+				"tagId": "pastComparingGrowth",
+				"tagName": "成長を比較する過去",
+				"text": "比較する時点と過去の情報に対して、確実に検証可能な成長を定義する"
 			}
 		]
 	},
@@ -89,7 +129,17 @@
 			{
 				"tagId": "circulationPracticeInformation",
 				"tagName": "練習情報の循環",
-				"text":"練習するとその経験が記憶になり、その情報を使うことで循環構造になっていく"
+				"text": "練習するとその経験が記憶になり、その情報を使うことで循環構造になっていく"
+			},
+			{
+				"tagId": "earlyIntermediate",
+				"tagName": "初期から中級",
+				"text": "初期の段階はフォームを再現するまで練習をしていくが、学習すると目的と確認する点を明確にしていく"
+			},
+			{
+				"tagId": "havePurposeAmountPractice",
+				"tagName": "練習量に目的を持つ",
+				"text": "練習量を決めるのではなく、覚える時期と調整する時期などで目的を設定していく"
 			}
 		]
 	},
@@ -101,7 +151,17 @@
 			{
 				"tagId": "changedDifference",
 				"tagName": "変化した差",
-				"text":"変化した差が微妙でも、連動して大きな差になるときのプロセスについて"
+				"text": "変化した差が微妙でも、連動して大きな差になるときのプロセスについて"
+			},
+			{
+				"tagId": "feedbackResultsDifferencesChange",
+				"tagName": "変化の差から結果をフィードバック",
+				"text": "体感や手首など小さい変化とフォームの動きなど目視で変化している情報を組み合わせて変化を定義する"
+			},
+			{
+				"tagId": "simplifyScopeChange.",
+				"tagName": "変化する範囲をシンプルにする",
+				"text": "チェックする範囲を細かい微妙な変化から、基本的なチェック項目に戻すことも検証します"
 			}
 		]
 	},
@@ -113,7 +173,12 @@
 			{
 				"tagId": "languageRigor",
 				"tagName": "言語の厳密さ",
-				"text":"アドバイスを的確に理解するために言語情報の厳密さを把握して、目的に効果的に使う"
+				"text": "アドバイスを的確に理解するために言語情報の厳密さを把握して、目的に効果的に使う"
+			},
+			{
+				"tagId": "correctnessPoint.",
+				"tagName": "その時点での正しさ",
+				"text": "アドバイスは練習時点での効果のあることなので、長期的な練習の目的に対しては異なる場合も考慮します"
 			}
 		]
 	},
@@ -125,7 +190,17 @@
 			{
 				"tagId": "experienceChoose",
 				"tagName": "どの経験を選ぶか",
-				"text":""
+				"text": "フォーム1-1で試してもそれが1ヶ月前に筋疲労で調整していてフォーム1-2になっている場合にどこのフォームかを考える"
+			},
+			{
+				"tagId": "adjustAccordingCase",
+				"tagName": "ケースに応じて調整する",
+				"text": "経験から対処するケースで微調整しておき、対応範囲を広げていく"
+			},
+			{
+				"tagId": "experienceAndRecords",
+				"tagName": "経験と記録",
+				"text": "経験と記録した情報を比較して効果のある方法へ調整する。"
 			}
 		]
 	}
