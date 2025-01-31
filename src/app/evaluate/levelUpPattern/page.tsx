@@ -1,4 +1,4 @@
-import SectionLevelUpPattern from "../../components/SectionLevelUpPattern";
+import SectionLevelUpPattern from "../../../components/SectionLevelUpPattern";
 
 export default function LevelUpPattern() {
 	return (

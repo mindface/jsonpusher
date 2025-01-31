@@ -1,4 +1,4 @@
-import SectionPlanFeedback from "../../components/SectionPlanFeedback";
+import SectionPlanFeedback from "../../../components/SectionPlanFeedback";
 
 export default function PlanFeedback() {
 	return (

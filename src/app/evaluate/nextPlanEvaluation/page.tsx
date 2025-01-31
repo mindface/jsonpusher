@@ -1,4 +1,4 @@
-import SectionNextPlanEvaluation from "../../components/SectionNextPlanEvaluation";
+import SectionNextPlanEvaluation from "../../../components/SectionNextPlanEvaluation";
 
 export default function NextPlanEvaluation() {
 	return (
