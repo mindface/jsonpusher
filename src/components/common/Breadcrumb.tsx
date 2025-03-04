@@ -13,7 +13,7 @@ export default function Breadcrumb() {
 	},[path]);
 
 	return (
-		<div className="p-4 flex justify-start">
+		<div className="p-4 pl-16 flex justify-start">
 			{ path !== "/" && <><Link
 				href="/"
 				className="inline-block mr-2 p-2 leading-none rounded-lg transition-colors link"

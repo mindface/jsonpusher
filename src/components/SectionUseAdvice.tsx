@@ -19,7 +19,7 @@ export default function SectionUseAdvice() {
 	}, [selectAdvice]);
 
 	const goPlanAction = () => {
-		router.push("/planFeedback");
+		router.push("/evaluate/planFeedback");
 	};
 
 	return (

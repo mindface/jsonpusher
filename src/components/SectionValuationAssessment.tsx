@@ -6,7 +6,7 @@ export default function SectionValuationAssessment() {
 	const router = useRouter();
 
 	const goPlanAction = () => {
-		router.push("/planFeedback");
+		router.push("/evaluate/planFeedback");
 	};
 
 	return (

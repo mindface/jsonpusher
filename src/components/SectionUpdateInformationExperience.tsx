@@ -26,7 +26,7 @@ export default function SectionUpdateInformationExperience() {
 	}, [selectUpdateInformationExperience]);
 
 	const goPlanAction = () => {
-		router.push("/planFeedback");
+		router.push("/evaluate/planFeedback");
 	};
 
 	return (

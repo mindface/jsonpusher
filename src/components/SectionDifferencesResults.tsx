@@ -21,7 +21,7 @@ export default function SectionDifferencesResults() {
 	}, [selectSportsDifferencesResultsList]);
 
 	const goPlanAction = () => {
-		router.push("/planFeedback");
+		router.push("/evaluate/planFeedback");
 	};
 
 	return (

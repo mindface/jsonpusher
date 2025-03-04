@@ -21,7 +21,7 @@ export default function SectionPracticeInformation() {
 	}, [selectSportsPracticeInfoList]);
 
 	const goPlanAction = () => {
-		router.push("/planFeedback");
+		router.push("/evaluate/planFeedback");
 	};
 
 	return (

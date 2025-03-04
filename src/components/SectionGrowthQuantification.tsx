@@ -26,7 +26,7 @@ export default function SectionGrowthQuantification() {
 	};
 
 	const goPlanAction = () => {
-		router.push("/planFeedback");
+		router.push("/evaluate/planFeedback");
 	};
 
 	useEffect(() => {
