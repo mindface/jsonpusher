@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "../../stories/Button/Button";
 import { Input } from "../../stories/Input/Input";
 import { Textarea } from "../../stories/TextArea/Textarea";
@@ -7,6 +7,9 @@ import { Textarea } from "../../stories/TextArea/Textarea";
 import { useStoreMemoery } from "../../store/memory";
 
 import type { Memory } from "../../type/memory";
+
+import Quill from "quill";
+import "quill/dist/quill.snow.css";
 
 type Props = {
 	type: string;
@@ -17,6 +20,8 @@ export default function CMemoryTaskEdit(props: Props) {
 	const { type, item } = props;
 	const [memoryTaskTitle, memoryTaskTitleSet] = useState(item?.title ?? "");
 	const [memoryTaskDetail, memoryTaskDetailSet] = useState(item?.detail ?? "");
+  const editorRef = useRef<HTMLDivElement | null>(null);
+  const quillRef = useRef<Quill | null>(null);
 	const { addMemory, updateMemory, deleteMemory } = useStoreMemoery();
 
 	const addPlanAction = () => {
@@ -28,7 +33,7 @@ export default function CMemoryTaskEdit(props: Props) {
 			const updateItem = {
 				...item,
 				title: memoryTaskTitle,
-				detail: memoryTaskDetail,
+				detail: quillRef.current?.root.innerHTML ?? "",
 			};
 			updateMemory(updateItem);
 		}
@@ -55,15 +60,27 @@ export default function CMemoryTaskEdit(props: Props) {
 					max={1000}
 				/>
 			</div>
-			<div className="pb-2">
-				<Textarea
-					value={memoryTaskDetail}
-					className="w-full"
-					outerClassName={type === "edit" ? "label-black" : ""}
-					label="詳細"
-					onChange={(value) => {
-						memoryTaskDetailSet(value as string);
-					}}
+			<div className="pb-2" ref={(node) => {
+				if ( node && editorRef.current && !quillRef.current) {
+					quillRef.current = new Quill(editorRef.current, {
+						theme: "snow",
+						modules: {
+							toolbar: [
+								[{ header: [1, 2, false] }],
+								["bold", "italic", "underline", "strike"],
+								[{ list: "ordered" }, { list: "bullet" }],
+								["blockquote", "code-block"],
+								[{ align: [] }],
+								[{ color: [] }, { background: [] }],
+								["link", "image"],
+								["clean"], 
+							],
+						},
+					});
+				}
+			} }>
+				<div 
+				  ref={editorRef}
 				/>
 				<div className="pt-4 flex">
 					<div className="pr-4">
