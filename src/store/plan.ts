@@ -1,8 +1,6 @@
 import { create } from "zustand";
 import type { Plan } from "../type/plan";
-import {
-	Timestamp,
-} from "firebase/firestore";
+import { Timestamp } from "firebase/firestore";
 
 import { FirestorePlanActions } from "../lib/firestorePlanActions";
 
@@ -13,7 +11,10 @@ interface StorePlan {
 
 	getPlans: () => void;
 	setPlans: (plans: Plan[]) => void;
-	addPlan: (title: string, details: string) => Promise<void | { saveResult: string }>;
+	addPlan: (
+		title: string,
+		details: string,
+	) => Promise<void | { saveResult: string }>;
 	updatePlan: (plan: Plan) => Promise<void | { saveResult: string }>;
 	deletePlan: (updatePlan: Plan) => void;
 	reset: () => void;
@@ -48,29 +49,29 @@ export const useStorePlan = create<StorePlan>((set, get) => ({
 			createAt: Timestamp.now(),
 			updateAt: Timestamp.now(),
 		};
-		const res = await firestorePlanActions.addAction(addPlan,"plan");
-		if(res.status === "success") {
+		const res = await firestorePlanActions.addAction(addPlan, "plan");
+		if (res.status === "success") {
 			get().getPlans();
-		} else if(res.status === "error") {
+		} else if (res.status === "error") {
 			alert("管理者に問い合わせてください。");
 		}
 		return { saveResult: "success" };
 	},
 	updatePlan: async (updatePlan: Plan) => {
 		const firestorePlanActions = new FirestorePlanActions();
-		const res = await firestorePlanActions.updatePlan(updatePlan,"plan");
-		if(res.status === "success") {
+		const res = await firestorePlanActions.updatePlan(updatePlan, "plan");
+		if (res.status === "success") {
 			get().getPlans();
-		} else if(res.status === "error") {
+		} else if (res.status === "error") {
 			alert("管理者に問い合わせてください。");
 		}
 	},
 	deletePlan: async (updatePlan: Plan) => {
 		const firestorePlanActions = new FirestorePlanActions();
-		const res = await firestorePlanActions.deletePlan(updatePlan,"plan");
-		if(res.status === "success") {
+		const res = await firestorePlanActions.deletePlan(updatePlan, "plan");
+		if (res.status === "success") {
 			get().getPlans();
-		} else if(res.status === "error") {
+		} else if (res.status === "error") {
 			alert("管理者に問い合わせてください。");
 		}
 	},

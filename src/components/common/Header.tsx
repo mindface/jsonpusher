@@ -52,13 +52,13 @@ export default function Header() {
 									"rounded-lg",
 									"text-gray-700",
 									"whitespace-nowrap",
-									styles["header-side-icon"]
+									styles["header-side-icon"],
 								].join(" ")}
 							>
 								<span className="icon inline-block w-[20px] mr-2">
 									<HeaderIcons
-									  iconId={item.pathId}
-									  className="hover:text-white"
+										iconId={item.pathId}
+										className="hover:text-white"
 									/>
 								</span>
 								<span className="inline-block font-medium text-lg">

@@ -19,10 +19,10 @@ export default function CNextPlanItem(props: Props) {
 
 	useEffect(() => {
 		const taget = divRef.current?.getBoundingClientRect();
-		if(taget && (taget?.left > window.innerWidth / 2) ) {
+		if (taget && taget?.left > window.innerWidth / 2) {
 			editClassSet("right-0");
 		}
-	},[]);
+	}, []);
 
 	return (
 		<div className={["next-plan-item", "p-2"].join(" ")}>
@@ -44,7 +44,7 @@ export default function CNextPlanItem(props: Props) {
 				].join(" ")}
 			>
 				<div
-				  ref={divRef}
+					ref={divRef}
 					className={[
 						styles["next-plan-item__edit"],
 						editClass,
@@ -54,7 +54,7 @@ export default function CNextPlanItem(props: Props) {
 						"w-[380px]",
 						"bg-white",
 						"shadow-lg",
-						"rounded-lg"
+						"rounded-lg",
 					].join(" ")}
 				>
 					<CNextPlanEdit type="edit" item={item} />

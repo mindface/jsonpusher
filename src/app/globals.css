@@ -53,9 +53,9 @@ body {
 }
 
 .ql-container {
-  @apply border rounded-lg;
+	@apply border rounded-lg;
 }
 
 .ql-toolbar {
-  @apply border rounded-t-lg;
+	@apply border rounded-t-lg;
 }

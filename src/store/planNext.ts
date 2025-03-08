@@ -48,29 +48,29 @@ export const useStoreNextPlan = create<StorePlanNext>((set, get) => ({
 			createAt: Timestamp.now(),
 			updateAt: Timestamp.now(),
 		};
-		const res = await firestorePlanActions.addAction(addNextPlan,"nextPlan");
-		if(res.status === "success") {
+		const res = await firestorePlanActions.addAction(addNextPlan, "nextPlan");
+		if (res.status === "success") {
 			get().getNextPlans();
-		} else if(res.status === "error") {
+		} else if (res.status === "error") {
 			alert("管理者に問い合わせてください。");
 		}
 		return { saveResult: "success" };
 	},
 	updateNextPlan: async (updatePlan: Plan) => {
 		const firestorePlanActions = new FirestorePlanActions();
-		const res = await firestorePlanActions.updatePlan(updatePlan,"nextPlan");
-		if(res.status === "success") {
+		const res = await firestorePlanActions.updatePlan(updatePlan, "nextPlan");
+		if (res.status === "success") {
 			get().getNextPlans();
-		} else if(res.status === "error") {
+		} else if (res.status === "error") {
 			alert("管理者に問い合わせてください。");
 		}
 	},
 	deleteNextPlan: async (updatePlan: Plan) => {
 		const firestorePlanActions = new FirestorePlanActions();
-		const res = await firestorePlanActions.deletePlan(updatePlan,"nextPlan");
-		if(res.status === "success") {
+		const res = await firestorePlanActions.deletePlan(updatePlan, "nextPlan");
+		if (res.status === "success") {
 			get().getNextPlans();
-		} else if(res.status === "error") {
+		} else if (res.status === "error") {
 			alert("管理者に問い合わせてください。");
 		}
 	},

@@ -18,7 +18,8 @@ import { copyClipbord } from "../utils/copyClipbord";
 
 export default function ContentPlanFeedback() {
 	const { plans, setPlans, getPlans } = useStorePlan();
-	const { nextPlans, copyPlans, setNextPlans, getNextPlans } = useStoreNextPlan();
+	const { nextPlans, copyPlans, setNextPlans, getNextPlans } =
+		useStoreNextPlan();
 
 	const copyAciton = () => {
 		copyPlans(plans);
@@ -84,7 +85,9 @@ export default function ContentPlanFeedback() {
 			const separator = "-".repeat(header.length);
 			const formattedRows = plans.map((row) =>
 				columns
-					.map((col, index) => (row[col as keyof Plan] as string).padEnd(colWidths[index]))
+					.map((col, index) =>
+						(row[col as keyof Plan] as string).padEnd(colWidths[index]),
+					)
 					.join(" | "),
 			);
 			formattedTable = [
@@ -109,7 +112,9 @@ export default function ContentPlanFeedback() {
 			const separator = "-".repeat(header.length);
 			const formattedRows = nextPlans.map((row) =>
 				columns
-					.map((col, index) => (row[col as keyof Plan] as string).padEnd(colWidths[index]))
+					.map((col, index) =>
+						(row[col as keyof Plan] as string).padEnd(colWidths[index]),
+					)
 					.join(" | "),
 			);
 			console.log(colWidths);
@@ -128,7 +133,7 @@ export default function ContentPlanFeedback() {
 	useEffect(() => {
 		getPlans();
 		getNextPlans();
-	},[getPlans,getNextPlans]);
+	}, [getPlans, getNextPlans]);
 
 	return (
 		<div className="content">

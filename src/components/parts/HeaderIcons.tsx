@@ -36,14 +36,12 @@ export default function NavIcons(props: Props) {
 	const Icon = setImage();
 	return (
 		<>
-		<Icon
-			width="20"
-			height="20"
-			className={["header-side-icon",className ?? ""].join(" ")}
-			style={
-				{ objectFit: "cover", width: "20px", height: "auto" }
-			}
-		/>
+			<Icon
+				width="20"
+				height="20"
+				className={["header-side-icon", className ?? ""].join(" ")}
+				style={{ objectFit: "cover", width: "20px", height: "auto" }}
+			/>
 		</>
 	);
 }

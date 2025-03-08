@@ -46,10 +46,10 @@ export const Dialog = ({
 		}
 	};
 	useEffect(() => {
-		if(ounterActionValue) {
+		if (ounterActionValue) {
 			switchAction();
 		}
-	},[ounterActionValue,switchAction]);
+	}, [ounterActionValue, switchAction]);
 	return (
 		<div className="dialog-box" ref={dialogElement}>
 			{type === "icon" && (

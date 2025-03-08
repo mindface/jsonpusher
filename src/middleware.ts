@@ -18,14 +18,18 @@ export async function middleware(request: NextRequest) {
 		"/questionAi",
 		"/sportAndJob",
 		"/memoryTask",
-		"/memoryView"
+		"/memoryView",
 	];
 	const path = new URL(request.url).pathname;
 	if (path === "/login" || path.startsWith("/_next")) {
 		return NextResponse.next();
 	}
 
-	if (process.env.APP_ENV !== "test" && protectedRoutes.includes(path) && !token?.uid) {
+	if (
+		process.env.APP_ENV !== "test" &&
+		protectedRoutes.includes(path) &&
+		!token?.uid
+	) {
 		return NextResponse.redirect(new URL("/login", request.url));
 	}
 	return NextResponse.next();

@@ -13,6 +13,6 @@ export type Plan = {
 	updateAt: Timestamp;
 };
 
-export interface AddPlan extends Omit<Plan,"id"> {
+export interface AddPlan extends Omit<Plan, "id"> {
 	id?: string;
 }
