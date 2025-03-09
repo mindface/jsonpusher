@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Button } from "../../stories/Button/Button";
 import styles from "../../styles/cMemoryTask.module.css";
 
-import CMemoryTaskEdit from "./CMemoryTaskEdit";
+import dynamic from "next/dynamic";
+const CMemoryTaskEdit = dynamic(() => import("./CMemoryTaskEdit"), {ssr: false});
+// import CMemoryTaskEdit from "./CMemoryTaskEdit";
 
 import type { Memory } from "../../type/memory";
 

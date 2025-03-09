@@ -1,13 +1,11 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "../../stories/Button/Button";
 import { Input } from "../../stories/Input/Input";
 
 import { useStoreMemoery } from "../../store/memory";
 
 import type { Memory } from "../../type/memory";
-
-import Quill from "quill";
 import "quill/dist/quill.snow.css";
 
 type Props = {
@@ -19,11 +17,13 @@ export default function CMemoryTaskEdit(props: Props) {
 	const { type, item } = props;
 	const [memoryTaskTitle, memoryTaskTitleSet] = useState(item?.title ?? "");
 	const [preView, preViewSet] = useState(false);
+	const [quillCounter,quillCounterSet] = useState(0);
 	const [editorContent, editorContentSet] = useState<string>(
 		item?.detail ?? "",
 	);
+	const editorBoxRef = useRef<HTMLDivElement>(null);
 	const editorRef = useRef<HTMLDivElement>(null);
-	const quillRef = useRef<Quill | null>(null);
+	const quillRef = useRef<any>(null);
 	const { addMemory, updateMemory, deleteMemory } = useStoreMemoery();
 
 	const addPlanAction = () => {
@@ -31,6 +31,7 @@ export default function CMemoryTaskEdit(props: Props) {
 	};
 
 	const updatePlanAction = () => {
+		console.log(quillRef.current?.root.innerHTML);
 		if (item?.id && item?.connectId) {
 			const updateItem = {
 				...item,
@@ -53,6 +54,63 @@ export default function CMemoryTaskEdit(props: Props) {
 		}
 	};
 
+	useEffect( () => {
+		if (editorRef.current && !quillRef.current) {
+			import("quill").then((Quill) => {
+				if(quillCounter === 0) {
+					quillRef.current = new Quill.default(editorRef.current!, {
+						theme: "snow",
+						modules: {
+							toolbar: [
+								[{ header: [1, 2, 3, false] }],
+								["bold", "italic", "underline", "strike"],
+								[{ list: "ordered" }, { list: "bullet" }],
+								["blockquote", "code-block"],
+								[{ align: [] }],
+								[{ color: [] }, { background: [] }],
+								[
+									"link",
+									// "image"
+								],
+								["clean"],
+							],
+						},
+					});
+					quillCounterSet(1);
+				}
+				let isStyleApplied = false;
+
+				const applyStyleOnce = () => {
+          const targetDom = editorBoxRef.current?.querySelector(".ql-toolbar");
+					console.log(targetDom);
+          
+          if (targetDom && !isStyleApplied) {
+            targetDom.setAttribute("style", "display:none;");
+            isStyleApplied = true;
+            
+            if (item?.detail) {
+              quillRef.current?.clipboard.dangerouslyPasteHTML(item.detail);
+            }
+            
+            quillCounterSet(1);
+            return;
+          }
+          
+          if (!isStyleApplied) {
+            requestAnimationFrame(applyStyleOnce);
+          }
+        };
+        
+        requestAnimationFrame(applyStyleOnce);
+
+				if (item?.detail) {
+					quillRef.current?.clipboard.dangerouslyPasteHTML(item.detail);
+				}
+			});
+		}
+
+	},[item?.detail]);
+
 	return (
 		<div className="pb-4">
 			<div className="mb-4 pb-4 border-b">
@@ -70,33 +128,8 @@ export default function CMemoryTaskEdit(props: Props) {
 			</div>
 			<div
 				className="pb-2"
-				ref={(node) => {
-					if (node && editorRef.current && !quillRef.current) {
-						quillRef.current = new Quill(editorRef.current, {
-							theme: "snow",
-							modules: {
-								toolbar: [
-									[{ header: [1, 2, 3, false] }],
-									["bold", "italic", "underline", "strike"],
-									[{ list: "ordered" }, { list: "bullet" }],
-									["blockquote", "code-block"],
-									[{ align: [] }],
-									[{ color: [] }, { background: [] }],
-									[
-										"link",
-										// "image"
-									],
-									["clean"],
-								],
-							},
-						});
-						if (item?.detail) {
-							quillRef.current.clipboard.dangerouslyPasteHTML(item.detail);
-						}
-					}
-				}}
 			>
-				<div className="editor-box">
+				<div className="editor-box" ref={editorBoxRef}>
 					<div className="editor-switch p-4">
 						<Button
 							label={preView ? "編集に戻る" : "プレビューに表示する"}
