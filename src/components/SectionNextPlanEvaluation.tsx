@@ -17,9 +17,9 @@ import type { Plan } from "../type/plan";
 export default function SectionNextPlanEvaluation() {
 	const { nextPlans, getNextPlans } = useStoreNextPlan();
 	const [planEvaluation, planEvaluationSet] = useState("");
-	
+
 	const copyTextAciton = () => {
-		const columns = ["id", "title","details"];
+		const columns = ["id", "title", "details"];
 		let formattedTable = "";
 
 		const colWidths = columns.map((col) =>
@@ -34,12 +34,16 @@ export default function SectionNextPlanEvaluation() {
 		const header = columns
 			.map((col, index) => padEndWidth(col, colWidths[index]))
 			.join(" | ");
-		const separator = "-".repeat(stringWidth(header) + (columns.length - 1) * 3);
+		const separator = "-".repeat(
+			stringWidth(header) + (columns.length - 1) * 3,
+		);
 		const formattedRows = nextPlans.map((row) =>
 			columns
 				.map((col, index) => {
 					const value = row[col as keyof Plan];
-					return typeof value === "string" ? padEndWidth(value,colWidths[index]) : "";
+					return typeof value === "string"
+						? padEndWidth(value, colWidths[index])
+						: "";
 				})
 				.join(" | "),
 		);
@@ -63,7 +67,7 @@ export default function SectionNextPlanEvaluation() {
 
 	useEffect(() => {
 		getNextPlans();
-	},[getNextPlans]);
+	}, [getNextPlans]);
 
 	return (
 		<section className="section-skill-comparison">

@@ -32,8 +32,11 @@ export default function DialogDetailsMenuEvaluationMakeText(props: Props) {
 						{menuInfoTagTextList.map(
 							(item) =>
 								item.pathId === infoId &&
-								item.tagList.map((item,index) => (
-									<span key={`menuInfoTagTextList${item.tagId}-${index}`} className="inline-block mr-4">
+								item.tagList.map((item, index) => (
+									<span
+										key={`menuInfoTagTextList${item.tagId}-${index}`}
+										className="inline-block mr-4"
+									>
 										<Button
 											label={item.tagName}
 											size="small"

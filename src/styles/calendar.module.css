@@ -1,12 +1,12 @@
 .eventHighlight {
-  background-color: #ff5733 !important;
-  color: white !important;
-  border: 1px solid #c70039;
-  font-weight: bold;
+	background-color: #ff5733 !important;
+	color: white !important;
+	border: 1px solid #c70039;
+	font-weight: bold;
 	cursor: pointer;
 }
 
 .custom-event {
-  background-color: #28a745 !important;
-  color: #fff !important;
+	background-color: #28a745 !important;
+	color: #fff !important;
 }

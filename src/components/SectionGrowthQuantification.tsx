@@ -31,7 +31,7 @@ export default function SectionGrowthQuantification() {
 
 	useEffect(() => {
 		getNextPlans();
-	},[getNextPlans]);
+	}, [getNextPlans]);
 
 	return (
 		<section className="section-skill-comparison">

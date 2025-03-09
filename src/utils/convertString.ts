@@ -21,16 +21,16 @@ export const sanitaizeText = (text: string) => {
 		.replace(/'/g, "&#39;");
 };
 
-export const stringWidth = (str:string): number => {
+export const stringWidth = (str: string): number => {
 	let width = 0;
 	for (const char of str) {
 		width += char.match(/[^\x01-\x7E]/) ? 2 : 1;
 	}
 	return width;
-}
+};
 
-export const padEndWidth = (str:string, targetWidth: number): string => {
+export const padEndWidth = (str: string, targetWidth: number): string => {
 	const currentidth = stringWidth(str);
-	const padding = " ".repeat(targetWidth-currentidth);
+	const padding = " ".repeat(targetWidth - currentidth);
 	return str + padding;
-}
+};

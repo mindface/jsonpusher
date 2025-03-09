@@ -27,17 +27,15 @@ export const Menu = ({
 	const [menuSwitch, menuSwitchSet] = useState(false);
 	const menuAction = () => {
 		menuSwitchSet(!menuSwitch);
-		if(!menuSwitch) {
-			document.body.setAttribute("style","overflow: hidden;");
-		}else {
-			document.body.setAttribute("style","");
+		if (!menuSwitch) {
+			document.body.setAttribute("style", "overflow: hidden;");
+		} else {
+			document.body.setAttribute("style", "");
 		}
 	};
 	return (
 		<>
-		  {menuSwitch && <div className="overlay"
-			  onClick={menuAction}
-			></div>}
+			{menuSwitch && <div className="overlay" onClick={menuAction}></div>}
 			<div
 				className={[
 					`menu--${size}`,

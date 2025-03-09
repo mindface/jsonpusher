@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { type ReactNode, useRef, useState } from "react";
 import { Button } from "../Button/Button";
 import "./dialog.css";
@@ -32,7 +32,7 @@ export const Dialog = ({
 	if (size) {
 		setClassName += ` ${size}`;
 	}
-	const switchAction = () => {
+	const switchAction = useCallback(() => {
 		if (onChangeAction) {
 			onChangeAction(!dialogSwitch);
 		}
@@ -44,12 +44,12 @@ export const Dialog = ({
 			document.body.setAttribute("style", "overflow: hidden;");
 			dialogElement.current?.classList.add("open");
 		}
-	};
+	},[]);
 	useEffect(() => {
-		if(ounterActionValue) {
+		if (ounterActionValue) {
 			switchAction();
 		}
-	},[ounterActionValue,switchAction]);
+	}, [ounterActionValue, switchAction]);
 	return (
 		<div className="dialog-box" ref={dialogElement}>
 			{type === "icon" && (

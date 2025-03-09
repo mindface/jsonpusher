@@ -51,3 +51,11 @@ body {
 	color: var(--background);
 	background-color: var(--foreground);
 }
+
+.ql-container {
+	@apply border rounded-lg;
+}
+
+.ql-toolbar {
+	@apply border rounded-t-lg;
+}

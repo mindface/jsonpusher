@@ -15,7 +15,7 @@ import {
 type SetType = "plan" | "nextPlan";
 
 export class FirestorePlanActions {
-	auth:Auth;
+	auth: Auth;
 	constructor() {
 		this.auth = getAuth();
 	}
@@ -26,7 +26,12 @@ export class FirestorePlanActions {
 			onAuthStateChanged(auth, async (user) => {
 				if (user) {
 					try {
-						const userCollectionRef = collection(db, "users", user.uid, targetType);
+						const userCollectionRef = collection(
+							db,
+							"users",
+							user.uid,
+							targetType,
+						);
 						const q = query(
 							userCollectionRef,
 							where("userId", "==", user.uid),
@@ -48,10 +53,13 @@ export class FirestorePlanActions {
 		});
 	}
 
-	async addAction(addPlan: AddPlan, targetType: SetType): Promise<{status:string}> {
+	async addAction(
+		addPlan: AddPlan,
+		targetType: SetType,
+	): Promise<{ status: string }> {
 		const auth = await this.auth;
 		const user = auth.currentUser;
-		return new Promise( async (resolve, reject) => {
+		return new Promise(async (resolve, reject) => {
 			if (user) {
 				try {
 					const userDocRef = doc(db, "users", user.uid);
@@ -61,22 +69,25 @@ export class FirestorePlanActions {
 					const docRef = await addDoc(userCollectionRef, {
 						...addPlan,
 						userId: user.uid,
-						planId
+						planId,
 					});
 					await updateDoc(docRef, { id: docRef.id, planId: docRef.id });
-					resolve({status:"success"});
+					resolve({ status: "success" });
 				} catch (error) {
-					reject({status:"error"});
+					reject({ status: "error" });
 					console.error(error);
 				}
 			} else {
 				console.log("No user is signed in.");
-				resolve({status:"no user"});
+				resolve({ status: "no user" });
 			}
 		});
 	}
-	
-	async updatePlan(updatePlan: Plan, targetType: SetType): Promise<{status:string}> {
+
+	async updatePlan(
+		updatePlan: Plan,
+		targetType: SetType,
+	): Promise<{ status: string }> {
 		const auth = await this.auth;
 		return new Promise((resolve, reject) => {
 			onAuthStateChanged(auth, async (user) => {
@@ -93,20 +104,23 @@ export class FirestorePlanActions {
 							...updatePlan,
 							updateAt: Timestamp.now(),
 						});
-						resolve({status:"success"});
+						resolve({ status: "success" });
 					} catch (error) {
-						reject({status:"error"});
+						reject({ status: "error" });
 						console.error(error);
 					}
 				} else {
 					console.log("No user is signed in.");
-					resolve({status:"no user"});
+					resolve({ status: "no user" });
 				}
-			});		
+			});
 		});
 	}
 
-	deletePlan(updatePlan: Plan, targetType: SetType): Promise<{status:string}> {
+	deletePlan(
+		updatePlan: Plan,
+		targetType: SetType,
+	): Promise<{ status: string }> {
 		const auth = getAuth();
 		return new Promise((resolve, reject) => {
 			onAuthStateChanged(auth, async (user) => {
@@ -124,14 +138,14 @@ export class FirestorePlanActions {
 							status: "stop",
 							updateAt: Timestamp.now(),
 						});
-						resolve({status:"success"});
+						resolve({ status: "success" });
 					} catch (error) {
-						reject({status:"error"});
+						reject({ status: "error" });
 						console.error(error);
 					}
 				} else {
 					console.log("No user is signed in.");
-					resolve({status:"no user"});
+					resolve({ status: "no user" });
 				}
 			});
 		});
