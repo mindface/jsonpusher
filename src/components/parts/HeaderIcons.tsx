@@ -6,6 +6,8 @@ import Sportandjob from "../../assets/svg/sportandjob.svg";
 import Memory from "../../assets/svg/memory.svg";
 import Carender from "../../assets/svg/carender.svg";
 
+import Image from "next/image";
+
 type Props = {
 	iconId: number;
 	className?: string;
@@ -33,10 +35,31 @@ export default function NavIcons(props: Props) {
 				return Home;
 		}
 	};
-	const Icon = setImage();
+	// const setImage = () => {
+	// 	switch (iconId) {
+	// 		case 1:
+	// 			return "/assets/svg/home.svg";
+	// 		case 2:
+	// 			return "/assets/svg/health.svg";
+	// 		case 3:
+	// 			return "/assets/svg/sports.svg";
+	// 		case 4:
+	// 			return "/assets/svg/question.svg";
+	// 		case 5:
+	// 			return "/assets/svg/sportandjob.svg";
+	// 		case 6:
+	// 			return "/assets/svg/memory.svg";
+	// 		case 7:
+	// 			return "/assets/svg/carender.svg";
+	// 		default:
+	// 			return "/assets/svg/home.svg";
+	// 	}
+	// };
+
+	const IconSrc = setImage();
 	return (
 		<>
-			<Icon
+			<IconSrc
 				width="20"
 				height="20"
 				className={["header-side-icon", className ?? ""].join(" ")}
@@ -44,4 +67,4 @@ export default function NavIcons(props: Props) {
 			/>
 		</>
 	);
-}
+};

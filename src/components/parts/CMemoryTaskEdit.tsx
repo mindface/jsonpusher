@@ -13,6 +13,47 @@ type Props = {
 	item?: Memory;
 };
 
+// Quillのツールバー設定を定数として分離
+const QUILL_TOOLBAR_OPTIONS = [
+	[{ header: [1, 2, 3, false] }],
+	["bold", "italic", "underline", "strike"],
+	[{ list: "ordered" }, { list: "bullet" }],
+	["blockquote", "code-block"],
+	[{ align: [] }],
+	[{ color: [] }, { background: [] }],
+	["link"],
+	["clean"]
+];
+
+// スタイル適用ロジックを分離
+const applyToolbarStyle = (
+	editorBoxRef: React.RefObject<HTMLDivElement>,
+	quillRef: React.MutableRefObject<any>,
+	item?: Memory
+) => {
+	let isStyleApplied = false;
+
+	const applyStyleOnce = () => {
+		const targetDom = editorBoxRef.current?.querySelector(".ql-toolbar");
+		
+		if (targetDom && !isStyleApplied) {
+			targetDom.setAttribute("style", "display:none;");
+			isStyleApplied = true;
+			
+			if (item?.detail) {
+				quillRef.current?.clipboard.dangerouslyPasteHTML(item.detail);
+			}
+			return;
+		}
+		
+		if (!isStyleApplied) {
+			requestAnimationFrame(applyStyleOnce);
+		}
+	};
+	
+	requestAnimationFrame(applyStyleOnce);
+};
+
 export default function CMemoryTaskEdit(props: Props) {
 	const { type, item } = props;
 	const [memoryTaskTitle, memoryTaskTitleSet] = useState(item?.title ?? "");
@@ -54,62 +95,23 @@ export default function CMemoryTaskEdit(props: Props) {
 		}
 	};
 
-	useEffect( () => {
+	useEffect(() => {
 		if (editorRef.current && !quillRef.current) {
 			import("quill").then((Quill) => {
 				if(quillCounter === 0) {
 					quillRef.current = new Quill.default(editorRef.current!, {
 						theme: "snow",
 						modules: {
-							toolbar: [
-								[{ header: [1, 2, 3, false] }],
-								["bold", "italic", "underline", "strike"],
-								[{ list: "ordered" }, { list: "bullet" }],
-								["blockquote", "code-block"],
-								[{ align: [] }],
-								[{ color: [] }, { background: [] }],
-								[
-									"link",
-									// "image"
-								],
-								["clean"],
-							],
+							toolbar: QUILL_TOOLBAR_OPTIONS
 						},
 					});
 					quillCounterSet(1);
 				}
-				let isStyleApplied = false;
 
-				const applyStyleOnce = () => {
-          const targetDom = editorBoxRef.current?.querySelector(".ql-toolbar");
-					console.log(targetDom);
-          
-          if (targetDom && !isStyleApplied) {
-            targetDom.setAttribute("style", "display:none;");
-            isStyleApplied = true;
-            
-            if (item?.detail) {
-              quillRef.current?.clipboard.dangerouslyPasteHTML(item.detail);
-            }
-            
-            quillCounterSet(1);
-            return;
-          }
-          
-          if (!isStyleApplied) {
-            requestAnimationFrame(applyStyleOnce);
-          }
-        };
-        
-        requestAnimationFrame(applyStyleOnce);
-
-				if (item?.detail) {
-					quillRef.current?.clipboard.dangerouslyPasteHTML(item.detail);
-				}
+				applyToolbarStyle(editorBoxRef, quillRef, item);
 			});
 		}
-
-	},[item?.detail]);
+	}, [item?.detail]);
 
 	return (
 		<div className="pb-4">

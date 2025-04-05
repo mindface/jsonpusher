@@ -1,6 +1,11 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+import svgr from '@svgr/webpack';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 /** @type {import("next').NextConfig} */
 const nextConfig = {
-  webpack: (config, { dev }) => {
+  webpack: (config, { dev, isServer }) => {
     if (dev) {
       config.watchOptions = {
         poll: 5000,
@@ -10,18 +15,31 @@ const nextConfig = {
     }
     config.module.rules.push({
       test: /\.svg$/,
-      issuer: {
-        and: [/\.(js|ts)x?$/],
-      },
-      use: [
-        {
-          loader: '@svgr/webpack',
-          options: {
-            svgo: false, // 圧縮を無効にする設定
-          },
-        },
-      ],
+      use: ['@svgr/webpack'],
     });
+
+    // Wasmモジュールの設定
+    config.experiments = {
+      asyncWebAssembly: true,
+    };
+
+    // // Wasmファイルのローダー設定
+    // config.module.rules.push({
+    //   test: /\.wasm$/,
+    //   type: 'webassembly/async',
+    // });
+
+    // // 非同期モジュールの設定
+    // if (!isServer) {
+    //   config.output.webassemblyModuleFilename = 'static/wasm/[modulehash].wasm';
+    // }
+
+    // // パス解決の設定
+    // config.resolve.alias = {
+    //   ...config.resolve.alias,
+    //   '@wasm': path.join(__dirname, 'public/wasm'),
+    // };
+
     return config;
   },
   images: {

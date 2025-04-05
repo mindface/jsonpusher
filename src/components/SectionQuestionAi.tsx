@@ -15,57 +15,124 @@ import { fetchGeminiApi, fetchClaudeApi } from "../lib/fetchApiForAI";
 
 import aiCredit from "../json/aiCredit.json";
 
+import { DialogContent } from "./common/DialogContent";
+
+// AIの設定を定数として分離
+const AI_CONFIG = {
+	TYPES: {
+		GEMINI: "gemini" as const,
+		CLAUDE: "claude" as const
+	},
+	BUTTONS: [
+		{ label: "Gemini", type: "gemini" },
+		{ label: "claude", type: "claude" }
+	]
+} as const;
+
+type AIType = typeof AI_CONFIG.TYPES[keyof typeof AI_CONFIG.TYPES];
+
+// AIの選択ボタンコンポーネント
+const AISelectButton = ({ 
+	label, 
+	type, 
+	onClick 
+}: { 
+	label: string; 
+	type: string; 
+	onClick: (type: string) => void;
+}) => (
+	<div className={type === "gemini" ? "pr-4" : ""}>
+		<Button
+			label={label}
+			size="small"
+			onClick={() => onClick(type)}
+		/>
+	</div>
+);
+
+// 質問フォームコンポーネント
+const QuestionForm = ({
+	value,
+	onChange,
+	onSubmit,
+	isLoading
+}: {
+	value: string;
+	onChange: (value: string) => void;
+	onSubmit: () => void;
+	isLoading: boolean;
+}) => (
+	<div className="pb-4">
+		<div className="pb-8">
+			<Textarea
+				className="w-full"
+				placeholder=""
+				value={value}
+				onChange={(value) => onChange(value as string)}
+			/>
+		</div>
+		<div className="pb-2">
+			{isLoading ? (
+				<Loading />
+			) : (
+				<Button
+					label="質問する"
+					size="small"
+					onClick={onSubmit}
+				/>
+			)}
+		</div>
+	</div>
+);
+
 export default function SectionQuestionAi() {
-	const [machineLearningType, machineLearningSet] = useState("gemini");
+	const [machineLearningType, machineLearningSet] = useState<AIType>(AI_CONFIG.TYPES.GEMINI);
 	const [sendPrompt, sendPromptSet] = useState("");
 	const [sendLoading, sendLoadingSet] = useState(false);
 	const [_displayedChunks, _displayedChunksSet] = useState<string>("");
 	const { sportsText } = useStoreSportsText();
 	const { healthText } = useStoreHealthText();
 
-	const textChange = (text: string) => {
-		const regex1 = /\*\s\*\*(.*?)\*\*/g;
-		const regex2 = /\*\*(.*?)\*\*/g;
+	// テキスト変換ロジックを純粋関数として分離
+	const textChange = (text: string): string => {
+		const REGEX_PATTERNS = {
+			DOUBLE_ASTERISK_WITH_SPACE: /\*\s\*\*(.*?)\*\*/g,
+			DOUBLE_ASTERISK: /\*\*(.*?)\*\*/g
+		};
+
 		return text
-			.replace(regex1, "<br /><br /><h2>$1</h2>")
-			.replace(regex2, "<br /><h2>$1</h2>");
+			.replace(REGEX_PATTERNS.DOUBLE_ASTERISK_WITH_SPACE, "<br /><br /><h2>$1</h2>")
+			.replace(REGEX_PATTERNS.DOUBLE_ASTERISK, "<br /><h2>$1</h2>");
 	};
 
+	// API呼び出しロジックを改善
 	const fetchAIApi = async () => {
-		let getText = "";
 		sendLoadingSet(true);
 		try {
-			if (
-				machineLearningType === "gemini" &&
-				getText !== null &&
-				typeof getText === "string"
-			) {
-				getText = await fetchGeminiApi(sendPrompt);
-			} else if (
-				machineLearningType === "claude" &&
-				getText !== null &&
-				typeof getText === "string"
-			) {
-				getText = await fetchClaudeApi(sendPrompt);
+			const apiMap = {
+				[AI_CONFIG.TYPES.GEMINI]: fetchGeminiApi,
+				[AI_CONFIG.TYPES.CLAUDE]: fetchClaudeApi
+			};
+
+			const selectedApi = apiMap[machineLearningType];
+			const getText = await selectedApi(sendPrompt);
+			
+			if (typeof getText === "string") {
+				_displayedChunksSet(textChange(getText));
 			}
-			sendLoadingSet(false);
-			_displayedChunksSet(textChange(getText));
 		} catch (error) {
-			console.log(error);
+			console.error('AI API Error:', error);
+		} finally {
+			sendLoadingSet(false);
 		}
 	};
 
 	const selectAiAction = (selectId: string) => {
-		machineLearningSet(selectId);
+		machineLearningSet(selectId as AIType);
 	};
 
-	const checkAiCredit = () => {
-		if (aiCredit.includes(machineLearningType)) {
-			return true;
-		} else {
-			return false;
-		}
-	};
+	// AIクレジットチェックを簡略化
+	const checkAiCredit = () => aiCredit.includes(machineLearningType);
 
 	return (
 		<section className="section-question-ai">
@@ -73,97 +140,45 @@ export default function SectionQuestionAi() {
 				<div className="pb-2">
 					<Titleline3h title={`ai [${machineLearningType}] に質問する`} />
 					<div className="select-ai-box flex pb-4">
-						<div className="pr-4">
-							<Button
-								label="Gemini"
-								size="small"
-								onClick={() => {
-									selectAiAction("gemini");
-								}}
+						{AI_CONFIG.BUTTONS.map(({ label, type }) => (
+							<AISelectButton
+								key={type}
+								label={label}
+								type={type}
+								onClick={selectAiAction}
 							/>
-						</div>
-						<Button
-							label="claude"
-							size="small"
-							onClick={() => {
-								selectAiAction("claude");
-							}}
-						/>
+						))}
 					</div>
 					<div className="pb-4">
 						<div className="flex flex-wrap">
 							<div className="mr-4">
-								<Dialog
-									label="計画を確認する"
-									type="button"
-									className=""
-									onChange={() => {}}
-								>
+								<DialogContent label="計画を確認する">
 									<ContentPlanFeedback />
-								</Dialog>
+								</DialogContent>
 							</div>
 							<div className="mr-4">
-								<Dialog
-									label="スポーツの質問テキストを確認する"
-									type="button"
-									onChange={() => {}}
-								>
-									<div className="p-8">
-										{sportsText !== ""
-											? sportsText
-											: "質問を作成してください。"}
-									</div>
-								</Dialog>
+								<DialogContent label="スポーツの質問テキストを確認する">
+									{sportsText !== "" ? sportsText : "質問を作成してください。"}
+								</DialogContent>
 							</div>
 							<div>
-								<Dialog
-									label="健康の質問テキストを確認する"
-									type="button"
-									onChange={() => {}}
-								>
-									<div className="p-8">
-										{healthText !== ""
-											? healthText
-											: "質問を作成してください。"}
-									</div>
-								</Dialog>
+								<DialogContent label="健康の質問テキストを確認する">
+									{healthText !== "" ? healthText : "質問を作成してください。"}
+								</DialogContent>
 							</div>
 						</div>
 					</div>
 				</div>
 				{checkAiCredit() ? (
-					<div className="pb-4">
-						<div className="pb-8">
-							<Textarea
-								className="w-full"
-								placeholder=""
-								value={sendPrompt}
-								onChange={(value) => {
-									sendPromptSet(value as string);
-								}}
-							/>
-						</div>
-						<div className="pb-2">
-							{sendLoading ? (
-								<Loading />
-							) : (
-								<Button
-									label="質問する"
-									size="small"
-									onClick={() => {
-										fetchAIApi();
-									}}
-								/>
-							)}
-						</div>
+					<>
+						<QuestionForm
+							value={sendPrompt}
+							onChange={sendPromptSet}
+							onSubmit={fetchAIApi}
+							isLoading={sendLoading}
+						/>
 						<div className="view-content pb-4">
 							<p className="pb-4">aiの返答が返ってきます。</p>
-							{/* 出力するパタン次第で採用 */}
-							{/* {displayedChunks.map((chunk, index) => (
-								<div key={index} style={{ marginBottom: '10px', padding: '10px', borderRadius: '5px' }}>
-									{chunk}
-								</div>
-							))} */}
 							<div
 								className="put-text p-8 border rounded-lg"
 								dangerouslySetInnerHTML={{
@@ -171,7 +186,7 @@ export default function SectionQuestionAi() {
 								}}
 							/>
 						</div>
-					</div>
+					</>
 				) : (
 					<div className="pb-4">
 						<p>現在apiを使える資金がないため停止しています。</p>
