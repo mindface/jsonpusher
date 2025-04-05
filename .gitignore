@@ -40,3 +40,5 @@ next-env.d.ts
 *storybook.log
 
 tests/storage/state.json
+
+wasm/target
