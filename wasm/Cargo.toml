@@ -1,20 +1,23 @@
 [package]
-name = "wasm-calculator"
+name = "pdf-parser"
 version = "0.1.0"
 edition = "2021"
-description = "Wasm calculator module"
-license = "MIT"
 
 [lib]
 crate-type = ["cdylib"]
-path = "src/lib.rs"
 
 [dependencies]
 wasm-bindgen = "0.2"
+console_error_panic_hook = "0.1"
+pdf-extract = "0.5"
+serde_json = "1.0"
 js-sys = "0.3"
 web-sys = { version = "0.3", features = ["console"] }
-console_error_panic_hook = "0.1.7"
+tempfile = "3.8"
+getrandom = { version = "0.2", features = ["js"] }
+lopdf = "=0.31.0"
+pdfium-render = "0.8"
 
 [profile.release]
 opt-level = 3
-lto = true 
+lto = true

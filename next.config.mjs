@@ -21,6 +21,7 @@ const nextConfig = {
     // Wasmモジュールの設定
     config.experiments = {
       asyncWebAssembly: true,
+      layers: true,
     };
 
     // // Wasmファイルのローダー設定
@@ -39,6 +40,20 @@ const nextConfig = {
     //   ...config.resolve.alias,
     //   '@wasm': path.join(__dirname, 'public/wasm'),
     // };
+
+        // 非サーバーサイドでのWasmファイルの出力設定
+        if (!isServer) {
+          config.output = {
+            ...config.output,
+            webassemblyModuleFilename: 'static/wasm/[modulehash].wasm',
+          };
+        }
+    
+        // Wasmモジュールのエイリアス設定
+        config.resolve.alias = {
+          ...config.resolve.alias,
+          'wasm': path.join(process.cwd(), 'public/wasm'),
+        };
 
     return config;
   },

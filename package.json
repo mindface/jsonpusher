@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "yarn build:wasm && next dev",
+		"dev": "next dev",
 		"build": "yarn build:wasm && next build",
 		"start": "next start",
 		"lint": "next lint",
@@ -15,7 +15,8 @@
 		"test:e2e": "playwright test --",
 		"test-storybook": "test-storybook",
 		"clean:wasm": "rm -rf public/wasm",
-		"build:wasm": "yarn clean:wasm && cd wasm && wasm-pack build --target web --out-dir ../public/wasm --out-name wasm_calculator"
+		"build:wasm": "yarn clean:wasm && cd wasm && wasm-pack build --target web --out-dir ../public/wasm --out-name wasm_calculator",
+		"bbuild:wasm": "wasm-pack build wasm --target web && cp -r wasm/pkg/* public/wasm/"
 	},
 	"dependencies": {
 		"@anthropic-ai/sdk": "^0.32.1",

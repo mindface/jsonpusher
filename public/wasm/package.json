@@ -1,0 +1,14 @@
+{
+  "name": "pdf-parser",
+  "version": "0.1.0",
+  "files": [
+    "pdf_parser_bg.wasm",
+    "pdf_parser.js",
+    "pdf_parser.d.ts"
+  ],
+  "module": "pdf_parser.js",
+  "types": "pdf_parser.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
