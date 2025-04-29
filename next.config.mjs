@@ -1,5 +1,10 @@
 /** @type {import("next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    turbo: {
+      cacheDir: '.turbo'
+    },
+  },
   webpack: (config, { dev }) => {
     if (dev) {
       config.watchOptions = {
@@ -8,19 +13,21 @@ const nextConfig = {
         ignored: ["**/node_modules/**", "**/.git/**", "**/.next/**"],
       };
     }
+
     config.module.rules.push({
       test: /\.svg$/,
       issuer: {
         and: [/\.(js|ts)x?$/],
       },
-      use: [
-        {
-          loader: '@svgr/webpack',
-          options: {
-            svgo: false, // 圧縮を無効にする設定
-          },
-        },
-      ],
+      use: ['@svgr/webpack'],
+      // use: [
+      //   {
+      //     loader: '@svgr/webpack',
+      //     options: {
+      //       svgo: false, // 圧縮を無効にする設定
+      //     },
+      //   },
+      // ],
     });
     return config;
   },

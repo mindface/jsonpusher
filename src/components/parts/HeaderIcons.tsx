@@ -5,6 +5,7 @@ import Question from "../../assets/svg/question.svg";
 import Sportandjob from "../../assets/svg/sportandjob.svg";
 import Memory from "../../assets/svg/memory.svg";
 import Carender from "../../assets/svg/carender.svg";
+import Image from "next/image";
 
 type Props = {
 	iconId: number;
@@ -12,7 +13,7 @@ type Props = {
 };
 
 export default function NavIcons(props: Props) {
-	const { iconId, className } = props;
+	const { iconId, className } = props
 	const setImage = () => {
 		switch (iconId) {
 			case 1:
@@ -36,12 +37,20 @@ export default function NavIcons(props: Props) {
 	const Icon = setImage();
 	return (
 		<>
-			<Icon
+		  <Image
+				src={Icon}
 				width="20"
 				height="20"
 				className={["header-side-icon", className ?? ""].join(" ")}
 				style={{ objectFit: "cover", width: "20px", height: "auto" }}
+				alt=""
 			/>
+			{/* <Icon
+				width="20"
+				height="20"
+				className={["header-side-icon", className ?? ""].join(" ")}
+				style={{ objectFit: "cover", width: "20px", height: "auto" }}
+			/> */}
 		</>
 	);
 }
