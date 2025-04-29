@@ -72,7 +72,7 @@ export default function SectionLoginFirebase() {
 	};
 
 	if (session.status === "loading") {
-		return <p>loading...</p>;
+		return <p>loading...</p>
 	}
 
 	return (

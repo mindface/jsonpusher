@@ -7,8 +7,8 @@ export default function Breadcrumb() {
 	const path = usePathname();
 
 	const paths = useMemo(() => {
-		const pathArray = path.split("/");
-		pathArray.shift();
+		const pathArray = path?.split("/");
+		pathArray?.shift();
 		return pathArray;
 	}, [path]);
 
@@ -25,7 +25,7 @@ export default function Breadcrumb() {
 					&gt;
 				</>
 			)}
-			{paths.map((item, index) => (
+			{paths?.map((item, index) => (
 				<span key={`breadcrumb${index}`} className="inline-block pl-2">
 					<Link href={`/${item}`}>{item}</Link>
 					{index !== paths.length - 1 && ` >`}

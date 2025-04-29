@@ -29,7 +29,7 @@ export default function ContentDetailsMenuEvaluation(props: Props) {
 	return (
 		<div className="details-menu-list mr-8 p-4 border rounded-lg md:w-[50%]">
 			{menuInfoList.map((menuItem, index) => (
-				<div key={`overallEvaluation${menuItem.pathId}-${index}`}>
+				<div key={`overallEvaluation${menuItem.pathId}`}>
 					{leaveNumber <= evaluationObj[menuItem.pathId] && (
 						<div
 							className={[
