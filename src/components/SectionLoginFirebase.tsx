@@ -74,6 +74,21 @@ export default function SectionLoginFirebase() {
 	if (session.status === "loading") {
 		return <p>loading...</p>
 	}
+		async function sendMcpRequest(prompt: string) {
+			const res = await fetch('/api/mcp', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					type: 'generateText',
+					payload: {
+						prompt: prompt,
+					},
+				}),
+			});
+			const mcpResponse = await res.json()
+			console.log(mcpResponse.payload.generatedText)
+			mcpResponse.payload.generatedText
+		}
 
 	return (
 		<section className="section-login">
@@ -90,6 +105,9 @@ export default function SectionLoginFirebase() {
 				<div className="text-box pl-4">
 					<p className="pb-4 text-5xl">自分の評価を確認するために、</p>
 					<p className="pb-2 text-5xl">情報をテキスト化してみる。</p>
+					<button
+					className="text-white"
+					onClick={() => sendMcpRequest("情報設計")}>add</button>
 				</div>
 				<div className="login-info">
 					<div className="p-8 border rounded-lg">
