@@ -20,7 +20,7 @@ export default function SectionUseAdvice() {
 
 	const goPlanAction = () => {
 		router.push("/evaluate/planFeedback");
-	};
+	}
 
 	return (
 		<section className="section-level-up">

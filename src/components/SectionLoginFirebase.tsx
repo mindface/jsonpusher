@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { auth } from "../lib/firebaseClient";
 import { signIn as signInByNextAuth } from "next-auth/react";
@@ -27,7 +27,6 @@ export default function SectionLoginFirebase() {
 
 	const signInAction = async () => {
 		if (email === "" || password === "") return;
-
 		try {
 			const userCredential = await signInWithEmailAndPassword(
 				auth,
@@ -42,7 +41,7 @@ export default function SectionLoginFirebase() {
 		} catch (error) {
 			console.error(error);
 		}
-	};
+	}
 
 	const createUserAction = async () => {
 		try {
@@ -69,26 +68,26 @@ export default function SectionLoginFirebase() {
 		setTimeout(() => {
 			targetDom?.classList.remove("start");
 		}, 800);
-	};
+	}
 
 	if (session.status === "loading") {
 		return <p>loading...</p>
 	}
-		async function sendMcpRequest(prompt: string) {
-			const res = await fetch('/api/mcp', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({
-					type: 'generateText',
-					payload: {
-						prompt: prompt,
-					},
-				}),
-			});
-			const mcpResponse = await res.json()
-			console.log(mcpResponse.payload.generatedText)
-			mcpResponse.payload.generatedText
-		}
+	async function sendMcpRequest(prompt: string) {
+		const res = await fetch('/api/mcp', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({
+				// type: 'generateText',
+				payload: {
+					prompt: prompt,
+				}
+			})
+		});
+		const mcpResponse = await res.json()
+		// console.log(mcpResponse.payload.generatedText)
+		// mcpResponse.payload.generatedText
+	}
 
 	return (
 		<section className="section-login">
@@ -106,7 +105,7 @@ export default function SectionLoginFirebase() {
 					<p className="pb-4 text-5xl">自分の評価を確認するために、</p>
 					<p className="pb-2 text-5xl">情報をテキスト化してみる。</p>
 					<button
-					className="text-white"
+					className=""
 					onClick={() => sendMcpRequest("情報設計")}>add</button>
 				</div>
 				<div className="login-info">

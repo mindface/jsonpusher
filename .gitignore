@@ -43,3 +43,6 @@ next-env.d.ts
 tests/storage/state.json
 models
 wasm
+chroma_store
+medical_specialized_model
+docs
