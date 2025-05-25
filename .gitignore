@@ -12,6 +12,7 @@
 # next.js
 /.next/
 /out/
+/py/
 
 # production
 /build
@@ -40,3 +41,8 @@ next-env.d.ts
 *storybook.log
 
 tests/storage/state.json
+models
+wasm
+chroma_store
+medical_specialized_model
+docs

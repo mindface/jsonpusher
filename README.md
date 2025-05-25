@@ -23,3 +23,6 @@ testsは以下全ての場合
 APP_ENV=test　yarn test:e2e:all
 ```
 
+```以下のモデルを使います
+https://huggingface.co/saldra/rinna-japanese-gpt2-xsmall-onnx/tree/main
+```

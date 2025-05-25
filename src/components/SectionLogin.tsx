@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { Button } from "../stories/Button/Button";
 
 export default function SectionLogin() {
 	const session = useSession();
+	const [info, useInfo] = useState("")
 
 	const signInAction = () => {
 		signIn();
