@@ -11,13 +11,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (req.method !== 'POST') {
       return res.status(405).end()
     }
-    console.log("///////")
+
     const question = req.body.payload.prompt
     if (!question) return res.status(400).json({ error: 'No question provided' })
-    console.log(question)
   
     const python = spawn('python3', ['py/run_llm.py'])
-  
+
     let result = ''
     let error = ''
   
@@ -28,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       result += data.toString()
       console.log("stdout:", data.toString())
     })
-    
+
     python.stderr.on('data', (data) => {
       error += data.toString()
       console.error("stderr:", data.toString())
