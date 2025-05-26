@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "../../stories/Button/Button";
 import { Input } from "../../stories/Input/Input";
 
-import { useStoreCycle } from "../../store/cycle";
+import { useStoreCycle } from "../../features/cycle/store/cycleStore";
 
 import type { Cycle } from "../../type/cycle";
 

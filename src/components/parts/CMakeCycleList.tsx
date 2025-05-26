@@ -13,7 +13,7 @@ import { useMemo } from "react";
 import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
 import { Button } from "../../stories/Button/Button";
 
-import { useStoreCycle } from "../../store/cycle";
+import { useStoreCycle } from "../../features/cycle/store/cycleStore";
 import CMakeCycleItem from "./CMakeCycleItem";
 
 import { useDroppable } from "@dnd-kit/core";

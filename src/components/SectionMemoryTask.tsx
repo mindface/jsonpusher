@@ -6,10 +6,10 @@ import { Dialog } from "../stories/Dialog/Dialog";
 import CMemoryTaskEdit from "./parts/CMemoryTaskEdit";
 import CMemoryTaskList from "./parts/CMemoryTaskList";
 
-import { useStoreMemoery } from "../store/memory";
+import { useStoreMemory } from "../features/memory/store/memoryStore";
 
 export default function SectionMemoryTask() {
-	const { memories, getMemory } = useStoreMemoery();
+	const { memories, getMemory } = useStoreMemory();
 	useEffect(() => {
 		getMemory();
 	}, [getMemory]);

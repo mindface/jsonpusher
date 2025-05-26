@@ -7,7 +7,7 @@ import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import CNextPlanEdit from "./parts/CNextPlanEdit";
 import CNextPlanList from "./parts/CNextPlanList";
 
-import { useStoreNextPlan } from "../store/planNext";
+import { useStoreNextPlan } from "../features/planNext/store/planNextStore";
 
 import { copyClipbord } from "../utils/copyClipbord";
 import { stringWidth, padEndWidth } from "../utils/convertString";

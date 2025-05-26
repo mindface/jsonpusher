@@ -8,8 +8,8 @@ import { Loading } from "../stories/Loading/Loading";
 
 import ContentPlanFeedback from "./ContentPlanFeedback";
 
-import { useStoreHealthText } from "../store/healthText";
-import { useStoreSportsText } from "../store/sportText";
+import { useStoreHealthText } from "../features/healthText/store/healthTextStore";
+import { useStoreSportsText } from "../features/sportText/store/sportTextStore";
 
 import { fetchGeminiApi, fetchClaudeApi } from "../lib/fetchApiForAI";
 

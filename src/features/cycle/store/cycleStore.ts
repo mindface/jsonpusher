@@ -1,67 +1,58 @@
 import { create } from "zustand";
-import type { Cycle, CycleColumn } from "../type/cycle";
+import type { Cycle, CycleColumn } from "../../../type/cycle";
 
 interface StoreCycle {
-	cycleColumns: CycleColumn[];
-	cycles: Cycle[];
-	isLoading: boolean;
-
-	getCycleColumns: () => void;
-	settingCycleColumns: () => void;
-	setCycleColumns: (cycleColumns: CycleColumn[]) => void;
-	addCycleColumns: (title: string, detail: string) => void;
-	addCycle: (title: string, detail: string) => void | { saveResult: string };
-	updateCycle: (cycle: Cycle) => void | { saveResult: string };
-	deleteCycle: (cyclesId: number) => void;
-	setCycle: (cycles: Cycle[]) => void;
-	reset: () => void;
+  cycleColumns: CycleColumn[];
+  cycles: Cycle[];
+  isLoading: boolean;
+  getCycleColumns: () => void;
+  settingCycleColumns: () => void;
+  setCycleColumns: (cycleColumns: CycleColumn[]) => void;
+  addCycleColumns: (title: string, detail: string) => void;
+  addCycle: (title: string, detail: string) => void | { saveResult: string };
+  updateCycle: (cycle: Cycle) => void | { saveResult: string };
+  deleteCycle: (cyclesId: number) => void;
+  setCycle: (cycles: Cycle[]) => void;
+  reset: () => void;
 }
 
 export const useStoreCycle = create<StoreCycle>((set, get) => ({
-	cycleColumns: [
-		{
-			cycleColumnId: "list1",
-			title: "cycleColumn title1",
-			detail: "cycleColumn detail1",
-			cards: [],
-		},
-	],
-	cycles: [
-		{
-			id: 1,
-			title: "Aモデル",
-			detail: "計画の設計",
-			connectId: "0",
-			userId: "0",
-			groupId: "list1",
-		},
-		{
-			id: 2,
-			title: "Bモデル",
-			detail: "評価するポイントを確認",
-			connectId: "0",
-			userId: "0",
-			groupId: "list2",
-		},
-		{
-			id: 3,
-			title: "Cモデル",
-			detail: "動作",
-			connectId: "0",
-			userId: "0",
-			groupId: "list2",
-		},
-		{
-			id: 4,
-			title: "Dモデル",
-			detail: "動作検証とフィードバックをする",
-			connectId: "0",
-			userId: "0",
-			groupId: "list2",
-		},
-	],
-	isLoading: false,
-	getCycleColumns: () => {},
+  cycleColumns: [
+    {
+      cycleColumnId: "list1",
+      title: "cycleColumn title1",
+      detail: "cycleColumn detail1",
+      cards: [],
+    },
+  ],
+  cycles: [
+    {
+      id: 1,
+      title: "Aモデル",
+      detail: "計画の設計",
+      connectId: "0",
+      userId: "0",
+      groupId: "list1",
+    },
+    {
+      id: 2,
+      title: "Bモデル",
+      detail: "評価するポイントを確認",
+      connectId: "0",
+      userId: "0",
+      groupId: "list2",
+    },
+    {
+      id: 3,
+      title: "Cモデル",
+      detail: "動作",
+      connectId: "0",
+      userId: "0",
+      groupId: "list3",
+    },
+  ],
+  isLoading: false,
+  getCycleColumns: () => {},
 	settingCycleColumns: () => {
 		const cycleColumns = get().cycleColumns;
 		const cycles = get().cycles;

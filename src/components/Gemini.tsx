@@ -7,8 +7,8 @@ import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
 import ContentPlanFeedback from "./ContentPlanFeedback";
 
-import { useStoreHealthText } from "../store/healthText";
-import { useStoreSportsText } from "../store/sportText";
+import { useStoreHealthText } from "../features/healthText/store/healthTextStore";
+import { useStoreSportsText } from "../features/sportText/store/sportTextStore";
 
 import type { GeminiResponse } from "../type/apiResponse";
 

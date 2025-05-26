@@ -4,7 +4,7 @@ import { Button } from "../../stories/Button/Button";
 import { Input } from "../../stories/Input/Input";
 import { Textarea } from "../../stories/TextArea/Textarea";
 
-import { useStoreNextPlan } from "../../store/planNext";
+import { useStoreNextPlan } from "../../features/planNext/store/planNextStore";
 
 import type { Plan } from "../../type/plan";
 
@@ -24,13 +24,15 @@ export default function CNextPlanEdit(props: Props) {
 	};
 
 	const updatePlanAction = () => {
-		if (item?.id && item?.connectId) {
+			console.log("updateItem", item);
+		if (item?.id) {
 			const updateItem = {
 				...item,
 				title: planTitle,
 				details: planDetails,
-				connectId: item?.connectId,
+				connectId: item?.connectId ?? "",
 			};
+			console.log("updateItem", updateItem);
 			updateNextPlan(updateItem);
 		}
 	};
@@ -43,7 +45,7 @@ export default function CNextPlanEdit(props: Props) {
 
 	return (
 		<div className="pb-4">
-			<div className="pb-2">
+			<div className="pb-2">00
 				<Input
 					type="text"
 					value={planTitle}
@@ -82,6 +84,7 @@ export default function CNextPlanEdit(props: Props) {
 					<Button
 						label="削除"
 						size="small"
+					  className="text-black"
 						primary={false}
 						onClick={() => {
 							deletePlanAction();
