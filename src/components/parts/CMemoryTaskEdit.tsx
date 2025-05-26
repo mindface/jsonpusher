@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { Button } from "../../stories/Button/Button";
 import { Input } from "../../stories/Input/Input";
 
-import { useStoreMemoery } from "../../store/memory";
+import { useStoreMemory } from "../../features/memory/store/memoryStore";
 
 import type { Memory } from "../../type/memory";
 import "quill/dist/quill.snow.css";
@@ -24,7 +24,7 @@ export default function CMemoryTaskEdit(props: Props) {
 	const editorBoxRef = useRef<HTMLDivElement>(null);
 	const editorRef = useRef<HTMLDivElement>(null);
 	const quillRef = useRef<any>(null);
-	const { addMemory, updateMemory, deleteMemory } = useStoreMemoery();
+	const { addMemory, updateMemory, deleteMemory } = useStoreMemory();
 
 	const addPlanAction = () => {
 		addMemory(memoryTaskTitle, quillRef.current?.root.innerHTML ?? "");

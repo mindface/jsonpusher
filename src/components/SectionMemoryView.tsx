@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState, useRef } from "react";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 import { Dialog } from "../stories/Dialog/Dialog";
 
-import { useStoreMemoery } from "../store/memory";
+import { useStoreMemory } from "../features/memory/store/memoryStore";
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -23,7 +23,7 @@ type EventItem = {
 };
 
 export default function SectionMemoryView() {
-	const { memories, getMemory } = useStoreMemoery();
+	const { memories, getMemory } = useStoreMemory();
 	const [selectedEvent, setSelectedEvent] = useState<{
 		title: string;
 		detail: string;
