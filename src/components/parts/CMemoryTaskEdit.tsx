@@ -171,6 +171,7 @@ export default function CMemoryTaskEdit(props: Props) {
 						<Button
 							label="削除"
 							size="small"
+					    className="text-black"
 							primary={false}
 							onClick={() => {
 								deletePlanAction();

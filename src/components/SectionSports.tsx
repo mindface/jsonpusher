@@ -13,7 +13,7 @@ import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
 
 import { copyClipbord } from "../utils/copyClipbord";
 
-import { useStoreSportsText } from "../store/sportText";
+import { useStoreSportsText } from "../features/sportText/store/sportTextStore";
 
 import SelectLevelList from "../json/selectLevelList.json";
 import SelectPartList from "../json/selectPartList.json";

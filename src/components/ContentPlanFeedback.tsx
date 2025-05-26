@@ -9,8 +9,8 @@ import CNextPlanList from "./parts/CNextPlanList";
 import CPlanEdit from "./parts/CPlanEdit";
 import CPlanList from "./parts/CPlanList";
 
-import { useStorePlan } from "../store/plan";
-import { useStoreNextPlan } from "../store/planNext";
+import { useStorePlan } from "../features/plan/store/planStore";
+import { useStoreNextPlan } from "../features/planNext/store/planNextStore";
 
 import type { Plan } from "../type/plan";
 

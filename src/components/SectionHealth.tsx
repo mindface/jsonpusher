@@ -12,7 +12,7 @@ import SelectPartList from "../json/selectPartList.json";
 import SelectPatternList from "../json/selectPatternList.json";
 // import SelectHealthInfoCategoryList from "../json/selectHealthInfoCategoryList.json";
 
-import { useStoreHealthText } from "../store/healthText";
+import { useStoreHealthText } from "../features/healthText/store/healthTextStore";
 
 import { copyClipbord } from "../utils/copyClipbord";
 

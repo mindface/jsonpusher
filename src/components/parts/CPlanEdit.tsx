@@ -4,7 +4,7 @@ import { Button } from "../../stories/Button/Button";
 import { Input } from "../../stories/Input/Input";
 import { Textarea } from "../../stories/TextArea/Textarea";
 
-import { useStorePlan } from "../../store/plan";
+import { useStorePlan } from "../../features/plan/store/planStore";
 
 import type { Plan } from "../../type/plan";
 
