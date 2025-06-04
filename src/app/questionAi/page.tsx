@@ -1,4 +1,4 @@
-import SectionQuestionAi from "../../components/SectionQuestionAi";
+import SectionQuestionAi from "../../components/section/SectionQuestionAi";
 
 export default function QuestionAi() {
 	return (

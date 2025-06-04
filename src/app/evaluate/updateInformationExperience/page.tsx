@@ -1,4 +1,4 @@
-import SectionUpdateInformationExperience from "../../../components/SectionUpdateInformationExperience";
+import SectionUpdateInformationExperience from "../../../components/section/SectionUpdateInformationExperience";
 
 export default function updateInformationExperience() {
 	return (

@@ -1,4 +1,4 @@
-import SectionEvaluate from "../../components/SectionEvaluate";
+import SectionEvaluate from "../../components/section/SectionEvaluate";
 
 export default function Evaluate() {
 	return (

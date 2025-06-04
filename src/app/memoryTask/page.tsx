@@ -1,4 +1,4 @@
-import SectionMemoryTask from "../../components/SectionMemoryTask";
+import SectionMemoryTask from "../../components/section/SectionMemoryTask";
 
 export default function MemoryTask() {
 	return (
