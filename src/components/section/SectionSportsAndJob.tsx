@@ -1,5 +1,5 @@
-import { CLink } from "../stories/CLink/CLink";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
+import { CLink } from "../../stories/CLink/CLink";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
 
 export default function SectionSportsAndJob() {
 	return (

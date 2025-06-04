@@ -3,18 +3,18 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import healthImage from "../assets/images/health.jpg";
 
-import { Button } from "../stories/Button/Button";
-import { Ccheck } from "../stories/Ccheck/Ccheck";
-import { Textarea } from "../stories/TextArea/Textarea";
+import { Button } from "../../stories/Button/Button";
+import { Ccheck } from "../../stories/Ccheck/Ccheck";
+import { Textarea } from "../../stories/TextArea/Textarea";
 
-import SelectLevelList from "../json/selectLevelList.json";
-import SelectPartList from "../json/selectPartList.json";
-import SelectPatternList from "../json/selectPatternList.json";
+import SelectLevelList from "../../json/selectLevelList.json";
+import SelectPartList from "../../json/selectPartList.json";
+import SelectPatternList from "../../json/selectPatternList.json";
 // import SelectHealthInfoCategoryList from "../json/selectHealthInfoCategoryList.json";
 
-import { useStoreHealthText } from "../features/healthText/store/healthTextStore";
+import { useStoreHealthText } from "../../features/healthText/store/healthTextStore";
 
-import { copyClipbord } from "../utils/copyClipbord";
+import { copyClipbord } from "../../utils/copyClipbord";
 
 type SelectList = { check: boolean; name: string };
 type SelectTextList = { check: boolean; list: string[] };

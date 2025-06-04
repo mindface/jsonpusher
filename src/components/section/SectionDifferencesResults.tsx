@@ -1,12 +1,12 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
-import { Button } from "../stories/Button/Button";
-import { InputRange } from "../stories/InputRange/InputRange";
-import { Select } from "../stories/Select/Select";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
+import { Button } from "../../stories/Button/Button";
+import { InputRange } from "../../stories/InputRange/InputRange";
+import { Select } from "../../stories/Select/Select";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
 
-import SelectSportsDifferencesResultsList from "../json/selectSportsDifferencesResultsList.json";
+import SelectSportsDifferencesResultsList from "../../json/selectSportsDifferencesResultsList.json";
 
 export default function SectionDifferencesResults() {
 	const [experiencePoints, experiencePointsSet] = useState(0);

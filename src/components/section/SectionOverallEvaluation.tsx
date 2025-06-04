@@ -1,18 +1,18 @@
 "use client";
 import { useState } from "react";
-import { Button } from "../stories/Button/Button";
-import { Dialog } from "../stories/Dialog/Dialog";
-import { InputRange } from "../stories/InputRange/InputRange";
-import { Textarea } from "../stories/TextArea/Textarea";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
+import { Button } from "../../stories/Button/Button";
+import { Dialog } from "../../stories/Dialog/Dialog";
+import { InputRange } from "../../stories/InputRange/InputRange";
+import { Textarea } from "../../stories/TextArea/Textarea";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
 
-import ContentDetailsMenuEvaluation from "./ContentDetailsMenuEvaluation";
+import ContentDetailsMenuEvaluation from "./../ContentDetailsMenuEvaluation";
 import SectionValuationAssessment from "./SectionValuationAssessment";
 
-import { copyClipbord } from "../utils/copyClipbord";
+import { copyClipbord } from "../../utils/copyClipbord";
 
-import menuInfoList from "../json/menuInfoList.json";
-import modelTextList from "../json/modelTextList.json";
+import menuInfoList from "../../json/menuInfoList.json";
+import modelTextList from "../../json/modelTextList.json";
 
 type EvaluationType = {
 	[key: string]: number;

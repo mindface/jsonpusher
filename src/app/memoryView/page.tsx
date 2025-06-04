@@ -1,4 +1,4 @@
-import SectionMemoryView from "../../components/SectionMemoryView";
+import SectionMemoryView from "../../components/section/SectionMemoryView";
 
 export default function MemoryView() {
 	return (

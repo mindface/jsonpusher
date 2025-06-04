@@ -1,4 +1,4 @@
-import SectionMakeCycle from "../../../components/SectionMakeCycle";
+import SectionMakeCycle from "../../../components/section/SectionMakeCycle";
 
 export default function MakeCycle() {
 	return (

@@ -1,4 +1,4 @@
-import SectionSportsAndJob from "../../components/SectionSportsAndJob";
+import SectionSportsAndJob from "../../components/section/SectionSportsAndJob";
 
 export default function SportAndJob() {
 	return (

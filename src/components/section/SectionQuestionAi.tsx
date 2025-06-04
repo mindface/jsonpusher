@@ -1,19 +1,19 @@
 "use client";
 import { useState } from "react";
-import { Button } from "../stories/Button/Button";
-import { Dialog } from "../stories/Dialog/Dialog";
-import { Textarea } from "../stories/TextArea/Textarea";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
-import { Loading } from "../stories/Loading/Loading";
+import { Button } from "../../stories/Button/Button";
+import { Dialog } from "../../stories/Dialog/Dialog";
+import { Textarea } from "../../stories/TextArea/Textarea";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
+import { Loading } from "../../stories/Loading/Loading";
 
-import ContentPlanFeedback from "./ContentPlanFeedback";
+import ContentPlanFeedback from "./../ContentPlanFeedback";
 
-import { useStoreHealthText } from "../features/healthText/store/healthTextStore";
-import { useStoreSportsText } from "../features/sportText/store/sportTextStore";
+import { useStoreHealthText } from "../../features/healthText/store/healthTextStore";
+import { useStoreSportsText } from "../../features/sportText/store/sportTextStore";
 
-import { fetchGeminiApi, fetchClaudeApi } from "../lib/fetchApiForAI";
+import { fetchGeminiApi, fetchClaudeApi } from "../../lib/fetchApiForAI";
 
-import aiCredit from "../json/aiCredit.json";
+import aiCredit from "../../json/aiCredit.json";
 
 export default function SectionQuestionAi() {
 	const [machineLearningType, machineLearningSet] = useState("gemini");

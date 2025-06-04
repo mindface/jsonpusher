@@ -1,6 +1,6 @@
 "use client";
 // import SectionLogin from "../../components/SectionLogin";
-import SectionLoginFirebase from "../../components/SectionLoginFirebase";
+import SectionLoginFirebase from "../../components/section/SectionLoginFirebase";
 
 export default function Login() {
 	return (

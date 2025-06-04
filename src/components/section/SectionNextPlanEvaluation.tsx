@@ -1,18 +1,18 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Button } from "../stories/Button/Button";
-import { Textarea } from "../stories/TextArea/Textarea";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
+import { Button } from "../../stories/Button/Button";
+import { Textarea } from "../../stories/TextArea/Textarea";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
 
-import CNextPlanEdit from "./parts/CNextPlanEdit";
-import CNextPlanList from "./parts/CNextPlanList";
+import CNextPlanEdit from "./../parts/CNextPlanEdit";
+import CNextPlanList from "./../parts/CNextPlanList";
 
-import { useStoreNextPlan } from "../features/planNext/store/planNextStore";
+import { useStoreNextPlan } from "../../features/planNext/store/planNextStore";
 
-import { copyClipbord } from "../utils/copyClipbord";
-import { stringWidth, padEndWidth } from "../utils/convertString";
+import { copyClipbord } from "../../utils/copyClipbord";
+import { stringWidth, padEndWidth } from "../../utils/convertString";
 
-import type { Plan } from "../type/plan";
+import type { Plan } from "../../type/plan";
 
 export default function SectionNextPlanEvaluation() {
 	const { nextPlans, getNextPlans } = useStoreNextPlan();

@@ -1,12 +1,12 @@
 "use client";
 import { useEffect } from "react";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
-import { Dialog } from "../stories/Dialog/Dialog";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
+import { Dialog } from "../../stories/Dialog/Dialog";
 
-import CMemoryTaskEdit from "./parts/CMemoryTaskEdit";
-import CMemoryTaskList from "./parts/CMemoryTaskList";
+import CMemoryTaskEdit from "./../parts/CMemoryTaskEdit";
+import CMemoryTaskList from "./../parts/CMemoryTaskList";
 
-import { useStoreMemory } from "../features/memory/store/memoryStore";
+import { useStoreMemory } from "../../features/memory/store/memoryStore";
 
 export default function SectionMemoryTask() {
 	const { memories, getMemory } = useStoreMemory();

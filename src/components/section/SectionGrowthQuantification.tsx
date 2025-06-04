@@ -1,12 +1,12 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { useStoreNextPlan } from "../features/planNext/store/planNextStore";
-import { Button } from "../stories/Button/Button";
-import { Textarea } from "../stories/TextArea/Textarea";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
+import { useStoreNextPlan } from "../../features/planNext/store/planNextStore";
+import { Button } from "../../stories/Button/Button";
+import { Textarea } from "../../stories/TextArea/Textarea";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
 
-import { copyClipbord } from "../utils/copyClipbord";
+import { copyClipbord } from "../../utils/copyClipbord";
 
 export default function SectionGrowthQuantification() {
 	const { nextPlans, getNextPlans } = useStoreNextPlan();

@@ -1,6 +1,6 @@
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
 
-import ContentPlanFeedback from "./ContentPlanFeedback";
+import ContentPlanFeedback from "./../ContentPlanFeedback";
 
 export default function SectionPlanFeedback() {
 	return (

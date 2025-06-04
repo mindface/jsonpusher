@@ -1,10 +1,10 @@
 "use client";
 import { useMemo, useState } from "react";
-import { InputRange } from "../stories/InputRange/InputRange";
-import { Select } from "../stories/Select/Select";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
+import { InputRange } from "../../stories/InputRange/InputRange";
+import { Select } from "../../stories/Select/Select";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
 
-import SelectSkillComparisonList from "../json/selectSkillComparisonList.json";
+import SelectSkillComparisonList from "../../json/selectSkillComparisonList.json";
 
 export default function SectionSkillComparison() {
 	const [experiencePoints, experiencePointsSet] = useState(0);

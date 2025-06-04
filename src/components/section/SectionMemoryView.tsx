@@ -1,17 +1,17 @@
 "use client";
 import { useEffect, useMemo, useState, useRef } from "react";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
-import { Dialog } from "../stories/Dialog/Dialog";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
+import { Dialog } from "../../stories/Dialog/Dialog";
 
-import { useStoreMemory } from "../features/memory/store/memoryStore";
+import { useStoreMemory } from "../../features/memory/store/memoryStore";
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import jaLocale from "@fullcalendar/core/locales/ja";
-import { ForMatter } from "../utils/formater";
+import { ForMatter } from "../../utils/formater";
 import { EventClickArg } from "@fullcalendar/core";
 
-import styles from "../styles/calendar.module.css";
+import styles from "../../styles/calendar.module.css";
 
 type EventItem = {
 	id: string;

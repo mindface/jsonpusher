@@ -1,4 +1,4 @@
-import SectionHealth from "../../components/SectionHealth";
+import SectionHealth from "../../components/section/SectionHealth";
 
 export default function Health() {
 	return (

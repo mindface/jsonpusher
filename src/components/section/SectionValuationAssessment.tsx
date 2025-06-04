@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
-import { Button } from "../stories/Button/Button";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
+import { Button } from "../../stories/Button/Button";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
 
 export default function SectionValuationAssessment() {
 	const router = useRouter();

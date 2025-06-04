@@ -3,22 +3,22 @@ import Image from "next/image";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import bicycleImage from "../assets/images/bicycle.jpg";
 
-import { Button } from "../stories/Button/Button";
-import { Ccheck } from "../stories/Ccheck/Ccheck";
-// import { TextCommenter } from "../stories/TextComment/TextCommenter";
-import { Dialog } from "../stories/Dialog/Dialog";
-import { InputRange } from "../stories/InputRange/InputRange";
-import { Textarea } from "../stories/TextArea/Textarea";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
+import { Button } from "../../stories/Button/Button";
+import { Ccheck } from "../../stories/Ccheck/Ccheck";
+// import { TextCommenter } from "../../stories/TextComment/TextCommenter";
+import { Dialog } from "../../stories/Dialog/Dialog";
+import { InputRange } from "../../stories/InputRange/InputRange";
+import { Textarea } from "../../stories/TextArea/Textarea";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
 
-import { copyClipbord } from "../utils/copyClipbord";
+import { copyClipbord } from "../../utils/copyClipbord";
 
-import { useStoreSportsText } from "../features/sportText/store/sportTextStore";
+import { useStoreSportsText } from "../../features/sportText/store/sportTextStore";
 
-import SelectLevelList from "../json/selectLevelList.json";
-import SelectPartList from "../json/selectPartList.json";
-import SelectSportsList from "../json/selectSportsList.json";
-import SelectSportsPatternList from "../json/selectSportsPatternList.json";
+import SelectLevelList from "../../json/selectLevelList.json";
+import SelectPartList from "../../json/selectPartList.json";
+import SelectSportsList from "../../json/selectSportsList.json";
+import SelectSportsPatternList from "../../json/selectSportsPatternList.json";
 
 type SelectItem = {
 	check: boolean;

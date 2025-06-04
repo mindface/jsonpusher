@@ -1,4 +1,4 @@
-import SectionOverallEvaluation from "../../../components/SectionOverallEvaluation";
+import SectionOverallEvaluation from "../../../components/section/SectionOverallEvaluation";
 
 export default function OverallEvaluation() {
 	return (

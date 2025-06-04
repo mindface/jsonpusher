@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
-import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
+import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
 
-import MenuInfoList from "../json/menuInfoList.json";
+import MenuInfoList from "../../json/menuInfoList.json";
 
 export default function SectionEvaluate() {
 	return (
