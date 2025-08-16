@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button } from "../../stories/Button/Button";
-import styles from "../../styles/cPlanItem.module.css";
+import CommonModal from "./CommonModal";
 
 import CPlanEdit from "./CPlanEdit";
 
@@ -27,19 +27,17 @@ export default function CPlanItem(props: Props) {
 					}}
 				/>
 			</div>
-			<div
-				className={[
-					"plan-item__edit-wrap",
-					"relative",
-					itemView ? styles.open : "",
-				].join(" ")}
-			>
-				<div
-					className={`${styles["plan-item__edit"]} absolute p-2 top-0 right-0 w-[380px] bg-white shadow-lg rounded-lg`}
-				>
-					<CPlanEdit type="edit" item={item} />
-				</div>
-			</div>
+      <CommonModal
+        isOpen={itemView}
+        onClose={() => itemViewSet(false)}
+        title="Plan Edit"
+      >
+        <CPlanEdit
+          type="edit"
+          item={item}
+          closeAction={() => itemViewSet(false)}
+        />
+      </CommonModal>
 		</div>
 	);
 }

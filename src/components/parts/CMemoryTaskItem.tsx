@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button } from "../../stories/Button/Button";
-import styles from "../../styles/cMemoryTask.module.css";
+import CommonModal from "./CommonModal";
 
 import dynamic from "next/dynamic";
 const CMemoryTaskEdit = dynamic(() => import("./CMemoryTaskEdit"), {ssr: false});
@@ -47,19 +47,17 @@ export default function CMemoryTaskItem(props: Props) {
 					</li>
 				</ul>
 			</div>
-			<div
-				className={[
-					"memory-task-item__edit-wrap",
-					"relative",
-					itemView ? styles.open : "",
-				].join(" ")}
-			>
-				<div
-					className={`${styles["memory-task-item__edit"]} absolute p-2 top-0 right-0 w-[380px] bg-white shadow-lg rounded-lg`}
-				>
-					<CMemoryTaskEdit type="edit" item={item} />
-				</div>
-			</div>
+      <CommonModal
+        isOpen={itemView}
+        onClose={() => itemViewSet(false)}
+        title="Memory Task Edit"
+      >
+        <CMemoryTaskEdit
+          type="edit"
+          item={item}
+          closeAction={() => itemViewSet(false)}
+        />
+      </CommonModal>
 		</div>
 	);
 }

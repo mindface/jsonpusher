@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Button } from "../../stories/Button/Button";
-import styles from "../../styles/cNextPlanItem.module.css";
+import CommonModal from "./CommonModal";
 
 import CMakeCycleIEdit from "./CMakeCycleIEdit";
 
@@ -52,19 +52,17 @@ export default function CMakeCycleItem(props: Props) {
 					}}
 				/>
 			</div>
-			<div
-				className={[
-					"next-plan-item__edit-wrap",
-					"relative",
-					itemView ? styles.open : "",
-				].join(" ")}
-			>
-				<div
-					className={`${styles["next-plan-item__edit"]} absolute p-2 top-0 right-0 w-[380px] bg-white shadow-lg rounded-lg`}
-				>
-					<CMakeCycleIEdit type="edit" item={item} />
-				</div>
-			</div>
+      <CommonModal
+        isOpen={itemView}
+        onClose={() => itemViewSet(false)}
+        title="Make Cycle Edit"
+      >
+        <CMakeCycleIEdit
+          type="edit"
+          item={item}
+          closeAction={() => itemViewSet(false)}
+        />
+      </CommonModal>
 		</div>
 	);
 }

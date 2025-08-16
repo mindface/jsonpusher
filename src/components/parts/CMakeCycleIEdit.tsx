@@ -10,13 +10,15 @@ import type { Cycle } from "../../type/cycle";
 type Props = {
 	type: string;
 	item?: Cycle;
+  closeAction: () => void;
 };
 
 export default function CMakeCycleIEdit(props: Props) {
-	const { type, item } = props;
+	const { type, item, closeAction } = props;
 	const [cycleTitle, cycleTitleSet] = useState(item?.title ?? "");
 	const [cycleDetail, cycleDetailSet] = useState(item?.detail ?? "");
 	const { addCycle, updateCycle, deleteCycle } = useStoreCycle();
+  const modalCloseAction = closeAction ?? (() => {});
 
 	const addCycleAction = () => {
 		addCycle(cycleTitle, cycleDetail);
@@ -33,6 +35,7 @@ export default function CMakeCycleIEdit(props: Props) {
 				groupId: "list1",
 			};
 			updateCycle(updateItem);
+      modalCloseAction();
 		}
 	};
 

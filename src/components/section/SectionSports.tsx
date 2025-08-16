@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import bicycleImage from "../assets/images/bicycle.jpg";
+import bicycleImage from "../../assets/images/bicycle.jpg";
 
 import { Button } from "../../stories/Button/Button";
 import { Ccheck } from "../../stories/Ccheck/Ccheck";

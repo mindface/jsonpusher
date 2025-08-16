@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { Button } from "../../stories/Button/Button";
-import styles from "../../styles/cNextPlanItem.module.css";
+import CommonModal from "./CommonModal";
 
 import CNextPlanEdit from "./CNextPlanEdit";
 
@@ -9,12 +9,13 @@ import type { Plan } from "../../type/plan";
 
 type Props = {
 	item: Plan;
+  closeAction: () => void;
 };
 
 export default function CNextPlanItem(props: Props) {
 	const [itemView, itemViewSet] = useState(false);
 	const [editClass, editClassSet] = useState("left-0");
-	const { item } = props;
+	const { item, closeAction } = props;
 	const divRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
@@ -36,30 +37,17 @@ export default function CNextPlanItem(props: Props) {
 					}}
 				/>
 			</div>
-			<div
-				className={[
-					"next-plan-item__edit-wrap",
-					"relative",
-					itemView ? styles.open : "",
-				].join(" ")}
-			>
-				<div
-					ref={divRef}
-					className={[
-						styles["next-plan-item__edit"],
-						editClass,
-						"absolute",
-						"p-2",
-						"top-0",
-						"w-[380px]",
-						"bg-white",
-						"shadow-lg",
-						"rounded-lg",
-					].join(" ")}
-				>
-					<CNextPlanEdit type="edit" item={item} />
-				</div>
-			</div>
+      <CommonModal
+        isOpen={itemView}
+        onClose={() => itemViewSet(false)}
+        title="Next Plan Edit"
+      >
+        <CNextPlanEdit
+          type="edit"
+          item={item}
+          closeAction={() => itemViewSet(false)}
+        />
+      </CommonModal>			
 		</div>
 	);
 }

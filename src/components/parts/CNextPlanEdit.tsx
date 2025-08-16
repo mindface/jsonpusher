@@ -11,13 +11,15 @@ import type { Plan } from "../../type/plan";
 type Props = {
 	type: string;
 	item?: Plan;
+	closeAction: () => void;
 };
 
 export default function CNextPlanEdit(props: Props) {
-	const { type, item } = props;
+	const { type, item, closeAction } = props;
 	const [planTitle, planTitleSet] = useState(item?.title ?? "");
 	const [planDetails, planDetailsSet] = useState(item?.details ?? "");
 	const { addNextPlan, updateNextPlan, deleteNextPlan } = useStoreNextPlan();
+  const modalCloseAction = closeAction ?? (() => {})
 
 	const addPlanAction = () => {
 		addNextPlan(planTitle, planDetails);
@@ -34,18 +36,20 @@ export default function CNextPlanEdit(props: Props) {
 			};
 			console.log("updateItem", updateItem);
 			updateNextPlan(updateItem);
+      modalCloseAction()
 		}
 	};
 
 	const deletePlanAction = () => {
 		if (item) {
 			deleteNextPlan(item);
+      modalCloseAction()
 		}
 	};
 
 	return (
 		<div className="pb-4">
-			<div className="pb-2">00
+			<div className="pb-2">
 				<Input
 					type="text"
 					value={planTitle}

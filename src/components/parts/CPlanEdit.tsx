@@ -11,13 +11,15 @@ import type { Plan } from "../../type/plan";
 type Props = {
 	type: string;
 	item?: Plan;
+	closeAction: () => void;
 };
 
 export default function CPlanEdit(props: Props) {
 	const [planTitle, planTitleSet] = useState("");
 	const [planDetails, planDetailsSet] = useState("");
 	const { addPlan, updatePlan, deletePlan } = useStorePlan();
-	const { type, item } = props;
+	const { type, item, closeAction } = props;
+  const modalCloseAction = closeAction ?? (() => {});
 
 	useEffect(() => {
 		if (type === "edit" && item?.title && item?.details) {
@@ -39,12 +41,14 @@ export default function CPlanEdit(props: Props) {
 				connectId: item?.connectId,
 			};
 			updatePlan(updateItem);
+      modalCloseAction();
 		}
 	};
 
 	const deletePlanAction = () => {
 		if (item?.id) {
 			deletePlan(item);
+      modalCloseAction();
 		}
 	};
 

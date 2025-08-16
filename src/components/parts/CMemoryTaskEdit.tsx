@@ -11,10 +11,11 @@ import "quill/dist/quill.snow.css";
 type Props = {
 	type: string;
 	item?: Memory;
+	closeAction: () => void;
 };
 
 export default function CMemoryTaskEdit(props: Props) {
-	const { type, item } = props;
+	const { type, item, closeAction } = props;
 	const [memoryTaskTitle, memoryTaskTitleSet] = useState(item?.title ?? "");
 	const [preView, preViewSet] = useState(false);
 	const [quillCounter,quillCounterSet] = useState(0);
@@ -25,6 +26,7 @@ export default function CMemoryTaskEdit(props: Props) {
 	const editorRef = useRef<HTMLDivElement>(null);
 	const quillRef = useRef<any>(null);
 	const { addMemory, updateMemory, deleteMemory } = useStoreMemory();
+  const modalCloseAction = closeAction ?? (() => {});
 
 	const addPlanAction = () => {
 		addMemory(memoryTaskTitle, quillRef.current?.root.innerHTML ?? "");
@@ -39,18 +41,21 @@ export default function CMemoryTaskEdit(props: Props) {
 				detail: quillRef.current?.root.innerHTML ?? "",
 			};
 			updateMemory(updateItem);
+      modalCloseAction();
 		}
 	};
 
 	const editorSwitchAction = () => {
 		preViewSet(!preView);
 		editorContentSet(quillRef.current?.root.innerHTML || "");
+    modalCloseAction();
 	};
 
 	const deletePlanAction = () => {
 		if (item) {
 			deleteMemory(item);
 			preViewSet(false);
+      modalCloseAction();
 		}
 	};
 
