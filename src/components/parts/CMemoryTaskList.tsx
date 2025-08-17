@@ -2,7 +2,11 @@
 import { Titleline3h } from "../../stories/Titleline3h/Titleline3h";
 import type { Memory } from "../../type/memory";
 
-import CMemoryTaskItem from "./CMemoryTaskItem";
+import CPartsItem from "./CPartsItem";
+import CommonModal from "./CommonModal";
+import CMemoryTaskEdit from "./CMemoryTaskEdit";
+import { useState } from "react";
+import { ForMatter } from "../../utils/formater";
 
 type Props = {
 	items: Memory[];
@@ -10,6 +14,18 @@ type Props = {
 
 export default function CMemoryTaskList(props: Props) {
 	const { items } = props;
+	const [editId, setEditId] = useState<string | null>(null);
+	const [modalOpen, setModalOpen] = useState(false);
+
+	const handleEdit = (id: string) => {
+		setEditId(id);
+		setModalOpen(true);
+	};
+
+	const handleClose = () => {
+		setModalOpen(false);
+		setEditId(null);
+	};
 
 	return (
 		<div className="pt-4 pb-4">
@@ -34,14 +50,38 @@ export default function CMemoryTaskList(props: Props) {
 				</div>
 				{items.length > 0 ? (
 					items.map((memory, index) => (
-						<CMemoryTaskItem
+						<CPartsItem<Memory>
 							key={`CMemoryTaskItem${memory.id}${index}`}
 							item={memory}
+							itemType="edit"
+							renderTitle={(item) => (
+								<div className="flex items-center">
+									<span className={["memory-task-item__title", "p-2"].join(" ")}>{item.title}</span>
+									<span className="ml-4 text-xs text-gray-500">
+										{ForMatter.convertTimestampToDayjs(item.createAt)}
+									</span>
+								</div>
+							)}
+							renderDetails={(item) => <span>{item.detail}</span>}
+							onEdit={() => handleEdit(String(memory.id))}
 						/>
 					))
 				) : (
 					<div className="p-4">タスクを登録してください。</div>
 				)}
+				<CommonModal
+					isOpen={modalOpen}
+					onClose={handleClose}
+					title="Memory Task Edit"
+				>
+					{editId && (
+						<CMemoryTaskEdit
+							type="edit"
+							item={items.find((item) => String(item.id) === editId)!}
+							closeAction={handleClose}
+						/>
+					)}
+				</CommonModal>
 			</div>
 		</div>
 	);
