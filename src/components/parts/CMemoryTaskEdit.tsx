@@ -11,7 +11,7 @@ import "quill/dist/quill.snow.css";
 type Props = {
 	type: string;
 	item?: Memory;
-	closeAction: () => void;
+	closeAction?: () => void;
 };
 
 export default function CMemoryTaskEdit(props: Props) {

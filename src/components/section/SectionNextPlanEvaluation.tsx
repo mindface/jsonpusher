@@ -78,7 +78,9 @@ export default function SectionNextPlanEvaluation() {
 				<Titleline3h title="次の計画の追加" size="small" />
 				<div className="flex">
 					<div className="pb-8">
-						<CNextPlanEdit type="add" />
+						<CNextPlanEdit
+							type="add"
+						/>
 						<CNextPlanList items={nextPlans} />
 					</div>
 					<div className="p-8 pt-0">

@@ -11,7 +11,7 @@ import type { Plan } from "../../type/plan";
 type Props = {
 	type: string;
 	item?: Plan;
-	closeAction: () => void;
+	closeAction?: () => void;
 };
 
 export default function CNextPlanEdit(props: Props) {

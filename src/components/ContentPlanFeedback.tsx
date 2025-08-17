@@ -155,11 +155,17 @@ export default function ContentPlanFeedback() {
 				</div>
 				<div className="flex">
 					<div className="pb-8 pr-8 w-[50%]">
-						<CPlanEdit type="add" />
+						<CPlanEdit
+							type="add"
+							closeAction={() => {}}
+						/>
 						<CPlanList items={plans} />
 					</div>
 					<div className="pb-8 w-[50%]">
-						<CNextPlanEdit type="add" />
+						<CNextPlanEdit
+							type="add"
+							closeAction={() => {}}
+						/>
 						<CNextPlanList items={nextPlans} />
 					</div>
 				</div>

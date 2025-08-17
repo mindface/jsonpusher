@@ -10,7 +10,7 @@ import type { Cycle } from "../../type/cycle";
 type Props = {
 	type: string;
 	item?: Cycle;
-  closeAction: () => void;
+  closeAction?: () => void;
 };
 
 export default function CMakeCycleIEdit(props: Props) {

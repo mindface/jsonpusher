@@ -121,7 +121,7 @@ export default function CMakeCycleList() {
 											itemType="edit"
 											renderTitle={(item) => item.title}
 											renderDetails={(item) => item.detail}
-											onEdit={() => handleEdit(cycle.id)}
+											onEdit={() => handleEdit(String(cycle.id))}
 										/>
 									))}
 								</div>
@@ -136,7 +136,7 @@ export default function CMakeCycleList() {
 					{editId && (
 						<CMakeCycleEdit
 							type="edit"
-							item={list.find((m) => m.id === editId)!}
+							item={list.find((m) => String(m.id) === editId)!}
 							closeAction={handleClose}
 						/>
 					)}
