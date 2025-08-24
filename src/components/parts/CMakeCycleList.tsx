@@ -88,59 +88,59 @@ export default function CMakeCycleList() {
 		copyClipbord(copyText);
 	};
 
-		const [editId, setEditId] = useState<string | null>(null);
-		const [modalOpen, setModalOpen] = useState(false);
+	const [editId, setEditId] = useState<string | null>(null);
+	const [modalOpen, setModalOpen] = useState(false);
 
-		const handleEdit = (id: string) => {
-			setEditId(id);
-			setModalOpen(true);
-		};
-		const handleClose = () => {
-			setModalOpen(false);
-			setEditId(null);
-		};
+	const handleEdit = (id: string) => {
+		setEditId(id);
+		setModalOpen(true);
+	};
+	const handleClose = () => {
+		setModalOpen(false);
+		setEditId(null);
+	};
 
-		return (
-			<div className="pb-4">
-				<div className="title-line-box pb-8">
-					<Titleline3h title="フレームワークのリスト" size="small" />
-				</div>
-				<div className="flex cycle-list w-[100%]">
-					<DndContext
-						sensors={sensors}
-						onDragEnd={handleDragEnd}
-						onDragOver={handleDragOver}
-					>
-						<div className="cycle-item border rounded-lg mx-4 w-[100%]">
-							<SortableContext items={list} strategy={rectSortingStrategy}>
-								<div ref={setNodeRef}>
-									{list.map((cycle) => (
-										<CPartsItem
-											key={`CMakeCycleItem${cycle.id}`}
-											item={cycle}
-											itemType="edit"
-											renderTitle={(item) => item.title}
-											renderDetails={(item) => item.detail}
-											onEdit={() => handleEdit(String(cycle.id))}
-										/>
-									))}
-								</div>
-							</SortableContext>
-						</div>
-					</DndContext>
-				</div>
-				<div className="p-4">
-					<Button label="作成したモデルをコピーする" onClick={copyAction} />
-				</div>
-				<CommonModal isOpen={modalOpen} onClose={handleClose} title="Make Cycle Edit">
-					{editId && (
-						<CMakeCycleEdit
-							type="edit"
-							item={list.find((m) => String(m.id) === editId)!}
-							closeAction={handleClose}
-						/>
-					)}
-				</CommonModal>
+	return (
+		<div className="pb-4">
+			<div className="title-line-box pb-8">
+				<Titleline3h title="フレームワークのリスト" size="small" />
 			</div>
-		);
+			<div className="flex cycle-list w-[100%]">
+				<DndContext
+					sensors={sensors}
+					onDragEnd={handleDragEnd}
+					onDragOver={handleDragOver}
+				>
+					<div className="cycle-item border rounded-lg mx-4 w-[100%]">
+						<SortableContext items={list} strategy={rectSortingStrategy}>
+							<div ref={setNodeRef}>
+								{list.map((cycle) => (
+									<CPartsItem
+										key={`CMakeCycleItem${cycle.id}`}
+										item={cycle}
+										itemType="edit"
+										renderTitle={(item) => item.title}
+										renderDetails={(item) => item.detail}
+										onEdit={() => handleEdit(String(cycle.id))}
+									/>
+								))}
+							</div>
+						</SortableContext>
+					</div>
+				</DndContext>
+			</div>
+			<div className="p-4">
+				<Button label="作成したモデルをコピーする" onClick={copyAction} />
+			</div>
+			<CommonModal isOpen={modalOpen} onClose={handleClose} title="Make Cycle Edit">
+				{editId && (
+					<CMakeCycleEdit
+						type="edit"
+						item={list.find((m) => String(m.id) === editId)!}
+						closeAction={handleClose}
+					/>
+				)}
+			</CommonModal>
+		</div>
+	);
 }

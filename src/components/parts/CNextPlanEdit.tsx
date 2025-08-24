@@ -53,6 +53,7 @@ export default function CNextPlanEdit(props: Props) {
 				<Input
 					type="text"
 					value={planTitle}
+					className="w-full"
 					outerClassName={type === "edit" ? "label-dark" : ""}
 					label="タイトル"
 					onChange={(value) => {

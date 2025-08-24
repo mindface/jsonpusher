@@ -44,7 +44,7 @@ export const Dialog = ({
 			document.body.setAttribute("style", "overflow: hidden;");
 			dialogElement.current?.classList.add("open");
 		}
-	},[]);
+	},[dialogSwitch,onChangeAction]);
 	useEffect(() => {
 		if (ounterActionValue) {
 			switchAction();

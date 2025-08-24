@@ -1,9 +1,7 @@
 /** @type {import("next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    turbo: {
-      cacheDir: '.turbo'
-    },
+  turbopack: {
+    cacheDir: ".next/cache",
   },
   webpack: (config, { dev }) => {
     if (dev) {

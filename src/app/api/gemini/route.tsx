@@ -9,7 +9,10 @@ export async function GET() {
 		return NextResponse.json({ name: "Contact Api" });
 	} catch (error) {
 		console.error(error);
-		// throw error;
+		return NextResponse.json(
+			{ message: "Internal Server Error" },
+			{ status: 500 }
+		);
 	}
 }
 

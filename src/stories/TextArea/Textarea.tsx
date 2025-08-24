@@ -24,7 +24,7 @@ export const Textarea = ({
 	placeholder,
 	onChange,
 }: TextareaProps) => {
-	let setClassName = "textarea p-4 rounded-lg";
+	let setClassName = "textarea p-4 w-full rounded-lg";
 	if (className) {
 		setClassName += ` ${className}`;
 	}

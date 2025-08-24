@@ -21,22 +21,22 @@ export default function CPartsItem<T>({
   extra,
 }: CPartsItemProps<T>) {
   const editButtonLabel = () => {
-    return (itemType !== "delete" ) ? "view edit" : "close"
+    return (itemType !== "delete" ) ? "view" : "close"
   };
   return (
-    <div className="parts-item p-2">
-      <div className="flex justify-between">
+    <div className="parts-item p-2 flex justify-between">
+      <div className="flex">
         <h4 className="next-plan-item__title pb-2">{renderTitle(item)}</h4>
         {renderDetails && <div>{renderDetails(item)}</div>}
         {extra}
-        <div>
-          {onEdit && <Button
-            label={editButtonLabel()}
-            onClick={onEdit}
-            size="small"
-          />}
-          {onDelete && <Button label="削除" onClick={onDelete} />}
-        </div>
+      </div>
+      <div>
+        {onEdit && <Button
+          label={editButtonLabel()}
+          onClick={onEdit}
+          size="small"
+        />}
+        {onDelete && <Button label="削除" onClick={onDelete} />}
       </div>
     </div>
   );

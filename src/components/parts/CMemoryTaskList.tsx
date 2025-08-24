@@ -17,6 +17,18 @@ export default function CMemoryTaskList(props: Props) {
 	const [editId, setEditId] = useState<string | null>(null);
 	const [modalOpen, setModalOpen] = useState(false);
 
+	const extractHtmlText = (htmlString: string): string => {
+		const withoutTags = htmlString.replace(/<[^>]*>/g, '');
+		const decodedText = withoutTags
+			.replace(/&amp;/g, '&')
+			.replace(/&lt;/g, '<')
+			.replace(/&gt;/g, '>')
+			.replace(/&quot;/g, '"')
+			.replace(/&#039;/g, "'")
+			.replace(/&nbsp;/g, ' ');
+		return decodedText.substring(0, 92);
+	};
+
 	const handleEdit = (id: string) => {
 		setEditId(id);
 		setModalOpen(true);
@@ -55,14 +67,16 @@ export default function CMemoryTaskList(props: Props) {
 							item={memory}
 							itemType="edit"
 							renderTitle={(item) => (
-								<div className="flex items-center">
+								<div className="flex items-center inline-block">
 									<span className={["memory-task-item__title", "p-2"].join(" ")}>{item.title}</span>
-									<span className="ml-4 text-xs text-gray-500">
+									<span className="p-2 text-xs text-gray-500">
 										{ForMatter.convertTimestampToDayjs(item.createAt)}
 									</span>
 								</div>
 							)}
-							renderDetails={(item) => <span>{item.detail}</span>}
+							renderDetails={(item) => (
+								<span className="inline-block p-2">{extractHtmlText(item.detail || '')}</span>
+							)}
 							onEdit={() => handleEdit(String(memory.id))}
 						/>
 					))

@@ -60,7 +60,6 @@ body {
 	@apply border rounded-t-lg;
 }
 
-
 /* Modal Styles */
 .modal-overlay {
   position: fixed;
@@ -109,3 +108,5 @@ body {
 .modal-close:hover {
   color: #333;
 }
+
+/* Common Styles */

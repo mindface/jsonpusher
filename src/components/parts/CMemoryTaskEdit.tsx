@@ -114,7 +114,7 @@ export default function CMemoryTaskEdit(props: Props) {
 			});
 		}
 
-	},[item?.detail]);
+	},[item?.detail, quillCounter]);
 
 	return (
 		<div className="pb-4">

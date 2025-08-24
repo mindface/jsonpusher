@@ -23,7 +23,7 @@ export const Input = ({
 	max = 100,
 	onChange,
 }: InputProps) => {
-	let setClassName = "input-inner block p-2";
+	let setClassName = "input-inner block w-full p-2";
 	const setInputSizeClass = className?.match(/w-full/g) ? "pb-4" : "pr-4";
 	if (outerClassName) {
 		setClassName += ` ${outerClassName}`;
