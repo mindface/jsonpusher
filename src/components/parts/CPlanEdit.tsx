@@ -10,6 +10,7 @@ import type { Plan } from "../../type/plan";
 
 type Props = {
 	type: string;
+	colorType?: string;
 	item?: Plan;
 	closeAction?: () => void;
 };
@@ -18,7 +19,7 @@ export default function CPlanEdit(props: Props) {
 	const [planTitle, planTitleSet] = useState("");
 	const [planDetails, planDetailsSet] = useState("");
 	const { addPlan, updatePlan, deletePlan } = useStorePlan();
-	const { type, item, closeAction } = props;
+	const { type, item, closeAction, colorType } = props;
   const modalCloseAction = closeAction ?? (() => {});
 
 	useEffect(() => {
@@ -59,7 +60,7 @@ export default function CPlanEdit(props: Props) {
 					type="text"
 					value={planTitle}
 					className="w-full"
-					outerClassName={type === "edit" ? "label-dark" : ""}
+					outerClassName={colorType === "dark" ? "label-dark" : ""}
 					label="タイトル"
 					onChange={(value) => {
 						planTitleSet(value as string);
@@ -70,7 +71,7 @@ export default function CPlanEdit(props: Props) {
 			<div className="pb-2">
 				<Textarea
 					value={planDetails}
-					outerClassName={type === "edit" ? "label-dark" : ""}
+					outerClassName={colorType === "dark" ? "label-dark" : ""}
 					label="詳細"
 					onChange={(value) => {
 						planDetailsSet(value as string);
@@ -79,7 +80,7 @@ export default function CPlanEdit(props: Props) {
 			</div>
 			<div className="pb-2">
 				<Button
-					label={type === "edit" ? "更新" : "追加"}
+					label={colorType === "dark" ? "更新" : "追加"}
 					size="small"
 					primary={true}
 					onClick={() => {

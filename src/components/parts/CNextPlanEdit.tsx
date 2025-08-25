@@ -10,12 +10,13 @@ import type { Plan } from "../../type/plan";
 
 type Props = {
 	type: string;
+	colorType?: string;
 	item?: Plan;
 	closeAction?: () => void;
 };
 
 export default function CNextPlanEdit(props: Props) {
-	const { type, item, closeAction } = props;
+	const { type, item, closeAction, colorType } = props;
 	const [planTitle, planTitleSet] = useState(item?.title ?? "");
 	const [planDetails, planDetailsSet] = useState(item?.details ?? "");
 	const { addNextPlan, updateNextPlan, deleteNextPlan } = useStoreNextPlan();
@@ -54,7 +55,7 @@ export default function CNextPlanEdit(props: Props) {
 					type="text"
 					value={planTitle}
 					className="w-full"
-					outerClassName={type === "edit" ? "label-dark" : ""}
+					outerClassName={colorType === "dark" ? "label-dark" : ""}
 					label="タイトル"
 					onChange={(value) => {
 						planTitleSet(value as string);
@@ -66,7 +67,7 @@ export default function CNextPlanEdit(props: Props) {
 				<Textarea
 					label="詳細"
 					value={planDetails}
-					outerClassName={type === "edit" ? "label-dark" : ""}
+					outerClassName={colorType === "dark" ? "label-dark" : ""}
 					onChange={(value) => {
 						planDetailsSet(value as string);
 					}}
@@ -74,7 +75,7 @@ export default function CNextPlanEdit(props: Props) {
 			</div>
 			<div className="pb-2">
 				<Button
-					label={type === "edit" ? "更新" : "追加"}
+					label={colorType === "dark" ? "更新" : "追加"}
 					size="small"
 					primary={true}
 					onClick={() => {

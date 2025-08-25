@@ -45,6 +45,7 @@ export default function CPlanList(props: Props) {
 				{editId && (
 					<CPlanEdit
 						type="edit"
+						colorType="dark"
 						item={items.find((p) => p.id === editId)!}
 						closeAction={handleClose}
 					/>

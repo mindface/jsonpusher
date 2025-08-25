@@ -41,6 +41,7 @@ export default function CNextPlanList(props: Props) {
 				{editId && (
 					<CNextPlanEdit
 						type="edit"
+						colorType="dark"
 						item={items.find((p) => String(p.id) === editId)!}
 						closeAction={handleClose}
 					/>

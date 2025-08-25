@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { Button } from "../stories/Button/Button";
 import { Input } from "../stories/Input/Input";
 import { Titleline3h } from "../stories/Titleline3h/Titleline3h";
@@ -8,6 +8,7 @@ import CNextPlanEdit from "./parts/CNextPlanEdit";
 import CNextPlanList from "./parts/CNextPlanList";
 import CPlanEdit from "./parts/CPlanEdit";
 import CPlanList from "./parts/CPlanList";
+import CommonModal from "./parts/CommonModal";
 
 import { useStorePlan } from "../features/plan/store/planStore";
 import { useStoreNextPlan } from "../features/planNext/store/planNextStore";
@@ -17,6 +18,8 @@ import type { Plan } from "../type/plan";
 import { copyClipbord } from "../utils/copyClipbord";
 
 export default function ContentPlanFeedback() {
+	const [modalPlanOpen, setModalPlanOpen] = useState(false);
+	const [modalPlanNextOpen, setModalPlanNextOpen] = useState(false);
 	const { plans, setPlans, getPlans } = useStorePlan();
 	const { nextPlans, copyPlans, setNextPlans, getNextPlans } =
 		useStoreNextPlan();
@@ -130,6 +133,14 @@ export default function ContentPlanFeedback() {
 		copyClipbord(formattedTable);
 	};
 
+	const handleClose = () => {
+		setModalPlanOpen(false);
+	};
+
+	const handleNextClose = () => {
+		setModalPlanNextOpen(false);
+	};
+
 	useEffect(() => {
 		getPlans();
 		getNextPlans();
@@ -155,17 +166,47 @@ export default function ContentPlanFeedback() {
 				</div>
 				<div className="flex">
 					<div className="pb-8 pr-8 w-[50%]">
-						<CPlanEdit
-							type="add"
-							closeAction={() => {}}
-						/>
+						<div className="p-4">
+							<Button
+								label="計画を追加"
+								onClick={() => {
+									setModalPlanOpen(true);
+								}}
+							/>
+						</div>
+						<CommonModal
+							isOpen={modalPlanOpen}
+							onClose={handleClose}
+							title="計画を追加"
+						>
+							<CPlanEdit
+								type="add"
+								colorType="dark"
+								closeAction={handleClose}
+							/>
+						</CommonModal>
 						<CPlanList items={plans} />
 					</div>
 					<div className="pb-8 w-[50%]">
-						<CNextPlanEdit
-							type="add"
-							closeAction={() => {}}
-						/>
+						<div className="p-4">
+							<Button
+								label="次の計画を追加"
+								onClick={() => {
+									setModalPlanNextOpen(true);
+								}}
+							/>
+						</div>
+						<CommonModal
+							isOpen={modalPlanNextOpen}
+							onClose={handleNextClose}
+							title="次の計画を追加"
+						>
+							<CNextPlanEdit
+								type="add"
+								colorType="dark"
+								closeAction={handleNextClose}
+							/>
+						</CommonModal>
 						<CNextPlanList items={nextPlans} />
 					</div>
 				</div>
