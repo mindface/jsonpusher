@@ -1,34 +1,6 @@
 /** @type {import("next').NextConfig} */
 const nextConfig = {
-  turbopack: {
-    cacheDir: ".next/cache",
-  },
-  webpack: (config, { dev }) => {
-    if (dev) {
-      config.watchOptions = {
-        poll: 5000,
-        aggregateTimeout: 300,
-        ignored: ["**/node_modules/**", "**/.git/**", "**/.next/**"],
-      };
-    }
-
-    config.module.rules.push({
-      test: /\.svg$/,
-      issuer: {
-        and: [/\.(js|ts)x?$/],
-      },
-      use: ['@svgr/webpack'],
-      // use: [
-      //   {
-      //     loader: '@svgr/webpack',
-      //     options: {
-      //       svgo: false, // 圧縮を無効にする設定
-      //     },
-      //   },
-      // ],
-    });
-    return config;
-  },
+  turbopack: {},
   images: {
     domains: [
       "lh3.googleusercontent.com",
