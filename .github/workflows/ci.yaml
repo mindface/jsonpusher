@@ -39,6 +39,10 @@ jobs:
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
 
-      - name: Build & Deploy to Vercel
+      - name: Debug Vercel Token
+        run: echo "VERCEL_TOKEN=${{ secrets.VERCEL_TOKEN }}" | grep VERCEL_TOKEN
+
+      - name:  Deploy to Vercel
         run: |
-          vercel deploy --prod --yes --token=$VERCEL_TOKEN
+          vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+
