@@ -12,6 +12,7 @@ export async function middleware(request: NextRequest) {
 		secret: process.env.NEXTAUTH_SECRET,
 	});
 	console.log("middleware token", token);
+	console.log("All Cookies:", request.cookies.getAll());
 	const protectedRoutes = [
 		"/",
 		"/health",
