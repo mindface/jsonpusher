@@ -21,6 +21,7 @@ export async function middleware(request: NextRequest) {
 		"/memoryTask",
 		"/memoryView",
 	];
+	console.log("middleware request.url", request.url);
 	const path = new URL(request.url).pathname;
 	if (token && request.nextUrl.pathname === "/login") {
 		return NextResponse.redirect(new URL("/", request.url));
