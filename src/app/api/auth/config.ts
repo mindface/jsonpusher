@@ -52,7 +52,12 @@ export const ConfigNextAuth = NextAuth({
 		//   return token;
 		// },
 		async jwt({ token, trigger, session, user }) {
+			console.log("jwt user", user);
 			if (trigger === "update") token.name = session?.user?.name;
+			if (user) {
+				token.uid = (user as any).uid;
+				token.email = user.email;
+			}
 			return {
 				...user,
 				...token,
