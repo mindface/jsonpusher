@@ -11,6 +11,7 @@ export async function middleware(request: NextRequest) {
 		req: request,
 		secret: process.env.NEXTAUTH_SECRET,
 	});
+	console.log("middleware token", token);
 	const protectedRoutes = [
 		"/",
 		"/health",
@@ -21,6 +22,9 @@ export async function middleware(request: NextRequest) {
 		"/memoryView",
 	];
 	const path = new URL(request.url).pathname;
+	if (token && request.nextUrl.pathname === "/login") {
+		return NextResponse.redirect(new URL("/", request.url));
+	}
 	if (path === "/login" || path.startsWith("/_next")) {
 		return NextResponse.next();
 	}
@@ -28,7 +32,7 @@ export async function middleware(request: NextRequest) {
 	if (
 		process.env.APP_ENV !== "test" &&
 		protectedRoutes.includes(path) &&
-		!token?.uid
+		!token
 	) {
 		return NextResponse.redirect(new URL("/login", request.url));
 	}

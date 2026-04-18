@@ -38,6 +38,7 @@ export default function SectionLoginFirebase() {
 			await signInByNextAuth("credentials", {
 				idToken,
 				callbackUrl: "/",
+				redirect: true,
 			});
 		} catch (error) {
 			console.error(error);
